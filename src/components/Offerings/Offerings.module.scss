@@ -1,0 +1,53 @@
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 70px;
+    text-align: center;
+    span {
+      color: #5243c2;
+      text-decoration-line: underline;
+    }
+  }
+  .body {
+    display: grid;
+    grid-template-columns: 450px 550px;
+    .left {
+      //   width: 50%;
+
+      position: relative;
+      .images {
+        .dots {
+          width: 250px;
+        }
+        .girl {
+          position: absolute;
+          top: 0px;
+          width: 350px;
+          left: 35px;
+        }
+      }
+    }
+    .right {
+      ul {
+        li {
+          font-family: Circular Std;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 30px;
+
+          color: #17141f;
+        }
+      }
+    }
+  }
+}

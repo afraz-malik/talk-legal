@@ -1,0 +1,237 @@
+.container {
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  //   overflow: hi;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 70px;
+    text-align: center;
+    span {
+      color: #5243c2;
+      text-decoration-line: underline;
+    }
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    .card1 {
+      //   box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
+      border-radius: 20px;
+      position: relative;
+      height: 550px;
+      .card_img {
+        position: relative;
+        width: 450px;
+        .main_img {
+          width: 100%;
+        }
+        .left_img {
+          position: absolute;
+          left: -100px;
+          bottom: -50px;
+          width: 270px;
+        }
+        .apple_pay {
+          position: absolute;
+          left: -40px;
+          //   width: 100%;
+
+          /* bottom: 200px; */
+          top: 40px;
+        }
+      }
+      .card_text {
+        position: absolute;
+        bottom: 0px;
+        .content {
+          margin: 0 70px;
+          h3 {
+            font-family: Circular Std;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 35px;
+            margin: 0;
+
+            color: #5243c2;
+          }
+          p {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 30px;
+            // margin: 0;
+            color: #17141f;
+          }
+          a {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 25px;
+            /* identical to box height, or 139% */
+            text-decoration: none;
+            color: #299ef3;
+          }
+        }
+      }
+    }
+    .card2 {
+      //   box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
+      margin-top: 50px;
+      border-radius: 20px;
+      position: relative;
+      height: 550px;
+      .card_img {
+        position: relative;
+        width: 450px;
+        .main_img {
+          width: 100%;
+        }
+        .sqaure_img {
+          position: absolute;
+          top: -20px;
+          left: 65px;
+          width: 160px;
+        }
+        .monkey {
+          position: absolute;
+          top: 10px;
+          width: 160px;
+          right: 40px;
+        }
+        .fb {
+          position: absolute;
+          left: 65px;
+          width: 160px;
+          top: 90px;
+        }
+        .jetpack {
+          position: absolute;
+          left: 194px;
+          top: 120px;
+          width: 160px;
+        }
+        .aids {
+          position: absolute;
+          bottom: -15px;
+          left: 140px;
+          width: 160px;
+        }
+      }
+      .card_text {
+        position: absolute;
+        bottom: 0px;
+        .content {
+          margin: 0 70px;
+          h3 {
+            font-family: Circular Std;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 35px;
+            margin: 0;
+
+            color: #5243c2;
+          }
+          p {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 30px;
+            // margin: 0;
+            color: #17141f;
+          }
+          a {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 25px;
+            /* identical to box height, or 139% */
+            text-decoration: none;
+            color: #299ef3;
+          }
+        }
+      }
+    }
+    .card3 {
+      //   box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
+      margin-top: 90px;
+      border-radius: 20px;
+      position: relative;
+      height: 550px;
+      .card_img {
+        position: relative;
+        width: 450px;
+        .main_img {
+          width: 100%;
+        }
+        .ft {
+          position: absolute;
+          top: -130px;
+          width: 200px;
+          right: 20px;
+        }
+        .finger {
+          position: absolute;
+          top: -36px;
+          width: 200px;
+          right: 200px;
+        }
+        .fd {
+          position: absolute;
+          left: 275px;
+          top: 120px;
+          width: 235px;
+        }
+      }
+      .card_text {
+        position: absolute;
+        bottom: 0px;
+        .content {
+          margin: 0 70px;
+          h3 {
+            font-family: Circular Std;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 35px;
+            margin: 0;
+
+            color: #5243c2;
+          }
+          p {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 30px;
+            // margin: 0;
+            color: #17141f;
+          }
+          a {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 25px;
+            /* identical to box height, or 139% */
+            text-decoration: none;
+            color: #299ef3;
+          }
+        }
+      }
+    }
+  }
+}
