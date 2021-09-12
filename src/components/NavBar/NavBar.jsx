@@ -25,8 +25,12 @@ const NavBar = () => {
         </div>
         <div className={NavBarCss.right}>
           <ul>
-            <li>Login</li>
-            <li className={NavBarCss.button}>Get Started</li>
+            <Link to="/login">
+              <li>Login</li>
+            </Link>
+            <Link to="/login">
+              <li className={NavBarCss.button}>Get Started</li>
+            </Link>
           </ul>
         </div>
       </div>
