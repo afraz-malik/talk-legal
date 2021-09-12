@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/talk-legal/static/css/main.edc2e05d.chunk.css",
+    "main.js": "/talk-legal/static/js/main.78c8b5ce.chunk.js",
+    "main.js.map": "/talk-legal/static/js/main.78c8b5ce.chunk.js.map",
+    "runtime-main.js": "/talk-legal/static/js/runtime-main.f008e05d.js",
+    "runtime-main.js.map": "/talk-legal/static/js/runtime-main.f008e05d.js.map",
+    "static/js/2.d0db4f6e.chunk.js": "/talk-legal/static/js/2.d0db4f6e.chunk.js",
+    "static/js/2.d0db4f6e.chunk.js.map": "/talk-legal/static/js/2.d0db4f6e.chunk.js.map",
+    "index.html": "/talk-legal/index.html",
+    "static/css/main.edc2e05d.chunk.css.map": "/talk-legal/static/css/main.edc2e05d.chunk.css.map",
+    "static/js/2.d0db4f6e.chunk.js.LICENSE.txt": "/talk-legal/static/js/2.d0db4f6e.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/talk-legal/static/media/Circular Std Book.ce173167.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f008e05d.js",
+    "static/js/2.d0db4f6e.chunk.js",
+    "static/css/main.edc2e05d.chunk.css",
+    "static/js/main.78c8b5ce.chunk.js"
+  ]
+}
