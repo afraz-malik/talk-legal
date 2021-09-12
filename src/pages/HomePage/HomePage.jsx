@@ -7,6 +7,9 @@ import OurServices from '../../components/OurServices/OurServices'
 import Trusters from '../../components/Trusters/Trusters'
 
 const HomePage = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div>
       <NavBar />

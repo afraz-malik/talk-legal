@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import OurServicesCss from './OurServices.module.scss'
 const OurServices = () => {
   return (
@@ -9,23 +10,32 @@ const OurServices = () => {
       <div className={OurServicesCss.cards}>
         <div className={OurServicesCss.card1}>
           <div className={OurServicesCss.card_img}>
-            <img className={OurServicesCss.main_img} src="images/card1.png" />
-            <img className={OurServicesCss.left_img} src="images/payment.png" />
-            <img
-              className={OurServicesCss.apple_pay}
-              src="images/applepay.png"
-            />
+            <Link to="/business">
+              <img className={OurServicesCss.main_img} src="images/card1.png" />
+            </Link>
+            <Link to="/business">
+              <img
+                className={OurServicesCss.left_img}
+                src="images/payment.png"
+              />
+            </Link>
+            <Link to="/business">
+              <img
+                className={OurServicesCss.apple_pay}
+                src="images/applepay.png"
+              />
+            </Link>
           </div>
           <div className={OurServicesCss.card_text}>
             <div className={OurServicesCss.content}>
-              <h3> Startups & Entrepreneurship</h3>
+              <Link to="/business">
+                <h3> Startups & Entrepreneurship</h3>
+              </Link>
               <p>
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                 amet sint. Velit officia consut.
               </p>
-              <a href="#l" alt="">
-                Learn More
-              </a>
+              <Link to="/business">Learn More</Link>
             </div>
           </div>
         </div>
@@ -59,7 +69,7 @@ const OurServices = () => {
             <img className={OurServicesCss.main_img} src="images/card3.png" />
             <img className={OurServicesCss.ft} src="images/friendstop.png" />
             <img className={OurServicesCss.finger} src="images/finger.png" />
-            <img className={OurServicesCss.fd} src="images/friends.png" />
+            {/* <img className={OurServicesCss.fd} src="images/friends.png" /> */}
           </div>
           <div className={OurServicesCss.card_text}>
             <div className={OurServicesCss.content}>

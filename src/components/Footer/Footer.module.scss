@@ -1,6 +1,6 @@
 .footer {
   //   height: 355px;
-  margin-top: 150px;
+  // margin-top: 150px;
   background: #ecf0fd;
   padding: 0 100px;
   .top {
@@ -46,6 +46,7 @@
     margin: 20px 0;
     display: grid;
     grid-template-columns: 200px auto;
+
     .left {
       //   width: 200px;
       h5 {
@@ -94,9 +95,12 @@
     .right {
       display: flex;
       justify-content: flex-end;
+
+      flex-wrap: wrap;
       ul {
         list-style-type: none;
-        margin-left: 40px;
+        // margin-left: 40px;
+        width: 150px;
       }
       li {
         padding: 10px 0px;
@@ -147,6 +151,110 @@
           padding: 0 20px;
         }
       }
+    }
+  }
+}
+@media (min-width: 1281px) {
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .footer {
+    padding: 0 20px;
+    .body {
+      display: flex;
+      flex-wrap: wrap;
+      // justify-content: center;
+      .right {
+        justify-content: flex-start;
+        ul {
+          margin-left: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 481px) and (max-width: 599px) {
+  .footer {
+    padding: 0 20px;
+    .top {
+      .links {
+        h5 {
+          display: none;
+        }
+      }
+    }
+    .body {
+      display: flex;
+      flex-wrap: wrap;
+      .right {
+        justify-content: flex-start;
+        ul {
+          margin-left: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .footer {
+    padding: 0 20px;
+    .top {
+      .links {
+        h5 {
+          display: none;
+        }
+      }
+    }
+    .body {
+      display: flex;
+      flex-wrap: wrap;
+      .right {
+        justify-content: flex-start;
+        ul {
+          margin-left: 0;
+          padding-left: 0;
+        }
+      }
+    }
+    .bottom {
+      flex-direction: column;
     }
   }
 }

@@ -1,4 +1,5 @@
 .container {
+  margin-bottom: 100px;
   background: linear-gradient(
     180deg,
     rgba(236, 240, 253, 0) 0%,
@@ -134,6 +135,19 @@
         z-index: -1;
       }
     }
+    .imgbox6 {
+      position: absolute;
+      z-index: 199;
+      bottom: 100px;
+      display: flex;
+      right: 500px;
+      grid-gap: 20px;
+
+      .leftimg {
+      }
+      .rightimg {
+      }
+    }
     h3 {
       font-family: Circular Std;
       font-style: normal;
@@ -208,6 +222,169 @@
         line-height: 29px;
         text-align: center;
         color: #94a2b3;
+      }
+    }
+  }
+}
+@media (min-width: 1281px) {
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    .inside {
+      .centered {
+        padding: 30px 50px;
+      }
+    }
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .container {
+    .inside {
+      .centered {
+        padding: 30px 50px;
+      }
+    }
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .container {
+    .inside {
+      .centered {
+        padding: 30px 50px;
+      }
+      .imgbox {
+        left: 45px;
+      }
+      .imgbox2 {
+        top: unset;
+        right: 185px;
+        bottom: 375px;
+      }
+      .imgbox1 {
+        right: 115px;
+      }
+      .imgbox3 {
+        right: 125px;
+      }
+      .imgbox5 {
+        left: 20px;
+      }
+      .imgbox6 {
+        right: 150px;
+        bottom: 0;
+      }
+    }
+  }
+}
+@media (min-width: 481px) and (max-width: 599px) {
+  .container {
+    .inside {
+      .centered {
+        padding: 30px 50px;
+      }
+      .imgbox {
+        left: 45px;
+        top: 150px;
+      }
+      .imgbox2 {
+        top: unset;
+        right: 185px;
+        bottom: 375px;
+      }
+      .imgbox1 {
+        right: 115px;
+      }
+      .imgbox3 {
+        right: 125px;
+      }
+      .imgbox4 {
+        top: 374px;
+      }
+      .imgbox5 {
+        left: 20px;
+      }
+      .imgbox6 {
+        right: 150px;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    .inside {
+      .centered {
+        padding: 30px 10px;
+        // width: 70%;
+        .rightdots {
+          width: 250px;
+          right: -70px;
+        }
+      }
+      .imgbox {
+        left: 0px;
+        top: 175px;
+      }
+      .imgbox2 {
+        top: unset;
+        right: 100px;
+        bottom: 375px;
+        .img {
+          width: 100px;
+        }
+        .img_shadow {
+          width: 100px;
+        }
+      }
+      .imgbox1 {
+        right: 115px;
+        top: -20px;
+      }
+      .imgbox3 {
+        right: 125px;
+      }
+      .imgbox4 {
+        top: 374px;
+        left: 10px;
+      }
+      .imgbox5 {
+        left: 20px;
+      }
+      .imgbox6 {
+        right: 150px;
+        bottom: 0;
       }
     }
   }

@@ -53,6 +53,10 @@ const Trusters = () => {
             alt=""
           />
         </div>
+        <div className={TrustersCss.imgbox6}>
+          <img src="images/left.png" className={TrustersCss.leftimg} alt="" />
+          <img src="images/right.png" className={TrustersCss.rightimg} alt="" />
+        </div>
 
         <div className={TrustersCss.centered}>
           <div className={TrustersCss.centered1}></div>
