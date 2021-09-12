@@ -14,7 +14,7 @@ const Info = () => {
         </ul>
         <div className={InfoCss.right}>
           <div>
-            <img src="images/Mask Group.png" />
+            <img alt="" src="images/Mask Group.png" />
           </div>
         </div>
       </div>

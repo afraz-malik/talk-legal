@@ -10,9 +10,9 @@ const Offerings = () => {
       <div className={OfferingsCss.body}>
         <div className={OfferingsCss.left}>
           <div className={OfferingsCss.images}>
-            <img className={OfferingsCss.dots} src="images/dots.svg" />
+            <img alt="" className={OfferingsCss.dots} src="images/dots.svg" />
 
-            <img className={OfferingsCss.girl} src="images/girl.png" />
+            <img alt="" className={OfferingsCss.girl} src="images/girl.png" />
           </div>
         </div>
         <div className={OfferingsCss.right}>

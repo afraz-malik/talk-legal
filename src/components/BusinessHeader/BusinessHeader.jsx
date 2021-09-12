@@ -15,8 +15,8 @@ const BusinessHeader = () => {
           </p>
         </div>
         <div className={BHeaderCss.col}>
-          <img src="images/Group1000001452.png" alt="" />
-          <img src="images/Capa 1.png" className={BHeaderCss.capa} alt="" />
+          <img alt="" src="images/Group1000001452.png" />
+          <img alt="" src="images/Capa 1.png" className={BHeaderCss.capa} />
         </div>
       </div>
     </div>

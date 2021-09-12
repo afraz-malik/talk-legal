@@ -5,7 +5,7 @@ const BusinessForms = () => {
     <div className={BFormsCss.container}>
       <div className={BFormsCss.card}>
         <div className={BFormsCss.imgTaker}>
-          <img src="images/bagpen.png" />
+          <img alt="" src="images/bagpen.png" />
         </div>
         <div className={BFormsCss.text}>
           <h3>LLC Bundle</h3>
@@ -16,13 +16,13 @@ const BusinessForms = () => {
           </p>
         </div>
         <div className={BFormsCss.links}>
-          <a href="#d">Get Started</a>
+          <a href="">Get Started</a>
           <div className={BFormsCss.fees}>$79 + state filing fees</div>
         </div>
       </div>
       <div className={BFormsCss.card}>
         <div className={BFormsCss.imgTaker}>
-          <img src="images/bagpen.png" />
+          <img alt="" src="images/bagpen.png" />
         </div>
         <div className={BFormsCss.text}>
           <h3>LLC Bundle</h3>
@@ -33,13 +33,13 @@ const BusinessForms = () => {
           </p>
         </div>
         <div className={BFormsCss.links}>
-          <a href="#d">Get Started</a>
+          <a href="">Get Started</a>
           <div className={BFormsCss.fees}>$79 + state filing fees</div>
         </div>
       </div>
       <div className={BFormsCss.card}>
         <div className={BFormsCss.imgTaker}>
-          <img src="images/bagpen.png" />
+          <img alt="" src="images/bagpen.png" />
         </div>
         <div className={BFormsCss.text}>
           <h3>LLC Bundle</h3>
@@ -50,7 +50,7 @@ const BusinessForms = () => {
           </p>
         </div>
         <div className={BFormsCss.links}>
-          <a href="#d">Get Started</a>
+          <a href="">Get Started</a>
           <div className={BFormsCss.fees}>$79 + state filing fees</div>
         </div>
       </div>

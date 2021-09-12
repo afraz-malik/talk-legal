@@ -16,9 +16,7 @@ const Header = () => {
           the legal help you need from lawyers without the expensive fees.
         </p>
         <div className={HeaderCss.link}>
-          <a href="#d" alt="">
-            Sign Up For Free
-          </a>
+          <a href="">Sign Up For Free</a>
           or <span>Discover more </span>
         </div>
       </div>

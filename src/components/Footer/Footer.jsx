@@ -7,9 +7,7 @@ const Footer = () => {
         <h3>TalkLegal</h3>
         <div className={FooterCss.links}>
           <h5>Ready to get started?</h5>
-          <a href="#f" alt="">
-            Get Started
-          </a>
+          <a href="">Get Started</a>
         </div>
       </div>
       <div className={FooterCss.body}>
@@ -61,13 +59,13 @@ const Footer = () => {
         <div className={FooterCss.social}>
           <ul>
             <li>
-              <img src="images/F.svg" alt="" />
+              <img alt="" src="images/F.svg" />
             </li>
             <li>
-              <img src="images/T.svg" alt="" />
+              <img alt="" src="images/T.svg" />
             </li>
             <li>
-              <img src="images/insta.svg" alt="" />
+              <img alt="" src="images/insta.svg" />
             </li>
           </ul>
         </div>

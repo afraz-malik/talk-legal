@@ -11,16 +11,22 @@ const OurServices = () => {
         <div className={OurServicesCss.card1}>
           <div className={OurServicesCss.card_img}>
             <Link to="/business">
-              <img className={OurServicesCss.main_img} src="images/card1.png" />
+              <img
+                alt=""
+                className={OurServicesCss.main_img}
+                src="images/card1.png"
+              />
             </Link>
             <Link to="/business">
               <img
+                alt=""
                 className={OurServicesCss.left_img}
                 src="images/payment.png"
               />
             </Link>
             <Link to="/business">
               <img
+                alt=""
                 className={OurServicesCss.apple_pay}
                 src="images/applepay.png"
               />
@@ -41,15 +47,28 @@ const OurServices = () => {
         </div>
         <div className={OurServicesCss.card2}>
           <div className={OurServicesCss.card_img}>
-            <img className={OurServicesCss.main_img} src="images/card2.png" />
             <img
+              alt=""
+              className={OurServicesCss.main_img}
+              src="images/card2.png"
+            />
+            <img
+              alt=""
               className={OurServicesCss.sqaure_img}
               src="images/square.png"
             />
-            <img className={OurServicesCss.monkey} src="images/monkey.png" />
-            <img className={OurServicesCss.fb} src="images/fb.png" />
-            <img className={OurServicesCss.jetpack} src="images/jetpack.png" />
-            <img className={OurServicesCss.aids} src="images/aids.png" />
+            <img
+              alt=""
+              className={OurServicesCss.monkey}
+              src="images/monkey.png"
+            />
+            <img alt="" className={OurServicesCss.fb} src="images/fb.png" />
+            <img
+              alt=""
+              className={OurServicesCss.jetpack}
+              src="images/jetpack.png"
+            />
+            <img alt="" className={OurServicesCss.aids} src="images/aids.png" />
           </div>
           <div className={OurServicesCss.card_text}>
             <div className={OurServicesCss.content}>
@@ -58,18 +77,28 @@ const OurServices = () => {
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                 amet sint. Velit officia consut.
               </p>
-              <a href="#l" alt="">
-                Learn More
-              </a>
+              <a href="">Learn More</a>
             </div>
           </div>
         </div>
         <div className={OurServicesCss.card3}>
           <div className={OurServicesCss.card_img}>
-            <img className={OurServicesCss.main_img} src="images/card3.png" />
-            <img className={OurServicesCss.ft} src="images/friendstop.png" />
-            <img className={OurServicesCss.finger} src="images/finger.png" />
-            {/* <img className={OurServicesCss.fd} src="images/friends.png" /> */}
+            <img
+              alt=""
+              className={OurServicesCss.main_img}
+              src="images/card3.png"
+            />
+            <img
+              alt=""
+              className={OurServicesCss.ft}
+              src="images/friendstop.png"
+            />
+            <img
+              alt=""
+              className={OurServicesCss.finger}
+              src="images/finger.png"
+            />
+            {/* <img alt=""  className={OurServicesCss.fd} src="images/friends.png" /> */}
           </div>
           <div className={OurServicesCss.card_text}>
             <div className={OurServicesCss.content}>
@@ -78,9 +107,7 @@ const OurServices = () => {
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                 amet sint. Velit officia consut.
               </p>
-              <a href="#l" alt="">
-                Learn More
-              </a>
+              <a href="">Learn More</a>
             </div>
           </div>
         </div>
