@@ -85,10 +85,14 @@
         .submit {
           background: #7854f7;
           border-radius: 8px 8px 0px 0px;
-          width: 30px;
+          width: 40px;
           color: white;
-          //   display: flex;
+          display: flex;
+          justify-content: center;
           text-align: center;
+          img {
+            width: 6px;
+          }
         }
       }
     }
@@ -123,6 +127,7 @@
   .bottom {
     display: flex;
     justify-content: space-between;
+    // padding-bottom: 30px;
     .terms {
       ul {
         display: flex;

@@ -1,5 +1,21 @@
 .App {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid black;
+}
+.App ul {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  list-style-type: none;
+}
+.App ul li {
+  padding: 0 20px;
+}
+.App a {
+  text-decoration: underline;
+  color: blue;
 }
 
 .App-logo {

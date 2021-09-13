@@ -16,7 +16,9 @@ const Footer = () => {
           <h3>Subscribe to our newsletter</h3>
           <div className={FooterCss.form}>
             <input type="text" placeholder="Email address" />
-            <div className={FooterCss.submit}>-</div>
+            <div className={FooterCss.submit}>
+              <img alt="" src="images/Path.svg" />
+            </div>
           </div>
         </div>
         <div className={FooterCss.right}>

@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import RegisterForm from '../RegisterForm/RegisterForm'
-import ResetPassword from '../ResetPassword/ResetPassword'
-import ResetPasswordEmail from '../ResetPasswordEmail/ResetPasswordEmail'
+
 import BoxmodelCss from './Boxmodel.module.scss'
 const Boxmodel = ({ children }) => {
   return (

@@ -7,7 +7,8 @@ const Header = () => {
     <div
       className={HeaderCss.header}
       style={{
-        background: `linear-gradient(0deg, rgba(120, 84, 247, 0.2), rgba(120, 84, 247, 0.2)), url(images/header.png)`,
+        background: `linear-gradient(0deg, rgba(120, 84, 247, 0), rgba(120, 84, 247, 0)), url(images/header.png) center`,
+        backgroundSize: 'cover',
       }}
     >
       <div className={HeaderCss.container}>
@@ -22,7 +23,7 @@ const Header = () => {
           </Link>
           or{' '}
           <span>
-            <Link to="/business">Discover more</Link>
+            <Link to="/business">Discover more &#x3e;</Link>
           </span>
         </div>
       </div>
