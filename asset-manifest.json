@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/talk-legal/static/css/main.8eff8912.chunk.css",
-    "main.js": "/talk-legal/static/js/main.aa3ded1e.chunk.js",
-    "main.js.map": "/talk-legal/static/js/main.aa3ded1e.chunk.js.map",
+    "main.css": "/talk-legal/static/css/main.fa3b84d1.chunk.css",
+    "main.js": "/talk-legal/static/js/main.808f6d3a.chunk.js",
+    "main.js.map": "/talk-legal/static/js/main.808f6d3a.chunk.js.map",
     "runtime-main.js": "/talk-legal/static/js/runtime-main.f008e05d.js",
     "runtime-main.js.map": "/talk-legal/static/js/runtime-main.f008e05d.js.map",
-    "static/js/2.b9b9c36d.chunk.js": "/talk-legal/static/js/2.b9b9c36d.chunk.js",
-    "static/js/2.b9b9c36d.chunk.js.map": "/talk-legal/static/js/2.b9b9c36d.chunk.js.map",
+    "static/js/2.c1a9a984.chunk.js": "/talk-legal/static/js/2.c1a9a984.chunk.js",
+    "static/js/2.c1a9a984.chunk.js.map": "/talk-legal/static/js/2.c1a9a984.chunk.js.map",
     "index.html": "/talk-legal/index.html",
-    "static/css/main.8eff8912.chunk.css.map": "/talk-legal/static/css/main.8eff8912.chunk.css.map",
-    "static/js/2.b9b9c36d.chunk.js.LICENSE.txt": "/talk-legal/static/js/2.b9b9c36d.chunk.js.LICENSE.txt",
+    "static/css/main.fa3b84d1.chunk.css.map": "/talk-legal/static/css/main.fa3b84d1.chunk.css.map",
+    "static/js/2.c1a9a984.chunk.js.LICENSE.txt": "/talk-legal/static/js/2.c1a9a984.chunk.js.LICENSE.txt",
     "static/media/index.css": "/talk-legal/static/media/Circular Std Book.ce173167.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.f008e05d.js",
-    "static/js/2.b9b9c36d.chunk.js",
-    "static/css/main.8eff8912.chunk.css",
-    "static/js/main.aa3ded1e.chunk.js"
+    "static/js/2.c1a9a984.chunk.js",
+    "static/css/main.fa3b84d1.chunk.css",
+    "static/js/main.808f6d3a.chunk.js"
   ]
 }
