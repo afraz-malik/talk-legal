@@ -1,6 +1,8 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 import ResetPasswordCss from './ResetPassword.module.scss'
 const ResetPassword = () => {
+  const history = useHistory()
   return (
     <div className={ResetPasswordCss.form}>
       <form>
@@ -12,7 +14,14 @@ const ResetPassword = () => {
         <input type="password" placeholder="Enter Password" />
         <label>New Password*</label>
         <input type="password" placeholder="Enter Password" />
-        <input type="submit" value="Reset Password" />
+        <input
+          type="submit"
+          value="Reset Password"
+          onClick={() => {
+            alert('Change Successfully')
+            history.push('/')
+          }}
+        />
       </form>
     </div>
   )

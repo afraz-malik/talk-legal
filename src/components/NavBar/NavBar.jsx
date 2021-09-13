@@ -28,7 +28,7 @@ const NavBar = () => {
             <Link to="/login">
               <li>Login</li>
             </Link>
-            <Link to="/login">
+            <Link to="/register">
               <li className={NavBarCss.button}>Get Started</li>
             </Link>
           </ul>

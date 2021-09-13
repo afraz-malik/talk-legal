@@ -4,7 +4,7 @@ import RegisterForm from '../RegisterForm/RegisterForm'
 import ResetPassword from '../ResetPassword/ResetPassword'
 import ResetPasswordEmail from '../ResetPasswordEmail/ResetPasswordEmail'
 import BoxmodelCss from './Boxmodel.module.scss'
-const Boxmodel = () => {
+const Boxmodel = ({ children }) => {
   return (
     <div className={BoxmodelCss.container}>
       <img alt="" className={BoxmodelCss.objects} src="images/OBJECTS.svg" />
@@ -14,9 +14,9 @@ const Boxmodel = () => {
       >
         <div className={BoxmodelCss.helper}></div>
         <div className={BoxmodelCss.text}>
-          <Link to="/">
-            <h3>TalkLegal</h3>
-          </Link>
+          <h3>
+            <Link to="/">TalkLegal</Link>
+          </h3>
 
           <div>
             <p>
@@ -32,11 +32,7 @@ const Boxmodel = () => {
           </div>
         </div>
       </div>
-      <div className={BoxmodelCss.form}>
-        <ResetPassword />
-        {/* <ResetPasswordEmail /> */}
-        {/* <RegisterForm /> */}
-      </div>
+      <div className={BoxmodelCss.form}>{children}</div>
     </div>
   )
 }

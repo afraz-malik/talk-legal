@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import RegisterFormCss from './RegisterForm.module.scss'
 const RegisterForm = () => {
   return (
@@ -27,7 +28,11 @@ const RegisterForm = () => {
         </div>
         <div className={RegisterFormCss.signin}>
           {' '}
-          Have an account? <span>Sign in</span>
+          Have an account?{' '}
+          <Link to="/login">
+            {' '}
+            <span>Sign in</span>{' '}
+          </Link>
         </div>
       </form>
     </div>

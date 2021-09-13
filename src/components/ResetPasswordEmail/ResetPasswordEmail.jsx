@@ -1,6 +1,8 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 import ResetPasswordEmailCss from './ResetPasswordEmail.module.scss'
 const ResetPasswordEmail = () => {
+  const history = useHistory()
   return (
     <div className={ResetPasswordEmailCss.form}>
       <form>
@@ -11,7 +13,11 @@ const ResetPasswordEmail = () => {
         <label>Email address*</label>
         <input type="email" placeholder="Enter email address" />
 
-        <input type="submit" value="Reset Password" />
+        <input
+          type="submit"
+          value="Reset Password"
+          onClick={() => history.push('/changepassword')}
+        />
 
         <div>
           <img alt="" src="images/lock.png" /> Your info is safely secured

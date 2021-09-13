@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import HeaderCss from './Header.module.scss'
 
 const Header = () => {
@@ -16,8 +17,13 @@ const Header = () => {
           the legal help you need from lawyers without the expensive fees.
         </p>
         <div className={HeaderCss.link}>
-          <a href="">Sign Up For Free</a>
-          or <span>Discover more </span>
+          <Link to="/register" className={HeaderCss.a}>
+            Sign Up For Free
+          </Link>
+          or{' '}
+          <span>
+            <Link to="/business">Discover more</Link>
+          </span>
         </div>
       </div>
     </div>
