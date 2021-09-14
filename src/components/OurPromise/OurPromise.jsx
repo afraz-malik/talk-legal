@@ -1,21 +1,21 @@
 import React from 'react'
-import OfferingsCss from './Offerings.module.scss'
+import OurPromiseCss from './OurPromise.module.scss'
 
-const Offerings = () => {
+const OurPromise = () => {
   return (
-    <div className={OfferingsCss.container}>
+    <div className={OurPromiseCss.container}>
       <h2>
         Our <span>Promise</span>
       </h2>
-      <div className={OfferingsCss.body}>
-        <div className={OfferingsCss.left}>
-          <div className={OfferingsCss.images}>
-            <img alt="" className={OfferingsCss.dots} src="images/dots.svg" />
+      <div className={OurPromiseCss.body}>
+        <div className={OurPromiseCss.left}>
+          <div className={OurPromiseCss.images}>
+            <img alt="" className={OurPromiseCss.dots} src="images/dots.svg" />
 
-            <img alt="" className={OfferingsCss.girl} src="images/girl.png" />
+            <img alt="" className={OurPromiseCss.girl} src="images/girl.png" />
           </div>
         </div>
-        <div className={OfferingsCss.right}>
+        <div className={OurPromiseCss.right}>
           <ul>
             <li>
               Our legal platform was made with you in mind – it’s so simple and
@@ -46,4 +46,4 @@ const Offerings = () => {
   )
 }
 
-export default Offerings
+export default OurPromise

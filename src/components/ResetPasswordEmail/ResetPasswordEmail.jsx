@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router'
 import ResetPasswordEmailCss from './ResetPasswordEmail.module.scss'
-const ResetPasswordEmail = () => {
+const ResetPasswordEmail = ({ toggleState }) => {
   const history = useHistory()
   return (
     <div className={ResetPasswordEmailCss.form}>
@@ -18,9 +18,18 @@ const ResetPasswordEmail = () => {
           value="Reset Password"
           onClick={() => history.push('/changepassword')}
         />
-
         <div>
           <img alt="" src="images/lock.png" /> Your info is safely secured
+        </div>
+        <div
+          style={{
+            marginTop: '10px',
+            cursor: 'pointer',
+            textDecoration: 'underline',
+          }}
+          onClick={() => toggleState()}
+        >
+          Go Back
         </div>
       </form>
     </div>

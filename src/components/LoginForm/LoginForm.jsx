@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import LoginFormCss from './LoginForm.module.scss'
-const LoginForm = () => {
+const LoginForm = ({ toggleState }) => {
   return (
     <div className={LoginFormCss.form}>
       <form>
@@ -10,12 +11,23 @@ const LoginForm = () => {
         <label>Enter Password*</label>
         <input type="email" placeholder="Enter Password" />
         <h5>
-          Forget password? <span>Reset Password</span>
+          Forget password?{' '}
+          <span onClick={() => toggleState()}>Reset Password</span>
         </h5>
         <div>
           <input type="checkbox" /> Keep Loggged in
         </div>
-        <input type="submit" value="Sign In" />
+        <div>
+          <input type="submit" value="Sign In" />
+        </div>
+        <h5>
+          Don't have an account?{' '}
+          <Link to="/register">
+            <span>Sign Up</span>
+          </Link>
+        </h5>
+        <img alt="" src="images/line.png" className={LoginFormCss.line} />
+        <img alt="" src="images/1.png" className={LoginFormCss.computer} />
       </form>
     </div>
   )

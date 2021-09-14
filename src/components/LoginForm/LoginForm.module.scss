@@ -1,9 +1,18 @@
 .form {
   background: #ffffff;
-  /* big */
-
+  // height: 100%;
+  // width: 100%;
+  margin: auto;
   box-shadow: 0px 20px 100px rgba(34, 34, 34, 0.15);
-  .form {
+  padding: 20px 120px 20px 50px;
+  position: relative;
+  form {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    // height: 100%;
+    margin: auto;
     h2 {
       font-family: Circular Std;
       font-style: normal;
@@ -18,39 +27,83 @@
       font-family: Inter;
       font-style: normal;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 19px;
       display: flex;
       align-items: center;
+      margin-bottom: 10px;
 
       color: #17141f;
     }
     input[type='email'],
     input[type='password'] {
-      opacity: 0.2;
+      // opacity: 0.2;
+      placeholder {
+      }
       /* General / Dark */
-
-      border: 1px solid #222222;
+      height: 50px;
+      // color: lightgrey;
+      border: 1px solid lightgrey;
       box-sizing: border-box;
       border-radius: 4px;
+      margin-bottom: 20px;
+      padding: 0 0 0 10px;
+      font-size: 12px;
+    }
+    h5 {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+      margin-top: 0;
+      color: #17141f;
+      span {
+        color: #3612ba;
+        cursor: pointer;
+        margin-left: 5px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
     div {
       font-family: Inter;
       font-style: normal;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 12px;
       line-height: 19px;
       display: flex;
       align-items: center;
-
-      color: #17141f;
-      span {
-        color: #7854f7;
+      color: #696f79;
+      input[type='checkbox'] {
+        margin-right: 10px;
       }
     }
     input[type='submit'] {
       background: #7854f7;
       border-radius: 5px;
+      border: none;
+      outline: none;
+      padding: 15px 25px;
+      color: white;
+      margin: 20px 0;
+    }
+    .computer {
+      position: absolute;
+      bottom: 50px;
+      right: 20px;
+      width: 125px;
+    }
+    .line {
+      position: absolute;
+      // top: 0;
+      // bottom: 0;
+      right: 20px;
+      height: 90%;
+      width: 60px;
     }
   }
 }
