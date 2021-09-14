@@ -90,13 +90,13 @@ const OurServices = () => {
                 src="images/card3.png"
               />
             </Link>
-            <Link to="/business">
+            {/* <Link to="/business">
               <img
                 alt=""
                 className={OurServicesCss.ft}
                 src="images/friendstop.png"
               />
-            </Link>
+            </Link> */}
             <Link to="/business">
               <img
                 alt=""
@@ -104,7 +104,11 @@ const OurServices = () => {
                 src="images/finger.png"
               />
             </Link>
-            {/* <img alt=""  className={OurServicesCss.fd} src="images/friends.png" /> */}
+            <img
+              alt=""
+              className={OurServicesCss.fd}
+              src="images/friends.png"
+            />
           </div>
           <div className={OurServicesCss.card_text}>
             <div className={OurServicesCss.content}>

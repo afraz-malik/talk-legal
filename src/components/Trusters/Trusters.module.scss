@@ -52,15 +52,15 @@
       background-color: black;
       //   height: 150px;
       top: 30px;
-      left: 300px;
+      left: 340px;
       .img {
         position: absolute;
         z-index: 1;
-        width: 70px;
+        width: 85px;
       }
       .img_shadow {
         position: absolute;
-        width: 70px;
+        width: 80px;
         top: 30px;
         z-index: -1;
       }
@@ -94,7 +94,7 @@
       .img {
         position: absolute;
         z-index: 1;
-        width: 125px;
+        width: 135px;
       }
       .img_shadow {
         position: absolute;
@@ -271,7 +271,7 @@
   .container {
     .inside {
       .centered {
-        padding: 30px 50px;
+        width: 50%;
       }
     }
   }
@@ -286,7 +286,32 @@
   .container {
     .inside {
       .centered {
-        padding: 30px 50px;
+        width: 50%;
+      }
+      .imgbox {
+        left: 125px;
+      }
+      .imgbox2 {
+        top: unset;
+        right: 135px;
+        bottom: 185px;
+      }
+      .imgbox1 {
+        right: 115px;
+      }
+      .imgbox3 {
+        right: 125px;
+      }
+      .imgbox5 {
+        left: 20px;
+      }
+      .imgbox4 {
+        top: 240px;
+        left: 12px;
+      }
+      .imgbox6 {
+        right: 210px;
+        bottom: -125px;
       }
     }
   }
@@ -301,15 +326,15 @@
   .container {
     .inside {
       .centered {
-        padding: 30px 50px;
+        width: 50%;
       }
       .imgbox {
-        left: 45px;
+        left: 125px;
       }
       .imgbox2 {
         top: unset;
-        right: 185px;
-        bottom: 375px;
+        right: 135px;
+        bottom: 185px;
       }
       .imgbox1 {
         right: 115px;
@@ -320,9 +345,13 @@
       .imgbox5 {
         left: 20px;
       }
+      .imgbox4 {
+        top: 240px;
+        left: 12px;
+      }
       .imgbox6 {
-        right: 150px;
-        bottom: 0;
+        right: 210px;
+        bottom: -125px;
       }
     }
   }
@@ -331,16 +360,20 @@
   .container {
     .inside {
       .centered {
-        padding: 30px 50px;
+        width: 60%;
       }
       .imgbox {
-        left: 45px;
-        top: 150px;
+        left: 25px;
+        top: 35px;
       }
       .imgbox2 {
         top: unset;
-        right: 185px;
-        bottom: 375px;
+        right: 105px;
+        bottom: 135px;
+        .img,
+        .img_shadow {
+          width: 100px;
+        }
       }
       .imgbox1 {
         right: 115px;
@@ -350,13 +383,15 @@
       }
       .imgbox4 {
         top: 374px;
+        left: 10px;
       }
       .imgbox5 {
         left: 20px;
+        bottom: -120px;
       }
       .imgbox6 {
         right: 150px;
-        bottom: 0;
+        bottom: -130px;
       }
     }
   }
@@ -372,6 +407,7 @@
     .inside {
       .centered {
         padding: 30px 10px;
+        width: 60%;
         // width: 70%;
         .rightdots {
           width: 250px;
@@ -381,35 +417,57 @@
       .imgbox {
         left: 0px;
         top: 175px;
+        .img,
+        .img_shadow {
+          width: 60px;
+        }
       }
       .imgbox2 {
         top: unset;
-        right: 100px;
-        bottom: 375px;
-        .img {
-          width: 100px;
-        }
+        right: 60px;
+        bottom: 215px;
+        .img,
         .img_shadow {
-          width: 100px;
+          width: 60px;
         }
       }
       .imgbox1 {
-        right: 115px;
-        top: -20px;
+        right: 80px;
+        top: 65px;
+        .img,
+        .img_shadow {
+          width: 60px;
+        }
       }
       .imgbox3 {
         right: 125px;
+        .img,
+        .img_shadow {
+          width: 60px;
+        }
       }
       .imgbox4 {
         top: 374px;
         left: 10px;
+        .img,
+        .img_shadow {
+          width: 60px;
+        }
       }
       .imgbox5 {
         left: 20px;
+        .img,
+        .img_shadow {
+          width: 60px;
+        }
       }
       .imgbox6 {
         right: 150px;
-        bottom: 0;
+        bottom: -130px;
+        .img,
+        .img_shadow {
+          width: 60px;
+        }
       }
     }
   }

@@ -10,7 +10,7 @@ import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
 function App() {
   return (
     <Router>
-      <div className="App">
+      {/* <div className="App">
         Pages:
         <ul>
           <li>
@@ -29,7 +29,7 @@ function App() {
             <Link to="/changepassword">PasswordResetPage1</Link>
           </li>
         </ul>
-      </div>
+      </div> */}
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/business" component={BusinessOpPage} />
