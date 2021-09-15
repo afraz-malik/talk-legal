@@ -1,11 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import RegisterFormCss from './RegisterForm.module.scss'
-const RegisterForm = () => {
+const RegisterForm = ({ history }) => {
   return (
     <div className={RegisterFormCss.form}>
       <form>
-        <h3>Register Your Account!</h3>
+        {history.location.form ? (
+          <h3>Almost there! Create an account to save your document.</h3>
+        ) : (
+          <h3>Register Your Account!</h3>
+        )}
         <p>
           For the purpose of industry regulation, your details are required.
         </p>
@@ -39,4 +43,4 @@ const RegisterForm = () => {
   )
 }
 
-export default RegisterForm
+export default withRouter(RegisterForm)

@@ -12,7 +12,12 @@ const Header = () => {
       }}
     >
       <div className={HeaderCss.container}>
-        <h2>Entrepreneurship starts here.</h2>
+        {/* <h2>Entrepreneurship starts here.</h2> */}
+        <h2>
+          {' '}
+          We provide affordable and accessible legal tools to help build your
+          business..
+        </h2>
         <p>
           Affordable and accessible legal tools to help build your business. Get
           the legal help you need from lawyers without the expensive fees.

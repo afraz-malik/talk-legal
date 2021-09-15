@@ -1,6 +1,7 @@
 .outside {
   // margin-top: 100px;
   // margin-bottom: 100px;
+  // display: flex;
 
   h2 {
     font-family: Circular Std;
@@ -29,10 +30,11 @@
   height: 900px;
   //   position: relative;
   // padding-top: 50px;
+  // width: 5 0%;
   padding-top: 100px;
   display: flex;
   align-items: flex-start;
-  // justify-content: center;
+  justify-content: center;
   .inside {
     // top: 0;
     z-index: 12;

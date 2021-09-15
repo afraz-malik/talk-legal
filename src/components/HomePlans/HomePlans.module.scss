@@ -1,5 +1,5 @@
 .container {
-  width: 70%;
+  width: 80%;
   margin: auto;
   // margin-top: 50px;
   // overflow-x: auto;
@@ -250,6 +250,148 @@
 
           color: #000000;
         }
+      }
+    }
+  }
+}
+@media (min-width: 1281px) {
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .container {
+    width: 95%;
+    table {
+      thead {
+        tr {
+          td {
+            &:first-of-type {
+              display: none;
+            }
+            &:nth-of-type(2) {
+              border-radius: 26px 0 0 26px;
+              text-align: left;
+              padding-left: 50px;
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            text-align: center;
+            &:first-of-type {
+              display: none;
+            }
+            &:nth-of-type(2) {
+              border-radius: 26px 0 0 26px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 481px) and (max-width: 599px) {
+  .container {
+    width: 95%;
+    table {
+      thead {
+        tr {
+          td {
+            padding: 5px;
+            .active,
+            .card {
+              h1 {
+                font-size: 30px;
+              }
+              h3 {
+                font-size: 16px;
+              }
+              p {
+                font-size: 12px;
+              }
+              button {
+                padding: 15px 40px;
+              }
+            }
+            &:first-of-type {
+              display: none;
+            }
+            &:nth-of-type(2) {
+              border-radius: 26px 0 0 26px;
+              text-align: left;
+              padding-left: 50px;
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            text-align: center;
+            &:first-of-type {
+              display: none;
+            }
+            &:nth-of-type(2) {
+              border-radius: 26px 0 0 26px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    width: 90%;
+    table {
+      width: 80%;
+      thead {
+        tr {
+          td {
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+      tbody {
+        display: none;
       }
     }
   }

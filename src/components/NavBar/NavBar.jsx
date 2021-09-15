@@ -11,26 +11,40 @@ const NavBar = () => {
       <div className={NavBarCss.inside_nav}>
         <div className={NavBarCss.left}>
           <Link to="/">
-            <h3>TalkLegal</h3>
+            <h3>
+              <img alt="" src="images/Full-Trans 2.svg" />
+            </h3>
           </Link>
         </div>
         <div className={NavBarCss.center}>
           <ul>
-            <li>Pricing</li>
-            <li>Documents</li>
-            <li>About Us</li>
-            <li>Dashboard</li>
-            <li>Profile</li>
+            <li>
+              <Link to="/" className={NavBarCss.selected}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/">Pricing</Link>
+            </li>
+            <li>
+              <Link to="/">Documents</Link>
+            </li>
+            <li>
+              <Link to="/">About Us</Link>
+            </li>
+            <li>
+              <Link to="/">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/">Profile</Link>
+            </li>
           </ul>
         </div>
         <div className={NavBarCss.right}>
           <ul>
-            <Link to="/login">
-              <li>Login</li>
-            </Link>
-            <Link to="/register">
-              <li className={NavBarCss.button}>Get Started</li>
-            </Link>
+            <li>
+              <Link to="/register">Get Started</Link>
+            </li>
           </ul>
         </div>
       </div>

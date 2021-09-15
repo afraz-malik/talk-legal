@@ -19,7 +19,10 @@
     // width: ;
     .image {
       height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
       // position: fixed;
+      width: 100%;
       // z-index: -2;
       .helper {
         opacity: 0.6;

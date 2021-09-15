@@ -5,12 +5,10 @@ const HomePlans = () => {
     card: '2',
   })
   const setCard = (value) => {
-    console.log(value)
     setstate({
       card: value,
     })
   }
-  console.log(state.card)
   return (
     <div className={HomePlansCss.container}>
       <h2>

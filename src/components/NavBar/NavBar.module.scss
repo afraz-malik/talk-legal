@@ -2,6 +2,7 @@
   display: flex;
   width: 100%;
   align-items: center;
+  height: 15vh;
   flex-direction: column;
   justify-content: center;
   position: relative;
@@ -21,6 +22,9 @@
           &:hover {
             color: #7854f7;
           }
+          img {
+            width: 90%;
+          }
         }
       }
     }
@@ -28,15 +32,47 @@
       ul {
         display: flex;
         list-style-type: none;
-        font-family: Roboto;
-        font-style: normal;
         font-weight: 500;
         padding: 0;
         li {
-          cursor: pointer;
           padding: 20px;
-          &:hover {
-            color: #7854f7;
+          padding-top: 25px;
+          a {
+            font-family: Manrope;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 26px;
+            /* identical to box height */
+            display: flex;
+            align-items: flex-end;
+            border: 5px solid transparent;
+            border-width: 0;
+            color: #979797;
+            &:hover {
+              background: linear-gradient(
+                262.23deg,
+                #7854f7 0.3%,
+                #4e2d92 116.16%
+              );
+              background-size: 100%;
+              background-repeat: repeat;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              border-bottom: 5px solid #4e2d92;
+            }
+          }
+          .selected {
+            background: linear-gradient(
+              262.23deg,
+              #7854f7 0.3%,
+              #4e2d92 116.16%
+            );
+            background-size: 100%;
+            background-repeat: repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: 5px solid #4e2d92;
           }
         }
       }
@@ -45,8 +81,6 @@
       ul {
         display: flex;
         list-style-type: none;
-        font-family: Roboto;
-        font-style: normal;
         font-weight: 500;
         padding: 0;
         justify-content: center;
@@ -54,15 +88,17 @@
         li {
           cursor: pointer;
           padding: 0 20px;
-          &:hover {
-            color: #7854f7;
-          }
-        }
-        .button {
           background: #7854f7;
           border-radius: 5px;
           color: white;
           padding: 10px;
+          font-size: 15px;
+          font-family: Manrope;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 15px;
+          line-height: 26px;
+          // border-bottom: 5px solid transparent;
           &:hover {
             color: white;
           }

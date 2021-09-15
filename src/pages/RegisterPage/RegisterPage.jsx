@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 import Boxmodel from '../../components/Boxmodel/Boxmodel'
 import RegisterForm from '../../components/RegisterForm/RegisterForm'
 const RegisterPage = () => {
@@ -9,4 +10,4 @@ const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
+export default withRouter(RegisterPage)

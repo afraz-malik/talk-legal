@@ -1,5 +1,6 @@
 import React from 'react'
 import BFormsCss from './BusinessForms.module.scss'
+import { Link } from 'react-router-dom'
 const BusinessForms = () => {
   return (
     <div className={BFormsCss.container}>
@@ -16,7 +17,7 @@ const BusinessForms = () => {
           </p>
         </div>
         <div className={BFormsCss.links}>
-          <a href="">Get Started</a>
+          <Link to="/questions">Get Started</Link>
           <div className={BFormsCss.fees}>$79 + state filing fees</div>
         </div>
       </div>
@@ -33,7 +34,7 @@ const BusinessForms = () => {
           </p>
         </div>
         <div className={BFormsCss.links}>
-          <a href="">Get Started</a>
+          <Link to="/questions">Get Started</Link>
           <div className={BFormsCss.fees}>$79 + state filing fees</div>
         </div>
       </div>
@@ -50,7 +51,7 @@ const BusinessForms = () => {
           </p>
         </div>
         <div className={BFormsCss.links}>
-          <a href="">Get Started</a>
+          <Link to="/questions">Get Started</Link>
           <div className={BFormsCss.fees}>$79 + state filing fees</div>
         </div>
       </div>
