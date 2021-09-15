@@ -23,7 +23,7 @@ const HomePlans = () => {
       <table>
         <thead>
           <tr>
-            <td></td>
+            <td width="300px"></td>
             <td>
               <div
                 className={

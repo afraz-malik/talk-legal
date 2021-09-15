@@ -6,7 +6,6 @@ import BusinessOpPage from './pages/BusinessOpPage/BusinessOpPage'
 import RegisterPage from './pages/RegisterPage/RegisterPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
-import SignupForm from './components/HomePlans/temp'
 
 function App() {
   return (
@@ -37,7 +36,6 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/changepassword" component={ResetPasswordPage} />
-        <Route path="/temp" component={SignupForm} />
       </Switch>
     </Router>
   )
