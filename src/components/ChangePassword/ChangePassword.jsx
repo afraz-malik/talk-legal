@@ -1,10 +1,10 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import ResetPasswordCss from './ResetPassword.module.scss'
-const ResetPassword = () => {
+import ChangePasswordCss from './ChangePassword.module.scss'
+const ChangePassword = () => {
   const history = useHistory()
   return (
-    <div className={ResetPasswordCss.form}>
+    <div className={ChangePasswordCss.form}>
       <form>
         <h3>Reset Password</h3>
         <p>
@@ -27,4 +27,4 @@ const ResetPassword = () => {
   )
 }
 
-export default ResetPassword
+export default ChangePassword

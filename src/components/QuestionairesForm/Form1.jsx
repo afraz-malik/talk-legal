@@ -4,7 +4,6 @@ const Form1 = ({ handleForm }) => {
   React.useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-  const [state, setstate] = React.useState('')
   const handleSubmit = (e) => {
     e.preventDefault()
     handleForm()

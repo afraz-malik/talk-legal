@@ -16,7 +16,7 @@ const Header = () => {
         <h2>
           {' '}
           We provide affordable and accessible legal tools to help build your
-          business..
+          business.
         </h2>
         <p>
           Affordable and accessible legal tools to help build your business. Get

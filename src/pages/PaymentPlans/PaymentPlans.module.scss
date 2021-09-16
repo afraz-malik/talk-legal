@@ -1,0 +1,197 @@
+.container {
+  padding: 30px 100px;
+  .body {
+    text-align: center;
+    h1 {
+      font-family: DM Sans;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 45px;
+      line-height: 50px;
+      text-align: center;
+      letter-spacing: -1px;
+      color: #000000;
+    }
+    p {
+      font-family: DM Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 26px;
+      /* identical to box height */
+      text-align: center;
+      letter-spacing: -0.333333px;
+      margin-top: 50px;
+      color: #000000;
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+      grid-gap: 50px;
+      flex-wrap: wrap;
+      .card {
+        width: 300px;
+        padding: 30px 30px;
+        background: #f4f1fd;
+        border-radius: 20px;
+        .top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          line-height: 0px;
+          .left {
+            text-align: left;
+            h2 {
+              margin: 0;
+              font-family: Inter;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 30px;
+              line-height: 48px;
+              color: #000000;
+              border-bottom: 5px solid #7854f7;
+              width: 35px;
+            }
+          }
+          .right {
+            h2 {
+              font-family: Inter;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 28px;
+              line-height: 44px;
+              /* identical to box height */
+              text-align: right;
+              margin: 0;
+              color: #17141f;
+            }
+            span {
+              font-family: DM Sans;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 12px;
+              line-height: 20px;
+              /* identical to box height */
+
+              text-align: right;
+
+              color: #17141f;
+            }
+          }
+        }
+        h4 {
+          text-align: left;
+          font-family: Inter;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 14 px;
+          line-height: 18px;
+          //   margin: 0;
+          color: #000000;
+        }
+        .point {
+          p {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            // line-height: 19px;
+            text-align: left;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            color: #000000;
+          }
+          display: flex;
+          margin-bottom: 10px;
+          align-items: flex-start;
+          justify-content: flex-start;
+          img {
+            margin-right: 5px;
+            margin-top: 7px;
+          }
+        }
+        button {
+          cursor: pointer;
+          background: #7854f7;
+          border-radius: 26px;
+          font-family: DM Sans;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 14px;
+          line-height: 18px;
+          text-align: center;
+          letter-spacing: -0.233333px;
+          outline: none;
+          border: none;
+          padding: 15px 50px;
+          color: #ffffff;
+          margin-top: 50px;
+        }
+      }
+      .active {
+        background: #7854f7;
+        .top {
+          .left {
+            h2 {
+              color: white;
+              border-color: white;
+            }
+          }
+          .right {
+            h2 {
+              color: white;
+            }
+            span {
+              color: white;
+            }
+          }
+        }
+        h4 {
+          color: white;
+        }
+        .point {
+          p {
+            color: white;
+          }
+          display: flex;
+          margin-bottom: 10px;
+          align-items: flex-start;
+          justify-content: flex-start;
+          img {
+            margin-right: 5px;
+            margin-top: 7px;
+            filter: brightness(0) invert(1);
+          }
+        }
+        button {
+          cursor: pointer;
+          color: #7854f7;
+          background-color: white;
+        }
+      }
+    }
+    .single {
+      margin: 50px 0;
+      a {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 25px;
+        /* identical to box height, or 139% */
+        background: #299ef3;
+        background-size: 100%;
+        background-repeat: repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        &:hover {
+          border-bottom: 3px solid #299ef3;
+        }
+      }
+    }
+  }
+}

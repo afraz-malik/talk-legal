@@ -1,6 +1,9 @@
 import React from 'react'
 import FormCss from './Form.module.scss'
 const HardCopy = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div
       className={FormCss.page}

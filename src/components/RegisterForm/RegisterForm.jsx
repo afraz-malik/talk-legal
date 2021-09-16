@@ -24,7 +24,11 @@ const RegisterForm = ({ history }) => {
         <div>
           <input type="checkbox" /> i agree to terms & conditions{' '}
         </div>
-        <input type="submit" value="Register Account" />
+        <input
+          type="submit"
+          value="Register Account"
+          onClick={() => history.push('/plans')}
+        />
         <span className={RegisterFormCss.or}>Or</span>
         <div className={RegisterFormCss.google}>
           <img alt="" src="images/google.png" />

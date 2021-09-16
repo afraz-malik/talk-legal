@@ -5,7 +5,7 @@ import Form3 from '../../components/QuestionairesForm/Form3'
 import Form4 from '../../components/QuestionairesForm/Form4'
 import HardCopy from '../../components/QuestionairesForm/HardCopy'
 import QCss from './Questionaires.module.scss'
-import { Link } from 'react-router-dom'
+import Logo from '../../components/NavBar/Logo'
 const Questionaires = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0)
@@ -17,11 +17,7 @@ const Questionaires = () => {
   return (
     <div className={QCss.container}>
       <div className={QCss.container2}>
-        <div className={QCss.logo}>
-          <Link to="/">
-            <img alt="" src="images/Full-Trans 1.png" />
-          </Link>
-        </div>
+        <Logo />
         <div className={QCss.progress_bar}>
           <div
             className={QCss.progress_complete}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import LoginFormCss from './LoginForm.module.scss'
-const LoginForm = ({ toggleState }) => {
+const LoginForm = () => {
   return (
     <div className={LoginFormCss.form}>
       <form>
@@ -12,7 +12,9 @@ const LoginForm = ({ toggleState }) => {
         <input type="email" placeholder="Enter Password" />
         <h5>
           Forget password?{' '}
-          <span onClick={() => toggleState()}>Reset Password</span>
+          <Link to="/forget">
+            <span>Reset Password</span>
+          </Link>
         </h5>
         <div>
           <input type="checkbox" /> Keep Loggged in
