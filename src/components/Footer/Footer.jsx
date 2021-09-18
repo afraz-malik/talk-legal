@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import FooterCss from './Footer.module.scss'
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
         <h3>TalkLegal</h3>
         <div className={FooterCss.links}>
           <h5>Ready to get started?</h5>
-          <a href="">Get Started</a>
+          <Link to="/register">Get Started</Link>
         </div>
       </div>
       <div className={FooterCss.body}>

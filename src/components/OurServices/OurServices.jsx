@@ -77,7 +77,7 @@ const OurServices = () => {
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                 amet sint. Velit officia consut.
               </p>
-              <a href="">Learn More</a>
+              <Link to="/">Learn More</Link>
             </div>
           </div>
         </div>

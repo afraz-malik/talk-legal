@@ -1,9 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Logo from '../../components/NavBar/Logo'
 import PaymentPlansCss from './PaymentPlans.module.scss'
 const PaymentPlans = () => {
+  const history = useHistory()
   const [state, setstate] = React.useState(2)
+  // eslint-disable-next-line
   const setCard = (value) => {
     setstate(value)
   }
@@ -45,7 +47,9 @@ const PaymentPlans = () => {
                 <img alt="" src="images/tick.svg" />
                 <p>$110 Membership (You can save up to $105)</p>
               </div>
-              <button onClick={() => setCard(1)}>Get Started</button>
+              <button onClick={() => history.push('/checkout')}>
+                Get Started
+              </button>
             </div>
           </div>
           <div
@@ -76,7 +80,9 @@ const PaymentPlans = () => {
                 <img alt="" src="images/tick.svg" />
                 <p>$200 Membership (You can save up to $175)</p>
               </div>
-              <button onClick={() => setCard(2)}>Get Started</button>
+              <button onClick={() => history.push('/checkout')}>
+                Get Started
+              </button>
             </div>
           </div>
           <div
@@ -107,12 +113,16 @@ const PaymentPlans = () => {
                 <img alt="" src="images/tick.svg" />
                 <p>$500 Membership (You save a lot).</p>
               </div>
-              <button onClick={() => setCard(3)}>Get Started</button>
+              <button onClick={() => history.push('/checkout')}>
+                Get Started
+              </button>
             </div>
           </div>
         </div>
         <div className={PaymentPlansCss.single}>
-          <Link>Skip this membership step to purchase a single document ›</Link>
+          <Link to="">
+            Skip this membership step to purchase a single document ›
+          </Link>
         </div>
       </div>
     </div>

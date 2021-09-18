@@ -64,7 +64,8 @@
               line-height: 44px;
               /* identical to box height */
               text-align: right;
-              margin: 0;
+              margin-top: 13px;
+              margin-bottom: -12px;
               color: #17141f;
             }
             span {
@@ -131,47 +132,49 @@
           color: #ffffff;
           margin-top: 50px;
         }
-      }
-      .active {
-        background: #7854f7;
-        .top {
-          .left {
-            h2 {
-              color: white;
-              border-color: white;
+        &:hover {
+          background: #7854f7;
+          .top {
+            .left {
+              h2 {
+                color: white;
+                border-color: white;
+              }
+            }
+            .right {
+              h2 {
+                color: white;
+              }
+              span {
+                color: white;
+              }
             }
           }
-          .right {
-            h2 {
-              color: white;
-            }
-            span {
-              color: white;
-            }
-          }
-        }
-        h4 {
-          color: white;
-        }
-        .point {
-          p {
+          h4 {
             color: white;
           }
-          display: flex;
-          margin-bottom: 10px;
-          align-items: flex-start;
-          justify-content: flex-start;
-          img {
-            margin-right: 5px;
-            margin-top: 7px;
-            filter: brightness(0) invert(1);
+          .point {
+            p {
+              color: white;
+            }
+            display: flex;
+            margin-bottom: 10px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            img {
+              margin-right: 5px;
+              margin-top: 7px;
+              filter: brightness(0) invert(1);
+            }
+          }
+          button {
+            cursor: pointer;
+            color: #7854f7;
+            background-color: white;
           }
         }
-        button {
-          cursor: pointer;
-          color: #7854f7;
-          background-color: white;
-        }
+      }
+      .active {
       }
     }
     .single {
@@ -191,6 +194,91 @@
         &:hover {
           border-bottom: 3px solid #299ef3;
         }
+      }
+    }
+  }
+}
+@media (min-width: 1281px) {
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding: 30px 50px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .container {
+    padding: 30px 50px;
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .container {
+    padding: 30px 50px;
+    .body {
+      h1 {
+        font-size: 35px;
+      }
+      p {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+@media (min-width: 481px) and (max-width: 599px) {
+  .container {
+    padding: 30px 50px;
+    .body {
+      h1 {
+        font-size: 35px;
+      }
+      p {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    padding: 30px 50px;
+    .body {
+      h1 {
+        font-size: 22px;
+        line-height: 30px;
+      }
+      p {
+        margin-top: 10px;
+        font-size: 14px;
       }
     }
   }

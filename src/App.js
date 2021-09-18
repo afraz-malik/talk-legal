@@ -9,6 +9,7 @@ import ChangePasswordPage from './pages/ChangePasswordPage/ChangePasswordPage'
 import Questionaires from './pages/Questionaires/Questionaires'
 import ForgetPage from './pages/ForgetPage/ForgetPage'
 import PaymentPlans from './pages/PaymentPlans/PaymentPlans'
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/forget" component={ForgetPage} />
         <Route path="/plans" component={PaymentPlans} />
         <Route path="/questions" component={Questionaires} />
+        <Route path="/checkout" component={CheckoutPage} />
       </Switch>
     </Router>
   )

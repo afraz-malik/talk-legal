@@ -15,6 +15,7 @@ const NavBar = () => {
       window.removeEventListener('resize', resizeEvent)
       console.log('removed Navbar resize event lister')
     }
+    // eslint-disable-next-line
   }, [])
   const [state, setstate] = React.useState(true)
 
