@@ -156,6 +156,12 @@
 
 .logo {
   margin-bottom: 20px;
+  a {
+    img {
+      width: 85px;
+      // margin-top: 15px;
+    }
+  }
 }
 @media (min-width: 1281px) {
 }

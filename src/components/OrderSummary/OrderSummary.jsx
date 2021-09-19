@@ -1,7 +1,9 @@
 import React from 'react'
+import { withRouter } from 'react-router'
+import AdOns from '../AdOns/AdOns'
 import HardCopy from '../QuestionairesForm/HardCopy'
 import OrderCss from './OrderSummary.module.scss'
-const OrderSummary = () => {
+const OrderSummary = ({ location }) => {
   return (
     <div className={OrderCss.container}>
       <h1 className={OrderCss.h1}>Order Summary</h1>
@@ -13,9 +15,10 @@ const OrderSummary = () => {
           <HardCopy />
         </div>
       </div>
+      {location.plan ? <AdOns /> : null}
       <div className={OrderCss.price}>
         <p className={OrderCss.p} style={{ fontWeight: 'bold' }}>
-          Single Document Purchase
+          {location.plan ? '' : 'Single'} Document Purchase
         </p>
       </div>
       <div className={OrderCss.price}>
@@ -52,4 +55,4 @@ const OrderSummary = () => {
   )
 }
 
-export default OrderSummary
+export default withRouter(OrderSummary)
