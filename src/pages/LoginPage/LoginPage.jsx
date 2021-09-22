@@ -1,5 +1,5 @@
 import React from 'react'
-import Boxmodel from '../../components/Boxmodel/Boxmodel'
+import LoginBoxmodel from '../../components/LoginBoxmodel/LoginBoxmodel'
 import LoginForm from '../../components/LoginForm/LoginForm'
 const LoginPage = () => {
   const [state, setstate] = React.useState(false)
@@ -7,9 +7,9 @@ const LoginPage = () => {
     setstate(!state)
   }
   return (
-    <Boxmodel>
+    <LoginBoxmodel>
       <LoginForm toggleState={toggle} />
-    </Boxmodel>
+    </LoginBoxmodel>
   )
 }
 

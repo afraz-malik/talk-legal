@@ -1,18 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import BoxmodelCss from './Boxmodel.module.scss'
-const Boxmodel = ({ children }) => {
+import LoginBoxmodelCss from './LoginBoxmodel.module.scss'
+const LoginBoxmodel = ({ children }) => {
   return (
-    <div className={BoxmodelCss.container}>
-      <img alt="" className={BoxmodelCss.objects} src="images/OBJECTS.svg" />
-      <div className={BoxmodelCss.left}>
+    <div className={LoginBoxmodelCss.container}>
+      <img
+        alt=""
+        className={LoginBoxmodelCss.objects}
+        src="images/OBJECTS.svg"
+      />
+      <div className={LoginBoxmodelCss.left}>
         <div
-          className={BoxmodelCss.image}
+          className={LoginBoxmodelCss.image}
           style={{ backgroundImage: 'url("images/image 27.png")' }}
         >
-          <div className={BoxmodelCss.helper}></div>
-          <div className={BoxmodelCss.text}>
+          <div className={LoginBoxmodelCss.helper}></div>
+          <div className={LoginBoxmodelCss.text}>
             <h3>
               <Link to="/">TalkLegal</Link>
             </h3>
@@ -33,9 +37,9 @@ const Boxmodel = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className={BoxmodelCss.form}>{children}</div>
+      <div className={LoginBoxmodelCss.form}>{children}</div>
     </div>
   )
 }
 
-export default Boxmodel
+export default LoginBoxmodel

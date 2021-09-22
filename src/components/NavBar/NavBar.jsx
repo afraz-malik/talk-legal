@@ -2,8 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import NavBarCss from './NavBar.module.scss'
 
-const NavBar = () => {
+const NavBar = ({ currentPage }) => {
   React.useEffect(() => {
+    if (currentPage) {
+      setactive(currentPage)
+    }
     if (document.documentElement.clientWidth < 914) {
       setstate(false)
       window.addEventListener('mouseup', clickEvent)
@@ -18,7 +21,7 @@ const NavBar = () => {
     // eslint-disable-next-line
   }, [])
   const [state, setstate] = React.useState(true)
-
+  const [active, setactive] = React.useState('home')
   const toggle = () => {
     setstate(!state)
   }
@@ -58,24 +61,52 @@ const NavBar = () => {
           <i className="fa fa-bars" onClick={() => toggle()}></i>
           <ul style={{ display: state ? 'flex' : 'none' }} id="ul">
             <li>
-              <Link to="/" className={NavBarCss.selected}>
+              <Link
+                to="/"
+                className={active === 'home' ? NavBarCss.selected : null}
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/">Pricing</Link>
+              <Link
+                to="/"
+                className={active === 'pricing' ? NavBarCss.selected : null}
+              >
+                Pricing
+              </Link>
             </li>
             <li>
-              <Link to="/">Documents</Link>
+              <Link
+                to="/"
+                className={active === 'documents' ? NavBarCss.selected : null}
+              >
+                Documents
+              </Link>
             </li>
             <li>
-              <Link to="/">About Us</Link>
+              <Link
+                to="/"
+                className={active === 'about' ? NavBarCss.selected : null}
+              >
+                About Us
+              </Link>
             </li>
             <li>
-              <Link to="/">Dashboard</Link>
+              <Link
+                to="/dashboard"
+                className={active === 'dashboard' ? NavBarCss.selected : null}
+              >
+                Dashboard
+              </Link>
             </li>
             <li>
-              <Link to="/">Profile</Link>
+              <Link
+                to="/"
+                className={active === 'profile' ? NavBarCss.selected : null}
+              >
+                Profile
+              </Link>
             </li>
           </ul>
         </div>

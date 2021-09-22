@@ -1,11 +1,11 @@
 import React from 'react'
-import Boxmodel from '../../components/Boxmodel/Boxmodel'
+import LoginBoxmodel from '../../components/LoginBoxmodel/LoginBoxmodel'
 import ForgetPassword from '../../components/ForgetPassword/ForgetPassword'
 const ForgetPage = () => {
   return (
-    <Boxmodel>
+    <LoginBoxmodel>
       <ForgetPassword />
-    </Boxmodel>
+    </LoginBoxmodel>
   )
 }
 

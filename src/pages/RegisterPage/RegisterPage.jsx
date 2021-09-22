@@ -1,12 +1,12 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import Boxmodel from '../../components/Boxmodel/Boxmodel'
+import LoginBoxmodel from '../../components/LoginBoxmodel/LoginBoxmodel'
 import RegisterForm from '../../components/RegisterForm/RegisterForm'
 const RegisterPage = () => {
   return (
-    <Boxmodel>
+    <LoginBoxmodel>
       <RegisterForm />
-    </Boxmodel>
+    </LoginBoxmodel>
   )
 }
 
