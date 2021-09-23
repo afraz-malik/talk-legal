@@ -2,6 +2,7 @@ import React from 'react'
 import FormCss from './Form.module.scss'
 import HardCopy from './HardCopy'
 import { useHistory } from 'react-router-dom'
+import Preview from '../Preview/Preview'
 const Form4 = () => {
   const history = useHistory()
   React.useEffect(() => {
@@ -44,7 +45,7 @@ const Form4 = () => {
         </span>
       </form>
       {state ? (
-        <div className={FormCss.preview}>
+        <Preview position="absolute">
           <div
             className={FormCss.hc}
             style={{ backgroundImage: 'url(images/TLTM.png)' }}
@@ -57,7 +58,7 @@ const Form4 = () => {
             />
             <HardCopy />
           </div>
-        </div>
+        </Preview>
       ) : null}
     </div>
   )

@@ -33,7 +33,11 @@ a {
   font-weight: bold;
   src: url('./fonts/Circular\ Std\ Bold.ttf');
 }
-
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: bold;
+  src: url('./fonts/SFProText-Bold.ttf');
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

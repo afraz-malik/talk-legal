@@ -16,6 +16,7 @@
         //   margin: auto;
         margin-top: 0;
         padding: 0;
+        padding-right: 30px;
         display: flex;
         flex-direction: column;
         grid-gap: 20px;
@@ -29,7 +30,7 @@
           cursor: pointer;
           // background: #7854f7;
           // border-radius: 5px;
-
+          width: 100%;
           padding: 10px 20px;
           height: 50px;
           font-family: Circular Std;
@@ -65,9 +66,7 @@
       }
     }
     .boxmodel {
-      width: 75%;
-      height: 100vh;
-
+      width: 80%;
       background: rgba(120, 84, 247, 0.05);
       border-radius: 20px;
       padding: 35px 35px 80px 35px;
@@ -89,6 +88,7 @@
         border-radius: 20px;
         height: 100%;
         width: 100%;
+        padding: 50px 30px;
       }
     }
   }
@@ -128,22 +128,22 @@
       .navigation {
         ul {
           position: absolute;
-          z-index: 10;
+          z-index: 1;
           li {
-            &:hover {
-              position: relative;
-              span {
-                display: inline;
-              }
-            }
+            width: unset;
             span {
               display: none;
+            }
+            &:hover {
+              span {
+                display: block;
+              }
             }
           }
         }
       }
       .boxmodel {
-        width: 100%;
+        width: 80%;
       }
     }
   }
@@ -160,10 +160,11 @@
       .navigation {
         ul {
           position: absolute;
-          z-index: 10;
+          z-index: 1;
           li {
+            width: unset;
+
             &:hover {
-              position: relative;
               span {
                 display: inline;
               }
@@ -175,7 +176,7 @@
         }
       }
       .boxmodel {
-        width: 100%;
+        width: 86%;
       }
     }
   }
@@ -183,17 +184,17 @@
 @media (min-width: 481px) and (max-width: 599px) {
   .container {
     .body {
+      flex-direction: column;
       .navigation {
+        width: 100%;
         ul {
-          position: absolute;
-          z-index: 10;
+          flex-direction: row;
+          width: 100%;
+          justify-content: space-between;
+          padding: 0;
           li {
-            &:hover {
-              position: relative;
-              span {
-                display: inline;
-              }
-            }
+            width: unset;
+
             span {
               display: none;
             }
@@ -222,7 +223,11 @@
           flex-direction: row;
           width: 100%;
           justify-content: space-between;
+          padding: 0;
+
           li {
+            width: unset;
+
             span {
               display: none;
             }
