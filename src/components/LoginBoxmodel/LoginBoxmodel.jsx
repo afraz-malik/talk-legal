@@ -8,7 +8,7 @@ const LoginBoxmodel = ({ children }) => {
       <img
         alt=""
         className={LoginBoxmodelCss.objects}
-        src="images/OBJECTS.svg"
+        src="images/objects.svg"
       />
       <div className={LoginBoxmodelCss.left}>
         <div

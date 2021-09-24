@@ -1,6 +1,6 @@
 import React from 'react'
-import HomePlansCss from './HomePlans.module.scss'
-const HomePlans = () => {
+import OurPlansCss from './OurPlans.module.scss'
+const OurPlans = () => {
   const [state, setstate] = React.useState({
     card: '2',
   })
@@ -10,11 +10,11 @@ const HomePlans = () => {
     })
   }
   return (
-    <div className={HomePlansCss.container}>
+    <div className={OurPlansCss.container}>
       <h2>
         Our <span>Plans</span>
       </h2>
-      <div className={HomePlansCss.title}>
+      <div className={OurPlansCss.title}>
         <h4>Simple, transparent pricing</h4>
         <p>No contracts. No surprise fees.</p>
       </div>
@@ -25,7 +25,7 @@ const HomePlans = () => {
             <td>
               <div
                 className={
-                  state.card === '1' ? HomePlansCss.active : HomePlansCss.card
+                  state.card === '1' ? OurPlansCss.active : OurPlansCss.card
                 }
               >
                 <h3>Silver</h3>
@@ -41,7 +41,7 @@ const HomePlans = () => {
             <td>
               <div
                 className={
-                  state.card === '2' ? HomePlansCss.active : HomePlansCss.card
+                  state.card === '2' ? OurPlansCss.active : OurPlansCss.card
                 }
               >
                 <h3>Gold</h3>
@@ -57,7 +57,7 @@ const HomePlans = () => {
             <td>
               <div
                 className={
-                  state.card === '3' ? HomePlansCss.active : HomePlansCss.card
+                  state.card === '3' ? OurPlansCss.active : OurPlansCss.card
                 }
               >
                 <h3>Platinum</h3>
@@ -97,9 +97,8 @@ const HomePlans = () => {
           </tr>
         </tbody>
       </table>
-      <div className={HomePlansCss.cards}></div>
     </div>
   )
 }
 
-export default HomePlans
+export default OurPlans

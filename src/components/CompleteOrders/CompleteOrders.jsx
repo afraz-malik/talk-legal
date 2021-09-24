@@ -1,7 +1,7 @@
 import React from 'react'
 import COrdersCss from './CompleteOrders.module.scss'
 import Preview from '../Preview/Preview'
-import DeletePopUp from '../DeletePopUp/DeletePopUp'
+import DeletePopUp from '../DialoguePopup/DeletePopUp'
 const CompleteOrders = () => {
   const [state, setstate] = React.useState(false)
   return (

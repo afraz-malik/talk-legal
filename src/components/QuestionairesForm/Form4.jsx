@@ -45,7 +45,7 @@ const Form4 = () => {
         </span>
       </form>
       {state ? (
-        <Preview position="absolute">
+        <Preview position="fixed">
           <div
             className={FormCss.hc}
             style={{ backgroundImage: 'url(images/TLTM.png)' }}

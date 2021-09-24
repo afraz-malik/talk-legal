@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
-import HomePlans from '../../components/HomePlans/HomePlans'
+import OurPlans from '../../components/OurPlans/OurPlans'
 import NavBar from '../../components/NavBar/NavBar'
 import OurPromise from '../../components/OurPromise/OurPromise'
 import OurServices from '../../components/OurServices/OurServices'
@@ -17,7 +17,7 @@ const HomePage = () => {
       <Header />
       <OurServices />
       <OurPromise />
-      <HomePlans />
+      <OurPlans />
       <Trusters />
       <Footer />
     </div>

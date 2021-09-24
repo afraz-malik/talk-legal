@@ -40,6 +40,7 @@
     margin: 10px 0;
     display: flex;
     justify-content: space-evenly;
+    grid-gap: 20px;
     button {
       font-family: Circular Std;
       font-style: normal;
@@ -59,10 +60,12 @@
       cursor: pointer;
 
       &:first-of-type {
+        flex: 1;
         background: #808191;
         border-radius: 5px;
       }
       &:last-of-type {
+        flex: 2;
         background: #ef4358;
         box-shadow: 0px 8px 14px rgba(239, 67, 88, 0.5);
         border-radius: 5px;
