@@ -24,7 +24,7 @@ const LoginBoxmodel = ({ children }) => {
             <div>
               <p>
                 {' '}
-                <img alt="" src="images/vector.png" />
+                <img alt="" src="images/Vector.png" />
                 Top market company
               </p>
               <h2>Focus on the work that matters</h2>

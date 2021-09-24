@@ -14,7 +14,7 @@ const OurServices = () => {
               <img
                 alt=""
                 className={OurServicesCss.main_img}
-                src="images/card1.png"
+                src="images/card1.svg "
               />
             </Link>
             <Link to="/">
@@ -24,19 +24,17 @@ const OurServices = () => {
                 src="images/payment.png"
               />
             </Link>
-            <Link to="/">
+            {/* <Link to="/">
               <img
                 alt=""
                 className={OurServicesCss.apple_pay}
                 src="images/applepay.png"
               />
-            </Link>
+            </Link> */}
           </div>
           <div className={OurServicesCss.card_text}>
             <div className={OurServicesCss.content}>
-              <Link to="/">
-                <h3> Startups & Entrepreneurship</h3>
-              </Link>
+              <h3> Startups & Entrepreneurship</h3>
               <p>
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                 amet sint. Velit officia consut.
