@@ -200,8 +200,27 @@
           font-weight: 800;
           font-size: 14px;
           line-height: 20px;
-
           color: #17141f;
+          p {
+            display: none;
+            font-family: Circular Std;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 18px;
+            /* identical to box height */
+
+            color: #808191;
+            span {
+              font-family: Circular Std;
+              font-style: normal;
+              font-weight: 800;
+              font-size: 14px;
+              line-height: 20px;
+
+              color: #17141f;
+            }
+          }
         }
       }
       .center {
@@ -277,15 +296,15 @@
   ##Screen = B/w 768px to 1024px
 */
 
-@media (min-width: 768px) and (max-width: 1024px) {
-}
-
 /* 
-  ##Device = Tablets, Ipads (landscape)
+  ##Device = Tablets, Ipads (portrait)
   ##Screen = B/w 768px to 1024px
 */
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+@media (min-width: 930px) and (max-width: 1024px) {
+}
+@media (min-width: 930px) and (max-width: 1024px) and (orientation: landscape) {
+}
+@media (min-width: 768px) and (max-width: 930px) {
 }
 
 /* 
@@ -294,8 +313,116 @@
 */
 
 @media (min-width: 600px) and (max-width: 767px) {
+  .container {
+    .subscription {
+      .membership {
+        .top {
+          h1 {
+            line-height: 35px;
+          }
+          .right {
+            h3 {
+            }
+            p {
+            }
+          }
+        }
+        .bottom {
+          .button,
+          .left {
+            p {
+            }
+            button {
+            }
+          }
+        }
+      }
+      .date {
+        div {
+          p {
+          }
+          h1 {
+          }
+        }
+        .button {
+          button {
+          }
+        }
+      }
+    }
+    .invoices {
+      .box {
+        .left {
+          p {
+          }
+          h5 {
+            p {
+              display: unset;
+            }
+          }
+        }
+        .center {
+          display: none;
+        }
+      }
+    }
+  }
 }
 @media (min-width: 481px) and (max-width: 599px) {
+  .container {
+    .subscription {
+      .membership {
+        .top {
+          h1 {
+            line-height: 35px;
+          }
+          .right {
+            h3 {
+            }
+            p {
+            }
+          }
+        }
+        .bottom {
+          .button,
+          .left {
+            p {
+            }
+            button {
+            }
+          }
+        }
+      }
+      .date {
+        div {
+          p {
+          }
+          h1 {
+          }
+        }
+        .button {
+          button {
+          }
+        }
+      }
+    }
+    .invoices {
+      .box {
+        .left {
+          p {
+          }
+          h5 {
+            p {
+              display: unset;
+            }
+          }
+        }
+        .center {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 /* 
@@ -359,6 +486,29 @@
           button {
             font-size: 11px;
           }
+        }
+      }
+    }
+    .invoices {
+      .box {
+        padding: 0 10px;
+        .left {
+          p {
+          }
+          h5 {
+            font-size: 11px;
+
+            p {
+              display: unset;
+              font-size: 10px;
+              span {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+        .center {
+          display: none;
         }
       }
     }

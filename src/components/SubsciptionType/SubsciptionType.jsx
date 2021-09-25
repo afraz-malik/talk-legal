@@ -59,7 +59,12 @@ const SubsciptionType = () => {
           <div className={SubTypeCss.box}>
             <div className={SubTypeCss.left}>
               <img alt="" src="images/Group 1000001813.svg" />
-              <h5>Invoice_2021/May.pdf</h5>
+              <h5>
+                Invoice_2021/May.pdf <br />{' '}
+                <p>
+                  Date of invoice -<span> October 31, 2017</span>
+                </p>
+              </h5>
             </div>
             <div className={SubTypeCss.center}>
               <p>

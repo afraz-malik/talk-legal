@@ -39,7 +39,7 @@ const NavBar = ({ currentPage }) => {
   }
   const clickEvent = (e) => {
     console.log('click started')
-    var container = document.getElementById('ul')
+    var container = document.getElementById('center')
     if (!container.contains(e.target)) {
       if (document.documentElement.clientWidth < 930) {
         setstate(false)
@@ -57,9 +57,9 @@ const NavBar = ({ currentPage }) => {
             </h3>
           </Link>
         </div>
-        <div className={NavBarCss.center}>
+        <div className={NavBarCss.center} id="center">
           <i className="fa fa-bars" onClick={() => toggle()}></i>
-          <ul style={{ display: state ? 'flex' : 'none' }} id="ul">
+          <ul style={{ display: state ? 'flex' : 'none' }}>
             <li>
               <Link
                 to="/"

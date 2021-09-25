@@ -10,7 +10,8 @@
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 600px;
+  max-height: 80vh;
+  max-width: 90%;
   h5 {
     font-family: Circular Std;
     font-style: normal;
@@ -103,7 +104,7 @@
   }
 }
 .manageAdons {
-  width: 400px;
+  // width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;

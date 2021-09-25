@@ -5,6 +5,7 @@ import FilesDocs from '../../components/FilesDocs/FilesDocs'
 import OpenOrders from '../../components/OpenOrders/OpenOrders'
 import CompleteOrders from '../../components/CompleteOrders/CompleteOrders'
 import SubsciptionType from '../../components/SubsciptionType/SubsciptionType'
+import AccountSettings from '../../components/AccountSettings/AccountSettings'
 const Dashboard = () => {
   const [state, setstate] = React.useState({
     title: 'My Files & Documents',
@@ -62,7 +63,7 @@ const Dashboard = () => {
             {state.value === 2 ? <OpenOrders /> : null}
             {state.value === 3 ? <CompleteOrders /> : null}
             {state.value === 4 ? <SubsciptionType /> : null}
-            {state.value === 5 ? null : null}
+            {state.value === 5 ? <AccountSettings /> : null}
           </div>
         </div>
       </div>
