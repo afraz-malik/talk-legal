@@ -2,6 +2,7 @@ import React from 'react'
 import COrdersCss from './CompleteOrders.module.scss'
 import Preview from '../Preview/Preview'
 import DeletePopUp from '../DialoguePopup/DeletePopUp'
+import DialoguePopup from '../DialoguePopup/DialoguePopup'
 const CompleteOrders = () => {
   const [state, setstate] = React.useState(false)
   return (
@@ -57,7 +58,9 @@ const CompleteOrders = () => {
       </div>
       {state ? (
         <Preview position="fixed">
-          <DeletePopUp setstate={setstate} />
+          <DialoguePopup setstate={setstate}>
+            <DeletePopUp setstate={setstate} />
+          </DialoguePopup>
         </Preview>
       ) : null}
     </div>

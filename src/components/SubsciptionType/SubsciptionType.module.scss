@@ -261,3 +261,106 @@
     cursor: pointer;
   }
 }
+@media (min-width: 1281px) {
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 600px) and (max-width: 767px) {
+}
+@media (min-width: 481px) and (max-width: 599px) {
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    .subscription {
+      .membership {
+        .top {
+          flex-direction: column-reverse;
+          align-items: flex-start;
+          h1 {
+            width: 80%;
+            margin-top: -35px;
+            font-size: 24px;
+            line-height: 35px;
+          }
+          .right {
+            width: 100%;
+            h3 {
+              font-size: 24px;
+              line-height: 35px;
+            }
+            p {
+              display: none;
+            }
+          }
+        }
+        .bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          grid-gap: 20px;
+          .button,
+          .left {
+            width: 100%;
+            p {
+              font-size: 14px;
+            }
+            button {
+              font-size: 11px;
+              float: unset;
+            }
+          }
+        }
+      }
+      .date {
+        div {
+          p {
+            font-size: 14px;
+            line-height: 20px;
+          }
+          h1 {
+            font-size: 24px;
+            line-height: 35px;
+          }
+        }
+        .button {
+          button {
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
+}

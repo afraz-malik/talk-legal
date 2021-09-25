@@ -43,7 +43,7 @@ const Dashboard = () => {
               className={state.value === 4 ? DashboardCss.active : null}
               onClick={() => setstate({ title: 'Subscription Type', value: 4 })}
             >
-              <img alt="" src="images/sub-type.svg" />{' '}
+              <img alt="" src="images/subtype.svg" />{' '}
               <span> Subscription Type </span>
             </li>
             <li

@@ -1,10 +1,13 @@
 import React from 'react'
+import DialoguePopup from '../DialoguePopup/DialoguePopup'
+import ManageAdOns from '../DialoguePopup/ManageAdOns'
 import MembershipPopup from '../DialoguePopup/MembershipPopup'
 import PaymentPlanCards from '../PaymentPlanCards/PaymentPlanCards'
 import Preview from '../Preview/Preview'
 import SubTypeCss from './SubsciptionType.module.scss'
 const SubsciptionType = () => {
   const [state, setstate] = React.useState(false)
+  const [manageAdons, setmanageAdons] = React.useState(false)
   const [membership, setmembership] = React.useState({
     current: 'gold',
     next: null,
@@ -46,7 +49,7 @@ const SubsciptionType = () => {
             <h1>on November 30, 2020</h1>
           </div>
           <div className={SubTypeCss.button}>
-            <button>Manage Adons</button>
+            <button onClick={() => setmanageAdons(true)}>Manage Adons</button>
           </div>
         </div>
       </div>
@@ -70,19 +73,21 @@ const SubsciptionType = () => {
       {state ? (
         <Preview position="fixed">
           {!membership.next ? (
-            <div className={SubTypeCss.preview}>
-              <h5>Change Membership</h5>
-              <span
-                className={SubTypeCss.close}
-                onClick={() => setstate(false)}
-              >
-                X{' '}
-              </span>
+            <DialoguePopup setstate={setstate} title="Change Membership">
               <PaymentPlanCards handleSubmit={handleSubmit} />
-            </div>
+            </DialoguePopup>
           ) : (
-            <MembershipPopup handleMemberShip={handleMemberShip} />
+            <DialoguePopup setstate={setstate} title="Change Membership">
+              <MembershipPopup handleMemberShip={handleMemberShip} />
+            </DialoguePopup>
           )}
+        </Preview>
+      ) : null}
+      {manageAdons ? (
+        <Preview position="fixed">
+          <DialoguePopup setstate={setmanageAdons} title="Manage Addons">
+            <ManageAdOns setmanageAdons={setmanageAdons} />
+          </DialoguePopup>
         </Preview>
       ) : null}
     </div>

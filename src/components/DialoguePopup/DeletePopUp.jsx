@@ -2,7 +2,7 @@ import React from 'react'
 import DialoguePopupCss from './DialoguePopup.module.scss'
 const DeletePopUp = ({ setstate }) => {
   return (
-    <div className={DialoguePopupCss.box}>
+    <div className={DialoguePopupCss.content}>
       <img alt="" src="images/Group 1000001849.svg" />
       <h3>You’re about to delete your document “Document title”!</h3>
       <p>

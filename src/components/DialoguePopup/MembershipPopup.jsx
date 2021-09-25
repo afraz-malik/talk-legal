@@ -2,7 +2,7 @@ import React from 'react'
 import DialoguePopupCss from './DialoguePopup.module.scss'
 const MembershipPopup = ({ handleMemberShip }) => {
   return (
-    <div className={DialoguePopupCss.box}>
+    <div className={DialoguePopupCss.content}>
       <img alt="" src="images/Group 1000001876.svg" />
       <h3>
         Are you sure you want to change your membership from gold to “Silver”?
