@@ -10,7 +10,7 @@
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 80vh;
+  max-height: 90vh;
   max-width: 90%;
   h5 {
     font-family: Circular Std;
@@ -65,43 +65,6 @@
 
     color: rgba(23, 20, 31, 0.8);
   }
-  .buttons {
-    width: 100%;
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-evenly;
-    grid-gap: 20px;
-    button {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 18px;
-      /* identical to box height */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 130px;
-      color: #ffffff;
-      border: none;
-      outline: none;
-      padding: 15px;
-      text-align: center;
-      cursor: pointer;
-
-      &:first-of-type {
-        flex: 1;
-        background: #808191;
-        border-radius: 5px;
-      }
-      &:last-of-type {
-        flex: 2;
-        background: #ef4358;
-        box-shadow: 0px 8px 14px rgba(239, 67, 88, 0.5);
-        border-radius: 5px;
-      }
-    }
-  }
 }
 .manageAdons {
   // width: 400px;
@@ -122,43 +85,6 @@
     text-align: center;
     color: #17141f;
     width: 80%;
-  }
-  .buttons {
-    width: 100%;
-    margin: 10px 0;
-    display: flex;
-    justify-content: center;
-    grid-gap: 20px;
-    button {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 18px;
-      /* identical to box height */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 130px;
-      color: #ffffff;
-      border: none;
-      outline: none;
-      padding: 15px;
-      text-align: center;
-      cursor: pointer;
-
-      &:first-of-type {
-        flex: 1/2;
-        background: #808191;
-        border-radius: 5px;
-      }
-      &:last-of-type {
-        flex: 1/2;
-        background: #00d339;
-        box-shadow: 0px 10px 14px rgba(0, 211, 57, 0.3);
-        border-radius: 5px;
-      }
-    }
   }
 
   .ad_ons {
@@ -300,6 +226,118 @@
       .activeCard {
         border: 1px solid #7854f7;
       }
+    }
+  }
+}
+.buttons {
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+  grid-gap: 20px;
+  button {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+
+    &:first-of-type {
+      flex: 1;
+      background: #808191;
+      border-radius: 5px;
+    }
+    &:last-of-type {
+      flex: 2;
+      background: #ef4358;
+      box-shadow: 0px 8px 14px rgba(239, 67, 88, 0.5);
+      border-radius: 5px;
+    }
+  }
+}
+.greenButtons {
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  grid-gap: 20px;
+  button {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+
+    &:first-of-type {
+      flex: 1/2;
+      background: #808191;
+      border-radius: 5px;
+    }
+    &:last-of-type {
+      flex: 1/2;
+      background: #00d339;
+      box-shadow: 0px 10px 14px rgba(0, 211, 57, 0.3);
+      border-radius: 5px;
+    }
+  }
+}
+.edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    label {
+      margin-bottom: 0;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+      color: #696f79;
+    }
+    input {
+      background: #ffffff;
+      border: 1px solid #7854f7;
+      box-sizing: border-box;
+      border-radius: 6px;
+      font-family: Circular Std;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      color: #000000;
     }
   }
 }

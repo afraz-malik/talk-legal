@@ -10,16 +10,18 @@
       font-size: 21px;
       line-height: 27px;
       /* identical to box height */
-
+      margin: 0;
       color: #17141f;
     }
     h5 {
       font-family: Roboto;
       font-style: normal;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 14px;
       line-height: 25px;
       /* identical to box height, or 139% */
+      margin: 0;
+      cursor: pointer;
 
       color: #299ef3;
     }
@@ -119,6 +121,7 @@
     }
     hr {
       border: 2px solid rgba(23, 20, 31, 0.1);
+      margin: 30px 0;
     }
     h5 {
       font-family: Circular Std;
@@ -127,7 +130,8 @@
       font-size: 21px;
       line-height: 27px;
       /* identical to box height */
-
+      margin: 0;
+      cursor: pointer;
       color: #17141f;
     }
     p {

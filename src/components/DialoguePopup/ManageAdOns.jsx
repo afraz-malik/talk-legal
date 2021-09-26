@@ -60,7 +60,7 @@ const ManageAdOns = ({ setmanageAdons }) => {
           </div>
         </div>
       </div>
-      <div className={DialoguePopupCss.buttons}>
+      <div className={DialoguePopupCss.greenButtons}>
         <button onClick={() => setmanageAdons(false)}>Cancel</button>
         <button onClick={() => setmanageAdons(false)}>Select Addons</button>
       </div>

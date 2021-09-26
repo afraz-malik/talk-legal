@@ -4,9 +4,8 @@ const DashboardCard = ({ idx, type, title }) => {
   const tt = idx + 10 * 7 + '%'
   return (
     <div
-      className={` ${DashboardCardCss.card} ${
-        idx === 0 ? DashboardCardCss.active : null
-      }`}
+      className={` ${DashboardCardCss.card} ${'hey'}`}
+      // idx === 0 ? DashboardCardCss.active : null
     >
       <div className={DashboardCardCss.topBar}></div>
       <div className={DashboardCardCss.title}>

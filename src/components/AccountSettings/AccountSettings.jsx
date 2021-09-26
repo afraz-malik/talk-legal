@@ -1,8 +1,16 @@
 import React from 'react'
+import AddCard from '../DialoguePopup/AddCard'
+import DialoguePopup from '../DialoguePopup/DialoguePopup'
+import EditProfile from '../DialoguePopup/EditProfile'
+import Preview from '../Preview/Preview'
 import AccountSettingsCss from './AccountSettings.module.scss'
 const AccountSettings = () => {
-  const [state, setstate] = React.useState({ plans: '', adOns: '' })
-
+  const [state, setstate] = React.useState({ activeCard: 'gold' })
+  const [popup, setpopup] = React.useState({
+    editProfile: false,
+    editCard: false,
+  })
+  console.log(state)
   const togglePassword = (val) => {
     var x = document.getElementById(`${val}`)
     if (x.type === 'password') {
@@ -15,7 +23,9 @@ const AccountSettings = () => {
     <div className={AccountSettingsCss.container}>
       <div className={AccountSettingsCss.top}>
         <h4>Profile Setting</h4>
-        <h5>Edit Account › </h5>
+        <h5 onClick={() => setpopup({ editCard: false, editProfile: true })}>
+          Edit Account ›{' '}
+        </h5>
       </div>
       <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do.</p>
       <form>
@@ -90,25 +100,29 @@ const AccountSettings = () => {
         <hr />
         <div className={AccountSettingsCss.top}>
           <h4>Payment Setting</h4>
-          <h5>Edit Account › </h5>
+          <h5 onClick={() => setpopup({ editCard: true, editProfile: false })}>
+            Add Card ›{' '}
+          </h5>
         </div>
         <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do.</p>
         <div className={AccountSettingsCss.ad_ons}>
           <div className={AccountSettingsCss.ad_on}>
             <div
               className={`${AccountSettingsCss.card} ${
-                state.plans === 'silver' ? AccountSettingsCss.activeCard : null
+                state.activeCard === 'silver'
+                  ? AccountSettingsCss.activeCard
+                  : null
               }`}
-              onClick={() => setstate({ ...state, plans: 'silver' })}
+              onClick={() => setstate({ ...state, activeCard: 'silver' })}
             >
               <label className={AccountSettingsCss.container2}>
                 <input
                   type="radio"
-                  name="plans"
+                  name="activeCard"
                   value="silver"
-                  checked={state.plans === 'silver'}
+                  checked={state.activeCard === 'silver'}
                   onChange={(e) =>
-                    setstate({ ...state, plans: e.target.value })
+                    setstate({ ...state, activeCard: e.target.value })
                   }
                 />
                 <span className={AccountSettingsCss.checkmark}></span>
@@ -123,18 +137,20 @@ const AccountSettings = () => {
             </div>
             <div
               className={`${AccountSettingsCss.card} ${
-                state.plans === 'gold' ? AccountSettingsCss.activeCard : null
+                state.activeCard === 'gold'
+                  ? AccountSettingsCss.activeCard
+                  : null
               }`}
-              onClick={() => setstate({ ...state, plans: 'gold' })}
+              onClick={() => setstate({ ...state, activeCard: 'gold' })}
             >
               <label className={AccountSettingsCss.container2}>
                 <input
                   type="radio"
-                  name="plans"
+                  name="activeCard"
                   value="gold"
-                  checked={state.plans === 'gold'}
+                  checked={state.activeCard === 'gold'}
                   onChange={(e) =>
-                    setstate({ ...state, plans: e.target.value })
+                    setstate({ ...state, activeCard: e.target.value })
                   }
                 />
                 <span className={AccountSettingsCss.checkmark}></span>
@@ -150,6 +166,20 @@ const AccountSettings = () => {
           </div>
         </div>
       </form>
+      {popup.editProfile ? (
+        <Preview>
+          <DialoguePopup title={'Edit Your Profile'}>
+            <EditProfile setpopup={setpopup} />
+          </DialoguePopup>
+        </Preview>
+      ) : null}
+      {popup.editCard ? (
+        <Preview>
+          <DialoguePopup title={'Add Card'}>
+            <AddCard setpopup={setpopup} />
+          </DialoguePopup>
+        </Preview>
+      ) : null}
     </div>
   )
 }
