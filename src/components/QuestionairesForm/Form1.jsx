@@ -1,6 +1,23 @@
 import React from 'react'
 import FormCss from './Form.module.scss'
+const countryList = [
+  'Afghanistan',
+  'Albania',
+  'Algeria',
+  'American Samoa',
+  'Andorra',
+  'Angola',
+  'Anguilla',
+  'Antarctica',
+  'Antigua and Barbuda',
+  'Argentina',
+
+  'Zimbabwe',
+  'Åland Islands',
+]
 const Form1 = ({ handleForm }) => {
+  const [state, setstate] = React.useState('Select Your State')
+  const [toggle, settoggle] = React.useState(false)
   React.useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -16,14 +33,38 @@ const Form1 = ({ handleForm }) => {
           For the purpose of industry regulation, your details are required.
         </p>
         <label>Enter Your State </label>
-        <div className={FormCss.select}>
+        {/* <div className={FormCss.select}>
           <img alt="" src="images/downarrow.png" />
           <select>
             <option> Select your state</option>
             <option>Albama</option>
             <option>Alaska</option>
-            <option></option>
           </select>
+        </div> */}
+        <div className={FormCss.dropdownbox}>
+          <div className={FormCss.dropdown} onClick={() => settoggle(!toggle)}>
+            <h3>{state}</h3>
+            <img alt="" src="images/downarrow.png" />
+          </div>
+          <div
+            className={FormCss.dd_content}
+            style={toggle ? { display: 'block' } : { display: 'none' }}
+          >
+            <ul>
+              {countryList.map((cl, j) => (
+                <li
+                  key={j}
+                  onClick={() => {
+                    setstate(cl)
+                    settoggle(false)
+                  }}
+                  className={state === cl ? FormCss.active : null}
+                >
+                  {cl}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <input type="submit" value="Complete" />
         <span>

@@ -11,7 +11,7 @@ const BusinessOpPage = () => {
   }, [])
   return (
     <div>
-      <NavBar />
+      <NavBar currentPage="business" />
       <BusinessHeader />
       <BusinessForms />
       <Info />

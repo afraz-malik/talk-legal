@@ -70,7 +70,7 @@ const NavBar = ({ currentPage }) => {
             </li>
             <li>
               <Link
-                to="/"
+                to="/plans"
                 className={active === 'pricing' ? NavBarCss.selected : null}
               >
                 Pricing
@@ -78,8 +78,8 @@ const NavBar = ({ currentPage }) => {
             </li>
             <li>
               <Link
-                to="/"
-                className={active === 'documents' ? NavBarCss.selected : null}
+                to="/business"
+                className={active === 'business' ? NavBarCss.selected : null}
               >
                 Documents
               </Link>

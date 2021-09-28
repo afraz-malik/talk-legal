@@ -3,7 +3,7 @@ import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 import OurPlans from '../../components/OurPlans/OurPlans'
 import NavBar from '../../components/NavBar/NavBar'
-import OurPromise from '../../components/OurPromise/OurPromise'
+import OurPromise from '../../components/OurPromise/new/OurPromise'
 import OurServices from '../../components/OurServices/OurServices'
 import Trusters from '../../components/Trusters/Trusters'
 
