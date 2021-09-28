@@ -1,11 +1,15 @@
 .header {
   position: relative;
   height: 600px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   .container {
-    position: absolute;
+    // position: absolute;
     width: 550px;
-    top: 115px;
-    left: 60px;
+    margin-left: 5%;
+    // top: 115px;
+    // left: 60px;
     h2 {
       font-family: 'Circular Std';
       font-weight: bold;
@@ -120,7 +124,7 @@
   .header {
     .container {
       width: 330px;
-      left: 10px;
+      // left: 10px;
       h2 {
         font-size: 30px;
         line-height: 40px;

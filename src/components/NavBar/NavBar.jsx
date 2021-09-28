@@ -58,7 +58,11 @@ const NavBar = ({ currentPage }) => {
           </Link>
         </div>
         <div className={NavBarCss.center} id="center">
-          <i className="fa fa-bars" onClick={() => toggle()}></i>
+          <i
+            className="fa fa-bars"
+            onClick={() => toggle()}
+            style={{ transform: state ? 'rotate(-90deg)' : 'unset' }}
+          ></i>
           <ul style={{ display: state ? 'flex' : 'none' }}>
             <li>
               <Link

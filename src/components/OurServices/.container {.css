@@ -2,7 +2,7 @@
   width: 100%;
   margin: auto;
   // margin-top: 50px;
-  // overflow: hidden;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,20 +22,15 @@
   }
   .cards {
     display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: center;
-    // align-items: center;
+    grid-template-columns: 400px 400px 400px;
     .card1 {
       //   box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
       border-radius: 20px;
       position: relative;
-      height: 480px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      height: 550px;
       .card_img {
         position: relative;
-        width: 350px;
+        width: 450px;
         img {
           cursor: pointer;
           &:hover {
@@ -49,7 +44,7 @@
           position: absolute;
           left: -100px;
           bottom: -10px;
-          width: 200px;
+          width: 270px;
         }
         .apple_pay {
           position: absolute;
@@ -61,16 +56,15 @@
         }
       }
       .card_text {
-        // position: absolute;
-        // bottom: 30px;
-        width: 350px;
+        position: absolute;
+        bottom: 30px;
         .content {
-          margin: 0 40px;
+          margin: 0 70px;
           h3 {
             font-family: Circular Std;
             font-style: normal;
             font-weight: bold;
-            font-size: 26px;
+            font-size: 30px;
             line-height: 35px;
             margin: 0;
             cursor: pointer;
@@ -80,7 +74,7 @@
             font-family: Roboto;
             font-style: normal;
             font-weight: normal;
-            font-size: 14px;
+            font-size: 18px;
             line-height: 30px;
             // margin: 0;
             color: #17141f;
@@ -103,58 +97,54 @@
       // margin-top: 50px;
       border-radius: 20px;
       position: relative;
-      height: 480px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      height: 550px;
       .card_img {
         position: relative;
-        width: 350px;
+        width: 450px;
         .main_img {
           width: 100%;
         }
         .sqaure_img {
           position: absolute;
-          top: -26px;
+          top: -20px;
           left: 65px;
-          width: 130px;
+          width: 160px;
         }
         .monkey {
           position: absolute;
-          top: 0px;
-          width: 130px;
+          top: 10px;
+          width: 160px;
           right: 40px;
         }
         .fb {
           position: absolute;
-          left: 37px;
-          width: 130px;
-          top: 70px;
+          left: 65px;
+          width: 160px;
+          top: 90px;
         }
         .jetpack {
           position: absolute;
-          left: 162px;
-          top: 69px;
-          width: 130px;
+          left: 194px;
+          top: 120px;
+          width: 160px;
         }
         .aids {
           position: absolute;
           bottom: 0;
-          left: 105px;
-          width: 130px;
+          left: 140px;
+          width: 160px;
         }
       }
       .card_text {
-        // position: absolute;
-        // bottom: 30px;
-        width: 350px;
+        position: absolute;
+        bottom: 30px;
         .content {
-          margin: 0 40px;
+          margin: 0 70px;
           h3 {
             font-family: Circular Std;
             font-style: normal;
             font-weight: bold;
-            font-size: 26px;
+            font-size: 30px;
             line-height: 35px;
             margin: 0;
 
@@ -164,7 +154,7 @@
             font-family: Roboto;
             font-style: normal;
             font-weight: normal;
-            font-size: 14px;
+            font-size: 18px;
             line-height: 30px;
             // margin: 0;
             color: #17141f;
@@ -193,60 +183,55 @@
       // margin-top: 120px;
       border-radius: 20px;
       position: relative;
-      height: 480px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      height: 500px;
       .card_img {
         position: relative;
-        width: 350px;
+        width: 450px;
         .main_img {
           width: 100%;
         }
         .ft {
           position: absolute;
           top: -130px;
-          width: 150px;
+          width: 200px;
           right: 20px;
         }
         .finger {
           position: absolute;
-          top: -23px;
-          width: 150px;
-          left: 35px;
+          top: -36px;
+          width: 200px;
+          right: 200px;
         }
         .fd {
           position: absolute;
-          right: -35px;
-          bottom: 25px;
-          width: 175px;
+          left: 275px;
+          top: 120px;
+          width: 235px;
         }
       }
       .card_text {
-        // position: absolute;
-        // bottom: -19px;
-        width: 350px;
+        position: absolute;
+        bottom: -19px;
         .content {
-          margin: 0 40px;
-          display: flex;
-          align-items: flex-start;
-          flex-direction: column;
+          margin: 0 50px;
           h3 {
             font-family: Circular Std;
             font-style: normal;
             font-weight: bold;
-            font-size: 26px;
+            font-size: 30px;
             line-height: 35px;
-            margin: 0 0 0px 0;
+
+            margin: 0 0 55px 0;
+
             color: #5243c2;
           }
           p {
             font-family: Roboto;
             font-style: normal;
             font-weight: normal;
-            font-size: 14px;
+            font-size: 18px;
             line-height: 30px;
-            // margin-top: 42px;
+            // margin: 0;
             color: #17141f;
           }
           a {
@@ -268,9 +253,9 @@
 }
 
 /* 
-  ##Device = Laptops, Desktops
-  ##Screen = B/w 1025px to 1280px
-*/
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
   .container {
@@ -292,9 +277,9 @@
 }
 
 /* 
-  ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px
-*/
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .container {
@@ -315,9 +300,9 @@
 }
 
 /* 
-  ##Device = Tablets, Ipads (landscape)
-  ##Screen = B/w 768px to 1024px
-*/
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   .container {
@@ -338,9 +323,9 @@
 }
 
 /* 
-  ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
-*/
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
 
 @media (min-width: 600px) and (max-width: 767px) {
   .container {
@@ -388,9 +373,9 @@
 }
 
 /* 
-  ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px
-*/
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
 
 @media (min-width: 320px) and (max-width: 480px) {
   .container {

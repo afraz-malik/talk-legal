@@ -16,10 +16,10 @@ const HomePage = () => {
       <NavBar />
       <Header />
       <OurServices />
-      <OurPromise />
+      {/* <OurPromise />
       <OurPlans />
       <Trusters />
-      <Footer />
+      <Footer /> */}
     </div>
   )
 }
