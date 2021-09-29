@@ -4,6 +4,7 @@ import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import 'react-calendar/dist/Calendar.css'
+import 'animate.css/animate.min.css'
 
 ReactDOM.render(
   <React.StrictMode>

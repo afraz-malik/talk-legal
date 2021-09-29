@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  width: 90%;
   margin: auto;
   // margin-top: 50px;
   // overflow: hidden;
@@ -21,18 +21,11 @@
     }
   }
   .cards {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    // align-items: center;
+    align-items: center;
     .card1 {
-      //   box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
-      border-radius: 20px;
-      position: relative;
-      height: 480px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       .card_img {
         position: relative;
         width: 350px;
@@ -47,7 +40,7 @@
         }
         .left_img {
           position: absolute;
-          left: -100px;
+          left: -50px;
           bottom: -10px;
           width: 200px;
         }
@@ -60,53 +53,8 @@
           top: 40px;
         }
       }
-      .card_text {
-        // position: absolute;
-        // bottom: 30px;
-        width: 350px;
-        .content {
-          margin: 0 40px;
-          h3 {
-            font-family: Circular Std;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 26px;
-            line-height: 35px;
-            margin: 0;
-            cursor: pointer;
-            color: #5243c2;
-          }
-          p {
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 30px;
-            // margin: 0;
-            color: #17141f;
-          }
-          a {
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 25px;
-            /* identical to box height, or 139% */
-            text-decoration: none;
-            color: #299ef3;
-          }
-        }
-      }
     }
     .card2 {
-      //   box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
-      // margin-top: 50px;
-      border-radius: 20px;
-      position: relative;
-      height: 480px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       .card_img {
         position: relative;
         width: 350px;
@@ -144,43 +92,6 @@
           width: 130px;
         }
       }
-      .card_text {
-        // position: absolute;
-        // bottom: 30px;
-        width: 350px;
-        .content {
-          margin: 0 40px;
-          h3 {
-            font-family: Circular Std;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 26px;
-            line-height: 35px;
-            margin: 0;
-
-            color: #5243c2;
-          }
-          p {
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 30px;
-            // margin: 0;
-            color: #17141f;
-          }
-          a {
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 25px;
-            /* identical to box height, or 139% */
-            text-decoration: none;
-            color: #299ef3;
-          }
-        }
-      }
     }
     .card3 {
       img {
@@ -189,14 +100,6 @@
           border: 1px solid transparent;
         }
       }
-      //   box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
-      // margin-top: 120px;
-      border-radius: 20px;
-      position: relative;
-      height: 480px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       .card_img {
         position: relative;
         width: 350px;
@@ -223,42 +126,61 @@
         }
       }
       .card_text {
-        // position: absolute;
-        // bottom: -19px;
-        width: 350px;
         .content {
-          margin: 0 40px;
-          display: flex;
-          align-items: flex-start;
-          flex-direction: column;
           h3 {
-            font-family: Circular Std;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 26px;
-            line-height: 35px;
-            margin: 0 0 0px 0;
-            color: #5243c2;
+            margin-bottom: 35px;
           }
-          p {
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 30px;
-            // margin-top: 42px;
-            color: #17141f;
-          }
-          a {
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 25px;
-            /* identical to box height, or 139% */
-            text-decoration: none;
-            color: #299ef3;
-          }
+        }
+      }
+    }
+    .card1,
+    .card2,
+    .card3 {
+      //   box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
+      // margin-top: 120px;
+      border-radius: 20px;
+      position: relative;
+      height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card_text {
+      position: absolute;
+      bottom: 25px;
+      width: 350px;
+      .content {
+        margin: 0 40px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        h3 {
+          font-family: Circular Std;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 26px;
+          line-height: 35px;
+          margin: 0 0 0px 0;
+          color: #5243c2;
+        }
+        p {
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 30px;
+          // margin-top: 42px;
+          color: #17141f;
+        }
+        a {
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 14px;
+          line-height: 25px;
+          /* identical to box height, or 139% */
+          text-decoration: none;
+          color: #299ef3;
         }
       }
     }
@@ -275,11 +197,6 @@
 @media (min-width: 1025px) and (max-width: 1280px) {
   .container {
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      // grid-template-columns: 400px 400px;
-      justify-content: center;
-      align-items: center;
       .card3 {
         .card_img {
           .ft {
@@ -299,11 +216,6 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .container {
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      // grid-template-columns: 400px 400px;
-      justify-content: center;
-      align-items: center;
       .card3 {
         .card_img {
           .ft {
@@ -322,11 +234,6 @@
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   .container {
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      // grid-template-columns: 400px 400px;
-      justify-content: center;
-      align-items: center;
       .card3 {
         .card_img {
           .ft {
@@ -345,15 +252,19 @@
 @media (min-width: 600px) and (max-width: 767px) {
   .container {
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      // grid-template-columns: 400px 400px;
-      justify-content: center;
-      align-items: center;
+      .card1,
+      .card2,
       .card3 {
+        // height: 440px !important;
         .card_img {
-          .ft {
-          }
+          width: 300px !important;
+        }
+        .left_img {
+          width: 170px !important;
+          left: -10px !important;
+        }
+        .card_text {
+          width: unset !important;
         }
       }
     }
@@ -362,19 +273,8 @@
 @media (min-width: 481px) and (max-width: 599px) {
   .container {
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      // grid-template-columns: 400px 400px;
-      justify-content: center;
-      align-items: center;
       .card1 {
         .card_img {
-          .apple_pay {
-            left: 0;
-          }
-          .left_img {
-            left: -50px;
-          }
         }
       }
       .card3 {
@@ -395,27 +295,42 @@
 @media (min-width: 320px) and (max-width: 480px) {
   .container {
     width: 100%;
+    h2 {
+      // font-size: 26px;
+      // margin: 10px 0;
+    }
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      overflow: hidden;
-      width: 100%;
-      // grid-template-columns: 400px 400px;
-      justify-content: center;
-      align-items: center;
-      .card1 {
+      .card1,
+      .card2,
+      .card3 {
+        height: 440px !important;
         .card_img {
-          .apple_pay {
-            left: 65px;
+          width: 350px;
+        }
+        .left_img {
+          width: 170px !important;
+          left: -10px !important;
+        }
+        .fd {
+          right: -13px !important ;
+        }
+        .card_text {
+          width: unset !important;
+          h3 {
+            font-size: 22px !important;
           }
-          .left_img {
-            left: -50px;
+          p {
+            font-size: 12px !important;
           }
         }
       }
       .card3 {
-        .card_img {
-          .ft {
+        .card_text {
+          margin-top: -20px;
+          .content {
+            h3 {
+              margin-bottom: 0 !important;
+            }
           }
         }
       }

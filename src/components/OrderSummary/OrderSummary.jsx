@@ -1,11 +1,15 @@
 import React from 'react'
 import { withRouter } from 'react-router'
 import AdOns from '../AdOns/AdOns'
+import Logo from '../NavBar/Logo'
 import HardCopy from '../QuestionairesForm/HardCopy'
 import OrderCss from './OrderSummary.module.scss'
 const OrderSummary = ({ location }) => {
   return (
     <div className={OrderCss.container}>
+      <div className={OrderCss.logo}>
+        <Logo />
+      </div>
       <h1 className={OrderCss.h1}>Order Summary</h1>
       <div
         className={OrderCss.hardCopy}

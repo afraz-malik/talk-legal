@@ -90,6 +90,18 @@
 */
 
 @media (min-width: 600px) and (max-width: 767px) {
+  .header {
+    .container {
+      width: 360px;
+      h2 {
+        font-size: 30px;
+        line-height: 40px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  }
 }
 @media (min-width: 481px) and (max-width: 599px) {
   .header {
@@ -122,15 +134,16 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
   .header {
+    height: 350px;
     .container {
       width: 330px;
       // left: 10px;
       h2 {
-        font-size: 30px;
-        line-height: 40px;
+        font-size: 24px;
+        line-height: 35px;
       }
       p {
-        font-size: 16px;
+        font-size: 14px;
       }
       .link {
         .a {

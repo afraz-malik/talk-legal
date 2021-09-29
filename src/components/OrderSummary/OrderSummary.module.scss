@@ -1,6 +1,9 @@
 .container {
   padding: 60px 67px;
   // margin-left: 100px;
+  .logo {
+    display: none;
+  }
   .h1 {
     font-family: Circular Std;
     font-style: normal;
@@ -84,8 +87,20 @@
 */
 
 @media (min-width: 600px) and (max-width: 767px) {
+  .container {
+    padding-top: 30px;
+    .logo {
+      display: block;
+    }
+  }
 }
 @media (min-width: 481px) and (max-width: 599px) {
+  .container {
+    padding-top: 30px;
+    .logo {
+      display: block;
+    }
+  }
 }
 
 /* 
@@ -96,6 +111,9 @@
 @media (min-width: 320px) and (max-width: 480px) {
   .container {
     padding: 30px;
+    .logo {
+      display: block;
+    }
     .h1 {
       font-size: 30px;
     }
