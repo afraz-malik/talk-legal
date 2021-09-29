@@ -6,6 +6,7 @@ import NavBar from '../../components/NavBar/NavBar'
 import OurPromise from '../../components/OurPromise/new/OurPromise'
 import OurServices from '../../components/OurServices/OurServices'
 import Trusters from '../../components/Trusters/Trusters'
+import Slide from 'react-reveal/Slide'
 
 const HomePage = () => {
   React.useEffect(() => {
@@ -15,7 +16,9 @@ const HomePage = () => {
     <div>
       <NavBar />
       <Header />
-      <OurServices />
+      <Slide left>
+        <OurServices />
+      </Slide>
       <OurPromise />
       <OurPlans />
       <Trusters />

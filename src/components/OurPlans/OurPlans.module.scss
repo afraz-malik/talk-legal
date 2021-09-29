@@ -380,13 +380,15 @@
   .container {
     width: 90%;
     table {
-      width: 80%;
+      width: 100%;
+      overflow-x: auto;
+      display: flex;
       thead {
         tr {
           td {
-            margin-bottom: 50px;
-            display: flex;
-            flex-direction: column;
+            // margin-bottom: 50px;
+            // display: flex;
+            // flex-direction: column;
           }
         }
       }

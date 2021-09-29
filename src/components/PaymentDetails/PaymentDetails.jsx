@@ -4,7 +4,9 @@ import PDCss from './PaymentDetails.module.scss'
 const PaymentDetails = () => {
   return (
     <div className={PDCss.container}>
-      <Logo />
+      <div className={PDCss.logo}>
+        <Logo />
+      </div>
       <form>
         <h1>Payment Details</h1>
         <p>Complete your purchase by providing your payment details.</p>

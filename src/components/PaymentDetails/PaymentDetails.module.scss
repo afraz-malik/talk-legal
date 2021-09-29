@@ -228,8 +228,18 @@
 */
 
 @media (min-width: 600px) and (max-width: 767px) {
+  .container {
+    .logo {
+      display: none;
+    }
+  }
 }
 @media (min-width: 481px) and (max-width: 599px) {
+  .container {
+    .logo {
+      display: none;
+    }
+  }
 }
 
 /* 
@@ -240,5 +250,8 @@
 @media (min-width: 320px) and (max-width: 480px) {
   .container {
     padding: 30px;
+    .logo {
+      display: none;
+    }
   }
 }
