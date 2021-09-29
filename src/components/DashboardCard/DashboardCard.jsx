@@ -9,7 +9,7 @@ const DashboardCard = ({ idx, type, title }) => {
     >
       <div className={DashboardCardCss.topBar}></div>
       <div className={DashboardCardCss.title}>
-        <h1>Photography Services Contract</h1>
+        <h2>Photography Services Contract</h2>
         <img alt="" src="images/icon.svg" />
       </div>
       <p>
