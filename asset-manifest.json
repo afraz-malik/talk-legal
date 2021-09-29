@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/talk-legal/static/css/main.72b756c1.chunk.css",
-    "main.js": "/talk-legal/static/js/main.1bc057c4.chunk.js",
-    "main.js.map": "/talk-legal/static/js/main.1bc057c4.chunk.js.map",
+    "main.css": "/talk-legal/static/css/main.76d5b4c2.chunk.css",
+    "main.js": "/talk-legal/static/js/main.5aa5b6e2.chunk.js",
+    "main.js.map": "/talk-legal/static/js/main.5aa5b6e2.chunk.js.map",
     "runtime-main.js": "/talk-legal/static/js/runtime-main.f008e05d.js",
     "runtime-main.js.map": "/talk-legal/static/js/runtime-main.f008e05d.js.map",
-    "static/css/2.8cebfa1f.chunk.css": "/talk-legal/static/css/2.8cebfa1f.chunk.css",
-    "static/js/2.1f583a94.chunk.js": "/talk-legal/static/js/2.1f583a94.chunk.js",
-    "static/js/2.1f583a94.chunk.js.map": "/talk-legal/static/js/2.1f583a94.chunk.js.map",
+    "static/css/2.d8a534b4.chunk.css": "/talk-legal/static/css/2.d8a534b4.chunk.css",
+    "static/js/2.96f13928.chunk.js": "/talk-legal/static/js/2.96f13928.chunk.js",
+    "static/js/2.96f13928.chunk.js.map": "/talk-legal/static/js/2.96f13928.chunk.js.map",
     "index.html": "/talk-legal/index.html",
-    "static/css/2.8cebfa1f.chunk.css.map": "/talk-legal/static/css/2.8cebfa1f.chunk.css.map",
-    "static/css/main.72b756c1.chunk.css.map": "/talk-legal/static/css/main.72b756c1.chunk.css.map",
-    "static/js/2.1f583a94.chunk.js.LICENSE.txt": "/talk-legal/static/js/2.1f583a94.chunk.js.LICENSE.txt",
+    "static/css/2.d8a534b4.chunk.css.map": "/talk-legal/static/css/2.d8a534b4.chunk.css.map",
+    "static/css/main.76d5b4c2.chunk.css.map": "/talk-legal/static/css/main.76d5b4c2.chunk.css.map",
+    "static/js/2.96f13928.chunk.js.LICENSE.txt": "/talk-legal/static/js/2.96f13928.chunk.js.LICENSE.txt",
     "static/media/index.css": "/talk-legal/static/media/SFProText-Bold.9dae2991.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.f008e05d.js",
-    "static/css/2.8cebfa1f.chunk.css",
-    "static/js/2.1f583a94.chunk.js",
-    "static/css/main.72b756c1.chunk.css",
-    "static/js/main.1bc057c4.chunk.js"
+    "static/css/2.d8a534b4.chunk.css",
+    "static/js/2.96f13928.chunk.js",
+    "static/css/main.76d5b4c2.chunk.css",
+    "static/js/main.5aa5b6e2.chunk.js"
   ]
 }
