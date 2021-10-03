@@ -66,7 +66,7 @@ const Form1 = ({ handleForm }) => {
             </ul>
           </div>
         </div>
-        <input type="submit" value="Complete" />
+        <input type="submit" value="Continue" />
         <span>
           {' '}
           <img alt="" src="images/lock.png" />

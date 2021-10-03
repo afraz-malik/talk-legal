@@ -104,19 +104,24 @@
 
       color: #ffffff;
     }
+    input[type='checkbox'] {
+      -webkit-appearance: checkbox;
+    }
     div {
-      font-family: Inter;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 12px;
-      line-height: 15px;
-      /* identical to box height */
-
       display: flex;
       align-items: center;
       text-align: center;
-      // justify-content: center;
-      color: #8692a6;
+      label {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 15px;
+        /* identical to box height */
+        margin-left: 10px;
+        // justify-content: center;
+        color: #8692a6;
+      }
     }
     .or {
       text-align: center;

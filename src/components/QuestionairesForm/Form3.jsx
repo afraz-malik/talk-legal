@@ -19,7 +19,7 @@ const Form3 = ({ handleForm }) => {
         <input type="text" placeholder="Enter Name" />
         <label>Enter Company 1 Name </label>
         <input type="text" placeholder="Enter Name" />
-        <input type="submit" value="Complete" />
+        <input type="submit" value="Continue" />
         <span>
           {' '}
           <img alt="" src="images/lock.png" />

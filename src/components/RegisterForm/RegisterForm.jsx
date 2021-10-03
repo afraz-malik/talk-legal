@@ -1,10 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import RegisterFormCss from './RegisterForm.module.scss'
+import { clearError, signUpStart } from '../../redux/user/user.action'
+import { useDispatch, useSelector } from 'react-redux'
+import { errorSelector, LoadingSelector } from '../../redux/user/user.selector'
+import { Spinner } from '../Spinner/Spinner'
+
 const RegisterForm = ({ history }) => {
+  const [state, setstate] = useState({
+    name: '',
+    email: '',
+    password: '',
+    phone: '+92 324 8205435',
+  })
+  const loading = useSelector((state) => LoadingSelector(state))
+  const error = useSelector((state) => errorSelector(state))
+  console.log(error)
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    setstate({ ...state, password: '' })
+    return () => {
+      setstate({ ...state, password: '' })
+      dispatch(clearError())
+    }
+    // eslint-disable-next-line
+  }, [])
+
+  const handleChange = (event) => {
+    setstate({ ...state, [event.target.name]: event.target.value })
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    dispatch(signUpStart(state))
+  }
   return (
     <div className={RegisterFormCss.form}>
-      <form>
+      <form onSubmit={handleSubmit}>
         {history.location.form ? (
           <h3>Almost there! Create an account to save your document.</h3>
         ) : (
@@ -14,21 +45,39 @@ const RegisterForm = ({ history }) => {
           For the purpose of industry regulation, your details are required.
         </p>
         <label>Your full name*</label>
-        <input type="text" placeholder="Enter your full name" />
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your full name"
+          onChange={handleChange}
+          value={state.name}
+          required
+        />
 
         <label>Email address*</label>
-        <input type="email" placeholder="Enter email address" />
+        <input
+          type="email"
+          placeholder="Enter email address"
+          name="email"
+          value={state.email}
+          onChange={handleChange}
+          required
+        />
 
         <label>Create password*</label>
-        <input type="password" placeholder="Enter password" />
-        <div>
-          <input type="checkbox" /> i agree to terms & conditions{' '}
-        </div>
         <input
-          type="submit"
-          value="Register Account"
-          onClick={() => history.push('/plans')}
+          type="password"
+          placeholder="Enter password"
+          name="password"
+          value={state.password}
+          onChange={handleChange}
+          required
         />
+        <div>
+          <input type="checkbox" name="checkbox" id="checkbox" required />{' '}
+          <label htmlFor="checkbox"> i agree to terms & conditions </label>
+        </div>
+        <input type="submit" value="Register Account" />
         <span className={RegisterFormCss.or}>Or</span>
         <div className={RegisterFormCss.google}>
           <img alt="" src="images/google.png" />
@@ -39,10 +88,11 @@ const RegisterForm = ({ history }) => {
           Have an account?{' '}
           <Link to="/login">
             {' '}
-            <span>Sign in</span>{' '}
+            <span type="submit">Sign in</span>{' '}
           </Link>
         </div>
       </form>
+      {loading ? <Spinner /> : null}
     </div>
   )
 }

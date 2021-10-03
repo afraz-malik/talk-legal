@@ -1,13 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import NavBarCss from './NavBar.module.scss'
-
+import { currentUserSelector } from '../../redux/user/user.selector'
+import { useDispatch, useSelector } from 'react-redux'
+import { signOutStart } from '../../redux/user/user.action'
+import { LoadingSelector } from '../../redux/user/user.selector'
+import { Spinner } from '../Spinner/Spinner'
 const NavBar = ({ currentPage }) => {
+  const currentUser = useSelector((state) => currentUserSelector(state))
+  const dispatch = useDispatch()
   React.useEffect(() => {
     if (currentPage) {
       setactive(currentPage)
     }
-    if (document.documentElement.clientWidth < 914) {
+    if (document.documentElement.clientWidth < 930) {
       setstate(false)
       window.addEventListener('mouseup', clickEvent)
     }
@@ -20,19 +26,21 @@ const NavBar = ({ currentPage }) => {
     }
     // eslint-disable-next-line
   }, [])
-  const [state, setstate] = React.useState(true)
+  const [state, setstate] = React.useState(
+    document.documentElement.clientWidth < 930 ? false : true
+  )
   const [active, setactive] = React.useState('home')
   const toggle = () => {
     setstate(!state)
   }
   const resizeEvent = () => {
     console.log('resize started')
-    const scrolled = document.documentElement.clientWidth
-    if (scrolled > 930) {
+    const cwidth = document.documentElement.clientWidth
+    if (cwidth > 930) {
+      setstate(true)
       window.removeEventListener('mouseup', clickEvent)
       console.log('click disabled')
-      setstate(true)
-    } else if (scrolled <= 930) {
+    } else if (cwidth <= 930) {
       window.addEventListener('mouseup', clickEvent)
       setstate(false)
     }
@@ -46,7 +54,8 @@ const NavBar = ({ currentPage }) => {
       }
     }
   }
-
+  const loading = useSelector((state) => LoadingSelector(state))
+  console.log(loading)
   return (
     <div className={NavBarCss.navbar}>
       <div className={NavBarCss.inside_nav}>
@@ -61,7 +70,10 @@ const NavBar = ({ currentPage }) => {
           <i
             className="fa fa-bars"
             onClick={() => toggle()}
-            style={{ transform: state ? 'rotate(-90deg)' : 'unset' }}
+            style={{
+              transform: state ? 'rotate(-90deg)' : 'unset',
+              display: !state ? 'flex' : null,
+            }}
           ></i>
           <ul style={{ display: state ? 'flex' : 'none' }}>
             <li>
@@ -116,12 +128,17 @@ const NavBar = ({ currentPage }) => {
         </div>
         <div className={NavBarCss.right}>
           <ul>
-            <Link to="/register">
-              <li>Get Started</li>
-            </Link>
+            {currentUser ? (
+              <li onClick={() => dispatch(signOutStart())}>Log Out</li>
+            ) : (
+              <Link to="/register">
+                <li>Get Started</li>
+              </Link>
+            )}
           </ul>
         </div>
       </div>
+      {loading ? <Spinner /> : null}
     </div>
   )
 }

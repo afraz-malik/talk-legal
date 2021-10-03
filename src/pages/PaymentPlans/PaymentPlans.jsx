@@ -7,6 +7,7 @@ const PaymentPlans = () => {
   const history = useHistory()
 
   const handleSubmit = (val) => {
+    console.log({ hey: val })
     history.push({ pathname: '/checkout', plan: val })
   }
   return (

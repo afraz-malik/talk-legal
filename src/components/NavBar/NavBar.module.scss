@@ -44,6 +44,7 @@
         -ms-user-select: none;
         user-select: none;
         transition: all 0.3s;
+        font-size: 25px;
       }
       ul {
         display: flex;
@@ -154,7 +155,8 @@
     }
   }
 }
-@media (min-width: 768px) and (max-width: 930px) {
+
+@media (min-width: 768px) and (max-width: 947px) {
   .navbar {
     // position: relative;
     .inside_nav {
@@ -174,7 +176,6 @@
         justify-content: flex-start;
         i {
           display: flex;
-          font-size: 25px;
         }
         ul {
           position: absolute;
@@ -227,7 +228,6 @@
         justify-content: flex-start;
         i {
           display: flex;
-          font-size: 25px;
         }
         ul {
           position: absolute;
@@ -267,7 +267,6 @@
         justify-content: flex-start;
         i {
           display: flex;
-          font-size: 25px;
         }
         ul {
           position: absolute;
@@ -312,7 +311,6 @@
         justify-content: flex-start;
         i {
           display: flex;
-          font-size: 25px;
         }
         ul {
           position: absolute;

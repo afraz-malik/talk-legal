@@ -1,4 +1,15 @@
-@media (min-width: 1281px) {
+fetch(`${this.props.dbUrl}register`, {
+  method: 'POST',
+  Authorization: 'Bearer ' + token,
+  headers: {'Content-Type' : 'application/json', },
+  body: JSON.stringify({
+      name: this.state.registerName,
+      email: this.state.registerEmail,
+      password: this.state.registerPassword
+  })
+})
+  @media
+  (min-width: 1281px) {
 }
 
 /* 
