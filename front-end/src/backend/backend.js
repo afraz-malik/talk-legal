@@ -19,7 +19,7 @@ export const fetchDbPost = async (url, token, payload) => {
 export const fetchDbGet = async (url, token) => {
     let data = { val: null, error: null };
     await fetch(`${db_url}${url}`, {
-        method: "POST",
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
