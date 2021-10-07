@@ -24,7 +24,7 @@ Route::post('reset-password', [\App\Http\Controllers\Api\ResetPasswordController
 Route::post('get-subscription-plans', [\App\Http\Controllers\Api\SubscriptionPlansController::class, 'getPlans']);
 Route::get('mutual-non-disclosuer-document/{user_id}', [\App\Http\Controllers\Api\MutualNoneDisclosureDocumentController::class, 'aggrement']);
 Route::get('/', function () {
-    return ('welcome babe');
+    return ('welcome');
  });
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::group(['prefix' => 'user'], function () {
