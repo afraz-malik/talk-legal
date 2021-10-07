@@ -16,11 +16,16 @@ const Questionaires = () => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, [mutualForm]);
-    console.log(mutualForm);
     const [state, setstate] = React.useState({ value: 25 });
-    const handleForm = () => {
-        setstate({ value: state.value + 25 });
+    const handleForm = (data) => {
+        if (state.value < 100) {
+            setstate({ ...state, ...data, value: state.value + 25 });
+        } else {
+            setstate({ ...state, ...data });
+        }
     };
+    // var str= document.getElementsByClassName('company1address')[0].innerHTML;
+    // str= str.replace(str, '<b>Shadbagh</b>')
     return (
         <div className={QCss.container}>
             <div className={QCss.container2}>

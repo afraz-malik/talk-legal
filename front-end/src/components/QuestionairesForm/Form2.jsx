@@ -8,9 +8,10 @@ const Form2 = ({ handleForm }) => {
     }, []);
     const [value, onChange] = React.useState();
     const [toggle, settoggle] = React.useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleForm();
+        handleForm({ date: value });
     };
     const handleChange = (e) => {
         onChange(e);
@@ -25,15 +26,6 @@ const Form2 = ({ handleForm }) => {
                     required.
                 </p>
                 <label>Enter Your State </label>
-                {/* <div className={FormCss.select}>
-          <img alt="" src="images/downarrow.png" />
-          <select>
-            <option> Enter Your Date</option>
-            <option></option>
-            <option></option>
-            <option></option>
-          </select>
-        </div> */}
                 <div className={FormCss.dropdownbox}>
                     <div
                         className={FormCss.dropdown}

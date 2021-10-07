@@ -24,7 +24,7 @@ const Form1 = ({ handleForm }) => {
     }, []);
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleForm();
+        handleForm({ state: state });
     };
     return (
         <div className={FormCss.form}>
@@ -35,14 +35,6 @@ const Form1 = ({ handleForm }) => {
                     required.
                 </p>
                 <label>Enter Your State </label>
-                {/* <div className={FormCss.select}>
-          <img alt="" src="images/downarrow.png" />
-          <select>
-            <option> Select your state</option>
-            <option>Albama</option>
-            <option>Alaska</option>
-          </select>
-        </div> */}
                 <div className={FormCss.dropdownbox}>
                     <div
                         className={FormCss.dropdown}

@@ -66,7 +66,6 @@ const NavBar = ({ currentPage }) => {
                         onClick={() => toggle()}
                         style={{
                             transform: state ? "rotate(-90deg)" : "unset",
-                            display: !state ? "flex" : null,
                         }}
                     ></i>
                     <ul style={{ display: state ? "flex" : "none" }}>
