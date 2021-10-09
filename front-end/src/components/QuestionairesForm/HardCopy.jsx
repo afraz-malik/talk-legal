@@ -13,9 +13,7 @@ const HardCopy = ({ mutualForm, state }) => {
             for (let i = 0; i < keys.length; i++) {
                 let key = keys[i];
                 console.log(key);
-                const el = document.querySelectorAll(
-                    `.preview .${key.toLowerCase()}`
-                );
+                const el = document.querySelectorAll(`.preview .${key}`);
                 if (el.length > 0) {
                     for (let j = 0; j < el.length; j++) {
                         el[j].innerHTML = state[key];

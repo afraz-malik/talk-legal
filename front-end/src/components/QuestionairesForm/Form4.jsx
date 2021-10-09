@@ -6,17 +6,14 @@ const Form4 = ({ handleForm, settoggle }) => {
         window.scrollTo(0, 0);
     }, []);
     const [state, setstate] = useState({
-        company2Name: "",
-        company2Address: "",
+        company_two_name: "",
+        companu_two_street_address: "",
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (e.target.name === "preview") {
-            handleForm({
-                company2Name: state.company2Name,
-                company2Address: state.company2Address,
-            });
+            handleForm(state);
             settoggle(true);
         }
     };
@@ -35,16 +32,16 @@ const Form4 = ({ handleForm, settoggle }) => {
                 <input
                     type="text"
                     placeholder="Enter Name"
-                    name="company2Name"
-                    value={state.company2Name}
+                    name="company_two_name"
+                    value={state.company_two_name}
                     onChange={handleChange}
                 />
                 <label>Enter Company 1 Name </label>
                 <input
                     type="text"
                     placeholder="Enter Name"
-                    name="company2Address"
-                    value={state.company2Address}
+                    name="companu_two_street_address"
+                    value={state.companu_two_street_address}
                     onChange={handleChange}
                 />
                 <button

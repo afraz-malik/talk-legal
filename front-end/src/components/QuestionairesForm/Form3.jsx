@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import FormCss from "./Form.module.scss";
 const Form3 = ({ handleForm }) => {
     const [state, setstate] = useState({
-        company1Name: "",
-        company1Address: "",
+        company_one_name: "",
+        companu_one_street_address: "",
     });
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -27,16 +27,16 @@ const Form3 = ({ handleForm }) => {
                 <input
                     type="text"
                     placeholder="Enter Name"
-                    name="company1Name"
-                    value={state.company1Name}
+                    name="company_one_name"
+                    value={state.company_one_name}
                     onChange={handleChange}
                 />
                 <label>Enter Company 1 Address </label>
                 <input
                     type="text"
                     placeholder="Enter Address"
-                    name="company1Address"
-                    value={state.company1Address}
+                    name="companu_one_street_address"
+                    value={state.companu_one_street_address}
                     onChange={handleChange}
                 />
                 <input type="submit" value="Continue" />

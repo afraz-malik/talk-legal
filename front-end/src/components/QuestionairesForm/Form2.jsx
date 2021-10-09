@@ -9,7 +9,7 @@ const Form2 = ({ handleForm }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleForm({ date: value });
+        handleForm({ date_as_of: value });
     };
     return (
         <div className={FormCss.form}>

@@ -24,7 +24,7 @@ const Form1 = ({ handleForm }) => {
     }, []);
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleForm({ state: state });
+        handleForm({ agreement_construed_state: state });
     };
     return (
         <div className={FormCss.form}>
