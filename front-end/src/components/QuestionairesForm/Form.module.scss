@@ -266,10 +266,10 @@
         font-weight: bold;
         font-size: 22px;
         // padding: 0 100px;
-
+        margin: 0;
         line-height: 30px;
         text-align: center;
-        margin: 0 0 20px 0;
+        // margin: 0 0 20px 0;
         color: #000000;
     }
     p {
@@ -282,34 +282,29 @@
         text-align: left;
         color: #000000;
     }
-    h5 {
+    h3 {
         font-family: Circular Std;
         font-style: normal;
         font-weight: 900;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 18px;
-        /* identical to box
-    margin]
-    height */
-        margin: 0;
+        margin: 20px 0;
         text-align: center;
         color: #000000;
+        &:first-of-type {
+            margin-top: 0px;
+        }
     }
     ol {
         @extend p;
+        padding-left: 10px;
+        list-style-type: decimal;
         li {
             ul {
-                padding-left: 0%;
                 list-style-type: lower-alpha;
-
                 li {
-                    padding-left: 30px;
                     ul {
                         list-style-type: lower-roman;
-                        padding-left: 20px;
-                        li {
-                            padding-left: 20px;
-                        }
                     }
                 }
             }
