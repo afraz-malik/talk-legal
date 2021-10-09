@@ -278,6 +278,9 @@
     }
 }
 .page {
+    span {
+        background-color: yellow;
+    }
     h1 {
         font-family: Circular Std;
         font-style: normal;
@@ -312,6 +315,26 @@
         margin: 0;
         text-align: center;
         color: #000000;
+    }
+    ol {
+        @extend p;
+        li {
+            ul {
+                padding-left: 0%;
+                list-style-type: lower-alpha;
+
+                li {
+                    padding-left: 30px;
+                    ul {
+                        list-style-type: lower-roman;
+                        padding-left: 20px;
+                        li {
+                            padding-left: 20px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 @media (min-width: 1281px) {

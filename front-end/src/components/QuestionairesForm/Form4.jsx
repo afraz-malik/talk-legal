@@ -90,6 +90,7 @@ const Form4 = ({ handleForm }) => {
                             src="images/x-circle.png"
                             onClick={() => toggle()}
                         />
+
                         {mutualForm ? (
                             <HardCopy mutualForm={mutualForm} />
                         ) : (
