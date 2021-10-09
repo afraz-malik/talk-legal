@@ -11,11 +11,8 @@ const Form2 = ({ handleForm }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(value);
         handleForm({ date: value });
-    };
-    const handleChange = (e) => {
-        onChange(e);
-        settoggle(false);
     };
     return (
         <div className={FormCss.form}>
@@ -27,7 +24,7 @@ const Form2 = ({ handleForm }) => {
                 </p>
                 <label>Enter Your State </label>
                 <div className={FormCss.dropdownbox}>
-                    <div
+                    {/* <div
                         className={FormCss.dropdown}
                         onClick={() => settoggle(!toggle)}
                     >
@@ -45,6 +42,24 @@ const Form2 = ({ handleForm }) => {
                         }
                     >
                         <Calendar onChange={handleChange} value={value} />
+                    </div> */}
+                    <div
+                        className={FormCss.dropdown}
+                        onClick={() => document.getElementById("date")}
+                    >
+                        <input
+                            type="date"
+                            id="date"
+                            onChange={(e) => onChange(e.target.value)}
+                        />
+                    </div>
+                    <div
+                        className={FormCss.date}
+                        style={
+                            toggle ? { display: "block" } : { display: "none" }
+                        }
+                    >
+                        {/* <Calendar onChange={handleChange} value={value} /> */}
                     </div>
                 </div>
                 <input type="submit" value="Continue" />

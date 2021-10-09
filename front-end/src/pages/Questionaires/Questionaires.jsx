@@ -23,6 +23,7 @@ const Questionaires = () => {
         } else {
             setstate({ ...state, ...data });
         }
+        console.log(state);
     };
     // var str= document.getElementsByClassName('company1address')[0].innerHTML;
     // str= str.replace(str, '<b>Shadbagh</b>')
