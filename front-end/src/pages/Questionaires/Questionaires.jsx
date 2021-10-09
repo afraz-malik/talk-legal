@@ -90,7 +90,7 @@ const Questionaires = () => {
                         />
 
                         {mutualForm ? (
-                            <HardCopy mutualForm={mutualForm} />
+                            <HardCopy mutualForm={mutualForm} state={state} />
                         ) : (
                             <InsideSpinner />
                         )}
