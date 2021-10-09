@@ -79,7 +79,7 @@ const Questionaires = () => {
             {toggle ? (
                 <Preview position="fixed">
                     <div
-                        className={QCss.hc}
+                        className={`${QCss.hc} preview`}
                         style={{ backgroundImage: "url(images/TLTM.png)" }}
                     >
                         <img

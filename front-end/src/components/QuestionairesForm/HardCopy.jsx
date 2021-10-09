@@ -9,17 +9,18 @@ const HardCopy = ({ mutualForm, state }) => {
             html = $.parseHTML(mutualForm);
         $log.append(html);
         if (state) {
-            const company1name =
-                document.getElementsByClassName("company1name");
-            const company2name =
-                document.getElementsByClassName("company2name");
-            const company1address =
-                document.getElementsByClassName("company1address");
-            const company2address =
-                document.getElementsByClassName("company2address");
-            console.log("yes");
-            for (let i = 0; i < company1name.length; i++) {
-                company1name[i].innerHTML = "Maqware";
+            const keys = Object.keys(state);
+            for (let i = 0; i < keys.length; i++) {
+                let key = keys[i];
+                console.log(key);
+                const el = document.querySelectorAll(
+                    `.preview .${key.toLowerCase()}`
+                );
+                if (el.length > 0) {
+                    for (let j = 0; j < el.length; j++) {
+                        el[j].innerHTML = state[key];
+                    }
+                }
             }
         }
     }, [mutualForm]);
