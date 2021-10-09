@@ -1,5 +1,5 @@
-// export const db_url = "https://tltm.herokuapp.com/";
-export const db_url = "http://localhost:8000/";
+export const db_url = "https://tltm.herokuapp.com/";
+// export const db_url = "http://localhost:8000/";
 
 export const fetchDbPost = async (url, token, payload) => {
     let data = { val: null, error: null };
