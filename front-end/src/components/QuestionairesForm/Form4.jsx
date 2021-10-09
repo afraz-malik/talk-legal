@@ -1,37 +1,24 @@
 import React, { useState } from "react";
 import FormCss from "./Form.module.scss";
-import HardCopy from "./HardCopy";
-import { useHistory } from "react-router-dom";
-import Preview from "../Preview/Preview";
 
-import { useSelector } from "react-redux";
-import { mutualFormSelector } from "../../redux/data/data.selector";
-import { InsideSpinner } from "../Spinner/Spinner";
-
-const Form4 = ({ handleForm }) => {
-    const mutualForm = useSelector((state) => mutualFormSelector(state));
-    const history = useHistory();
+const Form4 = ({ handleForm, settoggle }) => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
     const [state, setstate] = useState({
         company2Name: "",
         company2Address: "",
-        toggle: false,
     });
-    const toggle = () => {
-        setstate({ ...state, toggle: !state.toggle });
-    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // history.push({
-        //     pathname: "/register",
-        //     form: "yes",
-        // });
-        handleForm({
-            company2Name: state.company2Name,
-            company2Address: state.company2Address,
-        });
+        if (e.target.name === "preview") {
+            handleForm({
+                company2Name: state.company2Name,
+                company2Address: state.company2Address,
+            });
+            settoggle(true);
+        }
     };
     const handleChange = (e) => {
         setstate({ ...state, [e.target.name]: e.target.value });
@@ -63,7 +50,8 @@ const Form4 = ({ handleForm }) => {
                 <button
                     type="button"
                     className={FormCss.complete}
-                    onClick={() => toggle()}
+                    name="preview"
+                    onClick={handleSubmit}
                 >
                     Preview
                 </button>
@@ -78,27 +66,6 @@ const Form4 = ({ handleForm }) => {
                     Your info is savely secured
                 </span>
             </form>
-            {state.toggle ? (
-                <Preview position="fixed">
-                    <div
-                        className={FormCss.hc}
-                        style={{ backgroundImage: "url(images/TLTM.png)" }}
-                    >
-                        <img
-                            className={FormCss.hcimg}
-                            alt=""
-                            src="images/x-circle.png"
-                            onClick={() => toggle()}
-                        />
-
-                        {mutualForm ? (
-                            <HardCopy mutualForm={mutualForm} />
-                        ) : (
-                            <InsideSpinner />
-                        )}
-                    </div>
-                </Preview>
-            ) : null}
         </div>
     );
 };
