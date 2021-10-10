@@ -54,7 +54,11 @@ function App() {
                     path="/register"
                     render={() =>
                         currentUser ? (
-                            <Redirect to={`/dashboard`} />
+                            currentForm ? (
+                                <Redirect to={`/plans`} />
+                            ) : (
+                                <Redirect to="/dashboard" />
+                            )
                         ) : (
                             <RegisterPage />
                         )

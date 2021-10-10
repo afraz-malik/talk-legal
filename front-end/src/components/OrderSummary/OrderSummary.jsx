@@ -2,13 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 import { currentFormSelector } from "../../redux/data/data.selector";
-import CheckoutPlans from "../CheckoutPlans/CheckoutPlans";
 import Logo from "../NavBar/Logo";
 import HardCopy from "../QuestionairesForm/HardCopy";
 import OrderCss from "./OrderSummary.module.scss";
-const OrderSummary = ({ location }) => {
+const OrderSummary = ({ children, location }) => {
     const currentForm = useSelector((state) => currentFormSelector(state));
-
     return (
         <div className={OrderCss.container}>
             <div className={OrderCss.logo}>
@@ -21,12 +19,12 @@ const OrderSummary = ({ location }) => {
             >
                 <div className={`${OrderCss.content} preview`}>
                     <HardCopy
-                        mutualForm={currentForm ? currentForm.form : null}
+                        currentForm={currentForm ? currentForm.form : null}
                         state={currentForm ? currentForm.state : null}
                     />
                 </div>
             </div>
-            {location.plan ? <CheckoutPlans /> : null}
+            {children}
             <div className={OrderCss.price}>
                 <p className={OrderCss.p} style={{ fontWeight: "bold" }}>
                     {location.plan ? "" : "Single"} Document Purchase

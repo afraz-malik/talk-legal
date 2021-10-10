@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import NavBarCss from "./NavBar.module.scss";
 import { currentUserSelector } from "../../redux/user/user.selector";
 import { useDispatch, useSelector } from "react-redux";
@@ -82,8 +83,8 @@ const NavBar = ({ currentPage }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                to="/plans"
+                            <HashLink
+                                to="/#plans"
                                 className={
                                     active === "pricing"
                                         ? NavBarCss.selected
@@ -91,7 +92,7 @@ const NavBar = ({ currentPage }) => {
                                 }
                             >
                                 Pricing
-                            </Link>
+                            </HashLink>
                         </li>
                         <li>
                             <Link

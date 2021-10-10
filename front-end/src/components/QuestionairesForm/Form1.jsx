@@ -1,21 +1,7 @@
 import React from "react";
 import toast from "cogo-toast";
 import FormCss from "./Form.module.scss";
-const countryList = [
-    "Afghanistan",
-    "Albania",
-    "Algeria",
-    "American Samoa",
-    "Andorra",
-    "Angola",
-    "Anguilla",
-    "Antarctica",
-    "Antigua and Barbuda",
-    "Argentina",
-    "Zimbabwe",
-    "Åland Islands",
-];
-
+import { countryList } from "../../countryList";
 const Form1 = ({ handleForm }) => {
     const [state, setstate] = React.useState("");
     const [toggle, settoggle] = React.useState(false);

@@ -8,7 +8,7 @@ import QCss from "./Questionaires.module.scss";
 import Logo from "../../components/NavBar/Logo";
 
 import { useDispatch, useSelector } from "react-redux";
-import { mutualFormSelector } from "../../redux/data/data.selector";
+import { currentFormSelector } from "../../redux/data/data.selector";
 import { InsideSpinner } from "../../components/Spinner/Spinner";
 import Preview from "../../components/Preview/Preview";
 import { savingForm } from "../../redux/data/data.action";
@@ -16,13 +16,13 @@ import { currentUserSelector } from "../../redux/user/user.selector";
 import { useHistory } from "react-router";
 
 const Questionaires = () => {
-    const mutualForm = useSelector((state) => mutualFormSelector(state));
+    const currentForm = useSelector((state) => currentFormSelector(state));
     const currentUser = useSelector((state) => currentUserSelector(state));
     const history = useHistory();
     const dispatch = useDispatch();
     React.useEffect(() => {
         window.scrollTo(0, 0);
-    }, [mutualForm]);
+    }, [currentForm]);
     const [state, setstate] = useState({ value: 25 });
     const [toggle, settoggle] = useState(false);
     const handleForm = (data) => {
@@ -33,7 +33,7 @@ const Questionaires = () => {
         }
     };
     const submitForm = () => {
-        dispatch(savingForm({ form: mutualForm, state }));
+        dispatch(savingForm({ form: currentForm.form, state }));
         if (currentUser) {
             history.push("/plans");
         } else {
@@ -78,8 +78,8 @@ const Questionaires = () => {
                         style={{ backgroundImage: "url(images/TLTM.png)" }}
                     >
                         <div className={QCss.content}>
-                            {mutualForm ? (
-                                <HardCopy mutualForm={mutualForm} />
+                            {currentForm ? (
+                                <HardCopy currentForm={currentForm.form} />
                             ) : (
                                 <InsideSpinner />
                             )}
@@ -101,8 +101,11 @@ const Questionaires = () => {
                             onClick={() => settoggle(false)}
                         />
 
-                        {mutualForm ? (
-                            <HardCopy mutualForm={mutualForm} state={state} />
+                        {currentForm ? (
+                            <HardCopy
+                                currentForm={currentForm.form}
+                                state={state}
+                            />
                         ) : (
                             <InsideSpinner />
                         )}

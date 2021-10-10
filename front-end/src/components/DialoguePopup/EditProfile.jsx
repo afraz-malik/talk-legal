@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import DialoguePopupCss from "./DialoguePopup.module.scss";
-
-const EditProfile = ({ setpopup, user }) => {
+import toast from "cogo-toast";
+const EditProfile = ({ popup, setpopup, user }) => {
     const [state, setstate] = useState(user);
     const handleChange = (event) => {
         setstate({ ...state, [event.target.name]: event.target.value });
     };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        toast.success("Check Console Log");
+        console.log(state);
+    };
     return (
         <div className={DialoguePopupCss.edit}>
-            <form className={DialoguePopupCss.form}>
+            <form className={DialoguePopupCss.form} onSubmit={handleSubmit}>
                 <label>First name</label>
                 <input
                     type="text"
@@ -33,17 +39,18 @@ const EditProfile = ({ setpopup, user }) => {
                     name="phone"
                     onChange={handleChange}
                 />
+                <div className={DialoguePopupCss.greenButtons}>
+                    <button
+                        type="button"
+                        onClick={() =>
+                            setpopup({ ...popup, editProfile: false })
+                        }
+                    >
+                        Cancel
+                    </button>
+                    <button type="submit">Save Changed</button>
+                </div>
             </form>
-            <div className={DialoguePopupCss.greenButtons}>
-                <button
-                    onClick={() =>
-                        setpopup({ editCard: false, editProfile: false })
-                    }
-                >
-                    Cancel
-                </button>
-                <button onClick={() => console.log(state)}>Save Changed</button>
-            </div>
         </div>
     );
 };

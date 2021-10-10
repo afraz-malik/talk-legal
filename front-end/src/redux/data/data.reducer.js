@@ -2,7 +2,6 @@ const initialState = {
     subscription_plans: null,
     error: null,
     loading: false,
-    mutualForm: null,
     currentForm: null,
 };
 
@@ -19,7 +18,7 @@ export const dataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                mutualForm: action.payload,
+                currentForm: action.payload,
             };
         case "SAVING_FORM_IN_STATE_START":
             return { ...state, currentForm: action.payload };

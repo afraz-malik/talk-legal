@@ -4,6 +4,9 @@ import Logo from "../../components/NavBar/Logo";
 import PaymentPlanCards from "../../components/PaymentPlanCards/PaymentPlanCards";
 import PaymentPlansCss from "./PaymentPlans.module.scss";
 const PaymentPlans = () => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const history = useHistory();
 
     const handleSubmit = (val) => {

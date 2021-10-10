@@ -13,7 +13,9 @@ const AccountSettings = ({ currentUser }) => {
         editProfile: false,
         editCard: false,
     });
-
+    const closePopup = () => {
+        setpopup({ editCard: false, editProfile: false });
+    };
     const togglePassword = (val) => {
         var x = document.getElementById(`${val}`);
         if (x.type === "password") {
@@ -208,8 +210,12 @@ const AccountSettings = ({ currentUser }) => {
             </form>
             {popup.editProfile ? (
                 <Preview>
-                    <DialoguePopup title={"Edit Your Profile"}>
+                    <DialoguePopup
+                        title={"Edit Your Profile"}
+                        closePopup={closePopup}
+                    >
                         <EditProfile
+                            popup={popup}
                             setpopup={setpopup}
                             user={state.user}
                             setstate={setstate}
@@ -219,8 +225,8 @@ const AccountSettings = ({ currentUser }) => {
             ) : null}
             {popup.editCard ? (
                 <Preview>
-                    <DialoguePopup title={"Add Card"}>
-                        <AddCard setpopup={setpopup} />
+                    <DialoguePopup title={"Add Card"} closePopup={closePopup}>
+                        <AddCard setpopup={setpopup} popup={popup} />
                     </DialoguePopup>
                 </Preview>
             ) : null}

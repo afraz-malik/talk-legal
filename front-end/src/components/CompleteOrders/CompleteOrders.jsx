@@ -5,6 +5,9 @@ import DeletePopUp from "../DialoguePopup/DeletePopUp";
 import DialoguePopup from "../DialoguePopup/DialoguePopup";
 const CompleteOrders = () => {
     const [state, setstate] = React.useState(false);
+    const closePopup = () => {
+        setstate(false);
+    };
     return (
         <div className={COrdersCss.container}>
             <div className={COrdersCss.topbar}>
@@ -59,8 +62,8 @@ const CompleteOrders = () => {
             </div>
             {state ? (
                 <Preview position="fixed">
-                    <DialoguePopup setstate={setstate}>
-                        <DeletePopUp setstate={setstate} />
+                    <DialoguePopup closePopup={closePopup}>
+                        <DeletePopUp closePopup={closePopup} />
                     </DialoguePopup>
                 </Preview>
             ) : null}

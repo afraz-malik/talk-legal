@@ -18,7 +18,6 @@ import {
 // ----------------------------------------------------------
 // Helper Functions
 function* puttingUser(uid, token, local) {
-    console.log(uid, token);
     const response = yield fetchDbGet(
         `api/user/get-subscription-plan/${uid}`,
         token
@@ -170,7 +169,6 @@ function* forgetPasswordStart({ payload }) {
             null,
             payload
         );
-        console.log(response);
         if (response.response === "200") {
             toast.success(response.status);
             yield put(forgetPasswordSuccess());
@@ -193,7 +191,6 @@ export function* forgetPassword() {
 function* passwordResetStart({ payload }) {
     try {
         const response = yield fetchDbPost("api/reset-password", null, payload);
-        console.log(response);
         if (response.response === "500") {
             toast.error("Link Has been expired, Kindly Request a New Link", {
                 hideAfter: 10,

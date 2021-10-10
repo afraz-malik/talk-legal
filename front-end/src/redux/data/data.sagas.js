@@ -20,11 +20,23 @@ function* getSubscriptionsPlansStart() {
         );
         if (response.response === "200") {
             yield put(getSubscriptionsPlansSuccess(response.data));
+            localStorage.setItem(
+                "subscription_plans",
+                JSON.stringify(response.data)
+            );
         } else {
             yield put(getSubscriptionsPlansFailed());
+            console.log("Getting Subscription from Local Storage");
+            const plans = JSON.parse(
+                localStorage.getItem("subscription_plans")
+            );
+            yield put(getSubscriptionsPlansSuccess(plans));
         }
     } catch (error) {
         yield put(getSubscriptionsPlansFailed(error));
+        console.log("Getting Subscription from Local Storage");
+        const plans = JSON.parse(localStorage.getItem("subsciption_plans"));
+        yield put(getSubscriptionsPlansSuccess(plans));
     }
 }
 export function* getSubscriptionsPlans() {
@@ -43,10 +55,11 @@ function* gettingFormStart() {
         );
         if (response.response === "200") {
             yield put(
-                gettingFormSuccess(
-                    response.data[0].mutual_none_disclosure_document
-                        .document_description
-                )
+                gettingFormSuccess({
+                    form: response.data[0].mutual_none_disclosure_document
+                        .document_description,
+                    state: null,
+                })
             );
         }
     } catch (error) {

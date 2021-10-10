@@ -2,12 +2,11 @@ import React from "react";
 import FormCss from "./Form.module.scss";
 
 import $ from "jquery";
-const HardCopy = ({ mutualForm, state }) => {
-    console.log(state);
+const HardCopy = ({ currentForm, state }) => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
         var $log = $(".hardcopy"),
-            html = $.parseHTML(mutualForm);
+            html = $.parseHTML(currentForm);
         $log.append(html);
         if (state) {
             const keys = Object.keys(state);
@@ -21,7 +20,7 @@ const HardCopy = ({ mutualForm, state }) => {
                 }
             }
         }
-    }, [mutualForm, state]);
+    }, [currentForm, state]);
 
     return <div className={`${FormCss.page} hardcopy`}>{}</div>;
 };
