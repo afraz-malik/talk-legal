@@ -3,6 +3,7 @@ import FormCss from "./Form.module.scss";
 
 import $ from "jquery";
 const HardCopy = ({ mutualForm, state }) => {
+    console.log(state);
     React.useEffect(() => {
         window.scrollTo(0, 0);
         var $log = $(".hardcopy"),

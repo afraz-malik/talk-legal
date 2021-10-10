@@ -21,6 +21,7 @@ const Form4 = ({ handleForm, settoggle, submitForm }) => {
             cogoToast.warn("Enter Company's Address to Proceed");
         } else {
             if (e.target.name === "preview") {
+                handleForm(state);
                 settoggle(true);
             } else {
                 handleForm(state);
