@@ -1,15 +1,19 @@
 import React from "react";
 import FormCss from "./Form.module.scss";
-
+import toast from "cogo-toast";
 const Form2 = ({ handleForm }) => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const [value, onChange] = React.useState();
+    const [value, onChange] = React.useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleForm({ date_as_of: value });
+        if (!value) {
+            toast.warn("Select Business Startup Date to Proceed");
+        } else {
+            handleForm({ date_as_of: value });
+        }
     };
     return (
         <div className={FormCss.form}>

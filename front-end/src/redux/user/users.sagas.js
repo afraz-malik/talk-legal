@@ -1,5 +1,5 @@
 import { takeLatest, put, select } from "redux-saga/effects";
-import { fetchDbPost } from "../../backend/backend";
+import { fetchDbGet, fetchDbPost } from "../../backend/backend";
 import toast from "cogo-toast";
 import {
     forgetPasswordFailed,
@@ -11,8 +11,45 @@ import {
     signOutFailed,
     signOutSuccess,
     signUpFailed,
-    signUpSuccess,
+    subscribePlanFailed,
+    subscribePlanSuccess,
 } from "./user.action";
+
+// ----------------------------------------------------------
+// Helper Functions
+function* puttingUser(uid, token, local) {
+    console.log(uid, token);
+    const response = yield fetchDbGet(
+        `api/user/get-subscription-plan/${uid}`,
+        token
+    );
+    const user = response.data[0];
+    yield put(
+        signInSuccess({
+            user,
+            token,
+        })
+    );
+    yield sessionStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+            user,
+            token,
+        })
+    );
+    if (local) {
+        yield localStorage.setItem(
+            "currentUser",
+            JSON.stringify({
+                user,
+                token,
+            })
+        );
+    }
+    toast.success("Logged in Successfully");
+}
+// ----------------------------------------------------------
+
 function* gettingCurrentUserStart() {
     const currentUserFromStorage = yield JSON.parse(
         localStorage.getItem("currentUser")
@@ -21,18 +58,16 @@ function* gettingCurrentUserStart() {
         sessionStorage.getItem("currentUser")
     );
     if (currentUserFromSession) {
-        yield put(
-            signInSuccess({
-                user: currentUserFromSession.user,
-                token: currentUserFromSession.token,
-            })
+        yield puttingUser(
+            currentUserFromSession.user.id,
+            currentUserFromSession.token,
+            false
         );
     } else if (currentUserFromStorage) {
-        yield put(
-            signInSuccess({
-                user: currentUserFromStorage.user,
-                token: currentUserFromStorage.token,
-            })
+        yield puttingUser(
+            currentUserFromStorage.user.id,
+            currentUserFromStorage.token,
+            true
         );
     } else {
         console.log("No User found");
@@ -41,130 +76,110 @@ function* gettingCurrentUserStart() {
 export function* gettingCurrentUser() {
     yield takeLatest("GETTING_USER", gettingCurrentUserStart);
 }
+
 export function* signUpStart({ payload }) {
     try {
-        const data = yield fetchDbPost("api/register", null, payload);
-        const { val, error } = data;
-        if (error) {
-            yield put(signUpFailed(data.error));
-        } else {
-            if (val.error) {
-                for (const key in val.error) {
-                    if (val.error.hasOwnProperty(key)) {
-                        // console.log(`${key}: ${val.error[key]}`)
-                        toast.error(val.error[key]);
-                    }
+        const response = yield fetchDbPost("api/register", null, payload);
+        if (response.user) {
+            const { user, access_token } = response;
+            toast.success("Register SuccessFully");
+            yield puttingUser(user.id, access_token.plainTextToken, true);
+        } else if (response.error) {
+            for (const key in response.error) {
+                if (response.error.hasOwnProperty(key)) {
+                    // console.log(`${key}: ${response.error[key]}`)
+                    toast.error(response.error[key]);
                 }
-                yield put(signUpFailed(val[0]));
-            } else {
-                yield put(
-                    signUpSuccess({
-                        user: val.user,
-                        token: val.access_token.plainTextToken,
-                    })
-                );
-                localStorage.setItem(
-                    "currentUser",
-                    JSON.stringify({
-                        user: val.user,
-                        token: val.access_token.plainTextToken,
-                    })
-                );
             }
+            yield put(signUpFailed(response[0]));
         }
     } catch (err) {
-        alert(err.message);
+        yield put(signUpFailed(err.message));
     }
 }
 export function* signUp() {
     yield takeLatest("SIGN_UP_START", signUpStart);
 }
+// ----------------------------------------------------------
+
 export function* signInStart({ payload }) {
     try {
-        const data = yield fetchDbPost("api/login", null, {
+        const response = yield fetchDbPost("api/login", null, {
             email: payload.email,
             password: payload.password,
         });
-        const { val, error } = data;
-        if (error) {
-            yield put(signInFailed(data.error));
-        } else {
-            if (val.error) {
-                for (const key in val.error) {
-                    if (val.error.hasOwnProperty(key)) {
-                        // console.log(`${key}: ${val.error[key]}`)
-                        toast.error(val.error[key]);
-                    }
-                }
-                yield put(signInFailed(val[0]));
+        if (response.user) {
+            // Getting user from getsubplan
+            if (payload.keepLogin) {
+                yield puttingUser(
+                    response.user.id,
+                    response.access_token.plainTextToken,
+                    true
+                );
             } else {
-                yield put(
-                    signInSuccess({
-                        user: val.user,
-                        token: val.access_token.plainTextToken,
-                    })
+                yield puttingUser(
+                    response.user.id,
+                    response.access_token.plainTextToken,
+                    false
                 );
-                sessionStorage.setItem(
-                    "currentUser",
-                    JSON.stringify({
-                        user: val.user,
-                        token: val.access_token.plainTextToken,
-                    })
-                );
-                if (payload.keepLogin) {
-                    localStorage.setItem(
-                        "currentUser",
-                        JSON.stringify({
-                            user: val.user,
-                            token: val.access_token.plainTextToken,
-                        })
-                    );
-                }
             }
+        } else if (response.message) {
+            toast.error(response.message, { hideAfter: 10 });
+            yield put(signInFailed(response.message));
+        } else {
+            toast.error(response, { hideAfter: 10 });
+            yield put(signInFailed(response));
         }
-    } catch (err) {
-        alert(err.message);
+    } catch (error) {
+        yield put(signInFailed(error));
     }
 }
 export function* signIn() {
     yield takeLatest("SIGN_IN_START", signInStart);
 }
+// ----------------------------------------------------------
+
 function* signOutStart() {
     const state = yield select();
     const token = state.userReducer.token;
-
     try {
         if (token) {
-            const data = yield fetchDbPost("api/logout", token, null);
-            const { val, error } = data;
-            if (error) {
-                yield put(signOutFailed(error));
-            } else {
-                toast.success(val.Response);
-                yield put(signOutSuccess());
-                localStorage.removeItem("currentUser");
-                sessionStorage.removeItem("currentUser");
-            }
+            yield fetchDbPost("api/logout", token, null);
+            yield put(signOutSuccess());
+            localStorage.removeItem("currentUser");
+            sessionStorage.removeItem("currentUser");
+            toast.success("Logout Successfully");
         }
     } catch (error) {
         yield put(signOutFailed(error));
+        yield put(signOutSuccess());
+        localStorage.removeItem("currentUser");
+        sessionStorage.removeItem("currentUser");
+        toast.success("Logout Successfully");
     }
 }
 export function* signOut() {
     yield takeLatest("SIGN_OUT_START", signOutStart);
 }
+// ----------------------------------------------------------
+
 function* forgetPasswordStart({ payload }) {
     try {
-        const data = yield fetchDbPost("api/forgot-password", null, payload);
-        const { val, error } = data;
-        if (!error) {
-            if (val.response === "200") {
-                toast.info(val.status);
-                yield put(forgetPasswordSuccess());
-            }
-        }
-        if (error) {
-            yield put(forgetPasswordFailed(error));
+        const response = yield fetchDbPost(
+            "api/forgot-password",
+            null,
+            payload
+        );
+        console.log(response);
+        if (response.response === "200") {
+            toast.success(response.status);
+            yield put(forgetPasswordSuccess());
+        } else if (response.response === "500") {
+            toast.warn(response.message);
+            yield put(forgetPasswordFailed(response.message));
+        } else {
+            toast.error("No Email Found");
+            yield put(forgetPasswordFailed());
         }
     } catch (error) {
         yield put(forgetPasswordFailed(error));
@@ -173,18 +188,19 @@ function* forgetPasswordStart({ payload }) {
 export function* forgetPassword() {
     yield takeLatest("FORGET_PASSWORD_START", forgetPasswordStart);
 }
+// ----------------------------------------------------------
+
 function* passwordResetStart({ payload }) {
     try {
-        const data = yield fetchDbPost("api/forgot-password", null, payload);
-        const { val, error } = data;
-        if (!error) {
-            if (val.response === "200") {
-                toast.info(val.status);
-                yield put(passwordResetSuccess());
-            }
-        }
-        if (error) {
-            yield put(passwordResetFailed(error));
+        const response = yield fetchDbPost("api/reset-password", null, payload);
+        console.log(response);
+        if (response.response === "500") {
+            toast.error("Link Has been expired, Kindly Request a New Link", {
+                hideAfter: 10,
+            });
+            yield put(passwordResetFailed(response.message));
+        } else {
+            yield put(passwordResetSuccess());
         }
     } catch (error) {
         yield put(passwordResetFailed(error));
@@ -193,3 +209,30 @@ function* passwordResetStart({ payload }) {
 export function* passwordReset() {
     yield takeLatest("PASSWORD_RESET_START", passwordResetStart);
 }
+// ----------------------------------------------------------
+function* subscribePlanStart({ payload }) {
+    const state = yield select();
+    const token = state.userReducer.token;
+    const uid = state.userReducer.currentUser.id;
+    try {
+        const response = yield fetchDbGet(
+            `api/user/subscribe-plan/${uid}/${payload.pid}`,
+            token
+        );
+        if (response.response === "200") {
+            toast.success("Plan Has Been Updated !", {
+                hideAfter: 10,
+            });
+            yield puttingUser(uid, token, false);
+            yield put(subscribePlanSuccess());
+        } else {
+            yield put(subscribePlanFailed());
+        }
+    } catch (error) {
+        yield put(subscribePlanFailed(error));
+    }
+}
+export function* subscribePlan() {
+    yield takeLatest("SUBSCRIBE_PLAN_START", subscribePlanStart);
+}
+// ----------------------------------------------------------

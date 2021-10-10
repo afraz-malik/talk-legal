@@ -4,12 +4,16 @@ import DialoguePopup from "../DialoguePopup/DialoguePopup";
 import EditProfile from "../DialoguePopup/EditProfile";
 import Preview from "../Preview/Preview";
 import AccountSettingsCss from "./AccountSettings.module.scss";
-const AccountSettings = () => {
-    const [state, setstate] = React.useState({ activeCard: "gold" });
+const AccountSettings = ({ currentUser }) => {
+    const [state, setstate] = React.useState({
+        activeCard: "gold",
+        user: currentUser,
+    });
     const [popup, setpopup] = React.useState({
         editProfile: false,
         editCard: false,
     });
+
     const togglePassword = (val) => {
         var x = document.getElementById(`${val}`);
         if (x.type === "password") {
@@ -40,7 +44,8 @@ const AccountSettings = () => {
                         <input
                             type="text"
                             placeholder="Enter First Name"
-                            defaultValue="John"
+                            defaultValue={state.user.name}
+                            disabled
                         />
                     </div>
                     <div className={AccountSettingsCss.col}>
@@ -48,7 +53,8 @@ const AccountSettings = () => {
                         <input
                             type="text"
                             placeholder="Enter First Name"
-                            defaultValue="Doe"
+                            defaultValue=""
+                            disabled
                         />
                     </div>{" "}
                     <div className={AccountSettingsCss.col}>
@@ -56,7 +62,8 @@ const AccountSettings = () => {
                         <input
                             type="text"
                             placeholder="Enter Pone Number"
-                            defaultValue="(808) 555-0111"
+                            defaultValue={state.user.phone}
+                            disabled
                         />
                     </div>
                 </div>
@@ -202,7 +209,11 @@ const AccountSettings = () => {
             {popup.editProfile ? (
                 <Preview>
                     <DialoguePopup title={"Edit Your Profile"}>
-                        <EditProfile setpopup={setpopup} />
+                        <EditProfile
+                            setpopup={setpopup}
+                            user={state.user}
+                            setstate={setstate}
+                        />
                     </DialoguePopup>
                 </Preview>
             ) : null}

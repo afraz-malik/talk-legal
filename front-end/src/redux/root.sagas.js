@@ -1,5 +1,9 @@
 import { all, call } from "redux-saga/effects";
-import { getSubscriptionsPlans, gettingMutualForm } from "./data/data.sagas";
+import {
+    getSubscriptionsPlans,
+    gettingForm,
+    savingForm,
+} from "./data/data.sagas";
 import {
     signUp,
     gettingCurrentUser,
@@ -7,6 +11,7 @@ import {
     signOut,
     forgetPassword,
     passwordReset,
+    subscribePlan,
 } from "./user/users.sagas";
 export default function* rootSaga() {
     yield all([
@@ -17,6 +22,8 @@ export default function* rootSaga() {
         call(forgetPassword),
         call(passwordReset),
         call(getSubscriptionsPlans),
-        call(gettingMutualForm),
+        call(gettingForm),
+        call(savingForm),
+        call(subscribePlan),
     ]);
 }

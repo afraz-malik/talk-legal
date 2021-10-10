@@ -1,7 +1,8 @@
+import cogoToast from "cogo-toast";
 import React, { useState } from "react";
 import FormCss from "./Form.module.scss";
 
-const Form4 = ({ handleForm, settoggle }) => {
+const Form4 = ({ handleForm, settoggle, submitForm }) => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -12,9 +13,19 @@ const Form4 = ({ handleForm, settoggle }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (e.target.name === "preview") {
-            handleForm(state);
-            settoggle(true);
+        if (!state.company_two_name) {
+            cogoToast.warn("Enter Company's Name to Proceed", {
+                hideAfter: 10,
+            });
+        } else if (!state.companu_two_street_address) {
+            cogoToast.warn("Enter Company's Address to Proceed");
+        } else {
+            if (e.target.name === "preview") {
+                settoggle(true);
+            } else {
+                handleForm(state);
+                submitForm();
+            }
         }
     };
     const handleChange = (e) => {

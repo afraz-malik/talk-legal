@@ -3,6 +3,7 @@ const initialState = {
     error: null,
     loading: false,
     mutualForm: null,
+    currentForm: null,
 };
 
 export const dataReducer = (state = initialState, action) => {
@@ -10,16 +11,20 @@ export const dataReducer = (state = initialState, action) => {
         case "GET_SUBSCRIPTION_PLANS_SUCCESS":
             return { ...state, subscription_plans: action.payload };
         case "GET_SUBSCRIPTION_PLANS_FAILED":
-        case "GET_MUTUAL_FORM_FAILED":
+        case "GETTING_FORM_FAILED":
             return { ...state, error: action.payload };
-        case "GET_MUTUAL_FORM_START":
+        case "GETTING_FORM_START":
             return { ...state, loading: false, error: null };
-        case "GET_MUTUAL_FORM_SUCCESS":
+        case "GETTING_FORM_SUCCESS":
             return {
                 ...state,
                 loading: false,
                 mutualForm: action.payload,
             };
+        case "SAVING_FORM_IN_STATE_START":
+            return { ...state, currentForm: action.payload };
+        case "SAVING_FORM_IN_STATE_FAILED":
+            return { ...state, error: action.payload };
         default:
             return state;
     }

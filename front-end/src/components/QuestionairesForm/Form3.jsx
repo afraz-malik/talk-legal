@@ -1,3 +1,4 @@
+import cogoToast from "cogo-toast";
 import React, { useState } from "react";
 import FormCss from "./Form.module.scss";
 const Form3 = ({ handleForm }) => {
@@ -10,7 +11,13 @@ const Form3 = ({ handleForm }) => {
     }, []);
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleForm(state);
+        if (!state.company_one_name) {
+            cogoToast.warn("Enter Company's Name to Procees");
+        } else if (!state.companu_one_street_address) {
+            cogoToast.warn("Enter Company's Address to Procees");
+        } else {
+            handleForm(state);
+        }
     };
     const handleChange = (e) => {
         setstate({ ...state, [e.target.name]: e.target.value });

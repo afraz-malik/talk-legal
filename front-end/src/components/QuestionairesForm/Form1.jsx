@@ -1,5 +1,5 @@
 import React from "react";
-
+import toast from "cogo-toast";
 import FormCss from "./Form.module.scss";
 const countryList = [
     "Afghanistan",
@@ -17,14 +17,18 @@ const countryList = [
 ];
 
 const Form1 = ({ handleForm }) => {
-    const [state, setstate] = React.useState("Select Your State");
+    const [state, setstate] = React.useState("");
     const [toggle, settoggle] = React.useState(false);
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleForm({ agreement_construed_state: state });
+        if (!state) {
+            toast.warn("Enter Your State To Procceed");
+        } else {
+            handleForm({ agreement_construed_state: state });
+        }
     };
     return (
         <div className={FormCss.form}>
@@ -40,7 +44,7 @@ const Form1 = ({ handleForm }) => {
                         className={FormCss.dropdown}
                         onClick={() => settoggle(!toggle)}
                     >
-                        <h3>{state}</h3>
+                        <h3>{state ? state : "Select Your State"}</h3>
                         <img alt="" src="images/downarrow.png" />
                     </div>
                     <div

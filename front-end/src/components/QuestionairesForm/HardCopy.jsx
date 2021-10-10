@@ -12,7 +12,6 @@ const HardCopy = ({ mutualForm, state }) => {
             const keys = Object.keys(state);
             for (let i = 0; i < keys.length; i++) {
                 let key = keys[i];
-                console.log(key);
                 const el = document.querySelectorAll(`.preview .${key}`);
                 if (el.length > 0) {
                     for (let j = 0; j < el.length; j++) {
@@ -21,7 +20,7 @@ const HardCopy = ({ mutualForm, state }) => {
                 }
             }
         }
-    }, [mutualForm]);
+    }, [mutualForm, state]);
 
     return <div className={`${FormCss.page} hardcopy`}>{}</div>;
 };

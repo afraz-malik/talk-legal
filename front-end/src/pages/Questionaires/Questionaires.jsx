@@ -7,13 +7,19 @@ import HardCopy from "../../components/QuestionairesForm/HardCopy";
 import QCss from "./Questionaires.module.scss";
 import Logo from "../../components/NavBar/Logo";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { mutualFormSelector } from "../../redux/data/data.selector";
 import { InsideSpinner } from "../../components/Spinner/Spinner";
 import Preview from "../../components/Preview/Preview";
+import { savingForm } from "../../redux/data/data.action";
+import { currentUserSelector } from "../../redux/user/user.selector";
+import { useHistory } from "react-router";
 
 const Questionaires = () => {
     const mutualForm = useSelector((state) => mutualFormSelector(state));
+    const currentUser = useSelector((state) => currentUserSelector(state));
+    const history = useHistory();
+    const dispatch = useDispatch();
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, [mutualForm]);
@@ -25,10 +31,15 @@ const Questionaires = () => {
         } else {
             setstate({ ...state, ...data });
         }
-        console.log(state);
     };
-    // var str= document.getElementsByClassName('company1address')[0].innerHTML;
-    // str= str.replace(str, '<b>Shadbagh</b>')
+    const submitForm = () => {
+        dispatch(savingForm({ form: mutualForm, state }));
+        if (currentUser) {
+            history.push("/plans");
+        } else {
+            history.push({ pathname: "/register", form: true });
+        }
+    };
     return (
         <div className={QCss.container}>
             <div className={QCss.container2}>
@@ -58,6 +69,7 @@ const Questionaires = () => {
                             <Form4
                                 handleForm={handleForm}
                                 settoggle={settoggle}
+                                submitForm={submitForm}
                             />
                         ) : null}
                     </div>

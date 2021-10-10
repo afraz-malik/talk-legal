@@ -1,10 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
+import { currentFormSelector } from "../../redux/data/data.selector";
 import CheckoutPlans from "../CheckoutPlans/CheckoutPlans";
 import Logo from "../NavBar/Logo";
 import HardCopy from "../QuestionairesForm/HardCopy";
 import OrderCss from "./OrderSummary.module.scss";
 const OrderSummary = ({ location }) => {
+    const currentForm = useSelector((state) => currentFormSelector(state));
+
     return (
         <div className={OrderCss.container}>
             <div className={OrderCss.logo}>
@@ -15,8 +19,11 @@ const OrderSummary = ({ location }) => {
                 className={OrderCss.hardCopy}
                 style={{ backgroundImage: "url(images/TLTM.png)" }}
             >
-                <div className={OrderCss.content}>
-                    <HardCopy />
+                <div className={`${OrderCss.content} preview`}>
+                    <HardCopy
+                        mutualForm={currentForm ? currentForm.form : null}
+                        state={currentForm ? currentForm.state : null}
+                    />
                 </div>
             </div>
             {location.plan ? <CheckoutPlans /> : null}

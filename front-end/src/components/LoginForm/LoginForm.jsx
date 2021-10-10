@@ -3,27 +3,33 @@ import { Link } from "react-router-dom";
 import LoginFormCss from "./LoginForm.module.scss";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { signInStart } from "../../redux/user/user.action";
-import { LoadingSelector } from "../../redux/user/user.selector";
+import { clearError, signInStart } from "../../redux/user/user.action";
+import {
+    currentUserSelector,
+    LoadingSelector,
+} from "../../redux/user/user.selector";
 import { Spinner } from "../Spinner/Spinner";
+import { withRouter } from "react-router";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
     const loading = useSelector((state) => LoadingSelector(state));
+    const currentUser = useSelector((state) => currentUserSelector(state));
+
     React.useEffect(() => {
         return () => {
-            // dispatch(clearError());
             reset();
+            dispatch(clearError());
         };
         // eslint-disable-next-line
-    }, []);
+    }, [currentUser, dispatch]);
     const {
         register,
         handleSubmit,
         // formState: { errors },
         reset,
     } = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         dispatch(signInStart(data));
     };
     return (
@@ -89,4 +95,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default withRouter(LoginForm);

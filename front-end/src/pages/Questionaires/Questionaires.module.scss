@@ -20,6 +20,9 @@
         background-size: 75% 75%;
         background-repeat: no-repeat;
         padding: 20px;
+        span {
+            background: rgba(120, 84, 247, 0.15);
+        }
         .hcimg {
             position: absolute;
             top: 25px;

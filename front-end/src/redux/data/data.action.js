@@ -10,15 +10,27 @@ export const getSubscriptionsPlansFailed = (payload) => ({
     payload,
 });
 // -------------------------------------------------------------
-export const gettingMutualFormStart = () => ({
-    type: "GET_MUTUAL_FORM_START",
+export const gettingFormStart = () => ({
+    type: "GETTING_FORM_START",
 });
-export const gettingMutualNonSuccess = (payload) => ({
-    type: "GET_MUTUAL_FORM_SUCCESS",
+export const gettingFormSuccess = (payload) => ({
+    type: "GETTING_FORM_SUCCESS",
     payload,
 });
-export const gettingMutualNonFailed = (payload) => ({
-    type: "GET_MUTUAL_FORM_FAILED",
+export const gettingFormFailed = (payload) => ({
+    type: "GETTING_FORM_FAILED",
     payload,
 });
 // -------------------------------------------------------------
+export const savingForm = (payload) => ({
+    type: "SAVING_FORM_IN_STATE_START",
+    payload,
+});
+export const savingFormSuccess = (payload) => ({
+    type: "SAVING_FORM_IN_STATE_SUCCESS",
+    payload,
+});
+export const savingFormFailed = (payload) => ({
+    type: "SAVING_FORM_IN_STATE_FAILED",
+    payload,
+});

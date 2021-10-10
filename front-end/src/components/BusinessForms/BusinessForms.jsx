@@ -2,12 +2,12 @@ import React from "react";
 import BFormsCss from "./BusinessForms.module.scss";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { gettingMutualFormStart } from "../../redux/data/data.action";
+import { gettingFormStart } from "../../redux/data/data.action";
 const BusinessForms = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const getForm = () => {
-        dispatch(gettingMutualFormStart());
+        dispatch(gettingFormStart());
         history.push("/questions");
     };
     return (

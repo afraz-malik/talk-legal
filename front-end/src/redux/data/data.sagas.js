@@ -4,22 +4,24 @@ import { fetchDbGet, fetchDbPost } from "../../backend/backend";
 import {
     getSubscriptionsPlansFailed,
     getSubscriptionsPlansSuccess,
-    gettingMutualNonFailed,
-    gettingMutualNonSuccess,
+    gettingFormFailed,
+    gettingFormSuccess,
+    savingFormFailed,
+    savingFormSuccess,
 } from "./data.action";
+// -------------------------------------------------------------
 
 function* getSubscriptionsPlansStart() {
     try {
-        const data = yield fetchDbPost(
+        const response = yield fetchDbPost(
             "api/get-subscription-plans",
             null,
             null
         );
-        const { val, error } = data;
-        if (error) {
-            yield put(getSubscriptionsPlansFailed(error));
+        if (response.response === "200") {
+            yield put(getSubscriptionsPlansSuccess(response.data));
         } else {
-            yield put(getSubscriptionsPlansSuccess(val.data));
+            yield put(getSubscriptionsPlansFailed());
         }
     } catch (error) {
         yield put(getSubscriptionsPlansFailed(error));
@@ -33,28 +35,36 @@ export function* getSubscriptionsPlans() {
 }
 // -------------------------------------------------------------
 
-function* gettingMutualFormStart() {
+function* gettingFormStart() {
     try {
-        const data = yield fetchDbGet(
+        const response = yield fetchDbGet(
             "api/mutual-non-disclosuer-document/1",
             null
         );
-        console.log(data);
-        const { val, error } = data;
-        if (error) {
-            yield put(gettingMutualNonFailed(error));
-        } else {
+        if (response.response === "200") {
             yield put(
-                gettingMutualNonSuccess(
-                    val.data[0].mutual_none_disclosure_document
+                gettingFormSuccess(
+                    response.data[0].mutual_none_disclosure_document
                         .document_description
                 )
             );
         }
     } catch (error) {
-        yield put(gettingMutualNonFailed(error));
+        yield put(gettingFormFailed(error));
     }
 }
-export function* gettingMutualForm() {
-    yield takeLatest("GET_MUTUAL_FORM_START", gettingMutualFormStart);
+export function* gettingForm() {
+    yield takeLatest("GETTING_FORM_START", gettingFormStart);
+}
+// -------------------------------------------------------------
+function* savingFormStart(payload) {
+    try {
+        yield localStorage.setItem("currentForm", JSON.stringify({ payload }));
+        yield put(savingFormSuccess());
+    } catch (e) {
+        yield put(savingFormFailed(e.message));
+    }
+}
+export function* savingForm() {
+    yield takeLatest("SAVING_FORM_IN_STATE_START", savingFormStart);
 }

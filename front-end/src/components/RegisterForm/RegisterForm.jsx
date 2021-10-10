@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LoadingSelector } from "../../redux/user/user.selector";
 import { Spinner } from "../Spinner/Spinner";
 
-const RegisterForm = ({ history }) => {
+const RegisterForm = ({ location }) => {
     const [state, setstate] = useState({
         name: "",
         email: "",
@@ -30,11 +30,12 @@ const RegisterForm = ({ history }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(signUpStart(state));
+        // history.push("/plans");
     };
     return (
         <div className={RegisterFormCss.form}>
             <form onSubmit={handleSubmit}>
-                {history.location.form ? (
+                {location.form ? (
                     <h3>
                         Almost there! Create an account to save your document.
                     </h3>

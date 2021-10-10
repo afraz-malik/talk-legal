@@ -20,6 +20,7 @@ import { currentUserSelector } from "./redux/user/user.selector";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUser } from "./redux/user/user.action";
 import { getSubscriptionsPlansStart } from "./redux/data/data.action";
+import { currentFormSelector } from "./redux/data/data.selector";
 
 function App() {
     const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App() {
         // eslint-disable-next-line
     }, []);
     const currentUser = useSelector((state) => currentUserSelector(state));
+    const currentForm = useSelector((state) => currentFormSelector(state));
     return (
         <Router>
             <Switch>
@@ -38,7 +40,11 @@ function App() {
                     path="/login"
                     render={() =>
                         currentUser ? (
-                            <Redirect to={`/dashboard`} />
+                            currentForm ? (
+                                <Redirect to={`/plans`} />
+                            ) : (
+                                <Redirect to="/dashboard" />
+                            )
                         ) : (
                             <LoginPage />
                         )
@@ -54,11 +60,6 @@ function App() {
                         )
                     }
                 />
-                <Route path="/changepassword" component={ResetPasswordPage} />
-                <Route path="/forget" component={ForgetPage} />
-                <Route path="/plans" component={PaymentPlans} />
-                <Route path="/questions" component={Questionaires} />
-                <Route path="/checkout" component={CheckoutPage} />
                 <Route
                     path="/dashboard"
                     render={() =>
@@ -69,6 +70,11 @@ function App() {
                         )
                     }
                 />
+                <Route path="/resetpassword" component={ResetPasswordPage} />
+                <Route path="/forget" component={ForgetPage} />
+                <Route path="/plans" component={PaymentPlans} />
+                <Route path="/questions" component={Questionaires} />
+                <Route path="/checkout" component={CheckoutPage} />
             </Switch>
         </Router>
     );
