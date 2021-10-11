@@ -13,6 +13,8 @@ import {
 
 function* getSubscriptionsPlansStart() {
     try {
+        const plans = JSON.parse(localStorage.getItem("subscription_plans"));
+        yield put(getSubscriptionsPlansSuccess(plans));
         const response = yield fetchDbPost(
             "api/get-subscription-plans",
             null,
@@ -26,17 +28,11 @@ function* getSubscriptionsPlansStart() {
             );
         } else {
             yield put(getSubscriptionsPlansFailed());
-            console.log("Getting Subscription from Local Storage");
-            const plans = JSON.parse(
-                localStorage.getItem("subscription_plans")
-            );
-            yield put(getSubscriptionsPlansSuccess(plans));
+            console.log("Failed To Fetch Plans From DB");
         }
     } catch (error) {
         yield put(getSubscriptionsPlansFailed(error));
-        console.log("Getting Subscription from Local Storage");
-        const plans = JSON.parse(localStorage.getItem("subsciption_plans"));
-        yield put(getSubscriptionsPlansSuccess(plans));
+        console.log("Failed To Fetch Plans From DB");
     }
 }
 export function* getSubscriptionsPlans() {

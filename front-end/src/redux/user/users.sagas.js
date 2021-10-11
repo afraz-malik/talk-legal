@@ -57,16 +57,18 @@ function* gettingCurrentUserStart() {
         sessionStorage.getItem("currentUser")
     );
     if (currentUserFromSession) {
-        yield puttingUser(
-            currentUserFromSession.user.id,
-            currentUserFromSession.token,
-            false
+        yield put(
+            signInSuccess({
+                user: currentUserFromSession.user,
+                token: currentUserFromSession.token,
+            })
         );
     } else if (currentUserFromStorage) {
-        yield puttingUser(
-            currentUserFromStorage.user.id,
-            currentUserFromStorage.token,
-            true
+        yield put(
+            signInSuccess({
+                user: currentUserFromStorage.user,
+                token: currentUserFromStorage.token,
+            })
         );
     } else {
         console.log("No User found");

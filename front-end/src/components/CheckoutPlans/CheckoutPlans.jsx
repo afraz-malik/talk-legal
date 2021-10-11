@@ -37,10 +37,11 @@ const CheckoutPlans = ({ location }) => {
                                 }
                             />
                         </div>
-                        {plans.map((plan) => (
+                        {plans.map((plan, idx) => (
                             <div
+                                key={idx}
                                 className={`${CheckoutPlansCss.card} ${
-                                    state.plan === plan.title.toLowerCase()
+                                    state.plan.id === plan.id
                                         ? CheckoutPlansCss.activeCard
                                         : null
                                 }`}
@@ -50,19 +51,18 @@ const CheckoutPlans = ({ location }) => {
                                         : { display: "none" }
                                 }
                                 onClick={() =>
-                                    setstate({ ...state, plan: plan.id })
+                                    setstate({ ...state, plan: plan })
                                 }
                             >
                                 <label className={CheckoutPlansCss.container2}>
                                     <input
                                         type="radio"
                                         name="plans"
-                                        value={plan.id}
-                                        checked={state.plan === plan.id}
-                                        onChange={(e) =>
+                                        checked={state.plan.id === plan.id}
+                                        onChange={() =>
                                             setstate({
                                                 ...state,
-                                                plan: e.target.value,
+                                                plan: plan,
                                             })
                                         }
                                     />
@@ -85,7 +85,7 @@ const CheckoutPlans = ({ location }) => {
                             </div>
                         ))}
                     </div>
-                    {state.plan === 3 ? null : (
+                    {state.plan.id === 3 ? null : (
                         <div className={CheckoutPlansCss.ad_on}>
                             <div
                                 className={CheckoutPlansCss.box}
@@ -104,67 +104,58 @@ const CheckoutPlans = ({ location }) => {
                                     }
                                 />
                             </div>
-                            {plans
-                                .filter((plan) => plan.id === state.plan)
-                                .map((plan, idx) => (
-                                    <div
-                                        key={idx}
-                                        className={`${CheckoutPlansCss.card} ${
-                                            state.adOns === plan.add_on.id
-                                                ? CheckoutPlansCss.activeCard
-                                                : null
-                                        }`}
-                                        style={
-                                            box.adOnsBox
-                                                ? { display: "flex" }
-                                                : { display: "none" }
-                                        }
-                                        onClick={() =>
-                                            setstate({
-                                                ...state,
-                                                adOns: plan.add_on.id,
-                                            })
-                                        }
+                            {plans.map((plan, idx) => (
+                                <div
+                                    key={idx}
+                                    className={`${CheckoutPlansCss.card} ${
+                                        state.adOns === plan.add_on.id
+                                            ? CheckoutPlansCss.activeCard
+                                            : null
+                                    }`}
+                                    style={
+                                        box.adOnsBox
+                                            ? { display: "flex" }
+                                            : { display: "none" }
+                                    }
+                                    onClick={() =>
+                                        setstate({
+                                            ...state,
+                                            adOns: plan.add_on.id,
+                                        })
+                                    }
+                                >
+                                    <label
+                                        className={CheckoutPlansCss.container2}
                                     >
-                                        <label
-                                            className={
-                                                CheckoutPlansCss.container2
+                                        <input
+                                            type="radio"
+                                            name="radio"
+                                            value={plan.add_on.id}
+                                            checked={
+                                                state.adOns === plan.add_on.id
                                             }
-                                        >
-                                            <input
-                                                type="radio"
-                                                name="radio"
-                                                value={plan.add_on.id}
-                                                checked={
-                                                    state.adOns ===
-                                                    plan.add_on.id
-                                                }
-                                                onChange={(e) =>
-                                                    setstate({
-                                                        ...state,
-                                                        adOns: e.target.value,
-                                                    })
-                                                }
-                                            />
-                                            <span
-                                                className={
-                                                    CheckoutPlansCss.checkmark
-                                                }
-                                            ></span>
-                                        </label>
-                                        <div className={CheckoutPlansCss.text}>
-                                            <div
-                                                className={CheckoutPlansCss.top}
-                                            >
-                                                <h2>Unlimited Session</h2>
-                                                <h2>${plan.add_on.cost}</h2>
-                                            </div>
-                                            <p>
-                                                {plan.add_on.session_benifits}
-                                            </p>
+                                            onChange={(e) =>
+                                                setstate({
+                                                    ...state,
+                                                    adOns: e.target.value,
+                                                })
+                                            }
+                                        />
+                                        <span
+                                            className={
+                                                CheckoutPlansCss.checkmark
+                                            }
+                                        ></span>
+                                    </label>
+                                    <div className={CheckoutPlansCss.text}>
+                                        <div className={CheckoutPlansCss.top}>
+                                            <h2>Add Ons</h2>
+                                            <h2>${plan.add_on.cost}</h2>
                                         </div>
+                                        <p>{plan.add_on.session_benifits}</p>
                                     </div>
-                                ))}
+                                </div>
+                            ))}
                         </div>
                     )}
                 </div>

@@ -8,7 +8,6 @@ import OurServices from "../../components/OurServices/OurServices";
 import Trusters from "../../components/Trusters/Trusters";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
-import LightSpeed from "react-reveal/LightSpeed";
 
 const HomePage = () => {
     React.useEffect(() => {
@@ -24,9 +23,9 @@ const HomePage = () => {
             <Fade bottom>
                 <OurPromise />
             </Fade>
-            <LightSpeed>
+            <Fade right>
                 <OurPlans />
-            </LightSpeed>
+            </Fade>
             <Trusters />
             <Footer />
         </div>
