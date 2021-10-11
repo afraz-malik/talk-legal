@@ -1,21 +1,17 @@
 {
   "files": {
-    "main.css": "/tltm/static/css/main.8ac096e1.chunk.css",
-    "main.js": "/tltm/static/js/main.a1bddf1b.chunk.js",
-    "main.js.map": "/tltm/static/js/main.a1bddf1b.chunk.js.map",
+    "main.css": "/tltm/static/css/main.4a58f918.chunk.css",
+    "main.js": "/tltm/static/js/main.c994aa19.chunk.js",
     "runtime-main.js": "/tltm/static/js/runtime-main.8141def5.js",
-    "runtime-main.js.map": "/tltm/static/js/runtime-main.8141def5.js.map",
-    "static/js/2.ca7572bd.chunk.js": "/tltm/static/js/2.ca7572bd.chunk.js",
-    "static/js/2.ca7572bd.chunk.js.map": "/tltm/static/js/2.ca7572bd.chunk.js.map",
+    "static/js/2.0957aa5f.chunk.js": "/tltm/static/js/2.0957aa5f.chunk.js",
     "index.html": "/tltm/index.html",
-    "static/css/main.8ac096e1.chunk.css.map": "/tltm/static/css/main.8ac096e1.chunk.css.map",
-    "static/js/2.ca7572bd.chunk.js.LICENSE.txt": "/tltm/static/js/2.ca7572bd.chunk.js.LICENSE.txt",
+    "static/js/2.0957aa5f.chunk.js.LICENSE.txt": "/tltm/static/js/2.0957aa5f.chunk.js.LICENSE.txt",
     "static/media/index.css": "/tltm/static/media/SFProText-Bold.9dae2991.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.8141def5.js",
-    "static/js/2.ca7572bd.chunk.js",
-    "static/css/main.8ac096e1.chunk.css",
-    "static/js/main.a1bddf1b.chunk.js"
+    "static/js/2.0957aa5f.chunk.js",
+    "static/css/main.4a58f918.chunk.css",
+    "static/js/main.c994aa19.chunk.js"
   ]
 }
