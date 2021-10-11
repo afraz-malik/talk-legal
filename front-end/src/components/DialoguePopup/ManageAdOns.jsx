@@ -1,7 +1,7 @@
 import React from "react";
 import DialoguePopupCss from "./DialoguePopup.module.scss";
 
-const ManageAdOns = ({ setmanageAdons }) => {
+const ManageAdOns = ({ closePopup }) => {
     const [state, setstate] = React.useState({ plans: "", adOns: "" });
     return (
         <div className={DialoguePopupCss.manageAdons}>
@@ -74,10 +74,8 @@ const ManageAdOns = ({ setmanageAdons }) => {
                 </div>
             </div>
             <div className={DialoguePopupCss.greenButtons}>
-                <button onClick={() => setmanageAdons(false)}>Cancel</button>
-                <button onClick={() => setmanageAdons(false)}>
-                    Select Addons
-                </button>
+                <button onClick={() => closePopup()}>Cancel</button>
+                <button onClick={() => closePopup()}>Select Addons</button>
             </div>
         </div>
     );

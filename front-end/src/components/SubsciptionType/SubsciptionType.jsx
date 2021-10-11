@@ -18,24 +18,28 @@ const SubsciptionType = ({ subscription_plan }) => {
         // eslint-disable-next-line
     }, [subscription_plan]);
     const dispatch = useDispatch();
-    const [state, setstate] = React.useState(false);
-    const [manageAdons, setmanageAdons] = React.useState(false);
+    const [popup, setpopup] = React.useState({ adons: false, plans: false });
     const [membership, setmembership] = React.useState({
         current: subscription_plan ? subscription_plan : null,
         next: null,
     });
+    // const [adons, setAdons] = React.useState(null);
+
     const handleSubmit = (plan) => {
         setmembership({ ...membership, next: plan });
     };
     const handleMemberShip = (val) => {
         if (val === true && membership.next != null) {
-            setstate(false);
+            setpopup({ ...popup, plans: false });
             dispatch(subscribePlanStart({ pid: membership.next.id }));
             setmembership({ ...membership, next: null });
         } else {
-            setstate(false);
+            setpopup({ ...popup, plans: false });
             setmembership({ ...membership, next: null });
         }
+    };
+    const closePopup = () => {
+        setpopup({ adons: false, plans: false });
     };
     return (
         <div className={SubTypeCss.container}>
@@ -62,7 +66,11 @@ const SubsciptionType = ({ subscription_plan }) => {
                             </div>
                         ) : null}
                         <div className={SubTypeCss.button}>
-                            <button onClick={() => setstate(true)}>
+                            <button
+                                onClick={() =>
+                                    setpopup({ ...popup, plans: true })
+                                }
+                            >
                                 Change Membership
                             </button>
                         </div>
@@ -75,7 +83,9 @@ const SubsciptionType = ({ subscription_plan }) => {
                         <h1>on November 30, 2020</h1>
                     </div>
                     <div className={SubTypeCss.button}>
-                        <button onClick={() => setmanageAdons(true)}>
+                        <button
+                            onClick={() => setpopup({ ...popup, adons: true })}
+                        >
                             Manage Adons
                         </button>
                     </div>
@@ -105,20 +115,18 @@ const SubsciptionType = ({ subscription_plan }) => {
                     </div>
                 ))}
             </div>
-            {state ? (
+            {popup.plans ? (
                 <Preview position="fixed">
                     {!membership.next ? (
                         <DialoguePopup
-                            setstate={setstate}
                             title="Change Membership"
+                            closePopup={closePopup}
+                            close={true}
                         >
                             <PaymentPlanCards handleSubmit={handleSubmit} />
                         </DialoguePopup>
                     ) : (
-                        <DialoguePopup
-                            setstate={setstate}
-                            title="Change Membership"
-                        >
+                        <DialoguePopup title="Change Membership">
                             <MembershipPopup
                                 membership={membership}
                                 handleMemberShip={handleMemberShip}
@@ -127,13 +135,10 @@ const SubsciptionType = ({ subscription_plan }) => {
                     )}
                 </Preview>
             ) : null}
-            {manageAdons ? (
+            {popup.adons ? (
                 <Preview position="fixed">
-                    <DialoguePopup
-                        setstate={setmanageAdons}
-                        title="Manage Addons"
-                    >
-                        <ManageAdOns setmanageAdons={setmanageAdons} />
+                    <DialoguePopup title="Manage Addons">
+                        <ManageAdOns closePopup={closePopup} />
                     </DialoguePopup>
                 </Preview>
             ) : null}

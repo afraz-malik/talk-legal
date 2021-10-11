@@ -4,9 +4,9 @@ import Preview from "../Preview/Preview";
 import DeletePopUp from "../DialoguePopup/DeletePopUp";
 import DialoguePopup from "../DialoguePopup/DialoguePopup";
 const CompleteOrders = () => {
-    const [state, setstate] = React.useState(false);
+    const [popup, setpopup] = React.useState(false);
     const closePopup = () => {
-        setstate(false);
+        setpopup(false);
     };
     return (
         <div className={COrdersCss.container}>
@@ -45,7 +45,7 @@ const CompleteOrders = () => {
                                     <img
                                         alt=""
                                         src="images/Trash.svg"
-                                        onClick={() => setstate(true)}
+                                        onClick={() => setpopup(true)}
                                     />
                                 </td>
                             </tr>
@@ -60,9 +60,9 @@ const CompleteOrders = () => {
                 })}
                 <div className={COrdersCss.front}>&gt;</div>
             </div>
-            {state ? (
+            {popup ? (
                 <Preview position="fixed">
-                    <DialoguePopup closePopup={closePopup}>
+                    <DialoguePopup>
                         <DeletePopUp closePopup={closePopup} />
                     </DialoguePopup>
                 </Preview>
