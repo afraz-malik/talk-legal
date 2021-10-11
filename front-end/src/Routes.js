@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import { currentUserSelector } from "./redux/user/user.selector";
 import { currentFormSelector } from "./redux/data/data.selector";
 import { useSelector } from "react-redux";
+import { Spinner } from "./components/Spinner/Spinner";
 
 const Routes = () => {
     const currentUser = useSelector((state) => currentUserSelector(state));
@@ -58,7 +59,9 @@ const Routes = () => {
             <Route path="/resetpassword" component={ResetPasswordPage} />
             <Route path="/forget" component={ForgetPage} />
             <Route path="/plans" component={PaymentPlans} />
-            <Route path="/questions" component={Questionaires} />
+            <Route path="/questions">
+                {currentForm ? <Questionaires /> : <Spinner />}
+            </Route>
             <Route path="/checkout" component={CheckoutPage} />
         </Switch>
     );

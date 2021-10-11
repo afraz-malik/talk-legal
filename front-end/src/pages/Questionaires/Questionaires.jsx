@@ -9,11 +9,12 @@ import Logo from "../../components/NavBar/Logo";
 
 import { useDispatch, useSelector } from "react-redux";
 import { currentFormSelector } from "../../redux/data/data.selector";
-import { InsideSpinner } from "../../components/Spinner/Spinner";
+import { InsideSpinner, Spinner } from "../../components/Spinner/Spinner";
 import Preview from "../../components/Preview/Preview";
 import { savingForm } from "../../redux/data/data.action";
 import { currentUserSelector } from "../../redux/user/user.selector";
 import { useHistory } from "react-router";
+import NewForm from "../../components/QuestionairesForm/NewForm";
 
 const Questionaires = () => {
     const currentForm = useSelector((state) => currentFormSelector(state));
@@ -23,11 +24,20 @@ const Questionaires = () => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, [currentForm]);
-    const [state, setstate] = useState({ value: 25 });
+    const total_pages = currentForm.pages.length;
+    const [state, setstate] = useState({
+        value: 100 / total_pages,
+        currentPage: 0,
+    });
     const [toggle, settoggle] = useState(false);
     const handleForm = (data) => {
         if (state.value < 100) {
-            setstate({ ...state, ...data, value: state.value + 25 });
+            setstate({
+                ...state,
+                ...data,
+                value: state.value + 100 / total_pages,
+                currentPage: state.currentPage + 1,
+            });
         } else {
             setstate({ ...state, ...data });
         }
@@ -56,33 +66,22 @@ const Questionaires = () => {
                 </div>
                 <div className={QCss.body}>
                     <div className={QCss.form}>
-                        {state.value === 25 ? (
-                            <Form1 handleForm={handleForm} />
-                        ) : null}
-                        {state.value === 50 ? (
-                            <Form2 handleForm={handleForm} />
-                        ) : null}
-                        {state.value === 75 ? (
-                            <Form3 handleForm={handleForm} />
-                        ) : null}
-                        {state.value === 100 ? (
-                            <Form4
-                                handleForm={handleForm}
-                                settoggle={settoggle}
-                                submitForm={submitForm}
-                            />
-                        ) : null}
+                        <NewForm
+                            newForm={currentForm.pages[state.currentPage]}
+                            handleForm={handleForm}
+                            lastPage={
+                                state.currentPage === total_pages ? true : false
+                            }
+                        />
                     </div>
                     <div
                         className={QCss.hardCopy}
-                        style={{ backgroundImage: "url(images/TLTM.png)" }}
+                        style={{
+                            backgroundImage: "url(images/TLTM.png)",
+                        }}
                     >
                         <div className={QCss.content}>
-                            {currentForm ? (
-                                <HardCopy currentForm={currentForm.form} />
-                            ) : (
-                                <InsideSpinner />
-                            )}
+                            <HardCopy currentForm={currentForm.form} />
                         </div>
                     </div>
                 </div>
@@ -92,7 +91,9 @@ const Questionaires = () => {
                 <Preview position="fixed">
                     <div
                         className={`${QCss.hc} preview`}
-                        style={{ backgroundImage: "url(images/TLTM.png)" }}
+                        style={{
+                            backgroundImage: "url(images/TLTM.png)",
+                        }}
                     >
                         <img
                             className={QCss.hcimg}
@@ -100,15 +101,10 @@ const Questionaires = () => {
                             src="images/x-circle.png"
                             onClick={() => settoggle(false)}
                         />
-
-                        {currentForm ? (
-                            <HardCopy
-                                currentForm={currentForm.form}
-                                state={state}
-                            />
-                        ) : (
-                            <InsideSpinner />
-                        )}
+                        <HardCopy
+                            currentForm={currentForm.form}
+                            state={state}
+                        />
                     </div>
                 </Preview>
             ) : null}
