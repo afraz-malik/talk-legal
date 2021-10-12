@@ -15,6 +15,8 @@ const RegisterForm = ({ location }) => {
     });
     const loading = useSelector((state) => LoadingSelector(state));
     const dispatch = useDispatch();
+    const redirect = location.search ? location.search.split("=")[1] : null;
+    console.log(redirect);
     React.useEffect(() => {
         setstate({ ...state, password: "" });
         return () => {
@@ -96,7 +98,9 @@ const RegisterForm = ({ location }) => {
                 <div className={RegisterFormCss.signin}>
                     {" "}
                     Have an account?{" "}
-                    <Link to="/login">
+                    <Link
+                        to={redirect ? `/login?redirect=${redirect}` : "/login"}
+                    >
                         {" "}
                         <span type="submit">Sign in</span>{" "}
                     </Link>

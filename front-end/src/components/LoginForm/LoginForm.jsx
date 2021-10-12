@@ -12,12 +12,14 @@ import {
 import { Spinner } from "../Spinner/Spinner";
 import { useHistory, withRouter } from "react-router";
 
-const LoginForm = () => {
+const LoginForm = ({ location }) => {
     const dispatch = useDispatch();
     const loading = useSelector((state) => LoadingSelector(state));
     const currentUser = useSelector((state) => currentUserSelector(state));
     const error = useSelector((state) => errorSelector(state));
     const history = useHistory();
+    const redirect = location.search ? location.search.split("=")[1] : null;
+
     React.useEffect(() => {
         if (currentUser) {
             history.push("/dashboard");
@@ -81,7 +83,14 @@ const LoginForm = () => {
                 </div>
                 <h5>
                     Don't have an account?{" "}
-                    <Link to="/register">
+                    <Link
+                        to="/register"
+                        to={
+                            redirect
+                                ? `/register?redirect=${redirect}`
+                                : "/register"
+                        }
+                    >
                         <span>Sign Up</span>
                     </Link>
                 </h5>
