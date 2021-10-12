@@ -6,20 +6,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearError, signInStart } from "../../redux/user/user.action";
 import {
     currentUserSelector,
+    errorSelector,
     LoadingSelector,
 } from "../../redux/user/user.selector";
 import { Spinner } from "../Spinner/Spinner";
-import { withRouter } from "react-router";
+import { useHistory, withRouter } from "react-router";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
     const loading = useSelector((state) => LoadingSelector(state));
     const currentUser = useSelector((state) => currentUserSelector(state));
-
+    const error = useSelector((state) => errorSelector(state));
+    const history = useHistory();
     React.useEffect(() => {
+        if (currentUser) {
+            history.push("/dashboard");
+        }
         return () => {
             reset();
-            dispatch(clearError());
+            // dispatch(clearError());
         };
         // eslint-disable-next-line
     }, [currentUser, dispatch]);
@@ -70,6 +75,7 @@ const LoginForm = () => {
                     />
                     <label htmlFor="keeplogin">Keep Loggged in</label>
                 </div>
+                {error ? <span style={{ color: "red" }}> *{error}</span> : null}
                 <div>
                     <input type="submit" value="Sign In" />
                 </div>

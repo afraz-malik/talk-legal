@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DashboardCss from "./Dashboard.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import FilesDocs from "../../components/FilesDocs/FilesDocs";
@@ -10,8 +10,13 @@ import { currentUserSelector } from "../../redux/user/user.selector";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 const Dashboard = () => {
-    const currentUser = useSelector((state) => currentUserSelector(state));
     const history = useHistory();
+    const currentUser = useSelector((state) => currentUserSelector(state));
+
+    useEffect(() => {
+        if (!currentUser) history.push("/login");
+        return () => {};
+    }, [currentUser]);
     const [state, setstate] = React.useState({
         title: "My Files & Documents",
         value: 1,
