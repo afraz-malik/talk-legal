@@ -173,7 +173,10 @@ export function* gettingForm() {
 // -------------------------------------------------------------
 function* savingFormStart(payload) {
     try {
-        yield localStorage.setItem("currentForm", JSON.stringify({ payload }));
+        yield localStorage.setItem(
+            "currentForm",
+            JSON.stringify({ ...payload })
+        );
         yield put(savingFormSuccess());
     } catch (e) {
         yield put(savingFormFailed(e.message));

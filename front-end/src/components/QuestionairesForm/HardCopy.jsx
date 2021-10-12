@@ -26,7 +26,7 @@ const HardCopy = ({ currentForm, values }) => {
                 }
             }
         }
-    }, [currentForm]);
+    }, []);
     return <div className={`${FormCss.page} hardcopy`}>{}</div>;
 };
 

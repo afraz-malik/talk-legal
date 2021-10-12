@@ -14,9 +14,7 @@ const NewForm = ({ handleForm, newForm, currentPage, lastPage }) => {
     }, [newForm]);
     const handleSubmit = (e) => {
         e.preventDefault();
-        e.target.name = "preview"
-            ? handleForm(currentPage, fields, true)
-            : handleForm(currentPage, fields);
+        handleForm(currentPage, fields);
     };
     const handleChange = (event, idx) => {
         setfields(
@@ -107,6 +105,10 @@ const NewForm = ({ handleForm, newForm, currentPage, lastPage }) => {
                             type="submit"
                             className={FormCss.complete}
                             name="preview"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handleForm(currentPage, fields, true);
+                            }}
                         >
                             Preview
                         </button>

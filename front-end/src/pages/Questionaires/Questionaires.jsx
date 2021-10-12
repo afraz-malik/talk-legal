@@ -55,17 +55,21 @@ const Questionaires = () => {
             } else {
                 if (preview) {
                     settoggle(true);
+                    console.log("ere");
+                } else {
+                    submitForm();
+                    console.log("ere2");
                 }
             }
         }
     };
     const submitForm = () => {
-        dispatch(savingForm({ currentForm }));
-        if (currentUser) {
-            history.push("/plans");
-        } else {
-            history.push({ pathname: "/register", form: true });
-        }
+        dispatch(savingForm(currentForm));
+        // if (currentUser) {
+        //     history.push("/plans");
+        // } else {
+        //     history.push({ pathname: "/register", form: true });
+        // }
     };
     return (
         <div className={QCss.container}>
