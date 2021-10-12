@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import Form1 from "../../components/QuestionairesForm/Form1";
-import Form2 from "../../components/QuestionairesForm/Form2";
-import Form3 from "../../components/QuestionairesForm/Form3";
-import Form4 from "../../components/QuestionairesForm/Form4";
 import HardCopy from "../../components/QuestionairesForm/HardCopy";
 import QCss from "./Questionaires.module.scss";
 import Logo from "../../components/NavBar/Logo";
 
 import { useDispatch, useSelector } from "react-redux";
 import { currentFormSelector } from "../../redux/data/data.selector";
-import { InsideSpinner, Spinner } from "../../components/Spinner/Spinner";
 import Preview from "../../components/Preview/Preview";
 import { savingForm } from "../../redux/data/data.action";
 import { currentUserSelector } from "../../redux/user/user.selector";
@@ -65,11 +60,11 @@ const Questionaires = () => {
     };
     const submitForm = () => {
         dispatch(savingForm(currentForm));
-        // if (currentUser) {
-        //     history.push("/plans");
-        // } else {
-        //     history.push({ pathname: "/register", form: true });
-        // }
+        if (currentUser) {
+            history.push("/plans");
+        } else {
+            history.push({ pathname: "/register", form: true });
+        }
     };
     return (
         <div className={QCss.container}>

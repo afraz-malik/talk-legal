@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import toast from "cogo-toast";
 import FormCss from "./Form.module.scss";
 import { countryList } from "../../countryList";
 import update from "react-addons-update"; // ES6
