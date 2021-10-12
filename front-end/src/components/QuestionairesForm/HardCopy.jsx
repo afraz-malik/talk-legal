@@ -9,11 +9,7 @@ const HardCopy = ({ currentForm, values }) => {
         var $log = $(".hardcopy"),
             html = $.parseHTML(currentForm.discreption);
         $log.append(html);
-        currentForm.pages.map((page) =>
-            page.feilds.map((field) => {
-                return (state = { ...state, [field.name]: field.value });
-            })
-        );
+        fuck();
         if (values) {
             const keys = Object.keys(state);
             for (let i = 0; i < keys.length; i++) {
@@ -26,7 +22,16 @@ const HardCopy = ({ currentForm, values }) => {
                 }
             }
         }
-    }, []);
+        // eslint-disable-next-line
+    }, [currentForm, values]);
+    console.log(currentForm);
+    const fuck = () => {
+        currentForm.pages.map((page) =>
+            page.feilds.map((field) => {
+                return (state = { ...state, [field.name]: field.value });
+            })
+        );
+    };
     return <div className={`${FormCss.page} hardcopy`}>{}</div>;
 };
 

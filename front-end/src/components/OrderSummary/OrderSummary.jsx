@@ -19,8 +19,8 @@ const OrderSummary = ({ children, location }) => {
             >
                 <div className={`${OrderCss.content} preview`}>
                     <HardCopy
-                        currentForm={currentForm ? currentForm.form : null}
-                        state={currentForm ? currentForm.state : null}
+                        currentForm={currentForm ? currentForm : null}
+                        values={true}
                     />
                 </div>
             </div>
