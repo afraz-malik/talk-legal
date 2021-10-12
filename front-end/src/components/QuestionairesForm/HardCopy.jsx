@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import FormCss from "./Form.module.scss";
 
 import $ from "jquery";
-const HardCopy = ({ currentForm, state }) => {
+const HardCopy = ({ currentForm, values }) => {
+    let state = {};
     React.useEffect(() => {
         window.scrollTo(0, 0);
         var $log = $(".hardcopy"),
-            html = $.parseHTML(currentForm);
+            html = $.parseHTML(currentForm.discreption);
         $log.append(html);
-        if (state) {
+        currentForm.pages.map((page) =>
+            page.feilds.map((field) => {
+                return (state = { ...state, [field.name]: field.value });
+            })
+        );
+        if (values) {
             const keys = Object.keys(state);
             for (let i = 0; i < keys.length; i++) {
                 let key = keys[i];
@@ -20,8 +26,7 @@ const HardCopy = ({ currentForm, state }) => {
                 }
             }
         }
-    }, [currentForm, state]);
-
+    }, [currentForm]);
     return <div className={`${FormCss.page} hardcopy`}>{}</div>;
 };
 

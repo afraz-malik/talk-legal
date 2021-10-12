@@ -4,17 +4,19 @@ import FormCss from "./Form.module.scss";
 import { countryList } from "../../countryList";
 import update from "react-addons-update"; // ES6
 
-const NewForm = ({ handleForm, newForm, lastPage }) => {
+const NewForm = ({ handleForm, newForm, currentPage, lastPage }) => {
     const [fields, setfields] = useState(newForm.feilds);
     const [state, setstate] = useState("");
-    console.log(fields);
     const [toggle, settoggle] = useState(false);
     React.useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+        setfields(newForm.feilds);
+    }, [newForm]);
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleForm();
+        e.target.name = "preview"
+            ? handleForm(currentPage, fields, true)
+            : handleForm(currentPage, fields);
     };
     const handleChange = (event, idx) => {
         setfields(
@@ -102,10 +104,9 @@ const NewForm = ({ handleForm, newForm, lastPage }) => {
                 {lastPage ? (
                     <>
                         <button
-                            type="button"
+                            type="submit"
                             className={FormCss.complete}
                             name="preview"
-                            onClick={handleSubmit}
                         >
                             Preview
                         </button>
