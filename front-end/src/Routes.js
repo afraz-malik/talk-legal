@@ -22,40 +22,9 @@ const Routes = () => {
         <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/business" component={BusinessOpPage} />
-            <Route
-                path="/login"
-                render={() =>
-                    currentUser ? (
-                        currentForm ? (
-                            <Redirect to={`/plans`} />
-                        ) : (
-                            <Redirect to="/dashboard" />
-                        )
-                    ) : (
-                        <LoginPage />
-                    )
-                }
-            />
-            <Route
-                path="/register"
-                render={() =>
-                    currentUser ? (
-                        currentForm ? (
-                            <Redirect to={`/plans`} />
-                        ) : (
-                            <Redirect to="/dashboard" />
-                        )
-                    ) : (
-                        <RegisterPage />
-                    )
-                }
-            />
-            <Route
-                path="/dashboard"
-                render={() =>
-                    !currentUser ? <Redirect to={`/login`} /> : <Dashboard />
-                }
-            />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/resetpassword" component={ResetPasswordPage} />
             <Route path="/forget" component={ForgetPage} />
             <Route path="/plans" component={PaymentPlans} />

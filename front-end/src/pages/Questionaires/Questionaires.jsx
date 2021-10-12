@@ -61,9 +61,14 @@ const Questionaires = () => {
     const submitForm = () => {
         dispatch(savingForm(currentForm));
         if (currentUser) {
+            console.log(currentUser);
             history.push("/plans");
         } else {
-            history.push({ pathname: "/register", form: true });
+            history.push({
+                pathname: "/register",
+                search: "?redirect=plans",
+                form: true,
+            });
         }
     };
     return (
