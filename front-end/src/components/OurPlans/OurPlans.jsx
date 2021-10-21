@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import OurPlansCss from "./OurPlans.module.scss";
 import { subsctiptionsSelector } from "../../redux/data/data.selector";
 const OurPlans = () => {
     const plans = useSelector((state) => subsctiptionsSelector(state));
+    console.log(plans);
+    const [selectedPlan, setSelectedPlan] = useState(2);
     return (
         <>
             {plans ? (
@@ -23,9 +25,12 @@ const OurPlans = () => {
                                     <td key={plan.id}>
                                         <div
                                             className={
-                                                plan.id === 2
+                                                plan.id === selectedPlan
                                                     ? OurPlansCss.active
                                                     : OurPlansCss.card
+                                            }
+                                            onClick={() =>
+                                                setSelectedPlan(plan.id)
                                             }
                                         >
                                             <h3>{plan.title}</h3>
