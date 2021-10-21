@@ -10,11 +10,11 @@ const Header = () => {
             className={HeaderCss.header}
             style={{
                 background: `linear-gradient(0deg, rgba(120, 84, 247, 0), rgba(120, 84, 247, 0)), url(images/header.png) center`,
+                backgroundRepeat: "no-repeat",
                 // backgroundSize: "top",
             }}
         >
             <div className={HeaderCss.container}>
-                {/* <h2>Entrepreneurship starts here.</h2> */}
                 <h2>
                     We provide affordable and accessible legal tools to help
                     build your business.

@@ -11,6 +11,7 @@ import { currentUserSelector } from "../../redux/user/user.selector";
 import { useHistory } from "react-router";
 import NewForm from "../../components/QuestionairesForm/NewForm";
 import update from "react-addons-update"; // ES6
+import NavBar from "../../components/NavBar/NavBar";
 
 const Questionaires = () => {
     const formSelector = useSelector((state) => currentFormSelector(state));
@@ -84,7 +85,7 @@ const Questionaires = () => {
     return (
         <div className={QCss.container}>
             <div className={QCss.container2}>
-                <Logo />
+                <NavBar />
                 <div className={QCss.progress_bar}>
                     <div
                         className={QCss.progress_complete}

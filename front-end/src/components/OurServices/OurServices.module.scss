@@ -181,6 +181,11 @@
                     /* identical to box height, or 139% */
                     text-decoration: none;
                     color: #299ef3;
+                    border-bottom: 1px solid transparent;
+
+                    &:hover {
+                        border-bottom: 1px solid #299ef3;
+                    }
                 }
             }
         }

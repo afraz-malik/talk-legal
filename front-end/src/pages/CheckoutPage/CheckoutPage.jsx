@@ -1,19 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router";
 import OrderSummary from "../../components/OrderSummary/OrderSummary";
 import PaymentDetails from "../../components/PaymentDetails/PaymentDetails";
 import CheckoutPageCss from "./CheckoutPage.module.scss";
-import CheckoutPlans from "../../components/CheckoutPlans/CheckoutPlans";
-const CheckoutPage = ({ location }) => {
+const CheckoutPage = () => {
+    const [totalValue, settotalValue] = useState(0);
     return (
         <div className={CheckoutPageCss.container}>
             <div className={CheckoutPageCss.paymentdetails}>
-                <PaymentDetails />
+                <PaymentDetails totalValue={totalValue} />
             </div>
             <div className={CheckoutPageCss.summary}>
-                <OrderSummary>
-                    {location.plan ? <CheckoutPlans /> : null}
-                </OrderSummary>
+                <OrderSummary settotalValue={settotalValue} />
             </div>
         </div>
     );

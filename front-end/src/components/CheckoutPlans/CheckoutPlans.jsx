@@ -6,15 +6,47 @@ import { useSelector } from "react-redux";
 
 import { subsctiptionsSelector } from "../../redux/data/data.selector";
 
-const CheckoutPlans = ({ location }) => {
+const CheckoutPlans = ({ location, setPlanBill }) => {
     const plans = useSelector((state) => subsctiptionsSelector(state));
-
+    const addons = [
+        {
+            id: 1,
+            title: "Unlimited Sessions",
+            price: 100,
+            desp: "Unlimited 30-minutes sessions per month (no refunds)",
+        },
+        {
+            id: 2,
+            title: "One-time Session",
+            price: 80,
+            desp: "One time 30-minutes session",
+        },
+    ];
     React.useEffect(() => {
         if (location.plan) setstate({ ...state, plan: location.plan });
         // eslint-disable-next-line
     }, [location.plan]);
     const [box, setbox] = React.useState({ plansBox: true, adOnsBox: true });
     const [state, setstate] = React.useState({ plan: "", adOns: "" });
+    const updatePlan = (plan) => {
+        if (state.plan.id === plan.id) {
+            setstate({ ...state, plan: "" });
+        } else {
+            if (plan.id === 3) {
+                setstate({ plan: plan, adOns: "" });
+            } else {
+                setstate({ ...state, plan: plan });
+            }
+        }
+    };
+    const updateAdon = (adon) => {
+        if (state.adOns.id === adon.id) {
+            setstate({ ...state, adOns: "" });
+        } else {
+            setstate({ ...state, adOns: adon });
+        }
+    };
+    setPlanBill(state);
     return (
         <>
             {plans ? (
@@ -50,21 +82,14 @@ const CheckoutPlans = ({ location }) => {
                                         ? { display: "flex" }
                                         : { display: "none" }
                                 }
-                                onClick={() =>
-                                    setstate({ ...state, plan: plan })
-                                }
+                                onClick={() => updatePlan(plan)}
                             >
                                 <label className={CheckoutPlansCss.container2}>
                                     <input
                                         type="radio"
                                         name="plans"
                                         checked={state.plan.id === plan.id}
-                                        onChange={() =>
-                                            setstate({
-                                                ...state,
-                                                plan: plan,
-                                            })
-                                        }
+                                        disabled
                                     />
                                     <span
                                         className={CheckoutPlansCss.checkmark}
@@ -85,7 +110,7 @@ const CheckoutPlans = ({ location }) => {
                             </div>
                         ))}
                     </div>
-                    {state.plan.id === 3 ? null : (
+                    {state.plan.id === 3 || state.plan === "" ? null : (
                         <div className={CheckoutPlansCss.ad_on}>
                             <div
                                 className={CheckoutPlansCss.box}
@@ -104,11 +129,11 @@ const CheckoutPlans = ({ location }) => {
                                     }
                                 />
                             </div>
-                            {plans.map((plan, idx) => (
+                            {addons.map((addon, idx) => (
                                 <div
                                     key={idx}
                                     className={`${CheckoutPlansCss.card} ${
-                                        state.adOns === plan.add_on.id
+                                        state.adOns.id === addon.id
                                             ? CheckoutPlansCss.activeCard
                                             : null
                                     }`}
@@ -117,12 +142,7 @@ const CheckoutPlans = ({ location }) => {
                                             ? { display: "flex" }
                                             : { display: "none" }
                                     }
-                                    onClick={() =>
-                                        setstate({
-                                            ...state,
-                                            adOns: plan.add_on.id,
-                                        })
-                                    }
+                                    onClick={() => updateAdon(addon)}
                                 >
                                     <label
                                         className={CheckoutPlansCss.container2}
@@ -130,16 +150,11 @@ const CheckoutPlans = ({ location }) => {
                                         <input
                                             type="radio"
                                             name="radio"
-                                            value={plan.add_on.id}
+                                            value={addon.id}
                                             checked={
-                                                state.adOns === plan.add_on.id
+                                                state.adOns.id === addon.id
                                             }
-                                            onChange={(e) =>
-                                                setstate({
-                                                    ...state,
-                                                    adOns: e.target.value,
-                                                })
-                                            }
+                                            disabled
                                         />
                                         <span
                                             className={
@@ -149,10 +164,10 @@ const CheckoutPlans = ({ location }) => {
                                     </label>
                                     <div className={CheckoutPlansCss.text}>
                                         <div className={CheckoutPlansCss.top}>
-                                            <h2>Add Ons</h2>
-                                            <h2>${plan.add_on.cost}</h2>
+                                            <h2>{addon.title}</h2>
+                                            <h2>${addon.price}</h2>
                                         </div>
-                                        <p>{plan.add_on.session_benifits}</p>
+                                        <p>{addon.desp}</p>
                                     </div>
                                 </div>
                             ))}

@@ -1,18 +1,18 @@
 .container {
-  display: flex;
-  // flex-wrap: wrap;
-  .paymentdetails {
-    // flex: 1;
-    width: 50%;
-  }
-  .summary {
-    // flex: 1;
-    width: 50%;
-    background: #e5e5e5;
-    // opacity: 0.1 ;
-    // height: 200vh;
-    // width: 100%;
-  }
+    display: flex;
+    // flex-wrap: wrap;
+    .paymentdetails {
+        // flex: 1;
+        width: 50%;
+    }
+    .summary {
+        // flex: 1;
+        width: 50%;
+        background: #e5e5e5;
+        // opacity: 0.1 ;
+        // height: 200vh;
+        // width: 100%;
+    }
 }
 @media (min-width: 1281px) {
 }
@@ -47,26 +47,26 @@
 */
 
 @media (min-width: 600px) and (max-width: 767px) {
-  .container {
-    flex-direction: column-reverse;
-    .paymentdetails {
-      width: 100%;
+    .container {
+        flex-direction: column-reverse;
+        .paymentdetails {
+            width: 100%;
+        }
+        .summary {
+            width: 100%;
+        }
     }
-    .summary {
-      width: 100%;
-    }
-  }
 }
 @media (min-width: 481px) and (max-width: 599px) {
-  .container {
-    flex-direction: column-reverse;
-    .paymentdetails {
-      width: 100%;
+    .container {
+        flex-direction: column-reverse;
+        .paymentdetails {
+            width: 100%;
+        }
+        .summary {
+            width: 100%;
+        }
     }
-    .summary {
-      width: 100%;
-    }
-  }
 }
 
 /* 
@@ -75,13 +75,13 @@
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .container {
-    flex-direction: column-reverse;
-    .paymentdetails {
-      width: 100%;
+    .container {
+        flex-direction: column-reverse;
+        .paymentdetails {
+            width: 100%;
+        }
+        .summary {
+            width: 100%;
+        }
     }
-    .summary {
-      width: 100%;
-    }
-  }
 }

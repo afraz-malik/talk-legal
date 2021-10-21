@@ -4,7 +4,7 @@ import PDCss from "./PaymentDetails.module.scss";
 import { useForm } from "react-hook-form";
 import cogotoast from "cogo-toast";
 import { countryList } from "../../countryList";
-const PaymentDetails = () => {
+const PaymentDetails = ({ totalValue }) => {
     useEffect(() => {
         window.addEventListener("mouseup", clickEvent);
         return () => {
@@ -198,7 +198,7 @@ const PaymentDetails = () => {
                     </div>
                 </div>
                 <div className={PDCss.row}>
-                    <input type="submit" value={"Pay $48.80"} />
+                    <input type="submit" value={`Pay $${totalValue}`} />
                 </div>
             </form>
         </div>

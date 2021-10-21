@@ -144,12 +144,12 @@ function* signOutStart() {
     const state = yield select();
     const token = state.userReducer.token;
     try {
+        localStorage.removeItem("currentUser");
+        sessionStorage.removeItem("currentUser");
+        toast.success("Logout Successfully");
+        yield put(signOutSuccess());
         if (token) {
             yield fetchDbPost("api/logout", token, null);
-            yield put(signOutSuccess());
-            localStorage.removeItem("currentUser");
-            sessionStorage.removeItem("currentUser");
-            toast.success("Logout Successfully");
         }
     } catch (error) {
         yield put(signOutFailed(error));
