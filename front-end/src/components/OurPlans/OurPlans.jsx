@@ -25,9 +25,10 @@ const OurPlans = () => {
                                     <td key={plan.id}>
                                         <div
                                             className={
-                                                plan.id === selectedPlan
-                                                    ? OurPlansCss.active
-                                                    : OurPlansCss.card
+                                                // plan.id === selectedPlan
+                                                //     ? OurPlansCss.active
+                                                //     : OurPlansCss.card
+                                                OurPlansCss.card
                                             }
                                             onClick={() =>
                                                 setSelectedPlan(plan.id)

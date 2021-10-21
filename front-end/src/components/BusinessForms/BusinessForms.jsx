@@ -33,7 +33,7 @@ const BusinessForms = () => {
             </div>
             <div className={BFormsCss.card}>
                 <div className={BFormsCss.imgTaker}>
-                    <img alt="" src="images/bagpen.png" />
+                    <img alt="" src="images/2nd f.png" />
                 </div>
                 <div className={BFormsCss.text}>
                     <h3>LLC Bundle</h3>
@@ -52,7 +52,7 @@ const BusinessForms = () => {
             </div>
             <div className={BFormsCss.card}>
                 <div className={BFormsCss.imgTaker}>
-                    <img alt="" src="images/bagpen.png" />
+                    <img alt="" src="images/3rd form.png" />
                 </div>
                 <div className={BFormsCss.text}>
                     <h3>LLC Bundle</h3>

@@ -2,6 +2,7 @@
     form {
         display: flex;
         // align-items: center;
+        // justify-content: center;
         flex-direction: column;
         h2 {
             font-family: Circular Std;
@@ -165,8 +166,10 @@
             display: flex;
             align-items: center;
             margin-bottom: 10px;
+            width: 100%;
         }
         input[type="submit"] {
+            width: 100%;
             background: #7854f7;
             border-radius: 6px;
             outline: none;

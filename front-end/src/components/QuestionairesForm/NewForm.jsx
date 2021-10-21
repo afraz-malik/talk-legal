@@ -36,7 +36,7 @@ const NewForm = ({ handleForm, newForm, currentPage, lastPage }) => {
                     switch (field.type) {
                         case "list":
                             return (
-                                <>
+                                <div key={idx}>
                                     <label>{fields[idx].title}</label>
                                     <div className={FormCss.dropdownbox}>
                                         <div
@@ -81,11 +81,11 @@ const NewForm = ({ handleForm, newForm, currentPage, lastPage }) => {
                                             </ul>
                                         </div>
                                     </div>
-                                </>
+                                </div>
                             );
                         default:
                             return (
-                                <>
+                                <div key={idx}>
                                     <label>{fields[idx].label}</label>
                                     <input
                                         type={fields[idx].type}
@@ -94,7 +94,7 @@ const NewForm = ({ handleForm, newForm, currentPage, lastPage }) => {
                                         value={fields[idx].value}
                                         onChange={(e) => handleChange(e, idx)}
                                     />
-                                </>
+                                </div>
                             );
                     }
                 })}

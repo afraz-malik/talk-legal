@@ -50,10 +50,8 @@ const Questionaires = () => {
             } else {
                 if (preview) {
                     settoggle(true);
-                    console.log("ere");
                 } else {
                     submitForm();
-                    console.log("ere2");
                 }
             }
         }
@@ -71,6 +69,18 @@ const Questionaires = () => {
             });
         }
     };
+
+    if (toggle) {
+        console.log("here");
+        window.addEventListener("keydown", (e) => {
+            console.log("event listern started");
+            console.log(e);
+        });
+    } else {
+        window.removeEventListener("keypress", (e) => {
+            console.log("eventListener destroyed");
+        });
+    }
     return (
         <div className={QCss.container}>
             <div className={QCss.container2}>
@@ -105,7 +115,7 @@ const Questionaires = () => {
                         }}
                     >
                         <div className={QCss.content}>
-                            <HardCopy currentForm={currentForm} />
+                            <HardCopy />
                         </div>
                     </div>
                 </div>
@@ -125,7 +135,7 @@ const Questionaires = () => {
                             src="images/x-circle.png"
                             onClick={() => settoggle(false)}
                         />
-                        <HardCopy currentForm={currentForm} values={true} />
+                        <HardCopy values={currentForm} />
                     </div>
                 </Preview>
             ) : null}

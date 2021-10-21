@@ -18,10 +18,7 @@ const OrderSummary = ({ children, location }) => {
                 style={{ backgroundImage: "url(images/TLTM.png)" }}
             >
                 <div className={`${OrderCss.content} preview`}>
-                    <HardCopy
-                        currentForm={currentForm ? currentForm : null}
-                        values={true}
-                    />
+                    <HardCopy values={currentForm} />
                 </div>
             </div>
             {children}
