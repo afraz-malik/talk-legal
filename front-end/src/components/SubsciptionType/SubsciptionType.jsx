@@ -1,43 +1,25 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { subscribePlanStart } from "../../redux/user/user.action";
+import { useSelector } from "react-redux";
+import {
+    LoadingSelector,
+    successSelector,
+} from "../../redux/user/user.selector";
 import DialoguePopup from "../DialoguePopup/DialoguePopup";
 import ManageAdOns from "../DialoguePopup/ManageAdOns";
-import MembershipPopup from "../DialoguePopup/MembershipPopup";
-import PaymentPlanCards from "../PaymentPlanCards/PaymentPlanCards";
+
 import Preview from "../Preview/Preview";
+import { Spinner } from "../Spinner/Spinner";
+import UpdatePlans from "../UpdatePlans/UpdatePlans";
 import SubTypeCss from "./SubsciptionType.module.scss";
 
 const SubsciptionType = ({ subscription_plan }) => {
+    const loading = useSelector((state) => LoadingSelector(state));
+    const success = useSelector((state) => successSelector(state));
     useEffect(() => {
-        setmembership({
-            ...membership,
-            current: subscription_plan ? subscription_plan : null,
-        });
         return () => {};
         // eslint-disable-next-line
     }, [subscription_plan]);
-    const dispatch = useDispatch();
     const [popup, setpopup] = React.useState({ adons: false, plans: false });
-    const [membership, setmembership] = React.useState({
-        current: subscription_plan ? subscription_plan : null,
-        next: null,
-    });
-    // const [adons, setAdons] = React.useState(null);
-
-    const handleSubmit = (plan) => {
-        setmembership({ ...membership, next: plan });
-    };
-    const handleMemberShip = (val) => {
-        if (val === true && membership.next != null) {
-            setpopup({ ...popup, plans: false });
-            dispatch(subscribePlanStart({ pid: membership.next.id }));
-            setmembership({ ...membership, next: null });
-        } else {
-            setpopup({ ...popup, plans: false });
-            setmembership({ ...membership, next: null });
-        }
-    };
     const closePopup = () => {
         setpopup({ adons: false, plans: false });
     };
@@ -46,18 +28,17 @@ const SubsciptionType = ({ subscription_plan }) => {
             <div className={SubTypeCss.subscription}>
                 <div className={SubTypeCss.membership}>
                     <div className={SubTypeCss.top}>
-                        <h1>{membership.current.title} Membership</h1>
+                        <h1>{subscription_plan.title} Membership</h1>
                         <div className={SubTypeCss.right}>
-                            <h3>${membership.current.membership_cost}/</h3>
+                            <h3>${subscription_plan.membership_cost}/</h3>
                             <p>Membership</p>
                         </div>
                     </div>
                     <div className={SubTypeCss.bottom}>
-                        {membership.current.no_of_documents > 0 ? (
+                        {subscription_plan.no_of_documents > 0 ? (
                             <div className={SubTypeCss.left}>
                                 <p>
-                                    3 out of{" "}
-                                    {membership.current.no_of_documents}{" "}
+                                    3 out of {subscription_plan.no_of_documents}{" "}
                                     Documents
                                 </p>
                                 <div className={SubTypeCss.progress}>
@@ -115,26 +96,7 @@ const SubsciptionType = ({ subscription_plan }) => {
                     </div>
                 ))}
             </div>
-            {popup.plans ? (
-                <Preview position="fixed">
-                    {!membership.next ? (
-                        <DialoguePopup
-                            title="Change Membership"
-                            closePopup={closePopup}
-                            close={true}
-                        >
-                            <PaymentPlanCards handleSubmit={handleSubmit} />
-                        </DialoguePopup>
-                    ) : (
-                        <DialoguePopup title="Change Membership">
-                            <MembershipPopup
-                                membership={membership}
-                                handleMemberShip={handleMemberShip}
-                            />
-                        </DialoguePopup>
-                    )}
-                </Preview>
-            ) : null}
+            {popup.plans ? <UpdatePlans closePopup={closePopup} /> : null}
             {popup.adons ? (
                 <Preview position="fixed">
                     <DialoguePopup title="Manage Addons">
@@ -142,6 +104,7 @@ const SubsciptionType = ({ subscription_plan }) => {
                     </DialoguePopup>
                 </Preview>
             ) : null}
+            {loading ? <Spinner /> : null}
         </div>
     );
 };

@@ -80,7 +80,7 @@ const AccountSettings = ({ currentUser }) => {
                     <input
                         type="password"
                         placeholder="Enter Current Password"
-                        defaultValue="Johnfuckingdoe"
+                        defaultValue="Johnfudoe"
                         id="cp"
                     />
                     <img

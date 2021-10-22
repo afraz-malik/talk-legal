@@ -4,14 +4,20 @@ import OrderSummary from "../../components/OrderSummary/OrderSummary";
 import PaymentDetails from "../../components/PaymentDetails/PaymentDetails";
 import CheckoutPageCss from "./CheckoutPage.module.scss";
 const CheckoutPage = () => {
-    const [totalValue, settotalValue] = useState(0);
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    const [checkout, setcheckout] = useState();
+    const handleCheckout = (bill) => {
+        setcheckout(bill);
+    };
     return (
         <div className={CheckoutPageCss.container}>
             <div className={CheckoutPageCss.paymentdetails}>
-                <PaymentDetails totalValue={totalValue} />
+                <PaymentDetails checkout={checkout} />
             </div>
             <div className={CheckoutPageCss.summary}>
-                <OrderSummary settotalValue={settotalValue} />
+                <OrderSummary handleCheckout={handleCheckout} />
             </div>
         </div>
     );

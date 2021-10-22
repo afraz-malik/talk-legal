@@ -1,10 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { currentUserSelector } from "../../redux/user/user.selector";
 
 import HeaderCss from "./Header.module.scss";
 
 const Header = () => {
+    const currentUser = useSelector((state) => currentUserSelector(state));
     return (
         <div
             className={HeaderCss.header}
@@ -25,7 +28,7 @@ const Header = () => {
                 </p>
                 <div className={HeaderCss.link}>
                     <Link to="/register" className={HeaderCss.a}>
-                        Sign Up For Free
+                        {currentUser ? "Get Started" : "Sign Up For Free"}
                     </Link>
                     or
                     <span>

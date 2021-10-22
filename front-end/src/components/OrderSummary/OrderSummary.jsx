@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 import { currentFormSelector } from "../../redux/data/data.selector";
@@ -7,7 +7,7 @@ import Logo from "../NavBar/Logo";
 import HardCopy from "../QuestionairesForm/HardCopy";
 import OrderCss from "./OrderSummary.module.scss";
 import OrderSummaryGen from "./OrderSummaryGen";
-const OrderSummary = ({ location, form, settotalValue }) => {
+const OrderSummary = ({ location, form, handleCheckout }) => {
     const currentForm = useSelector((state) => currentFormSelector(state));
     const [planBill, setPlanBill] = useState({});
     let subtotal =
@@ -16,7 +16,13 @@ const OrderSummary = ({ location, form, settotalValue }) => {
         Number(form ? form : 0);
     let tax = (subtotal * 10) / 100;
     let totalValue = tax + subtotal;
-    settotalValue(totalValue);
+    useEffect(() => {
+        handleCheckout({
+            ...planBill,
+            totalValue: totalValue,
+        });
+        return () => {};
+    }, [planBill]);
     return (
         <div className={OrderCss.container}>
             <div className={OrderCss.logo}>

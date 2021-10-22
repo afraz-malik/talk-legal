@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { getSubscriptionsPlansStart } from "./redux/data/data.action";
 import { getCurrentUser } from "./redux/user/user.action";
 import Routes from "./Routes";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
     const dispatch = useDispatch();
@@ -16,9 +18,12 @@ function App() {
     }, []);
 
     return (
-        <Router basename="/">
-            <Routes />
-        </Router>
+        <>
+            <ToastContainer />
+            <Router basename="/">
+                <Routes />
+            </Router>
+        </>
     );
 }
 

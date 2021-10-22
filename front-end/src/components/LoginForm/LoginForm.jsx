@@ -4,6 +4,8 @@ import LoginFormCss from "./LoginForm.module.scss";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { clearError, signInStart } from "../../redux/user/user.action";
+import { toast } from "react-toastify";
+
 import {
     currentUserSelector,
     errorSelector,
@@ -19,14 +21,16 @@ const LoginForm = ({ location }) => {
     const error = useSelector((state) => errorSelector(state));
     const history = useHistory();
     const redirect = location.search ? location.search.split("=")[1] : null;
-
     React.useEffect(() => {
         if (currentUser) {
-            history.push("/dashboard");
+            dispatch(clearError());
+            redirect
+                ? history.push(`/${redirect}`)
+                : history.push("/dashboard");
         }
         return () => {
             reset();
-            // dispatch(clearError());
+            dispatch(clearError());
         };
         // eslint-disable-next-line
     }, [currentUser, dispatch]);
@@ -37,7 +41,11 @@ const LoginForm = ({ location }) => {
         reset,
     } = useForm();
     const onSubmit = async (data) => {
-        dispatch(signInStart(data));
+        if (data.password.length < 6) {
+            toast.warn("Password Must be at least 6 characters long");
+        } else {
+            dispatch(signInStart(data));
+        }
     };
     return (
         <div className={LoginFormCss.form}>
@@ -48,9 +56,8 @@ const LoginForm = ({ location }) => {
                     type="email"
                     placeholder="Enter Email Address"
                     name="email"
-                    {...register("email", {
-                        required: "Required",
-                    })}
+                    required
+                    {...register("email")}
                 />
                 <label>Enter Password*</label>
 
@@ -58,11 +65,9 @@ const LoginForm = ({ location }) => {
                     type="password"
                     placeholder="Enter Password"
                     name="password"
-                    {...register("password", {
-                        required: "Required",
-                    })}
+                    required
+                    {...register("password")}
                 />
-
                 <h5>
                     Forget password?{" "}
                     <Link to="/forget">
@@ -77,7 +82,6 @@ const LoginForm = ({ location }) => {
                     />
                     <label htmlFor="keeplogin">Keep Loggged in</label>
                 </div>
-                {error ? <span style={{ color: "red" }}> *{error}</span> : null}
                 <div>
                     <input type="submit" value="Sign In" />
                 </div>

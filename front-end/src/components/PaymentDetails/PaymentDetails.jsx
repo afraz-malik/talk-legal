@@ -4,17 +4,35 @@ import PDCss from "./PaymentDetails.module.scss";
 import { useForm } from "react-hook-form";
 import cogotoast from "cogo-toast";
 import { countryList } from "../../countryList";
-const PaymentDetails = ({ totalValue }) => {
+import { clearError, subscribePlanStart } from "../../redux/user/user.action";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    LoadingSelector,
+    successSelector,
+} from "../../redux/user/user.selector";
+import { Spinner } from "../Spinner/Spinner";
+import { useHistory } from "react-router";
+const PaymentDetails = ({ checkout }) => {
+    const loading = useSelector((state) => LoadingSelector(state));
+    const success = useSelector((state) => successSelector(state));
+    const history = useHistory();
     useEffect(() => {
         window.addEventListener("mouseup", clickEvent);
+        if (success) {
+            dispatch(clearError());
+            reset();
+            history.push("/dashboard");
+        }
         return () => {
             reset();
             window.removeEventListener("mouseup", clickEvent);
             console.log("removed event listner from paymentdetails");
+            dispatch(clearError());
         };
         // eslint-disable-next-line
-    }, []);
+    }, [success]);
     const [toggle, settoggle] = React.useState(false);
+    const dispatch = useDispatch();
     const [country, setCountry] = React.useState("");
     const clickEvent = (e) => {
         var container = document.getElementById("dd_content");
@@ -29,8 +47,11 @@ const PaymentDetails = ({ totalValue }) => {
         reset,
     } = useForm();
     const onSubmit = (data) => {
-        cogotoast.success("Check console.");
-        console.log(data);
+        // cogotoast.success("Check console.");
+        console.log({ data, checkout });
+        if (checkout.plan) {
+            dispatch(subscribePlanStart({ pid: checkout.plan.id }));
+        }
     };
     return (
         <div className={PDCss.container}>
@@ -198,9 +219,13 @@ const PaymentDetails = ({ totalValue }) => {
                     </div>
                 </div>
                 <div className={PDCss.row}>
-                    <input type="submit" value={`Pay $${totalValue}`} />
+                    <input
+                        type="submit"
+                        value={`Pay $${checkout ? checkout.totalValue : 0}`}
+                    />
                 </div>
             </form>
+            {loading ? <Spinner /> : null}
         </div>
     );
 };

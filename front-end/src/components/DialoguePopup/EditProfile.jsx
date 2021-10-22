@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import DialoguePopupCss from "./DialoguePopup.module.scss";
-import toast from "cogo-toast";
+
 const EditProfile = ({ popup, setpopup, user }) => {
     const [state, setstate] = useState(user);
     const handleChange = (event) => {
@@ -8,7 +9,6 @@ const EditProfile = ({ popup, setpopup, user }) => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-
         toast.success("Check Console Log");
         console.log(state);
     };
@@ -33,7 +33,8 @@ const EditProfile = ({ popup, setpopup, user }) => {
                 />
                 <label>Phone Number</label>
                 <input
-                    type="text"
+                    type="phone"
+                    pattern="[0-9]{8,15}"
                     placeholder="Enter Phone Number"
                     value={state.phone}
                     name="phone"

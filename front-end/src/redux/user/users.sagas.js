@@ -1,6 +1,7 @@
 import { takeLatest, put, select } from "redux-saga/effects";
 import { fetchDbGet, fetchDbPost } from "../../backend/backend";
-import toast from "cogo-toast";
+import { toast } from "react-toastify";
+
 import {
     forgetPasswordFailed,
     forgetPasswordSuccess,
@@ -11,6 +12,7 @@ import {
     signOutFailed,
     signOutSuccess,
     signUpFailed,
+    signUpSuccess,
     subscribePlanFailed,
     subscribePlanSuccess,
 } from "./user.action";
@@ -82,9 +84,9 @@ export function* signUpStart({ payload }) {
     try {
         const response = yield fetchDbPost("api/register", null, payload);
         if (response.user) {
-            const { user, access_token } = response;
-            toast.success("Register SuccessFully");
-            yield puttingUser(user.id, access_token.plainTextToken, true);
+            toast.success("Register SuccessFully, Kindly Login");
+            yield put(signUpSuccess());
+            // yield puttingUser(user.id, access_token.plainTextToken, true);
         } else if (response.error) {
             for (const key in response.error) {
                 if (response.error.hasOwnProperty(key)) {
@@ -125,10 +127,10 @@ export function* signInStart({ payload }) {
                 );
             }
         } else if (response.message) {
-            toast.error(response.message, { hideAfter: 10 });
+            toast.error(response.message);
             yield put(signInFailed(response.message));
         } else {
-            toast.error(response, { hideAfter: 10 });
+            toast.error(response);
             yield put(signInFailed(response));
         }
     } catch (error) {
@@ -194,9 +196,7 @@ function* passwordResetStart({ payload }) {
     try {
         const response = yield fetchDbPost("api/reset-password", null, payload);
         if (response.response === "500") {
-            toast.error("Link Has been expired, Kindly Request a New Link", {
-                hideAfter: 10,
-            });
+            toast.error("Link Has been expired, Kindly Request a New Link");
             yield put(passwordResetFailed(response.message));
         } else {
             yield put(passwordResetSuccess());
@@ -219,9 +219,7 @@ function* subscribePlanStart({ payload }) {
             token
         );
         if (response.response === "200") {
-            toast.success("Plan Has Been Updated !", {
-                hideAfter: 10,
-            });
+            toast.success("Plan Has Been Updated !");
             yield puttingUser(uid, token, false);
             yield put(subscribePlanSuccess());
         } else {

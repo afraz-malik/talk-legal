@@ -15,6 +15,8 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (!currentUser) history.push("/login");
+        window.scrollTo(0, 0);
+
         return () => {};
     }, [currentUser]);
     const [state, setstate] = React.useState({

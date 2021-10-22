@@ -1,13 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import Logo from "../../components/NavBar/Logo";
 import PaymentPlanCards from "../../components/PaymentPlanCards/PaymentPlanCards";
+import { currentUserSelector } from "../../redux/user/user.selector";
 import PaymentPlansCss from "./PaymentPlans.module.scss";
 const PaymentPlans = ({ form }) => {
+    const currentUser = useSelector((state) => currentUserSelector(state));
+    const history = useHistory();
+
     React.useEffect(() => {
         window.scrollTo(0, 0);
+        if (currentUser) {
+            if (currentUser.subscription_plan) history.push("/dashboard");
+        }
     }, []);
-    const history = useHistory();
 
     const handleSubmit = (val) => {
         history.push({ pathname: "/checkout", plan: val });

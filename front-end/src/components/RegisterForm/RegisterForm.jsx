@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useHistory } from "react-router-dom";
 import RegisterFormCss from "./RegisterForm.module.scss";
-import { signUpStart } from "../../redux/user/user.action";
+import { clearError, signUpStart } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
-import { LoadingSelector } from "../../redux/user/user.selector";
+import {
+    currentUserSelector,
+    LoadingSelector,
+    successSelector,
+} from "../../redux/user/user.selector";
 import { Spinner } from "../Spinner/Spinner";
+import { toast } from "react-toastify";
 
 const RegisterForm = ({ location }) => {
     const [state, setstate] = useState({
@@ -14,24 +19,40 @@ const RegisterForm = ({ location }) => {
         phone: "+92 324 8205435",
     });
     const loading = useSelector((state) => LoadingSelector(state));
+    const success = useSelector((state) => successSelector(state));
+    const history = useHistory();
     const dispatch = useDispatch();
+    const currentUser = useSelector((state) => currentUserSelector(state));
+
     const redirect = location.search ? location.search.split("=")[1] : null;
-    console.log(redirect);
     React.useEffect(() => {
         setstate({ ...state, password: "" });
+        if (currentUser) {
+            history.push("/dashboard");
+        }
+        if (success) {
+            setstate({ name: "", email: "", password: "", password: "" });
+            redirect
+                ? history.push("/login?redirect=plans")
+                : history.push("/login");
+        }
         return () => {
             setstate({ ...state, password: "" });
-            // dispatch(clearError());
+            dispatch(clearError());
         };
         // eslint-disable-next-line
-    }, []);
+    }, [success]);
 
     const handleChange = (event) => {
         setstate({ ...state, [event.target.name]: event.target.value });
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(signUpStart(state));
+        if (state.password.length < 6) {
+            toast.error("Password Length Must be greater than 6 characters");
+        } else {
+            dispatch(signUpStart(state));
+        }
         // history.push("/plans");
     };
     return (

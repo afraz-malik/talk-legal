@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { currentUserSelector } from "../../redux/user/user.selector";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutStart } from "../../redux/user/user.action";
+import { HashLink } from "react-router-hash-link";
 
 const NavBar = ({ currentPage }) => {
     const dispatch = useDispatch();
@@ -86,8 +87,8 @@ const NavBar = ({ currentPage }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                to="/plans"
+                            <HashLink
+                                to="/#plans"
                                 className={
                                     active === "plans"
                                         ? NavBarCss.selected
@@ -95,7 +96,7 @@ const NavBar = ({ currentPage }) => {
                                 }
                             >
                                 Pricing
-                            </Link>
+                            </HashLink>
                         </li>
                         <li>
                             <Link

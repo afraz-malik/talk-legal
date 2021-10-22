@@ -1,11 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import OurPlansCss from "./OurPlans.module.scss";
 import { subsctiptionsSelector } from "../../redux/data/data.selector";
+import { currentUserSelector } from "../../redux/user/user.selector";
+import { useHistory } from "react-router";
+import { toast } from "react-toastify";
+import Preview from "../Preview/Preview";
+import DialoguePopup from "../DialoguePopup/DialoguePopup";
+import MembershipPopup from "../DialoguePopup/MembershipPopup";
 const OurPlans = () => {
     const plans = useSelector((state) => subsctiptionsSelector(state));
-    console.log(plans);
-    const [selectedPlan, setSelectedPlan] = useState(2);
+    const currentUser = useSelector((state) => currentUserSelector(state));
+    const history = useHistory();
+    const [popup, setpopup] = useState(false);
+    const [nextMembership, setnextMembership] = useState(null);
+    const closePopup = () => {
+        setpopup(false);
+    };
+    const handleClick = (plan) => {
+        if (currentUser) {
+            if (currentUser.subscription_plan) {
+                setnextMembership(plan);
+                setpopup(true);
+            } else {
+                history.push({ pathname: "/checkout", plan: plan });
+            }
+        } else {
+            history.push("/register?redirect=plans");
+        }
+    };
+
     return (
         <>
             {plans ? (
@@ -30,9 +54,6 @@ const OurPlans = () => {
                                                 //     : OurPlansCss.card
                                                 OurPlansCss.card
                                             }
-                                            onClick={() =>
-                                                setSelectedPlan(plan.id)
-                                            }
                                         >
                                             <h3>{plan.title}</h3>
                                             <h1>${plan.membership_cost}</h1>
@@ -43,7 +64,13 @@ const OurPlans = () => {
                                                 veniam consequat sunt nostrud
                                                 amet.
                                             </p>
-                                            <button>Select</button>
+                                            <button
+                                                onClick={() =>
+                                                    handleClick(plan)
+                                                }
+                                            >
+                                                Select
+                                            </button>
                                         </div>
                                     </td>
                                 ))}
@@ -87,6 +114,16 @@ const OurPlans = () => {
                         </tbody>
                     </table>
                 </div>
+            ) : null}
+            {popup ? (
+                <Preview position="fixed">
+                    <DialoguePopup title="Change Membership">
+                        <MembershipPopup
+                            nextMembership={nextMembership}
+                            closePopup={closePopup}
+                        />
+                    </DialoguePopup>
+                </Preview>
             ) : null}
         </>
     );
