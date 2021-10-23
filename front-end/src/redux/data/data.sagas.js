@@ -64,14 +64,14 @@ function* gettingFormStart() {
                             feilds: [
                                 {
                                     label: "Enter your agreement brought state",
-                                    type: "text",
+                                    type: "list",
                                     name: "agreement_brought_state",
                                     value: "",
                                     placeholder: "Enter something",
                                 },
                                 {
                                     label: "Enter your agreement constructed state",
-                                    type: "text",
+                                    type: "list",
                                     name: "agreement_constructed_state",
                                     value: "",
                                     placeholder: "Enter something",

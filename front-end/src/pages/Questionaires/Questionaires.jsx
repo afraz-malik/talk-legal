@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import HardCopy from "../../components/QuestionairesForm/HardCopy";
 import QCss from "./Questionaires.module.scss";
 import Logo from "../../components/NavBar/Logo";
-
 import { useDispatch, useSelector } from "react-redux";
 import { currentFormSelector } from "../../redux/data/data.selector";
 import Preview from "../../components/Preview/Preview";
@@ -11,8 +10,7 @@ import { currentUserSelector } from "../../redux/user/user.selector";
 import { useHistory } from "react-router";
 import NewForm from "../../components/QuestionairesForm/NewForm";
 import update from "react-addons-update"; // ES6
-import NavBar from "../../components/NavBar/NavBar";
-
+import $ from "jquery";
 const Questionaires = () => {
     const formSelector = useSelector((state) => currentFormSelector(state));
     React.useEffect(() => {
@@ -70,22 +68,24 @@ const Questionaires = () => {
             });
         }
     };
+    const pageHandler = (currentPage) => {
+        setstate({
+            percent: state.percent - 100 / total_pages,
+            currentPage,
+        });
+    };
 
     if (toggle) {
-        console.log("here");
-        window.addEventListener("keydown", (e) => {
-            console.log("event listern started");
-            console.log(e);
-        });
-    } else {
-        window.removeEventListener("keypress", (e) => {
-            console.log("eventListener destroyed");
+        $(document).keydown(function (e) {
+            if (e.keyCode == 27) {
+                settoggle(false);
+            }
         });
     }
     return (
         <div className={QCss.container}>
             <div className={QCss.container2}>
-                <NavBar />
+                <Logo />
                 <div className={QCss.progress_bar}>
                     <div
                         className={QCss.progress_complete}
@@ -102,6 +102,7 @@ const Questionaires = () => {
                             newForm={currentForm.pages[state.currentPage]}
                             handleForm={handleForm}
                             currentPage={state.currentPage}
+                            pageHandler={pageHandler}
                             lastPage={
                                 state.currentPage === total_pages - 1
                                     ? true

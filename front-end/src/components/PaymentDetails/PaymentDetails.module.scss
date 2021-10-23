@@ -35,6 +35,8 @@
                 color: #17141f;
             }
             input[type="text"],
+            input[type="tel"],
+            input[type="phone"],
             input[type="month"] {
                 border: 1px solid #8692a6;
                 box-sizing: border-box;

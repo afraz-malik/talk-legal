@@ -1,4 +1,6 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import AddCard from "../DialoguePopup/AddCard";
 import DialoguePopup from "../DialoguePopup/DialoguePopup";
 import EditProfile from "../DialoguePopup/EditProfile";
@@ -22,6 +24,16 @@ const AccountSettings = ({ currentUser }) => {
             x.type = "text";
         } else {
             x.type = "password";
+        }
+    };
+
+    const { handleSubmit, register, reset } = useForm();
+    const handlePasswordSubmit = (data) => {
+        if (data.new_password === data.confirm_new_password) {
+            toast.success("Password Changed Successfuly");
+            reset();
+        } else {
+            toast.error("Password Not Matched");
         }
     };
     return (
@@ -69,7 +81,9 @@ const AccountSettings = ({ currentUser }) => {
                         />
                     </div>
                 </div>
-                <hr />
+            </form>
+            <hr />
+            <form onSubmit={handleSubmit(handlePasswordSubmit)}>
                 <h5>Password Setting</h5>
                 <p>
                     Amet minim mollit non deserunt ullamco est sit aliqua dolor
@@ -82,6 +96,10 @@ const AccountSettings = ({ currentUser }) => {
                         placeholder="Enter Current Password"
                         defaultValue="Johnfudoe"
                         id="cp"
+                        required
+                        {...register("current_password", {
+                            minLength: 6,
+                        })}
                     />
                     <img
                         alt=""
@@ -93,8 +111,12 @@ const AccountSettings = ({ currentUser }) => {
                     <label>New Password</label>
                     <input
                         type="password"
+                        required
                         placeholder="Enter New Password"
                         id="np"
+                        {...register("new_password", {
+                            minLength: 6,
+                        })}
                     />
                     <img
                         alt=""
@@ -106,8 +128,12 @@ const AccountSettings = ({ currentUser }) => {
                     <label>Re-enter Password</label>
                     <input
                         type="password"
+                        required
                         placeholder="Enter New Password again"
                         id="rp"
+                        {...register("confirm_new_password", {
+                            minLength: 6,
+                        })}
                     />
                     <img
                         alt=""
@@ -216,7 +242,7 @@ const AccountSettings = ({ currentUser }) => {
                     >
                         <EditProfile
                             popup={popup}
-                            setpopup={setpopup}
+                            closePopup={closePopup}
                             user={state.user}
                             setstate={setstate}
                         />
@@ -226,7 +252,7 @@ const AccountSettings = ({ currentUser }) => {
             {popup.editCard ? (
                 <Preview>
                     <DialoguePopup title={"Add Card"} closePopup={closePopup}>
-                        <AddCard setpopup={setpopup} popup={popup} />
+                        <AddCard closePopup={closePopup} />
                     </DialoguePopup>
                 </Preview>
             ) : null}

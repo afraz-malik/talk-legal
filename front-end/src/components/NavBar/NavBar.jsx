@@ -5,19 +5,18 @@ import { currentUserSelector } from "../../redux/user/user.selector";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutStart } from "../../redux/user/user.action";
 import { HashLink } from "react-router-hash-link";
-
 const NavBar = ({ currentPage }) => {
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => currentUserSelector(state));
     React.useEffect(() => {
+        window.addEventListener("mouseup", clickEvent);
+        window.addEventListener("resize", resizeEvent);
         if (currentPage) {
             setactive(currentPage);
         }
         if (document.documentElement.clientWidth < 930) {
             setstate(false);
-            window.addEventListener("mouseup", clickEvent);
         }
-        window.addEventListener("resize", resizeEvent);
         return () => {
             window.removeEventListener("mouseup", clickEvent);
             window.removeEventListener("resize", resizeEvent);
@@ -36,9 +35,9 @@ const NavBar = ({ currentPage }) => {
         const cwidth = document.documentElement.clientWidth;
         if (cwidth > 930) {
             setstate(true);
-            window.removeEventListener("mouseup", clickEvent);
+            // window.removeEventListener("mouseup", clickEvent);
         } else if (cwidth <= 930) {
-            window.addEventListener("mouseup", clickEvent);
+            // window.addEventListener("mouseup", clickEvent);
             setstate(false);
         }
     };
@@ -48,6 +47,10 @@ const NavBar = ({ currentPage }) => {
             if (document.documentElement.clientWidth < 930) {
                 setstate(false);
             }
+        }
+        var dropDown = document.getElementById("profileDropdown");
+        if (dropDown && !dropDown.contains(e.target)) {
+            setprofile(false);
         }
     };
     // currentpage
@@ -152,11 +155,12 @@ const NavBar = ({ currentPage }) => {
                     <ul>
                         {currentUser ? (
                             <li>
-                                <div className={NavBarCss.dropdown}>
-                                    <div
-                                        className={NavBarCss.profile}
-                                        onClick={() => setprofile(!profile)}
-                                    >
+                                <div
+                                    id="profileDropdown"
+                                    className={NavBarCss.dropdown}
+                                    onClick={() => setprofile(!profile)}
+                                >
+                                    <div className={NavBarCss.profile}>
                                         <img src="images/19.png" alt="" />
                                         <img
                                             src="images/downarrow.png"
