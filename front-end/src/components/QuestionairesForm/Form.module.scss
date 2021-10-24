@@ -48,6 +48,7 @@
             .dropdownbox {
                 // height: 200px;
                 position: relative;
+                cursor: pointer;
 
                 .dropdown {
                     position: relative;
@@ -61,7 +62,7 @@
                     justify-content: flex-start;
                     align-items: center;
                     padding: 0 30px;
-                    cursor: pointer;
+                    z-index: -1;
                     input[type="date"] {
                         width: 100%;
                         border: none;
@@ -181,10 +182,11 @@
             display: flex;
             flex-direction: column;
             margin-top: 50px;
-            .preview {
+            input {
                 // margin-top: 20px !important;
                 background: #7854f7;
                 border-radius: 6px;
+                width: 100%;
                 outline: none;
                 border: none;
                 padding: 20px;
@@ -193,26 +195,14 @@
             }
             .directions {
                 display: flex;
-                // flex: 1;
+
+                // grid-template-columns: 1fr 4fr;
+                // flex-direction: column;
                 grid-gap: 15px;
                 align-items: center;
                 justify-content: center;
                 margin-top: 20px;
-                input[type="submit"] {
-                    // margin-top: 100px;
-                    margin: 0;
-                    width: 100%;
-                    background: #7854f7;
-                    border-radius: 6px;
-                    outline: none;
-                    border: none;
-                    padding: 20px;
-                    color: white;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
+
                 .previous {
                     // margin-top: 20px !important;
                     background-color: #a3a3a3;
@@ -227,6 +217,7 @@
                     justify-content: center;
                     align-items: center;
                     font-size: 20px;
+                    width: 50px;
                 }
             }
             span {

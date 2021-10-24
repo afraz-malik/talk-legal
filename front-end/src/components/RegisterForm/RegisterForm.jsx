@@ -27,15 +27,15 @@ const RegisterForm = ({ location }) => {
     const redirect = location.search ? location.search.split("=")[1] : null;
     React.useEffect(() => {
         setstate({ ...state, password: "" });
-        if (currentUser) {
-            history.push("/dashboard");
-        }
-        if (success) {
-            setstate({ name: "", email: "", password: "", password: "" });
-            redirect
-                ? history.push("/login?redirect=plans")
-                : history.push("/login");
-        }
+        // if (currentUser) {
+        //     history.push("/dashboard");
+        // }
+        // if (success) {
+        //     setstate({ name: "", email: "", password: "", password: "" });
+        //     redirect
+        //         ? history.push("/login?redirect=plans")
+        //         : history.push("/login");
+        // }
         return () => {
             setstate({ ...state, password: "" });
             dispatch(clearError());

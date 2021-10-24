@@ -10,6 +10,7 @@ const NewForm = ({
     currentPage,
     pageHandler,
     lastPage,
+    settoggle,
 }) => {
     const [fields, setfields] = useState(newForm.feilds);
     React.useEffect(() => {
@@ -47,10 +48,13 @@ const NewForm = ({
         fields.forEach((field) => {
             if (!field.value) error = 1;
         });
-        error === 0
-            ? handleForm(currentPage, fields)
-            : toast.error("Fill out details first");
+        toast.dismiss();
+        if (error === 0) {
+            handleForm(currentPage, fields);
+            if (e.target.name === "preview") settoggle(true);
+        } else toast.error("Fill out details first");
     };
+
     $(document).click(function (e) {
         for (let i = 0; i < fields.length; i++) {
             if (e.target.id !== `dropdown${i}`) {
@@ -70,15 +74,15 @@ const NewForm = ({
                                 return (
                                     <div key={idx}>
                                         <label>{fields[idx].title}</label>
-                                        <div className={FormCss.dropdownbox}>
+                                        <div
+                                            className={FormCss.dropdownbox}
+                                            id={`dropdown${idx}`}
+                                            onClick={() => {
+                                                $(`.dd_content${idx}`).toggle();
+                                            }}
+                                        >
                                             <div
                                                 className={`${FormCss.dropdown}  `}
-                                                id={`dropdown${idx}`}
-                                                onClick={() => {
-                                                    $(
-                                                        `.dd_content${idx}`
-                                                    ).toggle();
-                                                }}
                                             >
                                                 <h3>
                                                     {fields[idx].value
@@ -147,27 +151,23 @@ const NewForm = ({
                 </div>
                 <div className={FormCss.buttons}>
                     {lastPage ? (
-                        <button
-                            type="submit"
-                            className={FormCss.preview}
+                        <input
+                            type="button"
                             name="preview"
                             onClick={(e) => {
-                                e.preventDefault();
-                                handleForm(currentPage, fields, true);
+                                handleSubmit(e);
                             }}
-                        >
-                            Preview
-                        </button>
+                            value="Preview"
+                        />
                     ) : null}
                     <div className={FormCss.directions}>
                         {currentPage === 0 ? null : (
-                            <button
+                            <input
                                 className={FormCss.previous}
                                 type="button"
                                 onClick={() => pageHandler(currentPage - 1)}
-                            >
-                                &laquo;
-                            </button>
+                                value="&laquo;"
+                            />
                         )}
                         <input
                             type="submit"

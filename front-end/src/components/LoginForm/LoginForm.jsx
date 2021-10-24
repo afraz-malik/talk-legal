@@ -22,12 +22,12 @@ const LoginForm = ({ location }) => {
     const history = useHistory();
     const redirect = location.search ? location.search.split("=")[1] : null;
     React.useEffect(() => {
-        if (currentUser) {
-            dispatch(clearError());
-            redirect
-                ? history.push(`/${redirect}`)
-                : history.push("/dashboard");
-        }
+        // if (currentUser) {
+        //     dispatch(clearError());
+        //     redirect
+        //         ? history.push(`/${redirect}`)
+        //         : history.push("/dashboard");
+        // }
         return () => {
             reset();
             dispatch(clearError());

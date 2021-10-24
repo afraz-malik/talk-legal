@@ -11,9 +11,9 @@ const PaymentPlans = ({ form }) => {
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-        if (currentUser) {
-            if (currentUser.subscription_plan) history.push("/dashboard");
-        }
+        // if (currentUser) {
+        //     if (currentUser.subscription_plan) history.push("/dashboard");
+        // }
     }, []);
 
     const handleSubmit = (val) => {

@@ -12,12 +12,9 @@ import { useHistory } from "react-router";
 const Dashboard = () => {
     const history = useHistory();
     const currentUser = useSelector((state) => currentUserSelector(state));
-
     useEffect(() => {
-        if (!currentUser) history.push("/login");
+        // if (!currentUser) history.push("/login");
         window.scrollTo(0, 0);
-
-        return () => {};
     }, [currentUser]);
     const [state, setstate] = React.useState({
         title: "My Files & Documents",

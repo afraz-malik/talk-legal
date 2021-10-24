@@ -127,7 +127,7 @@ const NavBar = ({ currentPage }) => {
                         </li>
                         <li>
                             <Link
-                                to="/dashboard"
+                                to="/"
                                 className={
                                     active === "contact"
                                         ? NavBarCss.selected

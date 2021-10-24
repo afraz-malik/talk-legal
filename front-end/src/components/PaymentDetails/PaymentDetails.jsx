@@ -42,7 +42,7 @@ const PaymentDetails = ({ checkout }) => {
         if (success) {
             dispatch(clearError());
             setstate(initialState);
-            history.push("/dashboard");
+            // history.push("/dashboard");
         }
         return () => {
             setstate(initialState);
@@ -82,9 +82,7 @@ const PaymentDetails = ({ checkout }) => {
             toast.error("Select your country");
         } else {
             if (checkout.plan) {
-                console.log(state);
-                console.log(checkout);
-                // dispatch(subscribePlanStart({ pid: checkout.plan.id }));
+                dispatch(subscribePlanStart({ pid: checkout.plan.id }));
             }
         }
     };

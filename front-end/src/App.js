@@ -20,7 +20,7 @@ function App() {
     return (
         <>
             <ToastContainer />
-            <Router basename="/">
+            <Router>
                 <Routes />
             </Router>
         </>

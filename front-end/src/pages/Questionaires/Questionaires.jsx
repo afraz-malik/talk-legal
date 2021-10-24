@@ -12,22 +12,22 @@ import NewForm from "../../components/QuestionairesForm/NewForm";
 import update from "react-addons-update"; // ES6
 import $ from "jquery";
 const Questionaires = () => {
-    const formSelector = useSelector((state) => currentFormSelector(state));
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [formSelector]);
-    const currentUser = useSelector((state) => currentUserSelector(state));
     const history = useHistory();
     const dispatch = useDispatch();
-
+    const currentUser = useSelector((state) => currentUserSelector(state));
+    const formSelector = useSelector((state) => currentFormSelector(state));
     const total_pages = formSelector.pages.length;
+    const [currentForm, setcurrentForm] = useState(formSelector);
+    const [toggle, settoggle] = useState(false);
     const [state, setstate] = useState({
         percent: 100 / total_pages,
         currentPage: 0,
     });
-    const [currentForm, setcurrentForm] = useState(formSelector);
-    const [toggle, settoggle] = useState(false);
-    const handleForm = (page, data, preview) => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [formSelector]);
+
+    const handleForm = (page, data) => {
         if (page < total_pages) {
             setcurrentForm(
                 update(currentForm, {
@@ -46,26 +46,16 @@ const Questionaires = () => {
                     percent: state.percent + 100 / total_pages,
                     currentPage: state.currentPage + 1,
                 });
-            } else {
-                if (preview) {
-                    settoggle(true);
-                } else {
-                    submitForm();
-                }
             }
         }
     };
     const submitForm = () => {
-        dispatch(savingForm(currentForm));
+        // dispatch(savingForm(currentForm));
         if (currentUser) {
-            console.log(currentUser);
-            history.push("/plans");
+            if (currentUser.subscription_plan) history.push("/checkout");
+            else history.push("/plans");
         } else {
-            history.push({
-                pathname: "/register",
-                search: "?redirect=plans",
-                form: true,
-            });
+            history.push("/register?redirect=plans");
         }
     };
     const pageHandler = (currentPage) => {
@@ -101,13 +91,14 @@ const Questionaires = () => {
                         <NewForm
                             newForm={currentForm.pages[state.currentPage]}
                             handleForm={handleForm}
-                            currentPage={state.currentPage}
                             pageHandler={pageHandler}
+                            currentPage={state.currentPage}
                             lastPage={
                                 state.currentPage === total_pages - 1
                                     ? true
                                     : false
                             }
+                            settoggle={settoggle}
                         />
                     </div>
                     <div
