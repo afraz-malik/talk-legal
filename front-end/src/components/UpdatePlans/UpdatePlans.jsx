@@ -1,7 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { subscribePlanStart } from "../../redux/user/user.action";
-import { currentUserSelector } from "../../redux/user/user.selector";
+
 import DialoguePopup from "../DialoguePopup/DialoguePopup";
 import MembershipPopup from "../DialoguePopup/MembershipPopup";
 import PaymentPlanCards from "../PaymentPlanCards/PaymentPlanCards";

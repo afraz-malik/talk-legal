@@ -192,6 +192,10 @@
                 padding: 20px;
                 color: white;
                 cursor: pointer;
+                &:disabled {
+                    background-color: grey;
+                    cursor: not-allowed;
+                }
             }
             .directions {
                 display: flex;

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import TrustersCss from "./Trusters.module.scss";
 const Trusters = () => {
-    const [card, setcard] = useState(1);
+    // const [card, setcard] = useState(1);
     function moveForward() {
-        const card1 = document.getElementById("card1");
-        const card2 = document.getElementById("card2");
-        const card3 = document.getElementById("card3");
-        console.log(card1);
-
+        // const card1 = document.getElementById("card1");
+        // const card2 = document.getElementById("card2");
+        // const card3 = document.getElementById("card3");
         // transform: translate3d(0,0,0);
     }
     function moveBackward() {}

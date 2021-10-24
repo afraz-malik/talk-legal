@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import FormCss from "./Form.module.scss";
 
 import $ from "jquery";
-import { currentFormSelector } from "../../redux/data/data.selector";
-import { useSelector } from "react-redux";
-const HardCopy = ({ values }) => {
-    const currentForm = useSelector((state) => currentFormSelector(state));
+const HardCopy = ({ values, currentForm }) => {
+    const [stateForm, setstate] = useState(currentForm);
     let state = {};
     React.useEffect(() => {
         window.scrollTo(0, 0);
         var $log = $(".hardcopy"),
-            html = $.parseHTML(currentForm.discreption);
+            html = $.parseHTML(stateForm.discreption);
         $log.append(html);
         if (values) {
             fillingState();

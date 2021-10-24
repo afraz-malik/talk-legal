@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import {
-    LoadingSelector,
-    successSelector,
-} from "../../redux/user/user.selector";
+import { LoadingSelector } from "../../redux/user/user.selector";
 import DialoguePopup from "../DialoguePopup/DialoguePopup";
 import ManageAdOns from "../DialoguePopup/ManageAdOns";
 
@@ -14,7 +11,6 @@ import SubTypeCss from "./SubsciptionType.module.scss";
 
 const SubsciptionType = ({ subscription_plan }) => {
     const loading = useSelector((state) => LoadingSelector(state));
-    const success = useSelector((state) => successSelector(state));
     useEffect(() => {
         return () => {};
         // eslint-disable-next-line

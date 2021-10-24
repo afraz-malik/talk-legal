@@ -8,26 +8,17 @@ import { toast } from "react-toastify";
 
 import {
     currentUserSelector,
-    errorSelector,
     LoadingSelector,
 } from "../../redux/user/user.selector";
 import { Spinner } from "../Spinner/Spinner";
-import { useHistory, withRouter } from "react-router";
+import { withRouter } from "react-router";
 
 const LoginForm = ({ location }) => {
     const dispatch = useDispatch();
     const loading = useSelector((state) => LoadingSelector(state));
     const currentUser = useSelector((state) => currentUserSelector(state));
-    const error = useSelector((state) => errorSelector(state));
-    const history = useHistory();
     const redirect = location.search ? location.search.split("=")[1] : null;
     React.useEffect(() => {
-        // if (currentUser) {
-        //     dispatch(clearError());
-        //     redirect
-        //         ? history.push(`/${redirect}`)
-        //         : history.push("/dashboard");
-        // }
         return () => {
             reset();
             dispatch(clearError());
@@ -88,7 +79,6 @@ const LoginForm = ({ location }) => {
                 <h5>
                     Don't have an account?{" "}
                     <Link
-                        to="/register"
                         to={
                             redirect
                                 ? `/register?redirect=${redirect}`

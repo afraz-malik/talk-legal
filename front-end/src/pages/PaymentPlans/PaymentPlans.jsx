@@ -1,19 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import Logo from "../../components/NavBar/Logo";
 import PaymentPlanCards from "../../components/PaymentPlanCards/PaymentPlanCards";
-import { currentUserSelector } from "../../redux/user/user.selector";
 import PaymentPlansCss from "./PaymentPlans.module.scss";
-const PaymentPlans = ({ form }) => {
-    const currentUser = useSelector((state) => currentUserSelector(state));
+const PaymentPlans = ({ location }) => {
     const history = useHistory();
+    const form = location.search ? location.search.split("=")[1] : null;
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-        // if (currentUser) {
-        //     if (currentUser.subscription_plan) history.push("/dashboard");
-        // }
     }, []);
 
     const handleSubmit = (val) => {
@@ -34,7 +29,14 @@ const PaymentPlans = ({ form }) => {
                     </p>
                     <PaymentPlanCards handleSubmit={handleSubmit} />
                     <div className={PaymentPlansCss.single}>
-                        <Link to="/checkout">
+                        <Link
+                            to={{
+                                pathname: "/checkout",
+                                state: {
+                                    form: "single",
+                                },
+                            }}
+                        >
                             Skip this membership step to purchase a single
                             document ›
                         </Link>
@@ -54,4 +56,4 @@ const PaymentPlans = ({ form }) => {
     );
 };
 
-export default PaymentPlans;
+export default withRouter(PaymentPlans);

@@ -8,7 +8,7 @@ const PreQuestionaires = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(gettingFormStart());
-    }, []);
+    }, [dispatch]);
     const currentForm = useSelector((state) => currentFormSelector(state));
     return <div>{currentForm ? <Questionaires /> : <Spinner />}</div>;
 };

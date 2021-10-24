@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 import { subsctiptionsSelector } from "../../redux/data/data.selector";
 
-const CheckoutPlans = ({ location, setPlanBill }) => {
+const CheckoutPlans = ({ location, handlePlan }) => {
     const plans = useSelector((state) => subsctiptionsSelector(state));
     const addons = [
         {
@@ -22,12 +22,18 @@ const CheckoutPlans = ({ location, setPlanBill }) => {
             desp: "One time 30-minutes session",
         },
     ];
+
+    const [box, setbox] = React.useState({ plansBox: true, adOnsBox: true });
+    const [state, setstate] = React.useState({ plan: "", adOns: "" });
     React.useEffect(() => {
         if (location.plan) setstate({ ...state, plan: location.plan });
         // eslint-disable-next-line
     }, [location.plan]);
-    const [box, setbox] = React.useState({ plansBox: true, adOnsBox: true });
-    const [state, setstate] = React.useState({ plan: "", adOns: "" });
+
+    React.useEffect(() => {
+        handlePlan(state);
+        // eslint-disable-next-line
+    }, [state]);
     const updatePlan = (plan) => {
         if (state.plan.id === plan.id) {
             setstate({ ...state, plan: "" });
@@ -46,7 +52,6 @@ const CheckoutPlans = ({ location, setPlanBill }) => {
             setstate({ ...state, adOns: adon });
         }
     };
-    setPlanBill(state);
     return (
         <>
             {plans ? (

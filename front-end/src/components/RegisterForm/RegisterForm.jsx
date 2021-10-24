@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Link, withRouter, useHistory } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import RegisterFormCss from "./RegisterForm.module.scss";
 import { clearError, signUpStart } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    currentUserSelector,
     LoadingSelector,
     successSelector,
 } from "../../redux/user/user.selector";
@@ -20,9 +19,7 @@ const RegisterForm = ({ location }) => {
     });
     const loading = useSelector((state) => LoadingSelector(state));
     const success = useSelector((state) => successSelector(state));
-    const history = useHistory();
     const dispatch = useDispatch();
-    const currentUser = useSelector((state) => currentUserSelector(state));
 
     const redirect = location.search ? location.search.split("=")[1] : null;
     React.useEffect(() => {
@@ -58,7 +55,7 @@ const RegisterForm = ({ location }) => {
     return (
         <div className={RegisterFormCss.form}>
             <form onSubmit={handleSubmit}>
-                {location.form ? (
+                {redirect === "plans" ? (
                     <h3>
                         Almost there! Create an account to save your document.
                     </h3>

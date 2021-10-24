@@ -5,7 +5,7 @@ import Logo from "../../components/NavBar/Logo";
 import { useDispatch, useSelector } from "react-redux";
 import { currentFormSelector } from "../../redux/data/data.selector";
 import Preview from "../../components/Preview/Preview";
-import { savingForm } from "../../redux/data/data.action";
+import { addingCartItem } from "../../redux/data/data.action";
 import { currentUserSelector } from "../../redux/user/user.selector";
 import { useHistory } from "react-router";
 import NewForm from "../../components/QuestionairesForm/NewForm";
@@ -49,11 +49,12 @@ const Questionaires = () => {
             }
         }
     };
+
     const submitForm = () => {
-        // dispatch(savingForm(currentForm));
+        dispatch(addingCartItem(currentForm));
         if (currentUser) {
             if (currentUser.subscription_plan) history.push("/checkout");
-            else history.push("/plans");
+            else history.push("/plans?cart=form");
         } else {
             history.push("/register?redirect=plans");
         }
@@ -67,7 +68,7 @@ const Questionaires = () => {
 
     if (toggle) {
         $(document).keydown(function (e) {
-            if (e.keyCode == 27) {
+            if (e.keyCode === 27) {
                 settoggle(false);
             }
         });
@@ -93,6 +94,7 @@ const Questionaires = () => {
                             handleForm={handleForm}
                             pageHandler={pageHandler}
                             currentPage={state.currentPage}
+                            submitForm={submitForm}
                             lastPage={
                                 state.currentPage === total_pages - 1
                                     ? true
@@ -108,7 +110,7 @@ const Questionaires = () => {
                         }}
                     >
                         <div className={QCss.content}>
-                            <HardCopy />
+                            <HardCopy currentForm={formSelector} />
                         </div>
                     </div>
                 </div>
@@ -128,7 +130,10 @@ const Questionaires = () => {
                             src="images/x-circle.png"
                             onClick={() => settoggle(false)}
                         />
-                        <HardCopy values={currentForm} />
+                        <HardCopy
+                            values={currentForm}
+                            currentForm={formSelector}
+                        />
                     </div>
                 </Preview>
             ) : null}

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import Logo from "../NavBar/Logo";
 import PDCss from "./PaymentDetails.module.scss";
-import { useForm } from "react-hook-form";
-import cogotoast from "cogo-toast";
+
 import { countryList } from "../../countryList";
 import { clearError, subscribePlanStart } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,8 +11,8 @@ import {
 } from "../../redux/user/user.selector";
 import { Spinner } from "../Spinner/Spinner";
 import { useHistory } from "react-router";
-import $ from "jquery";
 import { toast } from "react-toastify";
+import { clearingCart } from "../../redux/data/data.action";
 const initialState = {
     first_name: "",
     last_name: "",
@@ -76,14 +75,17 @@ const PaymentDetails = ({ checkout }) => {
         setstate({ ...state, [event.target.name]: event.target.value });
     };
     const handleSubmit = (event) => {
-        // cogotoast.success("Check console.");
         event.preventDefault();
         if (!state.country) {
             toast.error("Select your country");
         } else {
             if (checkout.plan) {
                 dispatch(subscribePlanStart({ pid: checkout.plan.id }));
+            } else {
             }
+            toast.success("Payment Success !");
+            history.push("/dashboard");
+            dispatch(clearingCart());
         }
     };
     return (
@@ -205,7 +207,6 @@ const PaymentDetails = ({ checkout }) => {
                             type="phone"
                             pattern="[0-9]{8,15}"
                             placeholder="Enter Phone Number"
-                            placeholder="Enter Phone Number"
                             required
                             name="phone"
                             value={state.phone}
@@ -225,7 +226,6 @@ const PaymentDetails = ({ checkout }) => {
                             pattern="[0-9\s]{19}"
                             maxLength="19"
                             placeholder="xxxx xxxx xxxx xxxx"
-                            required
                             required
                             name="card_number"
                             value={state.card_number}

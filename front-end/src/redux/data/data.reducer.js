@@ -1,8 +1,12 @@
+const initialCart = {
+    form: null,
+};
 const initialState = {
     subscription_plans: null,
     error: null,
     loading: false,
     currentForm: null,
+    cart: initialCart,
 };
 
 export const dataReducer = (state = initialState, action) => {
@@ -20,10 +24,14 @@ export const dataReducer = (state = initialState, action) => {
                 loading: false,
                 currentForm: action.payload,
             };
-        case "SAVING_FORM_IN_STATE_START":
-            return { ...state, currentForm: action.payload };
-        case "SAVING_FORM_IN_STATE_FAILED":
+        case "ADDING_CART_ITEM_SUCCESS":
+            let cart = state.cart;
+            let tempCart = { ...cart, form: action.payload.payload };
+            return { ...state, cart: tempCart, currentForm: null };
+        case "ADDING_CART_ITEM_FAILED":
             return { ...state, error: action.payload };
+        case "CLEARING_CART":
+            return { ...state, cart: initialCart };
         default:
             return state;
     }

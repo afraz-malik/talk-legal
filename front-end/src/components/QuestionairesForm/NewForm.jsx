@@ -11,13 +11,14 @@ const NewForm = ({
     pageHandler,
     lastPage,
     settoggle,
+    submitForm,
 }) => {
     const [fields, setfields] = useState(newForm.feilds);
     React.useEffect(() => {
         window.scrollTo(0, 0);
         setfields(newForm.feilds);
     }, [newForm]);
-
+    const [previewed, setpreviewed] = useState(false);
     const handleChange = (event, idx) => {
         setfields(
             update(fields, {
@@ -51,10 +52,16 @@ const NewForm = ({
         toast.dismiss();
         if (error === 0) {
             handleForm(currentPage, fields);
-            if (e.target.name === "preview") settoggle(true);
+            if (e.target.name === "preview") {
+                settoggle(true);
+                setpreviewed(true);
+            }
+            if (e.target.name === "submitForm") {
+                submitForm();
+            }
         } else toast.error("Fill out details first");
     };
-
+    console.log(previewed);
     $(document).click(function (e) {
         for (let i = 0; i < fields.length; i++) {
             if (e.target.id !== `dropdown${i}`) {
@@ -169,10 +176,20 @@ const NewForm = ({
                                 value="&laquo;"
                             />
                         )}
-                        <input
-                            type="submit"
-                            value={lastPage ? "Complete" : "Continue"}
-                        />
+                        {!lastPage ? (
+                            <input type="submit" value="Continue" />
+                        ) : (
+                            <input
+                                type="button"
+                                name="submitForm"
+                                onClick={(e) => {
+                                    handleSubmit(e);
+                                }}
+                                value="Complete"
+                                title="Please Preview First"
+                                disabled={previewed === false ? true : false}
+                            />
+                        )}
                     </div>
                     <span>
                         {" "}

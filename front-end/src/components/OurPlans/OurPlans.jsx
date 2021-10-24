@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import OurPlansCss from "./OurPlans.module.scss";
 import { subsctiptionsSelector } from "../../redux/data/data.selector";
 import { currentUserSelector } from "../../redux/user/user.selector";
 import { useHistory } from "react-router";
-import { toast } from "react-toastify";
 import Preview from "../Preview/Preview";
 import DialoguePopup from "../DialoguePopup/DialoguePopup";
 import MembershipPopup from "../DialoguePopup/MembershipPopup";

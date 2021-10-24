@@ -2,12 +2,12 @@ import { takeLatest, put } from "redux-saga/effects";
 import { fetchDbGet, fetchDbPost } from "../../backend/backend";
 // import toast from 'cogo-toast'
 import {
+    addingCartItemFailed,
+    addingCartItemSuccess,
     getSubscriptionsPlansFailed,
     getSubscriptionsPlansSuccess,
     gettingFormFailed,
     gettingFormSuccess,
-    savingFormFailed,
-    savingFormSuccess,
 } from "./data.action";
 // -------------------------------------------------------------
 
@@ -171,17 +171,17 @@ export function* gettingForm() {
     yield takeLatest("GETTING_FORM_START", gettingFormStart);
 }
 // -------------------------------------------------------------
-function* savingFormStart(payload) {
+function* addingCartItemStart(payload) {
     try {
         yield localStorage.setItem(
             "currentForm",
             JSON.stringify({ ...payload })
         );
-        yield put(savingFormSuccess());
+        yield put(addingCartItemSuccess(payload));
     } catch (e) {
-        yield put(savingFormFailed(e.message));
+        yield put(addingCartItemFailed(e.message));
     }
 }
-export function* savingForm() {
-    yield takeLatest("SAVING_FORM_IN_STATE_START", savingFormStart);
+export function* addingCartItem() {
+    yield takeLatest("ADDING_CART_ITEM_START", addingCartItemStart);
 }
