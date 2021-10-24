@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useHistory } from "react-router-dom";
 import RegisterFormCss from "./RegisterForm.module.scss";
 import { clearError, signUpStart } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,19 +20,19 @@ const RegisterForm = ({ location }) => {
     const loading = useSelector((state) => LoadingSelector(state));
     const success = useSelector((state) => successSelector(state));
     const dispatch = useDispatch();
-
+    const history = useHistory();
     const redirect = location.search ? location.search.split("=")[1] : null;
     React.useEffect(() => {
         setstate({ ...state, password: "" });
         // if (currentUser) {
         //     history.push("/dashboard");
         // }
-        // if (success) {
-        //     setstate({ name: "", email: "", password: "", password: "" });
-        //     redirect
-        //         ? history.push("/login?redirect=plans")
-        //         : history.push("/login");
-        // }
+        if (success) {
+            setstate({ name: "", email: "", password: "" });
+            redirect
+                ? history.push("/login?redirect=plans")
+                : history.push("/login");
+        }
         return () => {
             setstate({ ...state, password: "" });
             dispatch(clearError());
