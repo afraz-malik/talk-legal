@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import FormCss from "./Form.module.scss";
-import { countryList } from "../../countryList";
+import { stateList } from "../../countryList";
 import update from "react-addons-update"; // ES6
 import $ from "jquery";
-import { toast } from "react-toastify";
 const NewForm = ({
     handleForm,
     newForm,
@@ -23,7 +22,7 @@ const NewForm = ({
     const handleChange = (event, idx) => {
         seterrors(
             errors.filter((error) => {
-                return error != event.target.name;
+                return error !== event.target.name;
             })
         );
         setfields(
@@ -94,7 +93,7 @@ const NewForm = ({
                                                 : null
                                         }
                                     >
-                                        <label>{fields[idx].title}</label>
+                                        <label>{fields[idx].label}</label>
                                         <div
                                             className={FormCss.dropdownbox}
                                             id={`dropdown${idx}`}
@@ -119,7 +118,7 @@ const NewForm = ({
                                                 className={`${FormCss.dd_content} dd_content${idx}`}
                                             >
                                                 <ul>
-                                                    {countryList.map(
+                                                    {stateList.map(
                                                         (country, j) => (
                                                             <li
                                                                 key={j}
