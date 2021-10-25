@@ -63,3 +63,13 @@ code {
 ::-webkit-scrollbar-button {
     display: none;
 }
+input,
+textarea {
+    -webkit-user-select: auto !important;
+    -webkit-touch-callout: auto !important;
+    -khtml-user-select: auto !important;
+    -moz-user-select: moz-auto !important;
+    -ms-user-select: auto !important;
+    -o-user-select: auto !important;
+    user-select: auto !important;
+}

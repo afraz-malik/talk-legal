@@ -6,7 +6,10 @@
         flex-direction: column;
         justify-content: space-between;
         min-height: 70vh;
+        transition-duration: 0.4s;
+
         .fields {
+            transition-duration: 0.4s;
             h2 {
                 font-family: Circular Std;
                 font-style: normal;
@@ -32,6 +35,7 @@
                 color: #8692a6;
             }
             label {
+                transition-duration: 0.4s;
                 font-family: Inter;
                 font-style: normal;
                 font-weight: 500;
@@ -158,6 +162,8 @@
                 }
             }
             input {
+                transition-duration: 0.4s;
+
                 background: #ffffff;
                 border: 1px solid #1565d8;
                 box-sizing: border-box;
@@ -175,6 +181,34 @@
                 align-items: center;
                 margin-bottom: 10px;
                 width: 100%;
+            }
+            .error {
+                transition-duration: 2s;
+                .dropdown {
+                    color: red;
+
+                    border: 1px solid red;
+                    h3 {
+                        color: red;
+                    }
+                }
+                label {
+                    color: red;
+                }
+                span {
+                    color: red;
+                    transition: visibility 0s, opacity 0.5s linear;
+                    opacity: 0;
+                    font-family: Inter;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 12px;
+                }
+                input {
+                    color: red;
+
+                    border: 1px solid red;
+                }
             }
         }
 

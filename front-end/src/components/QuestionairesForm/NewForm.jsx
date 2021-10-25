@@ -14,12 +14,18 @@ const NewForm = ({
     submitForm,
 }) => {
     const [fields, setfields] = useState(newForm.feilds);
+    const [previewed, setpreviewed] = useState(false);
+    const [errors, seterrors] = useState([]);
     React.useEffect(() => {
         window.scrollTo(0, 0);
         setfields(newForm.feilds);
     }, [newForm]);
-    const [previewed, setpreviewed] = useState(false);
     const handleChange = (event, idx) => {
+        seterrors(
+            errors.filter((error) => {
+                return error != event.target.name;
+            })
+        );
         setfields(
             update(fields, {
                 [idx]: {
@@ -45,12 +51,13 @@ const NewForm = ({
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        let error = 0;
+        let localerrors = [];
         fields.forEach((field) => {
-            if (!field.value) error = 1;
+            if (!field.value) localerrors = [...localerrors, field.name];
         });
-        toast.dismiss();
-        if (error === 0) {
+        console.log(localerrors);
+
+        if (localerrors.length === 0) {
             handleForm(currentPage, fields);
             if (e.target.name === "preview") {
                 settoggle(true);
@@ -59,9 +66,9 @@ const NewForm = ({
             if (e.target.name === "submitForm") {
                 submitForm();
             }
-        } else toast.error("Fill out details first");
+        }
+        seterrors(localerrors);
     };
-    console.log(previewed);
     $(document).click(function (e) {
         for (let i = 0; i < fields.length; i++) {
             if (e.target.id !== `dropdown${i}`) {
@@ -79,7 +86,14 @@ const NewForm = ({
                         switch (field.type) {
                             case "list":
                                 return (
-                                    <div key={idx}>
+                                    <div
+                                        key={idx}
+                                        className={
+                                            errors.includes(fields[idx].name)
+                                                ? FormCss.error
+                                                : null
+                                        }
+                                    >
                                         <label>{fields[idx].title}</label>
                                         <div
                                             className={FormCss.dropdownbox}
@@ -132,12 +146,31 @@ const NewForm = ({
                                                     )}
                                                 </ul>
                                             </div>
+                                            <span
+                                                style={
+                                                    errors.includes(
+                                                        fields[idx].name
+                                                    )
+                                                        ? { opacity: "1" }
+                                                        : { opacity: "0" }
+                                                }
+                                            >
+                                                {" "}
+                                                This field is required
+                                            </span>
                                         </div>
                                     </div>
                                 );
                             default:
                                 return (
-                                    <div key={idx}>
+                                    <div
+                                        key={idx}
+                                        className={
+                                            errors.includes(fields[idx].name)
+                                                ? FormCss.error
+                                                : null
+                                        }
+                                    >
                                         <label>{fields[idx].label}</label>
                                         <input
                                             type={fields[idx].type}
@@ -149,8 +182,19 @@ const NewForm = ({
                                             onChange={(e) =>
                                                 handleChange(e, idx)
                                             }
-                                            required
                                         />
+                                        <span
+                                            style={
+                                                errors.includes(
+                                                    fields[idx].name
+                                                )
+                                                    ? { opacity: "1" }
+                                                    : { opacity: "0" }
+                                            }
+                                        >
+                                            {" "}
+                                            This field is required
+                                        </span>
                                     </div>
                                 );
                         }

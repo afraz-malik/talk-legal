@@ -42,7 +42,7 @@
             height: 15px;
             .progress_complete {
                 background: #6945ed;
-
+                transition-duration: 0.4s;
                 height: 100%;
                 border-radius: 10px;
             }
