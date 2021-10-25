@@ -3,12 +3,91 @@ import TrustersCss from "./Trusters.module.scss";
 const Trusters = () => {
     // const [card, setcard] = useState(1);
     function moveForward() {
-        // const card1 = document.getElementById("card1");
-        // const card2 = document.getElementById("card2");
-        // const card3 = document.getElementById("card3");
-        // transform: translate3d(0,0,0);
+        const card1 = document.getElementById("card1");
+        const card2 = document.getElementById("card2");
+        const card3 = document.getElementById("card3");
+
+        if (
+            card1.style.zIndex > card2.style.zIndex &&
+            card1.style.zIndex > card3.style.zIndex
+        ) {
+            card1.style.marginLeft = "300px";
+            setTimeout(() => {
+                let last = card3.style.zIndex;
+                card3.style.zIndex = card2.style.zIndex;
+                card2.style.zIndex = card1.style.zIndex;
+                card1.style.zIndex = last;
+                card1.style.marginLeft = "0";
+            }, 400);
+        } else if (
+            card2.style.zIndex > card1.style.zIndex &&
+            card2.style.zIndex > card1.style.zIndex
+        ) {
+            card2.style.marginLeft = "300px";
+            setTimeout(() => {
+                let last = card1.style.zIndex;
+                card1.style.zIndex = card3.style.zIndex;
+                card3.style.zIndex = card2.style.zIndex;
+                card2.style.zIndex = last;
+                card2.style.marginLeft = "0";
+            }, 400);
+        } else if (
+            card3.style.zIndex > card2.style.zIndex &&
+            card3.style.zIndex > card1.style.zIndex
+        ) {
+            card3.style.marginLeft = "300px";
+            setTimeout(() => {
+                let last = card3.style.zIndex;
+                card3.style.zIndex = card2.style.zIndex;
+                card2.style.zIndex = card1.style.zIndex;
+                card1.style.zIndex = last;
+                card3.style.marginLeft = "0";
+            }, 400);
+        }
     }
-    function moveBackward() {}
+    function moveBackward() {
+        const card1 = document.getElementById("card1");
+        const card2 = document.getElementById("card2");
+        const card3 = document.getElementById("card3");
+
+        if (
+            card1.style.zIndex > card2.style.zIndex &&
+            card1.style.zIndex > card3.style.zIndex
+        ) {
+            card1.style.marginLeft = "-300px";
+            setTimeout(() => {
+                let last = card3.style.zIndex;
+                card3.style.zIndex = card2.style.zIndex;
+                card2.style.zIndex = card1.style.zIndex;
+                card1.style.zIndex = last;
+                card1.style.marginLeft = "-0";
+            }, 400);
+        } else if (
+            card2.style.zIndex > card1.style.zIndex &&
+            card2.style.zIndex > card1.style.zIndex
+        ) {
+            card2.style.marginLeft = "-300px";
+            setTimeout(() => {
+                let last = card1.style.zIndex;
+                card1.style.zIndex = card3.style.zIndex;
+                card3.style.zIndex = card2.style.zIndex;
+                card2.style.zIndex = last;
+                card2.style.marginLeft = "-0";
+            }, 400);
+        } else if (
+            card3.style.zIndex > card2.style.zIndex &&
+            card3.style.zIndex > card1.style.zIndex
+        ) {
+            card3.style.marginLeft = "-300px";
+            setTimeout(() => {
+                let last = card3.style.zIndex;
+                card3.style.zIndex = card2.style.zIndex;
+                card2.style.zIndex = card1.style.zIndex;
+                card1.style.zIndex = last;
+                card3.style.marginLeft = "-0";
+            }, 400);
+        }
+    }
     return (
         <div className={TrustersCss.outside}>
             <h2>
@@ -117,6 +196,7 @@ const Trusters = () => {
                         <div
                             className={`${TrustersCss.card} ${TrustersCss.card1}`}
                             id="card1"
+                            style={{ zIndex: "113" }}
                         >
                             <img
                                 alt=""
@@ -134,6 +214,7 @@ const Trusters = () => {
                         <div
                             className={`${TrustersCss.card} ${TrustersCss.card2}`}
                             id="card2"
+                            style={{ zIndex: "112" }}
                         >
                             <img
                                 alt=""
@@ -151,6 +232,7 @@ const Trusters = () => {
                         <div
                             className={`${TrustersCss.card} ${TrustersCss.card3}`}
                             id="card3"
+                            style={{ zIndex: "111" }}
                         >
                             <img
                                 alt=""
