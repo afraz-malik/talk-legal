@@ -4,6 +4,7 @@ import RegisterFormCss from "./RegisterForm.module.scss";
 import { clearError, signUpStart } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
 import {
+    errorSelector,
     LoadingSelector,
     successSelector,
 } from "../../redux/user/user.selector";
@@ -19,14 +20,12 @@ const RegisterForm = ({ location }) => {
     });
     const loading = useSelector((state) => LoadingSelector(state));
     const success = useSelector((state) => successSelector(state));
+    const error = useSelector((state) => errorSelector(state));
     const dispatch = useDispatch();
     const history = useHistory();
     const redirect = location.search ? location.search.split("=")[1] : null;
     React.useEffect(() => {
         setstate({ ...state, password: "" });
-        // if (currentUser) {
-        //     history.push("/dashboard");
-        // }
         if (success) {
             setstate({ name: "", email: "", password: "" });
             redirect
@@ -38,7 +37,7 @@ const RegisterForm = ({ location }) => {
             dispatch(clearError());
         };
         // eslint-disable-next-line
-    }, [success]);
+    }, [success, error]);
 
     const handleChange = (event) => {
         setstate({ ...state, [event.target.name]: event.target.value });

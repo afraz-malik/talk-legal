@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
 import { cartSelector } from "../../redux/data/data.selector";
+import { currentUserSelector } from "../../redux/user/user.selector";
 import CheckoutPlans from "../CheckoutPlans/CheckoutPlans";
 import Logo from "../NavBar/Logo";
 import HardCopy from "../QuestionairesForm/HardCopy";
@@ -9,6 +10,7 @@ import OrderCss from "./OrderSummary.module.scss";
 import OrderSummaryGen from "./OrderSummaryGen";
 const OrderSummary = ({ handleCheckout, location }) => {
     const cart = useSelector((state) => cartSelector(state));
+    const currentUser = useSelector((state) => currentUserSelector(state));
 
     const [planBill, setPlanBill] = useState({
         plan: "",
@@ -30,7 +32,7 @@ const OrderSummary = ({ handleCheckout, location }) => {
         // eslint-disable-next-line
     }, [planBill]);
     useEffect(() => {
-        if (cart.form) setPlanBill({ ...planBill, form: 28 });
+        if (cart.form) setPlanBill({ ...planBill, form: 25 });
         // eslint-disable-next-line
     }, []);
     const handlePlan = (state) => {
@@ -48,25 +50,32 @@ const OrderSummary = ({ handleCheckout, location }) => {
                     style={{ backgroundImage: "url(images/TLTM.png)" }}
                 >
                     <div className={`${OrderCss.content} preview`}>
-                        <HardCopy currentForm={cart.form} />
+                        <HardCopy currentForm={cart.form} values={cart.form} />
                     </div>
                 </div>
             ) : null}
 
-            {location.state && location.state.form === "single" ? null : (
+            {currentUser.subscription_plan ? null : location.state &&
+              location.state.form === "single" ? null : (
                 <CheckoutPlans handlePlan={handlePlan} />
             )}
+            <br />
+            <br />
+            <div className={OrderCss.price}>
+                <p className={OrderCss.p} style={{ fontWeight: "bold" }}>
+                    {cart.form
+                        ? location.state && location.state.form === "single"
+                            ? "Singal Document Purchase"
+                            : "Document Purchase"
+                        : ""}
+                </p>
+            </div>
 
             <OrderSummaryGen planBill={planBill} form={cart.form} />
-
             <div
                 className={OrderCss.price}
-                style={{ borderBottom: "2px dashed black" }}
+                style={{ borderTop: "2px dashed black" }}
             >
-                <p className={OrderCss.p}>Tax</p>
-                <p className={OrderCss.p}>${tax}</p>
-            </div>
-            <div className={OrderCss.price}>
                 <p className={OrderCss.p} style={{ fontWeight: "bold" }}>
                     Total
                 </p>

@@ -109,7 +109,7 @@ const Questionaires = () => {
                             backgroundImage: "url(images/TLTM.png)",
                         }}
                     >
-                        <div className={QCss.content}>
+                        <div className={QCss.content} id="form">
                             <HardCopy currentForm={formSelector} />
                         </div>
                     </div>

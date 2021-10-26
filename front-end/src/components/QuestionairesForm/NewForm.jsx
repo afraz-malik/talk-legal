@@ -37,6 +37,7 @@ const NewForm = ({
         );
     };
     const handleListChange = (value, idx) => {
+        seterrors([]);
         setfields(
             update(fields, {
                 [idx]: {
@@ -145,6 +146,7 @@ const NewForm = ({
                                                     )}
                                                 </ul>
                                             </div>
+                                            <br />
                                             <span
                                                 style={
                                                     errors.includes(

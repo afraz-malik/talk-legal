@@ -32,10 +32,6 @@ const OrderSummary = ({ planBill, form }) => {
                         </p>
                         <p className={OrderCss.p}>$16.80</p>
                     </div>
-                    <div className={OrderCss.price}>
-                        <p className={OrderCss.p}>Shipping Cost</p>
-                        <p className={OrderCss.p}>$1.80</p>
-                    </div>
                 </>
             ) : null}
         </>

@@ -91,10 +91,11 @@ export function* signUpStart({ payload }) {
             for (const key in response.error) {
                 if (response.error.hasOwnProperty(key)) {
                     // console.log(`${key}: ${response.error[key]}`)
-                    toast.error(response.error[key]);
+                    console.log(response.error[key][0]);
+                    toast.error(response.error[key][0]);
                 }
             }
-            yield put(signUpFailed(response[0]));
+            yield put(signUpFailed(response.error));
         }
     } catch (err) {
         yield put(signUpFailed(err.message));
