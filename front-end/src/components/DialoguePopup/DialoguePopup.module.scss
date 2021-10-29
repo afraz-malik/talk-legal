@@ -339,6 +339,9 @@
             margin: 10px 0;
             color: #000000;
         }
+        input[type="number"] {
+            -webkit-appearance: none;
+        }
         input[type="month"] {
             padding-right: 20px;
         }

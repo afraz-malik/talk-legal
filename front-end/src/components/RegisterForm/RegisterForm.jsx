@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useHistory } from "react-router-dom";
 import RegisterFormCss from "./RegisterForm.module.scss";
-import { signUpStart } from "../../redux/user/user.action";
+import { clearError, signUpStart } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
-import { LoadingSelector } from "../../redux/user/user.selector";
+import {
+    errorSelector,
+    LoadingSelector,
+    successSelector,
+} from "../../redux/user/user.selector";
 import { Spinner } from "../Spinner/Spinner";
+import { toast } from "react-toastify";
 
 const RegisterForm = ({ location }) => {
     const [state, setstate] = useState({
@@ -14,30 +19,42 @@ const RegisterForm = ({ location }) => {
         phone: "+92 324 8205435",
     });
     const loading = useSelector((state) => LoadingSelector(state));
+    const success = useSelector((state) => successSelector(state));
+    const error = useSelector((state) => errorSelector(state));
     const dispatch = useDispatch();
+    const history = useHistory();
     const redirect = location.search ? location.search.split("=")[1] : null;
-    console.log(redirect);
     React.useEffect(() => {
         setstate({ ...state, password: "" });
+        if (success) {
+            setstate({ name: "", email: "", password: "" });
+            redirect
+                ? history.push("/login?redirect=plans")
+                : history.push("/login");
+        }
         return () => {
             setstate({ ...state, password: "" });
-            // dispatch(clearError());
+            dispatch(clearError());
         };
         // eslint-disable-next-line
-    }, []);
+    }, [success, error]);
 
     const handleChange = (event) => {
         setstate({ ...state, [event.target.name]: event.target.value });
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(signUpStart(state));
+        if (state.password.length < 6) {
+            toast.error("Password Length Must be greater than 6 characters");
+        } else {
+            dispatch(signUpStart(state));
+        }
         // history.push("/plans");
     };
     return (
         <div className={RegisterFormCss.form}>
             <form onSubmit={handleSubmit}>
-                {location.form ? (
+                {redirect === "plans" ? (
                     <h3>
                         Almost there! Create an account to save your document.
                     </h3>

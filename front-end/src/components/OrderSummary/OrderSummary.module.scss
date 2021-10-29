@@ -1,51 +1,51 @@
 .container {
-  padding: 60px 67px;
-  // margin-left: 100px;
-  .logo {
-    display: none;
-  }
-  .h1 {
-    font-family: Circular Std;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 38px;
-    line-height: 48px;
-    /* identical to box height */
+    padding: 60px 67px;
+    // margin-left: 100px;
+    .logo {
+        display: none;
+    }
+    .h1 {
+        font-family: Circular Std;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 38px;
+        line-height: 48px;
+        /* identical to box height */
 
-    color: #1b2125;
-  }
-  .hardCopy {
-    // width: 60%;
-    height: 400px;
-    background: #ffffff;
-    position: relative;
-    box-shadow: 0px 4px 50px rgba(120, 84, 247, 0.15);
-    padding: 30px 20px;
-    background-position: center;
-    background-size: 70% 70%;
-    background-repeat: no-repeat;
-    // white-space: nowrap;
-    .content {
-      overflow: hidden;
-      // text-overflow: ellipsis;
-      height: 100%;
-      // background-color: pink;
+        color: #1b2125;
     }
-  }
-  .price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .p {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 16px;
-      line-height: 23px;
-      /* identical to box height */
-      color: #1b2125;
+    .hardCopy {
+        // width: 60%;
+        height: 400px;
+        background: #ffffff;
+        position: relative;
+        box-shadow: 0px 4px 50px rgba(120, 84, 247, 0.15);
+        padding: 30px 20px;
+        background-position: center;
+        background-size: 70% 70%;
+        background-repeat: no-repeat;
+        // white-space: nowrap;
+        .content {
+            overflow-y: auto;
+            // text-overflow: ellipsis;
+            height: 100%;
+            // background-color: pink;
+        }
     }
-  }
+    .price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .p {
+            font-family: Circular Std;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 23px;
+            /* identical to box height */
+            color: #1b2125;
+        }
+    }
 }
 
 @media (min-width: 1281px) {
@@ -65,9 +65,9 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .container {
-    padding: 30px 50px;
-  }
+    .container {
+        padding: 30px 50px;
+    }
 }
 
 /* 
@@ -76,9 +76,9 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  .container {
-    padding: 30px 50px;
-  }
+    .container {
+        padding: 30px 50px;
+    }
 }
 
 /* 
@@ -87,20 +87,20 @@
 */
 
 @media (min-width: 600px) and (max-width: 767px) {
-  .container {
-    padding-top: 30px;
-    .logo {
-      display: block;
+    .container {
+        padding-top: 30px;
+        .logo {
+            display: block;
+        }
     }
-  }
 }
 @media (min-width: 481px) and (max-width: 599px) {
-  .container {
-    padding-top: 30px;
-    .logo {
-      display: block;
+    .container {
+        padding-top: 30px;
+        .logo {
+            display: block;
+        }
     }
-  }
 }
 
 /* 
@@ -109,13 +109,13 @@
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .container {
-    padding: 30px;
-    .logo {
-      display: block;
+    .container {
+        padding: 30px;
+        .logo {
+            display: block;
+        }
+        .h1 {
+            font-size: 30px;
+        }
     }
-    .h1 {
-      font-size: 30px;
-    }
-  }
 }

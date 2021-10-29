@@ -22,15 +22,20 @@ export const gettingFormFailed = (payload) => ({
     payload,
 });
 // -------------------------------------------------------------
-export const savingForm = (payload) => ({
-    type: "SAVING_FORM_IN_STATE_START",
+export const addingCartItem = (payload) => ({
+    type: "ADDING_CART_ITEM_START",
     payload,
 });
-export const savingFormSuccess = (payload) => ({
-    type: "SAVING_FORM_IN_STATE_SUCCESS",
+export const addingCartItemSuccess = (payload) => ({
+    type: "ADDING_CART_ITEM_SUCCESS",
     payload,
 });
-export const savingFormFailed = (payload) => ({
-    type: "SAVING_FORM_IN_STATE_FAILED",
+export const addingCartItemFailed = (payload) => ({
+    type: "ADDING_CART_ITEM_FAILED",
+    payload,
+});
+// -------------------------------------------------------------
+export const clearingCart = (payload) => ({
+    type: "CLEARING_CART",
     payload,
 });

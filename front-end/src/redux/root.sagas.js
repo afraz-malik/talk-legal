@@ -2,7 +2,7 @@ import { all, call } from "redux-saga/effects";
 import {
     getSubscriptionsPlans,
     gettingForm,
-    savingForm,
+    addingCartItem,
 } from "./data/data.sagas";
 import {
     signUp,
@@ -23,7 +23,7 @@ export default function* rootSaga() {
         call(passwordReset),
         call(getSubscriptionsPlans),
         call(gettingForm),
-        call(savingForm),
+        call(addingCartItem),
         call(subscribePlan),
     ]);
 }

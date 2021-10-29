@@ -19,3 +19,7 @@ export const currentFormSelector = createSelector(
     [dataSelector],
     (dataReducer) => dataReducer.currentForm
 );
+export const cartSelector = createSelector(
+    [dataSelector],
+    (dataReducer) => dataReducer.cart
+);

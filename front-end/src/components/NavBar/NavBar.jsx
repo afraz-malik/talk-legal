@@ -1,34 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
 import NavBarCss from "./NavBar.module.scss";
+import { Link } from "react-router-dom";
 import { currentUserSelector } from "../../redux/user/user.selector";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutStart } from "../../redux/user/user.action";
-import { LoadingSelector } from "../../redux/user/user.selector";
-import { Spinner } from "../Spinner/Spinner";
+import { HashLink } from "react-router-hash-link";
 const NavBar = ({ currentPage }) => {
-    const currentUser = useSelector((state) => currentUserSelector(state));
     const dispatch = useDispatch();
+    const currentUser = useSelector((state) => currentUserSelector(state));
     React.useEffect(() => {
+        window.addEventListener("mouseup", clickEvent);
+        window.addEventListener("resize", resizeEvent);
         if (currentPage) {
             setactive(currentPage);
         }
         if (document.documentElement.clientWidth < 930) {
             setstate(false);
-            window.addEventListener("mouseup", clickEvent);
         }
-        window.addEventListener("resize", resizeEvent);
         return () => {
             window.removeEventListener("mouseup", clickEvent);
             window.removeEventListener("resize", resizeEvent);
         };
         // eslint-disable-next-line
     }, []);
+
+    // toggleNavbar
     const [state, setstate] = React.useState(
         document.documentElement.clientWidth < 930 ? false : true
     );
-    const [active, setactive] = React.useState("home");
     const toggle = () => {
         setstate(!state);
     };
@@ -36,9 +35,9 @@ const NavBar = ({ currentPage }) => {
         const cwidth = document.documentElement.clientWidth;
         if (cwidth > 930) {
             setstate(true);
-            window.removeEventListener("mouseup", clickEvent);
+            // window.removeEventListener("mouseup", clickEvent);
         } else if (cwidth <= 930) {
-            window.addEventListener("mouseup", clickEvent);
+            // window.addEventListener("mouseup", clickEvent);
             setstate(false);
         }
     };
@@ -49,8 +48,16 @@ const NavBar = ({ currentPage }) => {
                 setstate(false);
             }
         }
+        var dropDown = document.getElementById("profileDropdown");
+        if (dropDown && !dropDown.contains(e.target)) {
+            setprofile(false);
+        }
     };
-    const loading = useSelector((state) => LoadingSelector(state));
+    // currentpage
+    const [active, setactive] = React.useState("home");
+    //toggleProfile
+    const [profile, setprofile] = React.useState(false);
+
     return (
         <div className={NavBarCss.navbar}>
             <div className={NavBarCss.inside_nav}>
@@ -86,7 +93,7 @@ const NavBar = ({ currentPage }) => {
                             <HashLink
                                 to="/#plans"
                                 className={
-                                    active === "pricing"
+                                    active === "plans"
                                         ? NavBarCss.selected
                                         : null
                                 }
@@ -120,26 +127,26 @@ const NavBar = ({ currentPage }) => {
                         </li>
                         <li>
                             <Link
-                                to="/dashboard"
+                                to="/"
                                 className={
-                                    active === "dashboard"
+                                    active === "contact"
                                         ? NavBarCss.selected
                                         : null
                                 }
                             >
-                                Dashboard
+                                Contact Us
                             </Link>
                         </li>
                         <li>
                             <Link
                                 to="/"
                                 className={
-                                    active === "profile"
+                                    active === "dummy"
                                         ? NavBarCss.selected
                                         : null
                                 }
                             >
-                                Profile
+                                Support
                             </Link>
                         </li>
                     </ul>
@@ -147,8 +154,49 @@ const NavBar = ({ currentPage }) => {
                 <div className={NavBarCss.right}>
                     <ul>
                         {currentUser ? (
-                            <li onClick={() => dispatch(signOutStart())}>
-                                Log Out
+                            <li>
+                                <div
+                                    id="profileDropdown"
+                                    className={NavBarCss.dropdown}
+                                    onClick={() => setprofile(!profile)}
+                                >
+                                    <div className={NavBarCss.profile}>
+                                        <img src="images/19.png" alt="" />
+                                        <img
+                                            src="images/downarrow.png"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div
+                                        className={NavBarCss.dropdownContent}
+                                        style={{
+                                            display: profile ? "block" : "none",
+                                        }}
+                                    >
+                                        <Link
+                                            to="/dashboard"
+                                            className={NavBarCss.a}
+                                        >
+                                            {" "}
+                                            Dashboard
+                                        </Link>
+                                        <Link
+                                            to="/dashboard"
+                                            className={NavBarCss.a}
+                                        >
+                                            {" "}
+                                            Profile
+                                        </Link>
+                                        <div
+                                            className={NavBarCss.a}
+                                            onClick={() =>
+                                                dispatch(signOutStart())
+                                            }
+                                        >
+                                            Log out
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         ) : (
                             <Link to="/register">
@@ -158,7 +206,6 @@ const NavBar = ({ currentPage }) => {
                     </ul>
                 </div>
             </div>
-            {loading ? <Spinner /> : null}
         </div>
     );
 };

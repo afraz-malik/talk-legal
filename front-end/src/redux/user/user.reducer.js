@@ -17,6 +17,15 @@ export const userReducer = (state = initialState, action) => {
             return { ...state, loading: true, error: null };
 
         case "SIGN_UP_SUCCESS":
+            return {
+                ...state,
+                ...state,
+                error: null,
+                loading: false,
+                success: true,
+                currentUser: null,
+                token: null,
+            };
         case "SIGN_IN_SUCCESS":
             return {
                 ...state,
@@ -33,6 +42,7 @@ export const userReducer = (state = initialState, action) => {
                 loading: false,
                 currentUser: null,
                 token: null,
+                success: false,
             };
         case "FORGET_PASSWORD_SUCCESS":
         case "PASSWORD_RESET_SUCCESS":
@@ -40,6 +50,7 @@ export const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
+                success: true,
             };
         case "SIGN_UP_FAILED":
         case "SIGN_IN_FAILED":

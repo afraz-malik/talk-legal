@@ -2,33 +2,32 @@ import React, { useState } from "react";
 import HardCopy from "../../components/QuestionairesForm/HardCopy";
 import QCss from "./Questionaires.module.scss";
 import Logo from "../../components/NavBar/Logo";
-
 import { useDispatch, useSelector } from "react-redux";
 import { currentFormSelector } from "../../redux/data/data.selector";
 import Preview from "../../components/Preview/Preview";
-import { savingForm } from "../../redux/data/data.action";
+import { addingCartItem } from "../../redux/data/data.action";
 import { currentUserSelector } from "../../redux/user/user.selector";
 import { useHistory } from "react-router";
 import NewForm from "../../components/QuestionairesForm/NewForm";
 import update from "react-addons-update"; // ES6
-
+import $ from "jquery";
 const Questionaires = () => {
-    const formSelector = useSelector((state) => currentFormSelector(state));
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [formSelector]);
-    const currentUser = useSelector((state) => currentUserSelector(state));
     const history = useHistory();
     const dispatch = useDispatch();
-
+    const currentUser = useSelector((state) => currentUserSelector(state));
+    const formSelector = useSelector((state) => currentFormSelector(state));
     const total_pages = formSelector.pages.length;
+    const [currentForm, setcurrentForm] = useState(formSelector);
+    const [toggle, settoggle] = useState(false);
     const [state, setstate] = useState({
         percent: 100 / total_pages,
         currentPage: 0,
     });
-    const [currentForm, setcurrentForm] = useState(formSelector);
-    const [toggle, settoggle] = useState(false);
-    const handleForm = (page, data, preview) => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [formSelector]);
+
+    const handleForm = (page, data) => {
         if (page < total_pages) {
             setcurrentForm(
                 update(currentForm, {
@@ -47,30 +46,33 @@ const Questionaires = () => {
                     percent: state.percent + 100 / total_pages,
                     currentPage: state.currentPage + 1,
                 });
-            } else {
-                if (preview) {
-                    settoggle(true);
-                    console.log("ere");
-                } else {
-                    submitForm();
-                    console.log("ere2");
-                }
             }
         }
     };
+
     const submitForm = () => {
-        dispatch(savingForm(currentForm));
+        dispatch(addingCartItem(currentForm));
         if (currentUser) {
-            console.log(currentUser);
-            history.push("/plans");
+            if (currentUser.subscription_plan) history.push("/checkout");
+            else history.push("/plans?cart=form");
         } else {
-            history.push({
-                pathname: "/register",
-                search: "?redirect=plans",
-                form: true,
-            });
+            history.push("/register?redirect=plans");
         }
     };
+    const pageHandler = (currentPage) => {
+        setstate({
+            percent: state.percent - 100 / total_pages,
+            currentPage,
+        });
+    };
+
+    if (toggle) {
+        $(document).keydown(function (e) {
+            if (e.keyCode === 27) {
+                settoggle(false);
+            }
+        });
+    }
     return (
         <div className={QCss.container}>
             <div className={QCss.container2}>
@@ -90,12 +92,15 @@ const Questionaires = () => {
                         <NewForm
                             newForm={currentForm.pages[state.currentPage]}
                             handleForm={handleForm}
+                            pageHandler={pageHandler}
                             currentPage={state.currentPage}
+                            submitForm={submitForm}
                             lastPage={
                                 state.currentPage === total_pages - 1
                                     ? true
                                     : false
                             }
+                            settoggle={settoggle}
                         />
                     </div>
                     <div
@@ -104,8 +109,8 @@ const Questionaires = () => {
                             backgroundImage: "url(images/TLTM.png)",
                         }}
                     >
-                        <div className={QCss.content}>
-                            <HardCopy currentForm={currentForm} />
+                        <div className={QCss.content} id="form">
+                            <HardCopy currentForm={formSelector} />
                         </div>
                     </div>
                 </div>
@@ -125,7 +130,10 @@ const Questionaires = () => {
                             src="images/x-circle.png"
                             onClick={() => settoggle(false)}
                         />
-                        <HardCopy currentForm={currentForm} values={true} />
+                        <HardCopy
+                            values={currentForm}
+                            currentForm={formSelector}
+                        />
                     </div>
                 </Preview>
             ) : null}

@@ -9,14 +9,16 @@ import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import { currentUserSelector } from "../../redux/user/user.selector";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { cartSelector } from "../../redux/data/data.selector";
 const Dashboard = () => {
     const history = useHistory();
     const currentUser = useSelector((state) => currentUserSelector(state));
-
+    const cart = useSelector((state) => cartSelector(state));
     useEffect(() => {
-        if (!currentUser) history.push("/login");
-        return () => {};
-    }, [currentUser]);
+        if (currentUser && !currentUser.subscription_plan && cart.form)
+            history.push("/plans?cart=form");
+        window.scrollTo(0, 0);
+    }, [currentUser, cart.form, history]);
     const [state, setstate] = React.useState({
         title: "My Files & Documents",
         value: 1,

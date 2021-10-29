@@ -2,12 +2,12 @@ import { takeLatest, put } from "redux-saga/effects";
 import { fetchDbGet, fetchDbPost } from "../../backend/backend";
 // import toast from 'cogo-toast'
 import {
+    addingCartItemFailed,
+    addingCartItemSuccess,
     getSubscriptionsPlansFailed,
     getSubscriptionsPlansSuccess,
     gettingFormFailed,
     gettingFormSuccess,
-    savingFormFailed,
-    savingFormSuccess,
 } from "./data.action";
 // -------------------------------------------------------------
 
@@ -63,18 +63,18 @@ function* gettingFormStart() {
                             desp: "For the purpose of industry regulation, your details are required.",
                             feilds: [
                                 {
-                                    label: "Enter your agreement brought state",
-                                    type: "text",
+                                    label: "Select your agreement brought state",
+                                    type: "list",
                                     name: "agreement_brought_state",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Select your state",
                                 },
                                 {
                                     label: "Enter your agreement constructed state",
-                                    type: "text",
+                                    type: "list",
                                     name: "agreement_constructed_state",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Select your state",
                                 },
                             ],
                         },
@@ -83,11 +83,11 @@ function* gettingFormStart() {
                             desp: "For the purpose of industry regulation, your details are required.",
                             feilds: [
                                 {
-                                    label: "Enter your Date",
+                                    label: "Select your Date",
                                     type: "date",
                                     name: "date_as_of",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Select your date",
                                 },
                             ],
                         },
@@ -100,28 +100,28 @@ function* gettingFormStart() {
                                     type: "text",
                                     name: "company_one_name",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Enter name",
                                 },
                                 {
                                     label: "Enter company 1 address",
                                     type: "text",
                                     name: "company_one_street_address",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Enter address",
                                 },
                                 {
                                     label: "Enter company 1 name of representative",
                                     type: "text",
                                     name: "company_one_name_of_representative",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Enter representative",
                                 },
                                 {
                                     label: "Enter company 1 Signature",
                                     type: "text",
                                     name: "company_one_signature",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Enter signature",
                                 },
                             ],
                         },
@@ -134,28 +134,28 @@ function* gettingFormStart() {
                                     type: "text",
                                     name: "company_two_name",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Enter name",
                                 },
                                 {
                                     label: "Enter company 2 address",
                                     type: "text",
                                     name: "company_two_street_address",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Enter address",
                                 },
                                 {
                                     label: "Enter company 2 name of representative",
                                     type: "text",
                                     name: "company_two_name_of_representative",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Enter representative name",
                                 },
                                 {
                                     label: "Enter company 2 Signature",
                                     type: "text",
                                     name: "company_two_signature",
                                     value: "",
-                                    placeholder: "Enter something",
+                                    placeholder: "Enter signature",
                                 },
                             ],
                         },
@@ -171,17 +171,17 @@ export function* gettingForm() {
     yield takeLatest("GETTING_FORM_START", gettingFormStart);
 }
 // -------------------------------------------------------------
-function* savingFormStart(payload) {
+function* addingCartItemStart(payload) {
     try {
         yield localStorage.setItem(
             "currentForm",
             JSON.stringify({ ...payload })
         );
-        yield put(savingFormSuccess());
+        yield put(addingCartItemSuccess(payload));
     } catch (e) {
-        yield put(savingFormFailed(e.message));
+        yield put(addingCartItemFailed(e.message));
     }
 }
-export function* savingForm() {
-    yield takeLatest("SAVING_FORM_IN_STATE_START", savingFormStart);
+export function* addingCartItem() {
+    yield takeLatest("ADDING_CART_ITEM_START", addingCartItemStart);
 }

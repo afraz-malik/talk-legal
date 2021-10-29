@@ -1,55 +1,81 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
-import { currentFormSelector } from "../../redux/data/data.selector";
+import { cartSelector } from "../../redux/data/data.selector";
+import { currentUserSelector } from "../../redux/user/user.selector";
+import CheckoutPlans from "../CheckoutPlans/CheckoutPlans";
 import Logo from "../NavBar/Logo";
 import HardCopy from "../QuestionairesForm/HardCopy";
 import OrderCss from "./OrderSummary.module.scss";
-const OrderSummary = ({ children, location }) => {
-    const currentForm = useSelector((state) => currentFormSelector(state));
+import OrderSummaryGen from "./OrderSummaryGen";
+const OrderSummary = ({ handleCheckout, location }) => {
+    const cart = useSelector((state) => cartSelector(state));
+    const currentUser = useSelector((state) => currentUserSelector(state));
+
+    const [planBill, setPlanBill] = useState({
+        plan: "",
+        adOns: "",
+        form: 0,
+    });
+
+    let subtotal =
+        Number(planBill.plan ? planBill.plan.membership_cost : 0) +
+        Number(planBill.adOns ? planBill.adOns.price : 0) +
+        planBill.form;
+    let tax = (subtotal * 10) / 100;
+    let totalValue = tax + subtotal;
+    useEffect(() => {
+        handleCheckout({
+            ...planBill,
+            totalValue: totalValue,
+        });
+        // eslint-disable-next-line
+    }, [planBill]);
+    useEffect(() => {
+        if (cart.form) setPlanBill({ ...planBill, form: 25 });
+        // eslint-disable-next-line
+    }, []);
+    const handlePlan = (state) => {
+        setPlanBill({ ...planBill, plan: state.plan, adOns: state.adOns });
+    };
     return (
         <div className={OrderCss.container}>
             <div className={OrderCss.logo}>
                 <Logo />
             </div>
             <h1 className={OrderCss.h1}>Order Summary</h1>
-            <div
-                className={OrderCss.hardCopy}
-                style={{ backgroundImage: "url(images/TLTM.png)" }}
-            >
-                <div className={`${OrderCss.content} preview`}>
-                    <HardCopy
-                        currentForm={currentForm ? currentForm : null}
-                        values={true}
-                    />
+            {cart.form ? (
+                <div
+                    className={OrderCss.hardCopy}
+                    style={{ backgroundImage: "url(images/TLTM.png)" }}
+                >
+                    <div className={`${OrderCss.content} preview`}>
+                        <HardCopy currentForm={cart.form} values={cart.form} />
+                    </div>
                 </div>
-            </div>
-            {children}
+            ) : null}
+
+            {currentUser.subscription_plan ? null : location.state &&
+              location.state.form === "single" ? null : (
+                <CheckoutPlans handlePlan={handlePlan} />
+            )}
+            <br />
+            <br />
             <div className={OrderCss.price}>
                 <p className={OrderCss.p} style={{ fontWeight: "bold" }}>
-                    {location.plan ? "" : "Single"} Document Purchase
+                    {cart.form
+                        ? location.state && location.state.form === "single"
+                            ? "Singal Document Purchase"
+                            : "Document Purchase"
+                        : ""}
                 </p>
             </div>
-            <div className={OrderCss.price}>
-                <p className={OrderCss.p}>Legal Forms</p>
-                <p className={OrderCss.p}>$9.80</p>
-            </div>
-            <div className={OrderCss.price}>
-                <p className={OrderCss.p}>Mutual Non-Disclosure Agreement</p>
-                <p className={OrderCss.p}>$16.80</p>
-            </div>
-            <div className={OrderCss.price}>
-                <p className={OrderCss.p}>Shipping Cost</p>
-                <p className={OrderCss.p}>$1.80</p>
-            </div>
+
+            <OrderSummaryGen planBill={planBill} form={cart.form} />
             <div
                 className={OrderCss.price}
-                style={{ borderBottom: "2px dashed black" }}
+                style={{ borderTop: "2px dashed black" }}
             >
-                <p className={OrderCss.p}>Tax</p>
-                <p className={OrderCss.p}>$9.80</p>
-            </div>
-            <div className={OrderCss.price}>
                 <p className={OrderCss.p} style={{ fontWeight: "bold" }}>
                     Total
                 </p>
@@ -57,7 +83,7 @@ const OrderSummary = ({ children, location }) => {
                     className={OrderCss.p}
                     style={{ fontWeight: "bold", color: "#7854F7" }}
                 >
-                    $48.80
+                    ${totalValue}
                 </p>
             </div>
         </div>

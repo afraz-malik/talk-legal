@@ -1,6 +1,7 @@
 import { takeLatest, put, select } from "redux-saga/effects";
 import { fetchDbGet, fetchDbPost } from "../../backend/backend";
-import toast from "cogo-toast";
+import { toast } from "react-toastify";
+
 import {
     forgetPasswordFailed,
     forgetPasswordSuccess,
@@ -11,6 +12,7 @@ import {
     signOutFailed,
     signOutSuccess,
     signUpFailed,
+    signUpSuccess,
     subscribePlanFailed,
     subscribePlanSuccess,
 } from "./user.action";
@@ -82,17 +84,18 @@ export function* signUpStart({ payload }) {
     try {
         const response = yield fetchDbPost("api/register", null, payload);
         if (response.user) {
-            const { user, access_token } = response;
-            toast.success("Register SuccessFully");
-            yield puttingUser(user.id, access_token.plainTextToken, true);
+            toast.success("Register SuccessFully, Kindly Login");
+            yield put(signUpSuccess());
+            // yield puttingUser(user.id, access_token.plainTextToken, true);
         } else if (response.error) {
             for (const key in response.error) {
                 if (response.error.hasOwnProperty(key)) {
                     // console.log(`${key}: ${response.error[key]}`)
-                    toast.error(response.error[key]);
+                    console.log(response.error[key][0]);
+                    toast.error(response.error[key][0]);
                 }
             }
-            yield put(signUpFailed(response[0]));
+            yield put(signUpFailed(response.error));
         }
     } catch (err) {
         yield put(signUpFailed(err.message));
@@ -125,10 +128,10 @@ export function* signInStart({ payload }) {
                 );
             }
         } else if (response.message) {
-            toast.error(response.message, { hideAfter: 10 });
+            toast.error(response.message);
             yield put(signInFailed(response.message));
         } else {
-            toast.error(response, { hideAfter: 10 });
+            toast.error(response);
             yield put(signInFailed(response));
         }
     } catch (error) {
@@ -144,12 +147,12 @@ function* signOutStart() {
     const state = yield select();
     const token = state.userReducer.token;
     try {
+        localStorage.removeItem("currentUser");
+        sessionStorage.removeItem("currentUser");
+        toast.success("Logout Successfully");
+        yield put(signOutSuccess());
         if (token) {
             yield fetchDbPost("api/logout", token, null);
-            yield put(signOutSuccess());
-            localStorage.removeItem("currentUser");
-            sessionStorage.removeItem("currentUser");
-            toast.success("Logout Successfully");
         }
     } catch (error) {
         yield put(signOutFailed(error));
@@ -194,9 +197,7 @@ function* passwordResetStart({ payload }) {
     try {
         const response = yield fetchDbPost("api/reset-password", null, payload);
         if (response.response === "500") {
-            toast.error("Link Has been expired, Kindly Request a New Link", {
-                hideAfter: 10,
-            });
+            toast.error("Link Has been expired, Kindly Request a New Link");
             yield put(passwordResetFailed(response.message));
         } else {
             yield put(passwordResetSuccess());
@@ -219,9 +220,7 @@ function* subscribePlanStart({ payload }) {
             token
         );
         if (response.response === "200") {
-            toast.success("Plan Has Been Updated !", {
-                hideAfter: 10,
-            });
+            toast.success("Plan Has Been Updated !");
             yield puttingUser(uid, token, false);
             yield put(subscribePlanSuccess());
         } else {

@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import FormCss from "./Form.module.scss";
 
 import $ from "jquery";
-const HardCopy = ({ currentForm, values }) => {
+const HardCopy = ({ values, currentForm }) => {
+    const [stateForm, setstate] = useState(currentForm);
     let state = {};
     React.useEffect(() => {
         window.scrollTo(0, 0);
         var $log = $(".hardcopy"),
-            html = $.parseHTML(currentForm.discreption);
+            html = $.parseHTML(stateForm.discreption);
         $log.append(html);
-        fuck();
         if (values) {
+            fillingState();
             const keys = Object.keys(state);
             for (let i = 0; i < keys.length; i++) {
                 let key = keys[i];
@@ -24,9 +25,8 @@ const HardCopy = ({ currentForm, values }) => {
         }
         // eslint-disable-next-line
     }, [currentForm, values]);
-    console.log(currentForm);
-    const fuck = () => {
-        currentForm.pages.map((page) =>
+    const fillingState = () => {
+        values.pages.map((page) =>
             page.feilds.map((field) => {
                 return (state = { ...state, [field.name]: field.value });
             })
