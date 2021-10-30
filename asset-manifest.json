@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/tltm/static/css/main.0536a18f.chunk.css",
-    "main.js": "/tltm/static/js/main.9e01af15.chunk.js",
+    "main.css": "/tltm/static/css/main.7879a537.chunk.css",
+    "main.js": "/tltm/static/js/main.8af69a00.chunk.js",
     "runtime-main.js": "/tltm/static/js/runtime-main.8ae2a07b.js",
     "static/css/2.b99653bd.chunk.css": "/tltm/static/css/2.b99653bd.chunk.css",
-    "static/js/2.f3e6d086.chunk.js": "/tltm/static/js/2.f3e6d086.chunk.js",
+    "static/js/2.64ccd5cb.chunk.js": "/tltm/static/js/2.64ccd5cb.chunk.js",
     "index.html": "/tltm/index.html",
-    "static/js/2.f3e6d086.chunk.js.LICENSE.txt": "/tltm/static/js/2.f3e6d086.chunk.js.LICENSE.txt",
+    "static/js/2.64ccd5cb.chunk.js.LICENSE.txt": "/tltm/static/js/2.64ccd5cb.chunk.js.LICENSE.txt",
     "static/media/index.css": "/tltm/static/media/SFProText-Bold.9dae2991.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.8ae2a07b.js",
     "static/css/2.b99653bd.chunk.css",
-    "static/js/2.f3e6d086.chunk.js",
-    "static/css/main.0536a18f.chunk.css",
-    "static/js/main.9e01af15.chunk.js"
+    "static/js/2.64ccd5cb.chunk.js",
+    "static/css/main.7879a537.chunk.css",
+    "static/js/main.8af69a00.chunk.js"
   ]
 }
