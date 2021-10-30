@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { LoadingSelector } from "../../redux/user/user.selector";
 import { Spinner } from "../../components/Spinner/Spinner";
+import { Link } from "react-router-dom";
 
 const ForgetPassword = () => {
     const { register, handleSubmit } = useForm();
@@ -39,6 +40,15 @@ const ForgetPassword = () => {
                 <div>
                     <img alt="" src="images/lock.png" /> Your info is safely
                     secured
+                </div>
+                <hr />
+                <div>
+                    <Link
+                        to="/login"
+                        style={{ borderBottom: "1px solid lightgrey" }}
+                    >
+                        Go Back
+                    </Link>
                 </div>
             </form>
             {loading ? <Spinner /> : null}

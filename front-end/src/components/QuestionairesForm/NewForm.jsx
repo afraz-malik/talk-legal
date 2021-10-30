@@ -15,6 +15,7 @@ const NewForm = ({
     const [fields, setfields] = useState(newForm.feilds);
     const [previewed, setpreviewed] = useState(false);
     const [errors, seterrors] = useState([]);
+    console.log(fields);
     React.useEffect(() => {
         window.scrollTo(0, 0);
         setfields(newForm.feilds);

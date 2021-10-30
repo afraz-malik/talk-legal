@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 const RegisterForm = ({ location }) => {
     const [state, setstate] = useState({
         name: "",
+        lname: "",
         email: "",
         password: "",
         phone: "+92 324 8205435",
@@ -51,6 +52,14 @@ const RegisterForm = ({ location }) => {
         }
         // history.push("/plans");
     };
+    const togglePassword = () => {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    };
     return (
         <div className={RegisterFormCss.form}>
             <form onSubmit={handleSubmit}>
@@ -65,13 +74,22 @@ const RegisterForm = ({ location }) => {
                     For the purpose of industry regulation, your details are
                     required.
                 </p>
-                <label>Your full name*</label>
+                <label>First name*</label>
                 <input
                     type="text"
                     name="name"
-                    placeholder="Enter your full name"
+                    placeholder="Enter your first name"
                     onChange={handleChange}
                     value={state.name}
+                    required
+                />
+                <label>Last name*</label>
+                <input
+                    type="text"
+                    name="lname"
+                    placeholder="Enter your last name"
+                    onChange={handleChange}
+                    value={state.lname}
                     required
                 />
 
@@ -84,17 +102,25 @@ const RegisterForm = ({ location }) => {
                     onChange={handleChange}
                     required
                 />
-
                 <label>Create password*</label>
-                <input
-                    type="password"
-                    placeholder="Enter password"
-                    name="password"
-                    value={state.password}
-                    onChange={handleChange}
-                    required
-                />
-                <div>
+                <div className={RegisterFormCss.password}>
+                    <input
+                        type="password"
+                        placeholder="Enter password"
+                        name="password"
+                        value={state.password}
+                        onChange={handleChange}
+                        required
+                        id="password"
+                    />
+                    <img
+                        alt=""
+                        src="images/Group 1000001848.svg"
+                        onClick={() => togglePassword()}
+                        style={{ display: state.password ? "block" : "none" }}
+                    />
+                </div>
+                <div className={RegisterFormCss.checkbox}>
                     <input
                         type="checkbox"
                         name="checkbox"
@@ -114,7 +140,7 @@ const RegisterForm = ({ location }) => {
                 </div>
                 <div className={RegisterFormCss.signin}>
                     {" "}
-                    Have an account?{" "}
+                    Already Have an Account?{" "}
                     <Link
                         to={redirect ? `/login?redirect=${redirect}` : "/login"}
                     >

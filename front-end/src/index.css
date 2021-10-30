@@ -73,3 +73,6 @@ textarea {
     -o-user-select: auto !important;
     user-select: auto !important;
 }
+input::placeholder {
+    opacity: 0.6;
+}

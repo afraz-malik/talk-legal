@@ -67,8 +67,10 @@
             font-style: normal;
             font-weight: 500;
             font-size: 14px;
+            width: 100%;
             // line-height: 18px;
             /* identical to box height */
+
             height: 50px;
             padding: 0 25px;
             display: flex;
@@ -108,7 +110,17 @@
             -webkit-appearance: checkbox;
             cursor: pointer;
         }
-        div {
+        .password {
+            position: relative;
+            img {
+                position: absolute;
+                right: 10px;
+                top: 15px;
+                cursor: pointer;
+                width: 20px;
+            }
+        }
+        .checkbox {
             display: flex;
             align-items: center;
             text-align: center;

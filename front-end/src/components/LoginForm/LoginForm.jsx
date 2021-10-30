@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LoginFormCss from "./LoginForm.module.scss";
 import { useForm } from "react-hook-form";
@@ -20,27 +20,42 @@ const LoginForm = ({ location }) => {
     const redirect = location.search ? location.search.split("=")[1] : null;
     React.useEffect(() => {
         return () => {
-            reset();
+            setstate({
+                email: "",
+                password: "",
+            });
             dispatch(clearError());
         };
         // eslint-disable-next-line
     }, [currentUser, dispatch]);
-    const {
-        register,
-        handleSubmit,
-        // formState: { errors },
-        reset,
-    } = useForm();
-    const onSubmit = async (data) => {
-        if (data.password.length < 6) {
+
+    const [state, setstate] = useState({
+        email: "",
+        password: "",
+        keeplogin: false,
+    });
+    const handleChange = (event) => {
+        setstate({ ...state, [event.target.name]: event.target.value });
+    };
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (state.password.length < 6) {
             toast.warn("Password Must be at least 6 characters long");
         } else {
-            dispatch(signInStart(data));
+            dispatch(signInStart(state));
+        }
+    };
+    const togglePassword = () => {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
     };
     return (
         <div className={LoginFormCss.form}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit}>
                 <h2>Get Started now</h2>
                 <label>Enter Email*</label>
                 <input
@@ -48,28 +63,45 @@ const LoginForm = ({ location }) => {
                     placeholder="Enter Email Address"
                     name="email"
                     required
-                    {...register("email")}
+                    value={state.email}
+                    onChange={handleChange}
                 />
                 <label>Enter Password*</label>
-
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="password"
-                    required
-                    {...register("password")}
-                />
+                <div className={LoginFormCss.password}>
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        name="password"
+                        required
+                        id="password"
+                        value={state.password}
+                        onChange={handleChange}
+                    />
+                    <img
+                        alt=""
+                        src="images/Group 1000001848.svg"
+                        onClick={() => togglePassword()}
+                        style={{ display: state.password ? "block" : "none" }}
+                    />
+                </div>
                 <h5>
-                    Forget password?{" "}
+                    Forget Your Password?{" "}
                     <Link to="/forget">
-                        <span>Reset Password</span>
+                        <span>Reset it</span>
                     </Link>
                 </h5>
                 <div>
                     <input
                         id="keeplogin"
                         type="checkbox"
-                        {...register("keepLogin")}
+                        name="keeplogin"
+                        // checked={state.persistence}
+                        onChange={(e) =>
+                            setstate({
+                                ...state,
+                                keeplogin: e.target.checked,
+                            })
+                        }
                     />
                     <label htmlFor="keeplogin">Keep Loggged in</label>
                 </div>

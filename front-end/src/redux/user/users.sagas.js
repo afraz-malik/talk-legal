@@ -39,6 +39,7 @@ function* puttingUser(uid, token, local) {
         })
     );
     if (local) {
+        console.log("putting");
         yield localStorage.setItem(
             "currentUser",
             JSON.stringify({
@@ -47,7 +48,7 @@ function* puttingUser(uid, token, local) {
             })
         );
     }
-    toast.success("Logged in Successfully");
+    toast.success(`Welcome ${user.name}`);
 }
 // ----------------------------------------------------------
 
@@ -114,7 +115,8 @@ export function* signInStart({ payload }) {
         });
         if (response.user) {
             // Getting user from getsubplan
-            if (payload.keepLogin) {
+            console.log(payload);
+            if (payload.keeplogin) {
                 yield puttingUser(
                     response.user.id,
                     response.access_token.plainTextToken,
