@@ -126,10 +126,9 @@ const RegisterForm = ({ location }) => {
                         name="checkbox"
                         id="checkbox"
                         required
-                    />{" "}
+                    />
                     <label htmlFor="checkbox">
-                        {" "}
-                        i agree to terms & conditions{" "}
+                        I agree to terms & conditions
                     </label>
                 </div>
                 <input type="submit" value="Register Account" />
@@ -139,13 +138,11 @@ const RegisterForm = ({ location }) => {
                     Register With Google
                 </div>
                 <div className={RegisterFormCss.signin}>
-                    {" "}
-                    Already Have an Account?{" "}
+                    Already Have an Account?
                     <Link
                         to={redirect ? `/login?redirect=${redirect}` : "/login"}
                     >
-                        {" "}
-                        <span type="submit">Sign in</span>{" "}
+                        <span type="submit">Sign in</span>
                     </Link>
                 </div>
             </form>

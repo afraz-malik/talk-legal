@@ -45,7 +45,7 @@ const AccountSettings = ({ currentUser }) => {
                         setpopup({ editCard: false, editProfile: true })
                     }
                 >
-                    Edit Account ›{" "}
+                    Edit Account ›
                 </h5>
             </div>
             <p>
@@ -70,12 +70,12 @@ const AccountSettings = ({ currentUser }) => {
                             defaultValue=""
                             disabled
                         />
-                    </div>{" "}
+                    </div>
                     <div className={AccountSettingsCss.col}>
                         <label>Phone Number</label>
                         <input
                             type="text"
-                            placeholder="Enter Pone Number"
+                            placeholder="Enter Phone Number"
                             defaultValue={state.user.phone}
                             disabled
                         />
@@ -152,7 +152,7 @@ const AccountSettings = ({ currentUser }) => {
                             setpopup({ editCard: true, editProfile: false })
                         }
                     >
-                        Add Card ›{" "}
+                        Add Card ›
                     </h5>
                 </div>
                 <p>

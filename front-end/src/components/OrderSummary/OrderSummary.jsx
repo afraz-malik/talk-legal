@@ -18,12 +18,11 @@ const OrderSummary = ({ handleCheckout, location }) => {
         form: 0,
     });
 
-    let subtotal =
+    let totalValue =
         Number(planBill.plan ? planBill.plan.membership_cost : 0) +
         Number(planBill.adOns ? planBill.adOns.price : 0) +
         planBill.form;
-    let tax = (subtotal * 10) / 100;
-    let totalValue = tax + subtotal;
+
     useEffect(() => {
         handleCheckout({
             ...planBill,

@@ -66,12 +66,21 @@ const Questionaires = () => {
         });
     };
 
+    const clickEvent = (e) => {
+        var preview = document.getElementById("preview");
+        if (preview && !preview.contains(e.target)) {
+            settoggle(false);
+        }
+    };
     if (toggle) {
+        window.addEventListener("mouseup", clickEvent);
         $(document).keydown(function (e) {
             if (e.keyCode === 27) {
                 settoggle(false);
             }
         });
+    } else {
+        window.removeEventListener("mouseup", clickEvent);
     }
     return (
         <div className={QCss.container}>
@@ -84,7 +93,6 @@ const Questionaires = () => {
                     ></div>
                 </div>
                 <div className={QCss.progress_percent}>
-                    {" "}
                     {state.percent}% Complete
                 </div>
                 <div className={QCss.body}>
@@ -120,6 +128,7 @@ const Questionaires = () => {
                 <Preview position="fixed">
                     <div
                         className={`${QCss.hc} preview`}
+                        id="preview"
                         style={{
                             backgroundImage: "url(images/TLTM.png)",
                         }}

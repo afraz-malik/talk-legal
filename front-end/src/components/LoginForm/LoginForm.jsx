@@ -57,7 +57,7 @@ const LoginForm = ({ location }) => {
         <div className={LoginFormCss.form}>
             <form onSubmit={handleSubmit}>
                 <h2>Get Started now</h2>
-                <label>Enter Email*</label>
+                <label>Email Address*</label>
                 <input
                     type="email"
                     placeholder="Enter Email Address"
@@ -66,7 +66,7 @@ const LoginForm = ({ location }) => {
                     value={state.email}
                     onChange={handleChange}
                 />
-                <label>Enter Password*</label>
+                <label>Password*</label>
                 <div className={LoginFormCss.password}>
                     <input
                         type="password"
@@ -85,7 +85,7 @@ const LoginForm = ({ location }) => {
                     />
                 </div>
                 <h5>
-                    Forget Your Password?{" "}
+                    Forget Your Password?
                     <Link to="/forget">
                         <span>Reset it</span>
                     </Link>
@@ -103,13 +103,13 @@ const LoginForm = ({ location }) => {
                             })
                         }
                     />
-                    <label htmlFor="keeplogin">Keep Loggged in</label>
+                    <label htmlFor="keeplogin">Keep Logged in</label>
                 </div>
                 <div>
                     <input type="submit" value="Sign In" />
                 </div>
                 <h5>
-                    Don't have an account?{" "}
+                    Don't have an account?
                     <Link
                         to={
                             redirect

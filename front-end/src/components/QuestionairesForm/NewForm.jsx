@@ -157,7 +157,6 @@ const NewForm = ({
                                                         : { opacity: "0" }
                                                 }
                                             >
-                                                {" "}
                                                 This field is required
                                             </span>
                                         </div>
@@ -194,7 +193,6 @@ const NewForm = ({
                                                     : { opacity: "0" }
                                             }
                                         >
-                                            {" "}
                                             This field is required
                                         </span>
                                     </div>
@@ -238,7 +236,6 @@ const NewForm = ({
                         )}
                     </div>
                     <span>
-                        {" "}
                         <img alt="" src="images/lock.png" />
                         Your info is savely secured
                     </span>

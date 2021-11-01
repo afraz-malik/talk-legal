@@ -18,7 +18,7 @@ const MembershipPopup = ({ nextMembership, closePopup }) => {
         <div className={DialoguePopupCss.content}>
             <img alt="" src="images/Group 1000001876.svg" />
             <h3>
-                Are you sure you want to change your membership from{" "}
+                Are you sure you want to change your membership from
                 {currentUser.subscription_plan.title} to “{nextMembership.title}
                 ”?
             </h3>

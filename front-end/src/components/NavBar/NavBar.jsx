@@ -177,14 +177,12 @@ const NavBar = ({ currentPage }) => {
                                             to="/dashboard"
                                             className={NavBarCss.a}
                                         >
-                                            {" "}
                                             Dashboard
                                         </Link>
                                         <Link
                                             to="/dashboard"
                                             className={NavBarCss.a}
                                         >
-                                            {" "}
                                             Profile
                                         </Link>
                                         <div

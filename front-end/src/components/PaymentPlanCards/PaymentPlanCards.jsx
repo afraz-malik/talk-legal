@@ -32,7 +32,7 @@ const PaymentPlanCards = ({ handleSubmit }) => {
                                     <p>
                                         {plan.no_of_documents === -1
                                             ? "Unlimited"
-                                            : plan.no_of_documents}{" "}
+                                            : plan.no_of_documents}
                                         numbers of Documents.
                                     </p>
                                 </div>

@@ -40,7 +40,7 @@ const Dashboard = () => {
                                 })
                             }
                         >
-                            <img alt="" src="images/files.svg" />{" "}
+                            <img alt="" src="images/files.svg" />
                             <span> My Files & Documents </span>
                         </li>
                         <li
@@ -51,7 +51,7 @@ const Dashboard = () => {
                                 setstate({ title: "Open Order", value: 2 })
                             }
                         >
-                            <img alt="" src="images/open-order.svg" />{" "}
+                            <img alt="" src="images/open-order.svg" />
                             <span> Open Order </span>
                         </li>
                         <li
@@ -62,7 +62,7 @@ const Dashboard = () => {
                                 setstate({ title: "Complete Order", value: 3 })
                             }
                         >
-                            <img alt="" src="images/complete-order.svg" />{" "}
+                            <img alt="" src="images/complete-order.svg" />
                             <span> Complete Order </span>
                         </li>
                         <li
@@ -76,7 +76,7 @@ const Dashboard = () => {
                                 })
                             }
                         >
-                            <img alt="" src="images/subtype.svg" />{" "}
+                            <img alt="" src="images/subtype.svg" />
                             <span> Subscription Type </span>
                         </li>
                         <li
@@ -87,7 +87,7 @@ const Dashboard = () => {
                                 setstate({ title: "Account Setting", value: 5 })
                             }
                         >
-                            <img alt="" src="images/settings.svg" />{" "}
+                            <img alt="" src="images/settings.svg" />
                             <span> Account Setting </span>
                         </li>
                     </ul>

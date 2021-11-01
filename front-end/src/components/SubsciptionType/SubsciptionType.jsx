@@ -34,7 +34,7 @@ const SubsciptionType = ({ subscription_plan }) => {
                         {subscription_plan.no_of_documents > 0 ? (
                             <div className={SubTypeCss.left}>
                                 <p>
-                                    3 out of {subscription_plan.no_of_documents}{" "}
+                                    3 out of {subscription_plan.no_of_documents}
                                     Documents
                                 </p>
                                 <div className={SubTypeCss.progress}>
@@ -55,7 +55,6 @@ const SubsciptionType = ({ subscription_plan }) => {
                 </div>
                 <div className={SubTypeCss.date}>
                     <div>
-                        {" "}
                         <p>Next Payment</p>
                         <h1>on November 30, 2020</h1>
                     </div>
@@ -63,7 +62,7 @@ const SubsciptionType = ({ subscription_plan }) => {
                         <button
                             onClick={() => setpopup({ ...popup, adons: true })}
                         >
-                            Manage Adons
+                            Manage Add-Ons
                         </button>
                     </div>
                 </div>
@@ -76,7 +75,7 @@ const SubsciptionType = ({ subscription_plan }) => {
                         <div className={SubTypeCss.left}>
                             <img alt="" src="images/Group 1000001813.svg" />
                             <h5>
-                                Invoice_2021/May.pdf <br />{" "}
+                                Invoice_2021/May.pdf <br />
                                 <p>
                                     Date of invoice -
                                     <span> October 31, 2017</span>
@@ -95,7 +94,7 @@ const SubsciptionType = ({ subscription_plan }) => {
             {popup.plans ? <UpdatePlans closePopup={closePopup} /> : null}
             {popup.adons ? (
                 <Preview position="fixed">
-                    <DialoguePopup title="Manage Addons">
+                    <DialoguePopup title="Manage Add-Ons">
                         <ManageAdOns closePopup={closePopup} />
                     </DialoguePopup>
                 </Preview>

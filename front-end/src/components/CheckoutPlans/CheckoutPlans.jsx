@@ -108,7 +108,7 @@ const CheckoutPlans = ({ location, handlePlan }) => {
                                     <p>
                                         {plan.no_of_documents === -1
                                             ? "Unlimited"
-                                            : plan.no_of_documents}{" "}
+                                            : plan.no_of_documents}
                                         number of Documents.
                                     </p>
                                 </div>
@@ -123,7 +123,7 @@ const CheckoutPlans = ({ location, handlePlan }) => {
                                     setbox({ ...box, adOnsBox: !box.adOnsBox })
                                 }
                             >
-                                <h3>Add ons</h3>
+                                <h3>Add-Ons</h3>
                                 <img
                                     alt=""
                                     src="images/downarrow2.png"
