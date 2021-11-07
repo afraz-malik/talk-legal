@@ -12,13 +12,13 @@ const NewForm = ({
     settoggle,
     submitForm,
 }) => {
-    const [fields, setfields] = useState(newForm.feilds);
+    const [questions, setquestions] = useState(newForm.questions);
     const [previewed, setpreviewed] = useState(false);
     const [errors, seterrors] = useState([]);
-    console.log(fields);
+    console.log(questions);
     React.useEffect(() => {
         window.scrollTo(0, 0);
-        setfields(newForm.feilds);
+        setquestions(newForm.questions);
     }, [newForm]);
     const handleChange = (event, idx) => {
         seterrors(
@@ -26,11 +26,11 @@ const NewForm = ({
                 return error !== event.target.name;
             })
         );
-        setfields(
-            update(fields, {
+        setquestions(
+            update(questions, {
                 [idx]: {
                     $set: {
-                        ...fields[idx],
+                        ...questions[idx],
                         value: event.target.value,
                     },
                 },
@@ -39,11 +39,11 @@ const NewForm = ({
     };
     const handleListChange = (value, idx) => {
         seterrors([]);
-        setfields(
-            update(fields, {
+        setquestions(
+            update(questions, {
                 [idx]: {
                     $set: {
-                        ...fields[idx],
+                        ...questions[idx],
                         value,
                     },
                 },
@@ -53,13 +53,12 @@ const NewForm = ({
     const handleSubmit = (e) => {
         e.preventDefault();
         let localerrors = [];
-        fields.forEach((field) => {
+        questions.forEach((field) => {
             if (!field.value) localerrors = [...localerrors, field.name];
         });
-        console.log(localerrors);
 
         if (localerrors.length === 0) {
-            handleForm(currentPage, fields);
+            handleForm(currentPage, questions);
             if (e.target.name === "preview") {
                 settoggle(true);
                 setpreviewed(true);
@@ -71,7 +70,7 @@ const NewForm = ({
         seterrors(localerrors);
     };
     $(document).click(function (e) {
-        for (let i = 0; i < fields.length; i++) {
+        for (let i = 0; i < questions.length; i++) {
             if (e.target.id !== `dropdown${i}`) {
                 $(`.dd_content${i}`).css("display", "none");
             }
@@ -82,20 +81,20 @@ const NewForm = ({
             <form onSubmit={handleSubmit}>
                 <div className={FormCss.fields}>
                     <h2>{newForm.title}</h2>
-                    <p>{newForm.desp}</p>
-                    {fields.map((field, idx) => {
+                    <p>{newForm.description}</p>
+                    {questions.map((field, idx) => {
                         switch (field.type) {
                             case "list":
                                 return (
                                     <div
                                         key={idx}
                                         className={
-                                            errors.includes(fields[idx].name)
+                                            errors.includes(questions[idx].name)
                                                 ? FormCss.error
                                                 : null
                                         }
                                     >
-                                        <label>{fields[idx].label}</label>
+                                        <label>{questions[idx].label}</label>
                                         <div
                                             className={FormCss.dropdownbox}
                                             id={`dropdown${idx}`}
@@ -107,8 +106,8 @@ const NewForm = ({
                                                 className={`${FormCss.dropdown}  `}
                                             >
                                                 <h3>
-                                                    {fields[idx].value
-                                                        ? fields[idx].value
+                                                    {questions[idx].value
+                                                        ? questions[idx].value
                                                         : "Select Your State"}
                                                 </h3>
                                                 <img
@@ -134,7 +133,7 @@ const NewForm = ({
                                                                     ).toggle();
                                                                 }}
                                                                 className={
-                                                                    fields[idx]
+                                                                    [idx]
                                                                         .value ===
                                                                     country
                                                                         ? FormCss.active
@@ -151,7 +150,7 @@ const NewForm = ({
                                             <span
                                                 style={
                                                     errors.includes(
-                                                        fields[idx].name
+                                                        questions[idx].name
                                                     )
                                                         ? { opacity: "1" }
                                                         : { opacity: "0" }
@@ -167,19 +166,19 @@ const NewForm = ({
                                     <div
                                         key={idx}
                                         className={
-                                            errors.includes(fields[idx].name)
+                                            errors.includes(questions[idx].name)
                                                 ? FormCss.error
                                                 : null
                                         }
                                     >
-                                        <label>{fields[idx].label}</label>
+                                        <label>{questions[idx].label}</label>
                                         <input
-                                            type={fields[idx].type}
+                                            type={questions[idx].type}
                                             placeholder={
-                                                fields[idx].placeholder
+                                                questions[idx].placeholder
                                             }
-                                            name={fields[idx].name}
-                                            value={fields[idx].value}
+                                            name={questions[idx].name}
+                                            value={questions[idx].value}
                                             onChange={(e) =>
                                                 handleChange(e, idx)
                                             }
@@ -187,7 +186,7 @@ const NewForm = ({
                                         <span
                                             style={
                                                 errors.includes(
-                                                    fields[idx].name
+                                                    questions[idx].name
                                                 )
                                                     ? { opacity: "1" }
                                                     : { opacity: "0" }

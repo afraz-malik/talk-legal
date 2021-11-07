@@ -8,19 +8,19 @@ use Illuminate\Support\Str;
 use App\Models\SubscriptionPlans;
 use App\Models\AddOnAttornyConsulting;
 use App\Models\User;
-use App\Models\Form;
+use App\Models\UserForms;
 
 use Illuminate\Validation\Rules\Password as RulesPassword;
 
-class FormsController extends Controller
+class UserFormsController extends Controller
 {
-  public function getForm(Request $request)
+  public function getUserForm(Request $request)
   {
-    $form = Form::find($request->id);
+    $form = User::find($request->user_id)->UserForm->where('id',$request->form_id);
     return response([
       'response' => '200',
       'data' => $form
     ]);
+    
   }
- 
 }

@@ -23,6 +23,7 @@ const Questionaires = () => {
         percent: 100 / total_pages,
         currentPage: 0,
     });
+    console.log(currentForm);
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, [formSelector]);
@@ -35,7 +36,7 @@ const Questionaires = () => {
                         [page]: {
                             $set: {
                                 ...currentForm.pages[page],
-                                feilds: [...data],
+                                questions: [...data],
                             },
                         },
                     },

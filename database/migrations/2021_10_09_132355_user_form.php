@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Forms extends Migration
+class UserForm extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class Forms extends Migration
      */
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('user_form', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->string('name');
             $table->longText('description');
             $table->json('fields');
@@ -29,6 +30,6 @@ class Forms extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('user_form');
     }
 }

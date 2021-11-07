@@ -9,19 +9,23 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
 
 class ResetPasswordController extends Controller
 {
     public function forgotPassword(Request $request)
     {
+
+        $authUser = auth()->user();
+
         $request->validate([
             'email' => 'required|email',
         ]);
-
         $status = Password::sendResetLink(
             $request->only('email')
         );

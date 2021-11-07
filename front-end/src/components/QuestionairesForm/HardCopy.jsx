@@ -8,7 +8,7 @@ const HardCopy = ({ values, currentForm }) => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
         var $log = $(".hardcopy"),
-            html = $.parseHTML(stateForm.discreption);
+            html = $.parseHTML(stateForm.description);
         $log.append(html);
         if (values) {
             fillingState();
@@ -27,7 +27,7 @@ const HardCopy = ({ values, currentForm }) => {
     }, [currentForm, values]);
     const fillingState = () => {
         values.pages.map((page) =>
-            page.feilds.map((field) => {
+            page.questions.map((field) => {
                 return (state = { ...state, [field.name]: field.value });
             })
         );

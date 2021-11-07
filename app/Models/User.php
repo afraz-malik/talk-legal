@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 use App\Notifications\ResetPasswordNotification;
+use UserForms;
 
 class User extends Authenticatable
 {
@@ -67,13 +68,13 @@ class User extends Authenticatable
     // protected $appends = [
     //     'profile_photo_url',
     // ];
-    public function sendPasswordResetNotification($token)
-    {
+    // public function sendPasswordResetNotification($token)
+    // {
+        
+    //     $url = 'https://spa.test/reset-password?token=' . $token;
 
-        $url = 'https://spa.test/reset-password?token=' . $token;
-
-        $this->notify(new ResetPasswordNotification($url));
-    }
+    //     $this->notify(new ResetPasswordNotification($url));
+    // }
     public function subscriptionPlan()
     {
         return $this->belongsTo(SubscriptionPlans::class, 'subscription_plan_id');
@@ -85,5 +86,9 @@ class User extends Authenticatable
     public function mutualNoneDisclosureDocument()
     {
         return $this->belongsTo(MutualNoneDisclosureDocument::class,'mutual_non_disclosuer_document_id');
+    }
+    public function UserForm()
+    {
+        return $this->hasMany(UserForm::class);
     }
 }
