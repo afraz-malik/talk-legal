@@ -45,7 +45,7 @@ export function* getSubscriptionsPlans() {
 
 function* gettingFormStart() {
     try {
-        const response = yield fetchDbGet("api/legal-form-detail/1", null);
+        const response = yield fetchDbGet("api/legal-form-detail/3", null);
         if (response.status) {
             yield put(gettingFormSuccess(response.data));
         }
