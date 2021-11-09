@@ -119,7 +119,10 @@ const Questionaires = () => {
                         }}
                     >
                         <div className={QCss.content} id="form">
-                            <HardCopy currentForm={formSelector} />
+                            <HardCopy
+                                values={currentForm}
+                                currentForm={formSelector}
+                            />
                         </div>
                     </div>
                 </div>

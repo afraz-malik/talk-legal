@@ -171,4 +171,142 @@
                 </p>    
      </body>
 
-</html
+</html>
+
+<!-- <!--  -->
+
+
+{
+    "title" : "Mutual Non disclosurer Agreement",
+    "description" : "",
+      "pages" : [
+        {
+            "questions" : [
+                {
+                    "label": "Are you an individual or a company?",
+                    "type": "radio",
+                    "name": "name",
+                    "value": "Company",
+                    "fields": [{name: 'Company'}, { name: 'individual'}]
+                    "placeholder": ""
+                    "id" : 1
+
+                   "parent_id":  null
+                   "parent_value" : null
+                }
+            ]
+        },
+        {
+            "questions" : [
+                {
+                    "label": "What state do you live in?",
+                    "type": "list",
+                    "name": "state",
+                    "value": "",
+                    "placeholder": "Enter state",
+                    "id" : 2
+                    
+                   "parent_id":  1
+                   "parent_value" : 'Individual'
+        
+                },
+                {
+                    "label": "What state was your company formed in?",
+                    "type": "list",
+                    "name": "state",
+                    "value": "",
+                    "placeholder": "Enter state",
+                    "id" : 3
+                    
+                   "parent_id":  1
+                   "parent_value" : 'Company'
+        
+                },
+                
+            ]
+        },
+        {
+            "questions" : [
+                {
+                    "label": "What’s the name of the independent contractor?",
+                    "type": "text",
+                    "name": "contractor",
+                    "value": "",
+                    "placeholder": "Enter name",
+                    
+                    "dependent":"none"
+                },
+
+                {
+                    "label": "What state does independent contractor live in?",
+                    "type": "text",
+                    "name": "contractor_state",
+                    "value": "",
+                    "placeholder": "Enter name",
+                    
+                    "dependent":"none"
+                },
+                {
+                    "label": "Address of the independent contractor",
+                    "type": "text",
+                    "name": "contractor_address",
+                    "value": "",
+                    "placeholder": "Enter name",
+                    
+                    "dependent":"none"
+                },
+            ]
+        },
+        {
+            "questions" : [
+            {
+                "label": "What is the type of job that you need and that Recipient does? For example, “social media marketing” or “consulting.",
+                "type": "text",
+                "name": "contractor_address",
+                "value": "",
+                "placeholder": "Enter name",
+                
+                "dependent":"none",
+            },
+            {
+                "label": "What is the project that you will need to hire the Independent Contractor for?",
+                "type": "text",
+                "name": "contractor_address",
+                "value": "",
+                "placeholder": "Enter name"
+                
+                "dependent":"none"
+            },
+            ]
+        },
+        {
+            "questions" : [
+                {
+                    "label": "Which state’s laws do you want the contract to be governed by?",
+                    "type": "list",
+                    "name": "agreement_brought_state",
+                    "value": "",
+                    "placeholder": "Select your state",
+
+                    "dependent":"none"
+
+                },
+                {
+                    "label": "What state should handle a potential lawsuit?",
+                    "type": "list",
+                    "name": "agreement_constructed_state",
+                    "value": "",
+                    "placeholder": "Select your state",
+    
+                    "dependent":"none"
+
+                }
+            ]
+        },
+        
+    ]
+}
+
+
+
+ -->
