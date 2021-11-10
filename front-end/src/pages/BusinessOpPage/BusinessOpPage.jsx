@@ -19,8 +19,8 @@ const BusinessOpPage = () => {
                     <div className={BusinessOpPageCss.category}>
                         <div className={BusinessOpPageCss.img}>
                             <img alt="" src="images/Profile.png" />
+                            <p>Influencer Market</p>
                         </div>
-                        <p>Influencer Market</p>
                         <button>See all Documents</button>
                     </div>
                     <div className={BusinessOpPageCss.category}>

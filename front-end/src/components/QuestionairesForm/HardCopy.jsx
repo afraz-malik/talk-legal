@@ -7,6 +7,7 @@ const HardCopy = ({ values, currentForm }) => {
     let state = {};
     React.useEffect(() => {
         window.scrollTo(0, 0);
+        $(".hardcopy").empty();
         var $log = $(".hardcopy"),
             html = $.parseHTML(stateForm.description);
         $log.append(html);
