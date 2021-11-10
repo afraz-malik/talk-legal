@@ -197,9 +197,10 @@ const NavBar = ({ currentPage }) => {
                                 </div>
                             </li>
                         ) : (
-                            <Link to="/register">
-                                <li>Get Started</li>
-                            </Link>
+                            <li className={NavBarCss.login}>
+                                <Link to="/login">Log In</Link> &ensp;| &ensp;
+                                <Link to="/register">Sign Up</Link>
+                            </li>
                         )}
                     </ul>
                 </div>

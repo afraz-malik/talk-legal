@@ -36,14 +36,23 @@ const OurPlans = () => {
                     <h2>
                         Our <span>Plans</span>
                     </h2>
-                    <div className={OurPlansCss.title}>
-                        <h4>Simple, transparent pricing</h4>
-                        <p>No contracts. No surprise fees.</p>
-                    </div>
+
                     <table>
                         <thead>
                             <tr>
-                                <td width="300px"></td>
+                                <td width="400px">
+                                    <div className={OurPlansCss.title}>
+                                        <h4>
+                                            Get Started Now,
+                                            <br /> Pick a plan.
+                                        </h4>
+                                        <p>
+                                            Choose a plan that works best for
+                                            you and your team. No contracts. No
+                                            surprise fees..
+                                        </p>
+                                    </div>
+                                </td>
                                 {plans.map((plan) => (
                                     <td key={plan.id}>
                                         <div

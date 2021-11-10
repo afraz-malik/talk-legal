@@ -27,13 +27,9 @@ const Header = () => {
                     expensive fees.
                 </p>
                 <div className={HeaderCss.link}>
-                    <Link to="/register" className={HeaderCss.a}>
-                        {currentUser ? "Get Started" : "Sign Up For Free"}
-                    </Link>
-                    or
-                    <span>
-                        <HashLink to="/#Services">Discover more ›</HashLink>
-                    </span>
+                    <HashLink to="/#Services" className={HeaderCss.a}>
+                        Discover more
+                    </HashLink>
                 </div>
             </div>
         </div>
