@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import PreQuestionaires from "./pages/Questionaires/PreQuestionaires";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 const Routes = () => {
     return (
@@ -69,6 +70,7 @@ const Routes = () => {
             <PrivateRoute exact path="/checkout" component={CheckoutPage} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/plans" component={PaymentPlans} />
+            {/* <PublicRoute component={PageNotFound} /> */}
         </Switch>
     );
 };

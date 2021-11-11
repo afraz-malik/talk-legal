@@ -216,7 +216,7 @@ const NewForm = ({
                                 className={FormCss.previous}
                                 type="button"
                                 onClick={() => pageHandler(currentPage - 1)}
-                                value="&laquo;"
+                                value="&#9001;&ensp;Back"
                             />
                         )}
                         {!lastPage ? (

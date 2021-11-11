@@ -12,24 +12,32 @@ const BusinessForms = () => {
     };
     return (
         <div className={BFormsCss.container}>
-            <div className={BFormsCss.card}>
-                <div className={BFormsCss.imgTaker}>
-                    <img alt="" src="images/bagpen.png" />
-                </div>
-                <div className={BFormsCss.text}>
-                    <h3>NDA Template</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Ornare pretium placerat ut platea. Purus blandit integer
-                        sagittis massa vel est hac.
-                    </p>
-                </div>
-                <div className={BFormsCss.links}>
-                    <button onClick={() => getForm()}>Get Started</button>
-                    <div className={BFormsCss.fees}>
-                        $79 + state filing fees
+            <div className={BFormsCss.helper}></div>
+            <div className={BFormsCss.cards}>
+                {[...Array(6)].map((ar) => (
+                    <div className={BFormsCss.card}>
+                        <div className={BFormsCss.imgTaker}>
+                            <img alt="" src="images/bagpen.png" />
+                        </div>
+                        <div className={BFormsCss.text}>
+                            <h3>NDA Template</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Ornare pretium placerat ut
+                                platea. Purus blandit integer sagittis massa vel
+                                est hac.
+                            </p>
+                        </div>
+                        <div className={BFormsCss.links}>
+                            <button onClick={() => getForm()}>
+                                Get Started
+                            </button>
+                            <div className={BFormsCss.fees}>
+                                $79 + state filing fees
+                            </div>
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
         </div>
     );

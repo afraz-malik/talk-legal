@@ -23,18 +23,20 @@
             background: #FFFFFF;
     border: 1px solid #7854F7;
     border-radius: 30px;
-    width: 200px;
-    padding: 40px 20px 30px 20px;
+    width: 230px;
+    height: 230px;
+    padding: 30px 20px 30px 20px;
     display: flex;
+    justify-content: space-between;
+    transition: all 0.3s;
     flex-direction: column;
-    height: 250px;
+    // display: flex;
     &:hover{
         background: #7854F7;
         p{
             color: #FFFFFF;
         }
         button{
-            display: flex;
             background: #FFFFFF;
             color: #7854F7;
         }

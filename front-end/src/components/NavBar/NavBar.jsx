@@ -125,30 +125,6 @@ const NavBar = ({ currentPage }) => {
                                 About Us
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                to="/"
-                                className={
-                                    active === "contact"
-                                        ? NavBarCss.selected
-                                        : null
-                                }
-                            >
-                                Contact Us
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/"
-                                className={
-                                    active === "dummy"
-                                        ? NavBarCss.selected
-                                        : null
-                                }
-                            >
-                                Support
-                            </Link>
-                        </li>
                     </ul>
                 </div>
                 <div className={NavBarCss.right}>
@@ -197,10 +173,13 @@ const NavBar = ({ currentPage }) => {
                                 </div>
                             </li>
                         ) : (
-                            <li className={NavBarCss.login}>
-                                <Link to="/login">Log In</Link> &ensp;| &ensp;
-                                <Link to="/register">Sign Up</Link>
-                            </li>
+                            <Link to="/login">
+                                <li className={NavBarCss.login}>
+                                    Log In
+                                    {/* &ensp;| &ensp; */}
+                                    {/* <Link to="/register">Sign Up</Link> */}
+                                </li>
+                            </Link>
                         )}
                     </ul>
                 </div>

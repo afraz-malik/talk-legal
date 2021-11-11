@@ -28,7 +28,7 @@ const Header = () => {
                 </p>
                 <div className={HeaderCss.link}>
                     <HashLink to="/#Services" className={HeaderCss.a}>
-                        Discover more
+                        Get Started
                     </HashLink>
                 </div>
             </div>
