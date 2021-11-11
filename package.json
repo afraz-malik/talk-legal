@@ -2,8 +2,7 @@
   "name": "talk-legal-to-me",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://afraz-malik.github.io/tltm",
-  "dependencies": {
+    "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
