@@ -94,7 +94,7 @@ const Questionaires = () => {
                     ></div>
                 </div>
                 <div className={QCss.progress_percent}>
-                    {state.percent}% Complete
+                    {Math.floor(state.percent)}% Complete
                 </div>
                 <div className={QCss.body}>
                     <div className={QCss.form}>
