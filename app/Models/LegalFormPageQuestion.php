@@ -7,12 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class LegalFormPageQuestion extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
 
+	public function getValueAttribute()
+	{
+		return explode(',', $this->attributes['value']);
+	}
 
-    public function page()
-    {
-        $this->belongsTo(LegalForm::class, 'legal_form_id');
-    }
+	public function page()
+	{
+		$this->belongsTo(LegalForm::class, 'legal_form_id');
+	}
 }

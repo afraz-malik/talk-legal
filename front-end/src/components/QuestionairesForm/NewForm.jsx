@@ -108,7 +108,7 @@ const NewForm = ({
                                                 <h3>
                                                     {questions[idx].value
                                                         ? questions[idx].value
-                                                        : "Select Your State"}
+                                                        : questions[idx].placeholder}
                                                 </h3>
                                                 <img
                                                     alt=""

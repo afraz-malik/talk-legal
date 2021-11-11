@@ -29,6 +29,8 @@ Route::get('all-legal-forms', [\App\Http\Controllers\LegalFormApiController::cla
 Route::get('legal-form-detail/{id}', [\App\Http\Controllers\LegalFormApiController::class, 'getLegalForm']);
 Route::post('add-legal-form', [\App\Http\Controllers\LegalFormApiController::class, 'AddNewLegalForm']);
 
+Route::post('submit-legal-form', [\App\Http\Controllers\LegalFormApiController::class, 'submitLegalForm']);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::get('get-user-form/{user_id}/{form_id}', [\App\Http\Controllers\Api\UserFormsController::class, 'getUserForm']);
