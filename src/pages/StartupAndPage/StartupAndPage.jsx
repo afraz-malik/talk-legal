@@ -4,23 +4,8 @@ import BusinessHeader from '../../components/BusinessHeader/BusinessHeader'
 import Footer from '../../components/Footer/Footer'
 import Info from '../../components/Info/Info'
 import NavBar from '../../components/NavBar/NavBar'
-const businessOpForms = [
-  {
-    id: 1,
-    src: 'images/bagpen.png',
-    title: 'NDA Template',
-    desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
-    price: '79',
-  },
-  {
-    id: 2,
-    src: 'images/bagpen.png',
-    title: 'Unilateral Non-Disclosure Agreement',
-    desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
-    price: '79',
-  },
-]
-const BusinessOpPage = () => {
+const startupForms = []
+const StartupAndPage = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -35,7 +20,7 @@ const BusinessOpPage = () => {
       <br />
       <br />
       <br />
-      <BusinessForms forms={businessOpForms} />
+      <BusinessForms forms={startupForms} />
       <br />
       <br />
       <br />
@@ -49,4 +34,4 @@ const BusinessOpPage = () => {
   )
 }
 
-export default BusinessOpPage
+export default StartupAndPage
