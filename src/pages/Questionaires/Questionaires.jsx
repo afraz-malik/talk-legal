@@ -4,7 +4,7 @@ import QCss from './Questionaires.module.scss'
 import Logo from '../../components/NavBar/Logo'
 import { useDispatch, useSelector } from 'react-redux'
 import Preview from '../../components/Preview/Preview'
-import { addingCartItem } from '../../redux/data/data.action'
+import { addingCartItem, savingFormInState } from '../../redux/data/data.action'
 import { currentUserSelector } from '../../redux/user/user.selector'
 import { useHistory } from 'react-router'
 import NewForm from '../../components/QuestionairesForm/NewForm'
@@ -46,8 +46,9 @@ const Questionaires = ({ formSelector }) => {
         })
       }
     }
+    console.log(currentForm)
+    dispatch(savingFormInState(currentForm))
   }
-
   const submitForm = () => {
     dispatch(addingCartItem(currentForm))
     if (currentUser) {
@@ -80,6 +81,7 @@ const Questionaires = ({ formSelector }) => {
   } else {
     window.removeEventListener('mouseup', clickEvent)
   }
+
   return (
     <div className={QCss.container}>
       <div className={QCss.container2}>
@@ -97,6 +99,7 @@ const Questionaires = ({ formSelector }) => {
           <div className={QCss.form}>
             <NewForm
               newForm={currentForm.pages[state.currentPage]}
+              currentForm={currentForm}
               handleForm={handleForm}
               pageHandler={pageHandler}
               currentPage={state.currentPage}

@@ -14,7 +14,6 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import PublicRoute from './PublicRoute'
 import PrivateRoute from './PrivateRoute'
 import PreQuestionaires from './pages/Questionaires/PreQuestionaires'
-import PageNotFound from './pages/PageNotFound/PageNotFound'
 import StartupAndPage from './pages/StartupAndPage/StartupAndPage'
 import SocialMediaPage from './pages/SocialMediaPage/SocialMediaPage'
 

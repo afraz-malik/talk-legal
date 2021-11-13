@@ -24,6 +24,8 @@ export const dataReducer = (state = initialState, action) => {
         loading: false,
         currentForm: action.payload,
       }
+    case 'SAVING_FORM_IN_STATE':
+      return { ...state, currentForm: action.payload }
     case 'ADDING_CART_ITEM_SUCCESS':
       let cart = state.cart
       let tempCart = { ...cart, form: action.payload.payload }

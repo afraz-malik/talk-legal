@@ -15,7 +15,7 @@ const businessOpForms = [
   {
     id: 2,
     src: 'images/bagpen.png',
-    title: 'Unilateral Non-Disclosure Agreement',
+    title: 'Unilateral Agreement',
     desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
     price: '79',
   },

@@ -28,6 +28,11 @@ export const clearForm = () => ({
 })
 
 // -------------------------------------------------------------
+export const savingFormInState = (payload) => ({
+  type: 'SAVING_FORM_IN_STATE',
+  payload,
+})
+// -------------------------------------------------------------
 export const addingCartItem = (payload) => ({
   type: 'ADDING_CART_ITEM_START',
   payload,
