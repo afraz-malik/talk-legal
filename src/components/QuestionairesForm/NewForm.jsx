@@ -90,9 +90,10 @@ const NewForm = ({
                     key={idx}
                     className={
                       errors.includes(questions[idx].name)
-                        ? FormCss.error
+                        ? {`${FormCss.error} ${FormCss.div}`}
                         : null
                     }
+                    id="checkbox"
                   >
                     <div className={FormCss.checkbox}>
                       <label className={FormCss.container2}>
