@@ -101,6 +101,7 @@ const NewForm = ({
         <div className={FormCss.fields}>
           <h2>{newForm.title}</h2>
           <p>{newForm.description}</p>
+          {/* <hr style={{borderBottom:'1px solid lightgrey'}}/> */}
           {questions.map((question, idx) => {
             switch (question.type) {
               case 'radio':

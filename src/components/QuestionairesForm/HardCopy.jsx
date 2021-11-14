@@ -14,6 +14,23 @@ const HardCopy = ({ values, currentForm }) => {
     $log.append(html)
     if (values) {
       fillingState()
+      currentForm.pages.forEach((page) =>
+        page.questions.forEach((qs) => {
+          if (qs.name === 'master' && qs.value) {
+            const opposite = qs.fields.filter(field => field.name !== qs.value )
+            const oppVal = opposite[0].name.trim().toLowerCase();
+            console.log(oppVal)
+            const oppEl = document.querySelectorAll('[data-parent]')
+            oppEl.forEach(element => {
+              if(element){
+                // console.log(element.getAttribute('data-parent'), oppVal)
+                if(element.getAttribute('data-parent').toLowerCase() === oppVal) element.remove()
+
+              }
+            });
+          }
+        })
+      )
       const keys = Object.keys(state)
       for (let i = 0; i < keys.length; i++) {
         let key = keys[i]
