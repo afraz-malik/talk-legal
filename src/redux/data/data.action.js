@@ -50,3 +50,14 @@ export const clearingCart = (payload) => ({
   type: 'CLEARING_CART',
   payload,
 })
+// -------------------------------------------------------------
+
+export const savingFormToApiAction = (payload) => ({
+  type: 'SAVING_FORM_TO_API',
+  payload,
+})
+
+// export const addingCartItemFailed = (payload) => ({
+//   type: 'ADDING_CART_ITEM_FAILED',
+//   payload,
+// })

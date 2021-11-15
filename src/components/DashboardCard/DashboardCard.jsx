@@ -1,6 +1,7 @@
 import React from 'react'
 import DashboardCardCss from './DashboardCard.module.scss'
-const DashboardCard = ({ idx, type, title }) => {
+const DashboardCard = ({ idx, type, title, form }) => {
+  console.log(type)
   const tt = idx + 10 * 7 + '%'
   return (
     <div
@@ -9,19 +10,19 @@ const DashboardCard = ({ idx, type, title }) => {
     >
       <div className={DashboardCardCss.topBar}></div>
       <div className={DashboardCardCss.title}>
-        <h2>Photography Services Contract</h2>
+        <h2>{form.title}</h2>
         <img alt="" src="images/icon.svg" />
       </div>
       <p>
         Phasellus accumsan imperdiet tempor. Cras tincidunt, arcu nec eleifend
         porttitor.
       </p>
-      <span>{title}</span>
+      <span>{type === '1' ? 'Progress' : 'Complete'} </span>
       <div
         className={DashboardCardCss.bar}
-        style={type === 1 ? { width: '100%' } : { width: tt }}
+        style={type === '1' ? { width: tt } : { width: '100%' }}
       ></div>
-      {type === 1 ? (
+      {type === '2' ? (
         <button className={DashboardCardCss.download}>
           <img alt="" src="images/arrow-down-circle.svg" />
           Download

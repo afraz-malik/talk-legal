@@ -4,7 +4,11 @@ import QCss from './Questionaires.module.scss'
 import Logo from '../../components/NavBar/Logo'
 import { useDispatch, useSelector } from 'react-redux'
 import Preview from '../../components/Preview/Preview'
-import { addingCartItem, savingFormInState } from '../../redux/data/data.action'
+import {
+  addingCartItem,
+  savingFormInState,
+  savingFormToApiAction,
+} from '../../redux/data/data.action'
 import { currentUserSelector } from '../../redux/user/user.selector'
 import { useHistory } from 'react-router'
 import NewForm from '../../components/QuestionairesForm/NewForm'
@@ -52,8 +56,10 @@ const Questionaires = ({ formSelector }) => {
   const submitForm = () => {
     dispatch(addingCartItem(currentForm))
     if (currentUser) {
-      if (currentUser.subscription_plan) history.push('/checkout')
-      else history.push('/plans?cart=form')
+      dispatch(savingFormToApiAction({ id: currentUser.id, form: currentForm }))
+      if (currentUser.subscription_plan) {
+        history.push('/checkout')
+      } else history.push('/plans?cart=form')
     } else {
       history.push('/register?redirect=plans')
     }

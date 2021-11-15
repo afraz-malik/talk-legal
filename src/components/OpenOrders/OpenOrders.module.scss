@@ -6,6 +6,19 @@
     //   display: grid;
     //   grid-template-columns: auto auto auto;
     grid-gap: 30px;
+      
+    span{
+        text-align: center;
+        width: 100%;
+        opacity: 0.4;
+        font-family: Circular Std;
+              font-style: normal;
+              // font-weight: bold;
+              font-size: 16px;
+            //   line-height: 27px;
+              margin: 0;
+              color: #17141f;
+    }
 }
 // .card {
 //   background: #ffffff;
