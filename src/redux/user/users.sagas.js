@@ -16,20 +16,16 @@ import {
   subscribePlanFailed,
   subscribePlanSuccess,
 } from './user.action'
-import {
-  clearingCart,
-  savingFormInState,
-  savingFormToApiAction,
-} from '../data/data.action'
+import { clearingCart, savingFormToApiAction } from '../data/data.action'
 
 // ----------------------------------------------------------
 // Helper Functions
-function* puttingUser(uid, token, local) {
+export function* refreshingUser(uid, token, local) {
+  console.log(local)
   const response = yield fetchDbGet(
     `api/user/get-subscription-plan/${uid}`,
     token
   )
-  console.log(response)
   const user = response.data[0]
   yield put(
     signInSuccess({
@@ -54,7 +50,7 @@ function* puttingUser(uid, token, local) {
       })
     )
   }
-  toast.success(`Welcome ${user.name}`)
+  console.log('user refreshed')
 }
 // ----------------------------------------------------------
 
@@ -93,7 +89,7 @@ export function* signUpStart({ payload }) {
     if (response.user) {
       toast.success('Register SuccessFully, Kindly Login')
       yield put(signUpSuccess())
-      // yield puttingUser(user.id, access_token.plainTextToken, true);
+      // yield refreshingUser(user.id, access_token.plainTextToken, true);
     } else if (response.error) {
       for (const key in response.error) {
         if (response.error.hasOwnProperty(key)) {
@@ -116,33 +112,23 @@ export function* signUp() {
 export function* signInStart({ payload }) {
   const state = yield select()
   const cart = state.dataReducer.cart
-
   try {
     const response = yield fetchDbPost('api/login', null, {
       email: payload.email,
       password: payload.password,
     })
-    yield console.log(response)
     if (response.user) {
-      if (payload.keeplogin) {
-        yield puttingUser(
-          response.user.id,
-          response.access_token.plainTextToken,
-          true
-        )
-      } else {
-        yield puttingUser(
-          response.user.id,
-          response.access_token.plainTextToken,
-          false
-        )
-      }
+      yield refreshingUser(
+        response.user.id,
+        response.access_token.plainTextToken,
+        payload.keeplogin ? true : false
+      )
       if (cart.form) {
-        console.log('hello')
         yield put(
           savingFormToApiAction({ id: response.user.id, form: cart.form })
         )
       }
+      yield toast.success(`Welcome ${response.user.name}`)
     } else if (response.message) {
       toast.error(response.message)
       yield put(signInFailed(response.message))
@@ -166,8 +152,8 @@ function* signOutStart() {
     localStorage.removeItem('currentUser')
     sessionStorage.removeItem('currentUser')
     toast.success('Logout Successfully')
-    yield put(clearingCart())
     yield put(signOutSuccess())
+    yield put(clearingCart())
     if (token) {
       yield fetchDbPost('api/logout', token, null)
     }
@@ -233,9 +219,9 @@ function* subscribePlanStart({ payload }) {
       token
     )
     if (response.response === '200') {
-      toast.success('Plan Has Been Updated !')
-      yield puttingUser(uid, token, false)
+      yield refreshingUser(uid, token, false)
       yield put(subscribePlanSuccess())
+      toast.success('Plan Has Been Updated !')
     } else {
       yield put(subscribePlanFailed())
     }
@@ -247,26 +233,3 @@ export function* subscribePlan() {
   yield takeLatest('SUBSCRIBE_PLAN_START', subscribePlanStart)
 }
 // ----------------------------------------------------------
-
-// -------------------------------------------------------------
-function* savingFormInApi({ payload }) {
-  const state = yield select()
-  const token = state.userReducer.token
-  const uid = state.userReducer.currentUser.id
-  console.log(payload.form)
-  try {
-    const newresponse = yield fetchDbPost(
-      `api/submit-legal-form/${payload.id}`,
-      // response.access_token.accessToken.plainTextToken,
-      null,
-      payload.form
-    )
-    console.log(newresponse)
-    yield puttingUser(uid, token, false)
-  } catch (e) {
-    console.log(e)
-  }
-}
-export function* savingFormInApiStart() {
-  yield takeLatest('SAVING_FORM_TO_API', savingFormInApi)
-}

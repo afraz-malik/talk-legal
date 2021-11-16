@@ -13,16 +13,16 @@ const BusinessForms = ({ forms }) => {
   const getForm = (id) => {
     if (currentForm) {
       if (currentForm.id === id) {
-        history.push({ pathname: '/questions', form: id })
+        history.push({ pathname: '/businessform', form: id })
       } else {
         dispatch(clearForm())
         dispatch(gettingFormStart(id))
-        history.push({ pathname: '/questions', form: id })
+        history.push({ pathname: '/businessform', form: id })
       }
     } else {
       dispatch(clearForm())
       dispatch(gettingFormStart(id))
-      history.push({ pathname: '/questions', form: id })
+      history.push({ pathname: '/businessform', form: id })
     }
   }
   return (
@@ -39,7 +39,11 @@ const BusinessForms = ({ forms }) => {
               <p>{form.desp}</p>
             </div>
             <div className={BFormsCss.links}>
-              <button onClick={() => getForm(form.id)}>Get Started</button>
+              <button
+                onClick={() => history.push(`/businessform?form=${form.id}`)}
+              >
+                Get Started
+              </button>
               <div className={BFormsCss.fees}>
                 ${form.price} + state filing fees
               </div>

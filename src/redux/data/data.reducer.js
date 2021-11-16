@@ -15,7 +15,7 @@ export const dataReducer = (state = initialState, action) => {
       return { ...state, subscription_plans: action.payload }
     case 'GET_SUBSCRIPTION_PLANS_FAILED':
     case 'GETTING_FORM_FAILED':
-      return { ...state, error: action.payload }
+      return { ...state, error: action.payload, loading: false }
     case 'GETTING_FORM_START':
       return { ...state, loading: false, error: null }
     case 'GETTING_FORM_SUCCESS':

@@ -20,6 +20,13 @@ import SocialMediaPage from './pages/SocialMediaPage/SocialMediaPage'
 const Routes = () => {
   return (
     <Switch>
+      {/* Private Routes */}
+
+      <PrivateRoute exact path="/checkout" component={CheckoutPage} />
+      <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/plans" component={PaymentPlans} />
+      {/* <PublicRoute component={PageNotFound} /> */}
+
       {/* Public Routes */}
       <PublicRoute restricted={false} exact path="/" component={HomePage} />
       <PublicRoute
@@ -43,7 +50,7 @@ const Routes = () => {
       <PublicRoute
         restricted={false}
         exact
-        path="/questions"
+        path="/businessform"
         component={PreQuestionaires}
       />
 
@@ -72,13 +79,6 @@ const Routes = () => {
         path="/resetpassword"
         component={ResetPasswordPage}
       />
-
-      {/* Private Routes */}
-
-      <PrivateRoute exact path="/checkout" component={CheckoutPage} />
-      <PrivateRoute exact path="/dashboard" component={Dashboard} />
-      <PrivateRoute exact path="/plans" component={PaymentPlans} />
-      {/* <PublicRoute component={PageNotFound} /> */}
     </Switch>
   )
 }

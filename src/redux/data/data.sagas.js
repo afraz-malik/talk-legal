@@ -1,5 +1,7 @@
-import { takeLatest, put } from 'redux-saga/effects'
+import { toast } from 'react-toastify'
+import { takeLatest, put, select } from 'redux-saga/effects'
 import { fetchDbGet, fetchDbPost } from '../../backend/backend'
+import { refreshingUser } from '../user/users.sagas'
 // import toast from 'cogo-toast'
 import {
   addingCartItemFailed,
@@ -40,6 +42,7 @@ function* gettingFormStart({ payload }) {
       yield put(gettingFormSuccess(response))
     }
   } catch (error) {
+    toast.error(error)
     yield put(gettingFormFailed(error))
   }
 }
@@ -57,4 +60,25 @@ function* addingCartItemStart(payload) {
 }
 export function* addingCartItem() {
   yield takeLatest('ADDING_CART_ITEM_START', addingCartItemStart)
+}
+// -------------------------------------------------------------
+function* savingFormInApi({ payload }) {
+  const state = yield select()
+  const token = state.userReducer.token
+  const uid = state.userReducer.currentUser.id
+  try {
+    const newresponse = yield fetchDbPost(
+      `api/submit-legal-form/${payload.id}`,
+      // response.access_token.accessToken.plainTextToken,
+      null,
+      payload.form
+    )
+    console.log(newresponse)
+    yield refreshingUser(uid, token, false)
+  } catch (e) {
+    console.log(e)
+  }
+}
+export function* savingFormInApiStart() {
+  yield takeLatest('SAVING_FORM_TO_API', savingFormInApi)
 }
