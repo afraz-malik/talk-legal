@@ -14,8 +14,16 @@ const businessOpForms = [
   },
   {
     id: 2,
-    src: 'images/bagpen.png',
+    src: 'images/2nd f.png',
     title: 'Unilateral Agreement',
+    desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
+    price: '79',
+  },
+  ,
+  {
+    id: 3,
+    src: 'images/3rd form.png',
+    title: 'Unilateral Agreement v2',
     desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
     price: '79',
   },

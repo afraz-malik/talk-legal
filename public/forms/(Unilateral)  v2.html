@@ -16,23 +16,27 @@
         ________
         (<b>"Effective Date"</b>), is agreed by and between<span class="name"
             data-parent="individual">&emsp;&emsp;</span><span class="company_name"
-            data-parent="company">&emsp;&emsp;</span>,[a
-
-        <span class="state" data-parent="individual">&emsp;&emsp;</span><span class="company_state"
-            data-parent="company">&emsp;</span>
-
-        <span class="resident" data-parent="individual">&emsp;</span><span class="type_of_company"
+            data-parent="company">&emsp;&emsp;</span>,[a <span class="state" data-parent="individual">&emsp;&emsp;</span><span class="company_state"
+            data-parent="company">&emsp;</span><span class="type_of_company"
             data-parent="company">&emsp;</span><span class="address" data-parent="individual">
-            &emsp;
-        </span>
-        <abbr data-parent="company">
-            with primary offices located at
-        </abbr>
-        <span class="company_address" data-parent="individual">&emsp;&emsp;&emsp; </span>
+            &emsp; </span> <abbr data-parent="company">with primary offices located at</abbr>
+        <span class="company_address" data-parent="company">&emsp;&emsp;&emsp; </span>
 
-        (<b>"Disclosing Party"</b>), and <span class="independent_character_name">&emsp;&emsp;&emsp;</span>,[a<span
-            class="independent_character_state"> &emsp;&emsp;&emsp; </span>resident residing at <span
-            class="independent_character_address">&emsp;&emsp;&emsp; </span> <b>("Recipient").</b>
+        (<b>"Disclosing Party"</b>), and <span class="investor_name"
+        data-parent="individual">&emsp;&emsp;</span><span class="investor_company"
+        data-parent="company">&emsp;&emsp;</span>,[a
+
+    <span class="investor_state" data-parent="individual">&emsp;&emsp;</span><span class="investor_company_state"
+        data-parent="company">&emsp;</span>
+
+    <span class="investor_company_type"
+        data-parent="company">&emsp;</span><span class="investor_address" data-parent="individual">
+        &emsp;
+    </span>
+    <abbr data-parent="company">
+        with primary offices located at
+    </abbr>
+    <span class="investor_company_address" data-parent="company">&emsp;&emsp;&emsp; </span><b>("Recipient").</b>
     </p>
     <p>
         The Disclosing Party and the Recipient are individually referred to herein as, the <b>“Party,”</b> and
@@ -40,7 +44,7 @@
     </p>
     <h3>RECITALS</h3>
     <p>
-        <b>WHEREAS,</b>  the Disclosing Party is seeking a potential investor <abbr data-parent="individual"> for the Disclosing Party’s company that is to be formed </abbr>     <abbr data-parent="company">/ for the Disclosing Party </abbr>; and 
+        <b>WHEREAS,</b>  the Disclosing Party is seeking a potential investor <abbr data-parent="individual"> for the Disclosing Party’s company that is to be formed </abbr> ,    <abbr data-parent="company"> for the Disclosing Party </abbr>; and 
         ;<br><br>
 
 
@@ -149,7 +153,7 @@
         Title of Representative: ______________________ <br>
     </p>
     <h5><b>
-            <span class="independent_character_name">&emsp;&emsp;&emsp;&emsp;</span>
+            <span class="investor_name">&emsp;&emsp;&emsp;&emsp;</span>
         </b></h5>
     <p>
         By (signature): ______________________________ <br>
@@ -161,6 +165,7 @@
 </html>
 
 <!-- 
+    
 {
     "title" : "Mutual Non disclosurer Agreement",
     "description" : "",
@@ -175,10 +180,9 @@
                     "name": "master",
                     "value": "",
                     "placeholder": "",
-                    "id" : 1,
 
                     "fields": ["Company","Individual"],
-                    "parent_id":  0,
+                    
                     "parent_value" : ""
                 }
             ]
@@ -193,9 +197,8 @@
                     "name": "name",
                     "value": "",
                     "placeholder": "Enter your name",
-                    "id" : 1,
 
-                    "parent_id":  1,
+                    "parent_name" : "master",
                     "parent_value" : "Individual"
                 },
                 {
@@ -204,10 +207,10 @@
                     "name": "company_name",
                     "value": "",
                     "placeholder": "Enter your name",
-                    "id" : 1,
 
-                    "parent_id":  1,
-                    "parent_value" : "company"
+                    "parent_name" : "master",
+                    
+                    "parent_value" : "Company"
                 }
             ]
         },
@@ -221,9 +224,9 @@
                     "name": "state",
                     "value": "",
                     "placeholder": "Enter your state",
-                    "id" : 2,
                     
-                    "parent_id":  1,
+                    "parent_name" : "master",
+                    
                     "parent_value" : "Individual"
         
                 },
@@ -233,9 +236,9 @@
                     "name": "company_state",
                     "value": "",
                     "placeholder": "Enter your company's state",
-                    "id" : 3,
                     
-                   "parent_id":  1,
+                    "parent_name" : "master",
+                   
                    "parent_value" : "Company"
         
                 }
@@ -247,26 +250,13 @@
             "description" : "For the purpose of industry regulation, your details are required.",
             "questions" : [
                 {
-                    "label": "California Resident or Illinois Resident?",
-                    "type": "radio",
-                    "name": "resident",
-                    "value": "",
-                    "placeholder": "",
-                    "id" : 2,
-                    "fields":["California Resident","Illinois Resident"],
-                    "parent_id":  1,
-                    "parent_value" : "Individual"
-        
-                },
-                {
                     "label": "What type of company is your company? For example, a limited liability company.",
                     "type": "text",
                     "name": "type_of_company",
                     "value": "",
                     "placeholder": "Enter your company's type",
-                    "id" : 2,
+                    "parent_name" : "master",
                     
-                    "parent_id":  1,
                     "parent_value" : "Company"
         
                 },
@@ -276,9 +266,9 @@
                     "name": "address",
                     "value": "",
                     "placeholder": "Enter your company's type",
-                    "id" : 2,
                     
-                    "parent_id":  1,
+                    "parent_name" : "master",
+                    
                     "parent_value" : "Individual"
         
                 },
@@ -288,9 +278,9 @@
                     "name": "company_address",
                     "value": "",
                     "placeholder": "Enter your company's address",
-                    "id" : 2,
                     
-                    "parent_id":  1,
+                    "parent_name" : "master",
+                    
                     "parent_value" : "Company"
         
                 }
@@ -310,16 +300,11 @@
                     "id" : 1,
 
                     "fields": ["Company","Individual"],
-                    "parent_id":  0,
+                    
                     "parent_value" : ""
                 }
             ]
         },
-
-
-
-
-
         {
             "title" : "Details of Independent Contractor?",
             "description" : "For the purpose of industry regulation, your details are required.",
@@ -327,79 +312,80 @@
                 {
                     "label": "What is the name of the investor?",
                     "type": "text",
-                    "name": "independent_character_name",
+                    "name": "investor_name",
+                    "value": "",
+                    "placeholder": "Enter name",
+
+                    "parent_name" : "investor",
+                    "parent_value" : "Individual"
+                },
+                
+                {
+                    "label": "What state does potential investor live in?",
+                    "type": "text",
+                    "name": "investor_state",
                     "value": "",
                     "placeholder": "Enter name",
                     
-                      "parent_id":  0,
+                    "parent_name" : "investor",
                     "parent_value" : "Individual"
                 },
                 {
                     "label": "What is the name of the investor’s company?",
                     "type": "text",
-                    "name": "independent_character_company",
+                    "name": "investor_company",
                     "value": "",
                     "placeholder": "Enter name",
                     
-                      "parent_id":  0,
+                    "parent_name" : "investor",
                     "parent_value" : "Company"
                 },
                 {
-                    "label": "What state does potential investor live in?",
-                    "type": "text",
-                    "name": "independent_character_state",
-                    "value": "",
-                    "placeholder": "Enter name",
-                    
-                    "parent_id":  0,
-                    "parent_value" : "Individual"
-                },
-                                {
                     "label": "What state was the investor’s company formed in?",
                     "type": "text",
-                    "name": "independent_character_state",
+                    "name": "investor_company_state",
+                    "value": "",
+                    "placeholder": "Enter State",
+                    
+                    "parent_name" : "investor",
+                    
+                    "parent_value" : "Company"
+                },
+                {
+                    "label": "What type of company is the investor’s company? For example, a limited liability company.",
+                    "type": "text",
+                    "name": "investor_company_type",
                     "value": "",
                     "placeholder": "Enter name",
                     
-                    "parent_id":  0,
+                    "parent_name" : "investor",
+                      
                     "parent_value" : ""
                 },
                 {
-                    "label": "Address of the independent contractor",
+                    "label": "What is your address?",
                     "type": "text",
-                    "name": "independent_character_address",
+                    "name": "investor_address",
                     "value": "",
-                    "placeholder": "Enter name",
+                    "placeholder": "Enter your company's type",
                     
-                      "parent_id":  0,
-                    "parent_value" : ""
+                    "parent_name" : "investor",
+                    
+                    "parent_value" : "Individual"
+        
+                },
+                {
+                    "label": " What is the address to the investor’s company?",
+                    "type": "text",
+                    "name": "investor_company_address",
+                    "value": "",
+                    "placeholder": "Enter your company's address",
+                    
+                    "parent_name" : "investor",
+                    
+                    "parent_value" : "Company"
+        
                 }
-            ]
-        },
-        {
-            "title" : "Details about Job",
-            "description" : "For the purpose of industry regulation, your details are required.",
-            "questions" : [
-            {
-                "label": "What is the type of job that you need and that Recipient does? For example, “social media marketing” or “consulting.",
-                "type": "text",
-                "name": "type_of_job",
-                "value": "",
-                "placeholder": "Enter job's type",
-                
-                "parent_id":  0,
-                "parent_value" : ""
-            },
-            {
-                "label": "What is the project that you will need to hire the Independent Contractor for?",
-                "type": "text",
-                "name": "project",
-                "value": "",
-                "placeholder": "Enter name",
-                
-                    "parent_id":  0,
-                    "parent_value" : ""
-            },
             ]
         },
         {
@@ -413,7 +399,7 @@
                     "value": "",
                     "placeholder": "Select your state",
 
-                        "parent_id":  0,
+                        
                     "parent_value" : ""
 
                 },
@@ -424,7 +410,7 @@
                     "value": "",
                     "placeholder": "Select your state",
     
-                        "parent_id":  0,
+                        
                     "parent_value" : ""
 
                 }

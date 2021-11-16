@@ -95,6 +95,7 @@ const NewForm = ({
     }
     return response
   }
+  console.log(newForm)
   return (
     <div className={FormCss.form}>
       <form onSubmit={handleSubmit}>
