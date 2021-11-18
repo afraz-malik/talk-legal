@@ -95,7 +95,15 @@ const NewForm = ({
     }
     return response
   }
-  console.log(newForm)
+  const element = document.getElementsByClassName('hidden')
+  if (element) {
+    // element.forEach((el) => el.removeAttr('required'))
+    console.log(element)
+  }
+
+  // $('.hidden').removeAttr('required')
+
+  console.log($('.hidden'))
   return (
     <div className={FormCss.form}>
       <form onSubmit={handleSubmit}>
@@ -111,6 +119,7 @@ const NewForm = ({
                     className={
                       checkParent(idx) === 'show' ? null : FormCss.hide
                     }
+                    hidden={checkParent(idx) === 'show' ? false : true}
                   >
                     <div
                       key={idx}
@@ -121,13 +130,19 @@ const NewForm = ({
                       }
                       id="checkbox"
                     >
+                      {console.log(questions[idx].fields[1].name)}
                       <div className={FormCss.checkbox}>
                         <label className={FormCss.container2}>
                           <input
                             type={questions[idx].type}
-                            name={questions[idx].fields[0].name}
+                            // name={questions[idx].fields[0].name}
+                            name="radio"
                             value={questions[idx].fields[0].name}
                             id="checkbox1"
+                            className={
+                              checkParent(idx) === 'show' ? 'show' : 'hidden'
+                            }
+                            required
                             onChange={(e) => handleChange(e, idx)}
                             checked={
                               questions[idx].value ===
@@ -144,8 +159,13 @@ const NewForm = ({
                         <label className={FormCss.container2}>
                           <input
                             type={questions[idx].type}
-                            name={questions[idx].fields[1].name}
+                            // name={questions[idx].fields[1].name}
+                            name="radio"
+                            required
                             value={questions[idx].fields[1].name}
+                            className={
+                              checkParent(idx) === 'show' ? 'show' : 'hidden'
+                            }
                             id="checkbox2"
                             checked={
                               questions[idx].value ===
@@ -253,6 +273,11 @@ const NewForm = ({
                         placeholder={questions[idx].placeholder}
                         name={questions[idx].name}
                         value={questions[idx].value}
+                        // required={this.style.hidden == true ? true : false}
+                        required
+                        className={
+                          checkParent(idx) === 'show' ? 'show' : 'hidden'
+                        }
                         onChange={(e) => handleChange(e, idx)}
                       />
                       <span
