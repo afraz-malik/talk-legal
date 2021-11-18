@@ -4,11 +4,11 @@
     "description" : "",
       "pages" : [
         {
-            "title" : "In what State would you like to form ____?",
+            "title" : "Are you an individual or a company?",
             "description" : "For the purpose of industry regulation, your details are required.",
             "questions" : [
                 {
-                    "label": "Are you an individual or a company?",
+                    "label": "",
                     "type": "radio",
                     "name": "master",
                     "value": "",
@@ -113,7 +113,7 @@
                     "type": "text",
                     "name": "address",
                     "value": "",
-                    "placeholder": "Enter your company's type",
+                    "placeholder": "Enter your address",
                     "id" : 2,
                     
                     "parent_id":  1,
@@ -144,7 +144,7 @@
                     "type": "text",
                     "name": "independent_character_name",
                     "value": "",
-                    "placeholder": "Enter name",
+                    "placeholder": "Enter independent contractor's name",
                     
                       "parent_id":  0,
                     "parent_value" : ""
@@ -152,10 +152,10 @@
 
                 {
                     "label": "What state does independent contractor live in?",
-                    "type": "text",
+                    "type": "list",
                     "name": "independent_character_state",
                     "value": "",
-                    "placeholder": "Enter name",
+                    "placeholder": "Select state",
                     
                     "parent_id":  0,
                     "parent_value" : ""
@@ -165,7 +165,7 @@
                     "type": "text",
                     "name": "independent_character_address",
                     "value": "",
-                    "placeholder": "Enter name",
+                    "placeholder": "Enter contractor's address",
                     
                       "parent_id":  0,
                     "parent_value" : ""
@@ -189,9 +189,9 @@
             {
                 "label": "What is the project that you will need to hire the Independent Contractor for?",
                 "type": "text",
-                "name": "contractor_address",
+                "name": "project",
                 "value": "",
-                "placeholder": "Enter name",
+                "placeholder": "Enter project",
                 
                     "parent_id":  0,
                     "parent_value" : ""
@@ -229,6 +229,4 @@
         
     ]
 }
-
-
 
