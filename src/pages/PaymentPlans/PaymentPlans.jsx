@@ -5,7 +5,7 @@ import PaymentPlanCards from '../../components/PaymentPlanCards/PaymentPlanCards
 import PaymentPlansCss from './PaymentPlans.module.scss'
 const PaymentPlans = ({ location }) => {
   const history = useHistory()
-  const form = location.search ? location.search.split('=')[1] : null
+  // const form = location.search ? location.search.split('=')[1] : null
   React.useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -15,7 +15,7 @@ const PaymentPlans = ({ location }) => {
   return (
     <div className={PaymentPlansCss.container}>
       <Logo />
-      {form ? (
+      {true ? (
         <div className={PaymentPlansCss.body}>
           <h1>
             Your Mutual Non-Disclosure <br />

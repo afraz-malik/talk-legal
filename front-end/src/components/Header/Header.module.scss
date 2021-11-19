@@ -1,0 +1,161 @@
+.header {
+    position: relative;
+    min-height: 90vh;
+    // height: 600px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .container {
+        // position: absolute;
+        width: 550px;
+        margin-left: 5%;
+        // top: 115px;
+        // left: 60px;
+        h2 {
+            font-family: "Circular Std";
+            font-weight: bold;
+            line-height: 55px;
+            /* or 112% */
+            font-size: 40px;
+            color: #ffffff;
+            margin: 0;
+            width: 90%;
+        }
+        p {
+            margin: 0;
+            margin: 35px 0 35px 0;
+            font-family: "Circular Std";
+            font-weight: normal;
+            color: white;
+            width: 70%;
+            font-size: 16px;
+        }
+        .link {
+            display: flex;
+            align-items: center;
+            color: #94a2b3;
+            font-family: "Circular Std";
+            font-weight: normal;
+            font-size: 14px;
+            .a {
+                background: linear-gradient(180deg, #7854f7 0%, #4317e8 100%);
+                box-shadow: 0px 19px 40px rgba(120, 84, 247, 0.25);
+                border-radius: 6px;
+                text-decoration: none;
+                color: white;
+                padding: 20px 40px;
+                margin-right: 10px;
+            }
+            span {
+                margin-left: 10px;
+                font-size: 16px;
+                line-height: 25px;
+                color: rgb(75, 182, 224);
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 1281px) {
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 600px) and (max-width: 767px) {
+    .header {
+        .container {
+            width: 360px;
+            h2 {
+                font-size: 30px;
+                line-height: 40px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+}
+@media (min-width: 481px) and (max-width: 599px) {
+    .header {
+        .container {
+            width: 330px;
+            h2 {
+                font-size: 30px;
+                line-height: 40px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .link {
+                .a {
+                    font-size: 12px;
+                    padding: 10px;
+                }
+                span {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .header {
+        height: 350px;
+        .container {
+            width: 330px;
+            // left: 10px;
+            h2 {
+                font-size: 24px;
+                line-height: 35px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .link {
+                .a {
+                    font-size: 12px;
+                    padding: 10px;
+                }
+                span {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
