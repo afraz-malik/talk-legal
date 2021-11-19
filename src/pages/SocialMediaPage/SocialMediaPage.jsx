@@ -13,6 +13,13 @@ const socialMediaForm = [
     desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
     price: '79',
   },
+  {
+    id: 5,
+    src: 'images/bagpen.png',
+    title: 'Standard Photography Services Agreement',
+    desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
+    price: '79',
+  },
 ]
 const SocialMediaPage = () => {
   React.useEffect(() => {
