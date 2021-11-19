@@ -1,7 +1,9 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import DashboardCardCss from './DashboardCard.module.scss'
 const DashboardCard = ({ idx, type, title, form }) => {
-  console.log(type)
+  const history = useHistory()
+
   const tt = idx + 10 * 7 + '%'
   return (
     <div
@@ -28,7 +30,10 @@ const DashboardCard = ({ idx, type, title, form }) => {
           Download
         </button>
       ) : (
-        <button className={DashboardCardCss.progress}>
+        <button
+          className={DashboardCardCss.progress}
+          onClick={() => history.push('/plans?cart=form')}
+        >
           <img alt="" src="images/rightarrow.svg" />
           <img alt="" src="images/rightarrow.svg" />
           Complete

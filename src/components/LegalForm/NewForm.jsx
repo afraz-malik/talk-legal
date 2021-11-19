@@ -142,7 +142,6 @@ const NewForm = ({
                             className={
                               checkParent(idx) === 'show' ? 'show' : 'hidden'
                             }
-                            
                             onChange={(e) => handleChange(e, idx)}
                             checked={
                               questions[idx].value ===
@@ -161,7 +160,6 @@ const NewForm = ({
                             type={questions[idx].type}
                             // name={questions[idx].fields[1].name}
                             name="radio"
-                            
                             value={questions[idx].fields[1].name}
                             className={
                               checkParent(idx) === 'show' ? 'show' : 'hidden'
@@ -274,7 +272,7 @@ const NewForm = ({
                         name={questions[idx].name}
                         value={questions[idx].value}
                         // required={this.style.hidden == true ? true : false}
-                        
+
                         className={
                           checkParent(idx) === 'show' ? 'show' : 'hidden'
                         }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import HardCopy from '../../components/QuestionairesForm/HardCopy'
+import HardCopy from '../../components/LegalForm/HardCopy'
 import QCss from './Questionaires.module.scss'
 import Logo from '../../components/NavBar/Logo'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,7 +11,7 @@ import {
 } from '../../redux/data/data.action'
 import { currentUserSelector } from '../../redux/user/user.selector'
 import { useHistory } from 'react-router'
-import NewForm from '../../components/QuestionairesForm/NewForm'
+import NewForm from '../../components/LegalForm/NewForm'
 import update from 'react-addons-update' // ES6
 import $ from 'jquery'
 const Questionaires = ({ formSelector }) => {
@@ -22,12 +22,14 @@ const Questionaires = ({ formSelector }) => {
   const [currentForm, setcurrentForm] = useState(formSelector)
   const [toggle, settoggle] = useState(false)
   const [state, setstate] = useState({
-    percent: 100 / total_pages,
+    // percent: 100 / total_pages,
+    percent: 0,
     currentPage: 0,
   })
   React.useEffect(() => {
     window.scrollTo(0, 0)
-  }, [formSelector])
+    dispatch(savingFormInState(currentForm))
+  }, [formSelector, currentForm])
 
   const handleForm = (page, data) => {
     if (page < total_pages) {
@@ -43,15 +45,22 @@ const Questionaires = ({ formSelector }) => {
           },
         })
       )
+      // Handle Percent and Page
       if (page < total_pages - 1) {
         setstate({
           percent: state.percent + 100 / total_pages,
           currentPage: state.currentPage + 1,
         })
       }
+      // Complete percent on Preview
+      if (page === total_pages - 1 && state.percent < 100) {
+        setstate({
+          ...state,
+          percent: 100,
+          // percent: state.percent + 100 / total_pages,
+        })
+      }
     }
-    console.log(currentForm)
-    dispatch(savingFormInState(currentForm))
   }
   const submitForm = () => {
     dispatch(addingCartItem(currentForm))
@@ -92,6 +101,7 @@ const Questionaires = ({ formSelector }) => {
     <div className={QCss.container}>
       <div className={QCss.container2}>
         <Logo />
+        {/* Progress Bar */}
         <div className={QCss.progress_bar}>
           <div
             className={QCss.progress_complete}
@@ -101,6 +111,7 @@ const Questionaires = ({ formSelector }) => {
         <div className={QCss.progress_percent}>
           {Math.floor(state.percent)}% Complete
         </div>
+        {/* Progress Bar */}
         <div className={QCss.body}>
           <div className={QCss.form}>
             <NewForm

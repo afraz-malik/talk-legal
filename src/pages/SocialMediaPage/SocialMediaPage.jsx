@@ -5,7 +5,15 @@ import Footer from '../../components/Footer/Footer'
 import Info from '../../components/Info/Info'
 import NavBar from '../../components/NavBar/NavBar'
 import SocialMediaPageCss from './SocialMediaPage.module.scss'
-const socialMediaForm = []
+const socialMediaForm = [
+  {
+    id: 4,
+    src: 'images/bagpen.png',
+    title: ' Photography Services Contract',
+    desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
+    price: '79',
+  },
+]
 const SocialMediaPage = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0)

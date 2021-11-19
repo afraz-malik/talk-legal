@@ -12,7 +12,7 @@ const PublicRoute = ({ component: Component, restricted, ...rest }) => {
       {...rest}
       render={(props) =>
         currentUser && restricted ? (
-          <Redirect to={redirect ? `/${redirect}` : '/dashboard'} />
+          <Redirect to={redirect ? `/${redirect}?cart=form` : '/dashboard'} />
         ) : (
           <Component {...props} />
         )

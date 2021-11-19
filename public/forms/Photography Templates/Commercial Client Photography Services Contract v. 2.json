@@ -16,7 +16,7 @@
                     
 
                     "fields": ["Company","Individual"],
-                    "parent_name":  0,
+                    "parent_name":  "",
                     "parent_value" : ""
                 }
             ]
@@ -30,10 +30,11 @@
                     "type": "text",
                     "name": "name",
                     "value": "",
+                    "fields": "",
                     "placeholder": "Enter your name",
                     
 
-                    "parent_name":  1,
+                    "parent_name":  "master",
                     "parent_value" : "Individual"
                 },
                 {
@@ -41,10 +42,10 @@
                     "type": "text",
                     "name": "company_name",
                     "value": "",
-                    "placeholder": "Enter your name",
+                    "placeholder": "Enter your company's name",
                     
 
-                    "parent_name":  1,
+                    "parent_name":  "master",
                     "parent_value" : "company"
                 }
             ]
@@ -61,7 +62,7 @@
                     "placeholder": "Enter your state",
                     
                     
-                    "parent_name":  1,
+                    "parent_name":  "master",
                     "parent_value" : "Individual"
         
                 },
@@ -73,7 +74,7 @@
                     "placeholder": "Enter your company's state",
                     
                     
-                   "parent_name":  1,
+                   "parent_name":  "master",
                    "parent_value" : "Company"
         
                 }
@@ -92,7 +93,7 @@
                     "placeholder": "",
                     
                     "fields":["California Resident","Illinois Resident"],
-                    "parent_name":  1,
+                    "parent_name":  "master",
                     "parent_value" : "Individual"
         
                 },
@@ -104,7 +105,7 @@
                     "placeholder": "Enter your company's type",
                     
                     
-                    "parent_name":  1,
+                    "parent_name":  "master",
                     "parent_value" : "Company"
         
                 },
@@ -116,7 +117,7 @@
                     "placeholder": "Enter your address",
                     
                     
-                    "parent_name":  1,
+                    "parent_name":  "master",
                     "parent_value" : "Individual"
         
                 },
@@ -128,7 +129,7 @@
                     "placeholder": "Enter your company's address",
                     
                     
-                    "parent_name":  1,
+                    "parent_name":  "master",
                     "parent_value" : "Company"
         
                 }
@@ -144,9 +145,9 @@
                     "type": "text",
                     "name": "hired_company_name",
                     "value": "",
-                    "placeholder": "Enter independent contractor's name",
+                    "placeholder": "Enter name of the company",
                     
-                      "parent_name":  0,
+                      "parent_name":  "",
                     "parent_value" : ""
                 },
 
@@ -157,7 +158,7 @@
                     "value": "",
                     "placeholder": "Select state",
                     
-                    "parent_name":  0,
+                    "parent_name":  "",
                     "parent_value" : ""
                 },
                 {
@@ -165,9 +166,9 @@
                     "type": "text",
                     "name": "hired_company_type",
                     "value": "",
-                    "placeholder": "Enter type",
+                    "placeholder": "Enter company's type",
                     
-                    "parent_name":  0,
+                    "parent_name":  "",
                     "parent_value" : ""
                 },
                 {
@@ -175,8 +176,8 @@
                     "type": "text",
                     "name": "hired_company_address",
                     "value": "",
-                    "placeholder": "Enter contractor's address",
-                      "parent_name":  0,
+                    "placeholder": "Enter company's address",
+                      "parent_name":  "",
                     "parent_value" : ""
                 }
             ]
@@ -194,7 +195,7 @@
                     
 
                     "fields": ["to promote the company’s products or services.","to photoshoot a model or models."],
-                    "parent_name":  0,
+                    "parent_name":  "",
                     "parent_value" : ""
                 }
             ]
@@ -204,13 +205,32 @@
             "description" : "For the purpose of industry regulation, your details are required.",
             "questions" : [
                 {
+                    "label": "You can add upto 3 Services",
+                    "type": "text",
+                    "name": "service1",
+                    "value": "",
+                    "placeholder": "Enter Service (if any)",
+                    
+                    "parent_name":  "",
+                    "parent_value" : ""
+                },
+                {
                     "label": "",
                     "type": "text",
-                    "name": "services",
+                    "name": "service2",
                     "value": "",
-                    "placeholder": "",
+                    "placeholder": "Enter Service (if any)",
                     
-                    "parent_name":  0,
+                    "parent_name":  "",
+                    "parent_value" : ""
+                },{
+                    "label": "",
+                    "type": "text",
+                    "name": "service3",
+                    "value": "",
+                    "placeholder": "Enter Service (if any)",
+                    
+                    "parent_name":  "",
                     "parent_value" : ""
                 }
             ]
@@ -222,31 +242,31 @@
                 {
                     "label": "What is the date of the shoot?",
                     "type": "text",
-                    "name": "services",
+                    "name": "date_of_shoot",
                     "value": "",
                     "placeholder": "",
                     
-                    "parent_name":  0,
+                    "parent_name":  "",
                     "parent_value" : ""
                 },
                 {
                     "label": "What time of the shoot?",
                     "type": "text",
-                    "name": "services",
+                    "name": "time_of_shoot",
                     "value": "",
                     "placeholder": "",
                     
-                    "parent_name":  0,
+                    "parent_name":  "",
                     "parent_value" : ""
                 },
                 {
                     "label": "Where is the photoshoot located? ",
                     "type": "text",
-                    "name": "services",
+                    "name": "location_of_shoot",
                     "value": "",
                     "placeholder": "",
                     
-                    "parent_name":  0,
+                    "parent_name":  "",
                     "parent_value" : ""
                 }
             ]
@@ -264,7 +284,7 @@
                     
 
                     "fields": ["flat","hourly"],
-                    "parent_name":  0,
+                    "parent_name":  "",
                     "parent_value" : ""
                 }
             ]
@@ -332,7 +352,7 @@
                     
 
                     "fields": ["Yes","No"],
-                    "parent_name":  0,
+                    "parent_name":  "",
                     "parent_value" : ""
                 }
             ]
@@ -348,7 +368,7 @@
                     "value": "",
                     "placeholder": "Select your state",
 
-                        "parent_name":  0,
+                        "parent_name":  "",
                     "parent_value" : ""
 
                 },
@@ -359,7 +379,7 @@
                     "value": "",
                     "placeholder": "Select your state",
     
-                        "parent_name":  0,
+                        "parent_name":  "",
                     "parent_value" : ""
 
                 }
