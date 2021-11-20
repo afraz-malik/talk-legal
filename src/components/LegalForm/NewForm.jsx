@@ -54,7 +54,13 @@ const NewForm = ({
     e.preventDefault()
     let localerrors = []
     questions.forEach((field) => {
-      // if (!field.value) localerrors = [...localerrors, field.name]
+      if (!field.value) {
+        const res = checkParentById(field.id)
+        // console.log(res, field)
+        if (res === 'show') {
+          localerrors = [...localerrors, field.name]
+        }
+      }
     })
     if (localerrors.length === 0) {
       handleForm(currentPage, questions)
@@ -76,7 +82,7 @@ const NewForm = ({
     }
   })
 
-  const checkParent = (idx) => {
+  const checkParentByIndex = (idx) => {
     let response
     if (questions[idx].parent_id) {
       currentForm.pages.forEach((page) =>
@@ -95,15 +101,26 @@ const NewForm = ({
     }
     return response
   }
-  const element = document.getElementsByClassName('hidden')
-  if (element) {
-    // element.forEach((el) => el.removeAttr('required'))
-    console.log(element)
+  const checkParentById = (id) => {
+    let response = 'show'
+    questions.forEach((question) => {
+      if (Number(question.id) === Number(id) && question.parent_id) {
+        currentForm.pages.forEach((page) =>
+          page.questions.forEach((qs) => {
+            if (Number(question.parent_id) === Number(qs.id)) {
+              console.log(question.parent_value === qs.value.trim())
+              if (question.parent_value === qs.value.trim()) {
+                response = 'show'
+              } else {
+                response = 'hide'
+              }
+            }
+          })
+        )
+      }
+    })
+    return response
   }
-
-  // $('.hidden').removeAttr('required')
-
-  console.log($('.hidden'))
   return (
     <div className={FormCss.form}>
       <form onSubmit={handleSubmit}>
@@ -117,20 +134,10 @@ const NewForm = ({
                 return (
                   <div
                     className={
-                      checkParent(idx) === 'show' ? null : FormCss.hide
+                      checkParentByIndex(idx) === 'show' ? null : FormCss.hide
                     }
-                    hidden={checkParent(idx) === 'show' ? false : true}
                   >
-                    <div
-                      key={idx}
-                      className={
-                        errors.includes(questions[idx].name)
-                          ? `${FormCss.error} ${FormCss.div}`
-                          : FormCss.div
-                      }
-                      id="checkbox"
-                    >
-                      {console.log(questions[idx].fields[1].name)}
+                    <div key={idx} className={FormCss.div} id="checkbox">
                       <div className={FormCss.checkbox}>
                         <label className={FormCss.container2}>
                           <input
@@ -139,9 +146,9 @@ const NewForm = ({
                             name="radio"
                             value={questions[idx].fields[0].name}
                             id="checkbox1"
-                            className={
-                              checkParent(idx) === 'show' ? 'show' : 'hidden'
-                            }
+                            // required={
+                            //   checkParentByIndex(idx) === 'show' ? true : false
+                            // }
                             onChange={(e) => handleChange(e, idx)}
                             checked={
                               questions[idx].value ===
@@ -150,7 +157,14 @@ const NewForm = ({
                           />
                           <span className={FormCss.checkmark}></span>
                         </label>
-                        <label htmlFor="checkbox1">
+                        <label
+                          htmlFor="checkbox1"
+                          className={
+                            errors.includes(questions[idx].name)
+                              ? `${FormCss.error}`
+                              : null
+                          }
+                        >
                           {questions[idx].fields[0].name}
                         </label>
                       </div>
@@ -162,21 +176,44 @@ const NewForm = ({
                             name="radio"
                             value={questions[idx].fields[1].name}
                             className={
-                              checkParent(idx) === 'show' ? 'show' : 'hidden'
+                              checkParentByIndex(idx) === 'show'
+                                ? 'show'
+                                : 'hidden'
                             }
                             id="checkbox2"
                             checked={
                               questions[idx].value ===
                               questions[idx].fields[1].name
                             }
+                            // required={
+                            // checkParentByIndex(idx) === 'show' ? true : false
+                            // }
                             onChange={(e) => handleChange(e, idx)}
                           />
                           <span className={FormCss.checkmark}></span>
                         </label>
-                        <label htmlFor="checkbox2">
+                        <label
+                          htmlFor="checkbox2"
+                          className={
+                            errors.includes(questions[idx].name)
+                              ? `${FormCss.error}`
+                              : null
+                          }
+                        >
                           {questions[idx].fields[1].name}
                         </label>
                       </div>
+                    </div>
+                    <div className={FormCss.error}>
+                      <span
+                        style={
+                          errors.includes(questions[idx].name)
+                            ? { opacity: '1' }
+                            : { opacity: '0' }
+                        }
+                      >
+                        This field is required
+                      </span>
                     </div>
                   </div>
                 )
@@ -184,7 +221,7 @@ const NewForm = ({
                 return (
                   <div
                     className={
-                      checkParent(idx) === 'show' ? null : FormCss.hide
+                      checkParentByIndex(idx) === 'show' ? null : FormCss.hide
                     }
                   >
                     <div
@@ -194,8 +231,8 @@ const NewForm = ({
                           ? FormCss.error
                           : null
                       }
-                      // data-hide={checkParent(idx) === 'show' ? 'hide' : null}
-                      // id={checkParent(idx) === 'show' ? 'hide' : null}
+                      // data-hide={checkParentByIndex(idx) === 'show' ? 'hide' : null}
+                      // id={checkParentByIndex(idx) === 'show' ? 'hide' : null}
                     >
                       <label>{questions[idx].label}</label>
                       <div
@@ -254,7 +291,7 @@ const NewForm = ({
                 return (
                   <div
                     className={
-                      checkParent(idx) === 'show' ? null : FormCss.hide
+                      checkParentByIndex(idx) === 'show' ? null : FormCss.hide
                     }
                   >
                     <div
@@ -271,11 +308,7 @@ const NewForm = ({
                         placeholder={questions[idx].placeholder}
                         name={questions[idx].name}
                         value={questions[idx].value}
-                        // required={this.style.hidden == true ? true : false}
-
-                        className={
-                          checkParent(idx) === 'show' ? 'show' : 'hidden'
-                        }
+                        // required={checkParentByIndex(idx) === 'show' ? true : false}
                         onChange={(e) => handleChange(e, idx)}
                       />
                       <span
