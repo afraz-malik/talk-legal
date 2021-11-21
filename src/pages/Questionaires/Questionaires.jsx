@@ -14,6 +14,8 @@ import { useHistory } from 'react-router'
 import NewForm from '../../components/LegalForm/NewForm'
 import update from 'react-addons-update' // ES6
 import $ from 'jquery'
+import { pdfFromReact } from 'generate-pdf-from-react-html'
+
 const Questionaires = ({ formSelector }) => {
   const history = useHistory()
   const dispatch = useDispatch()
@@ -153,7 +155,14 @@ const Questionaires = ({ formSelector }) => {
               src="images/x-circle.png"
               onClick={() => settoggle(false)}
             />
-            <HardCopy values={currentForm} currentForm={formSelector} />
+            {/* <button
+              onClick={() => pdfFromReact('#new', 'My-file', 'p', true, true)}
+            >
+              Downlaods
+            </button> */}
+            <div id="new">
+              <HardCopy values={currentForm} currentForm={formSelector} />
+            </div>
           </div>
         </Preview>
       ) : null}

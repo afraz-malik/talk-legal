@@ -1,9 +1,9 @@
 import React from 'react'
-import BusinessForms from '../../components/BusinessForms/BusinessForms'
-import BusinessHeader from '../../components/BusinessHeader/BusinessHeader'
-import Footer from '../../components/Footer/Footer'
-import Info from '../../components/Info/Info'
-import NavBar from '../../components/NavBar/NavBar'
+import BusinessForms from '../../../components/BusinessForms/BusinessForms'
+import BusinessHeader from '../../../components/BusinessHeader/BusinessHeader'
+import Footer from '../../../components/Footer/Footer'
+import Info from '../../../components/Info/Info'
+import NavBar from '../../../components/NavBar/NavBar'
 const businessOpForms = [
   {
     id: 1,

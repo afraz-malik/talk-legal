@@ -6,7 +6,7 @@ h1 {
   font-style: normal;
   font-weight: bold;
   font-size: 22px;
-  margin: 0;
+  /* margin: 0; */
   line-height: 30px;
   text-align: center;
   color: #000;
@@ -18,7 +18,7 @@ ol {
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
-  margin: 5px;
+  /* margin: 5px; */
   text-align: left;
   color: #000;
 }
@@ -29,15 +29,15 @@ h3 {
   font-size: 16px;
   line-height: 18px;
   /* identical to box margin] height */
-  margin: 20px 0;
+  /* margin: 20px 0; */
   text-align: center;
   color: #000;
 }
 h3:first-of-type {
-  margin-top: 0px;
+  /* margin-top: 0px; */
 }
 ol {
-  padding-left: 10px;
+  padding-left: 0px;
   list-style-type: decimal;
 }
 ol li ul {
@@ -45,4 +45,37 @@ ol li ul {
 }
 ol li ul li ul {
   list-style-type: lower-roman;
+}
+
+
+
+
+
+
+
+ol {
+  counter-reset: item
+
+}
+ol ol{
+  padding-left: 50px;
+}
+li {
+  display: block;
+  /* padding-left: 50px */
+}
+ol li:before {
+  content: counters(item, ".") "." " ";
+  counter-increment: item;
+  width: 50px;
+  display: inline-block;
+
+}
+ul li::before{
+  content:"\2022";
+  font-weight: bold; /* If you want it to be bold */
+
+  counter-increment: unset;
+  vertical-align:middle;
+  
 }

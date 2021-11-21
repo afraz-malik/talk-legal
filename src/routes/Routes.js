@@ -1,22 +1,21 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
 // Pages
-import HomePage from './pages/HomePage/HomePage'
-import BusinessOpPage from './pages/BusinessOpPage/BusinessOpPage'
-import RegisterPage from './pages/RegisterPage/RegisterPage'
-import LoginPage from './pages/LoginPage/LoginPage'
-import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
-import ForgetPage from './pages/ForgetPage/ForgetPage'
-import PaymentPlans from './pages/PaymentPlans/PaymentPlans'
-import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
-import Dashboard from './pages/Dashboard/Dashboard'
-//Redux
+import HomePage from '../pages/HomePage/HomePage'
+import RegisterPage from '../pages/RegisterPage/RegisterPage'
+import LoginPage from '../pages/LoginPage/LoginPage'
+import ResetPasswordPage from '../pages/ResetPasswordPage/ResetPasswordPage'
+import ForgetPage from '../pages/ForgetPage/ForgetPage'
+import PaymentPlans from '../pages/PaymentPlans/PaymentPlans'
+import CheckoutPage from '../pages/CheckoutPage/CheckoutPage'
+import Dashboard from '../pages/Dashboard/Dashboard'
+import PreQuestionaires from '../pages/Questionaires/PreQuestionaires'
+import BusinessOpPage from '../pages/Services/BusinessOpPage/BusinessOpPage'
+import StartupAndPage from '../pages/Services/StartupAndPage/StartupAndPage'
+import SocialMediaPage from '../pages/Services/SocialMediaPage/SocialMediaPage'
+
 import PublicRoute from './PublicRoute'
 import PrivateRoute from './PrivateRoute'
-import PreQuestionaires from './pages/Questionaires/PreQuestionaires'
-import StartupAndPage from './pages/StartupAndPage/StartupAndPage'
-import SocialMediaPage from './pages/SocialMediaPage/SocialMediaPage'
-
 const Routes = () => {
   return (
     <Switch>

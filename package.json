@@ -16,6 +16,7 @@
     "card-validator": "^8.1.1",
     "cogo-toast": "^4.2.3",
     "formik": "^2.2.9",
+    "generate-pdf-from-react-html": "^1.0.5",
     "gh-pages": "^3.2.3",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",

@@ -85,7 +85,12 @@ const HardCopy = ({ values, currentForm }) => {
       })
     )
   }
-  return <div className={`${FormCss.page} hardcopy`}>{}</div>
+
+  return (
+    <div className={`${FormCss.page} hardcopy`} id="pdf">
+      {}
+    </div>
+  )
 }
 
 export default HardCopy
