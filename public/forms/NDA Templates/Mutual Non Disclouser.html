@@ -5,61 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="../styles.css" /> -->
-    <style>
-      span {
-  background-color: yellow;
-}
-h1 {
-  font-family: Circular Std;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  margin: 0;
-  line-height: 30px;
-  text-align: center;
-  color: #000;
-}
-p,
-ol {
-  font-family: DM Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-  margin: 5px;
-  text-align: left;
-  color: #000;
-}
-h3 {
-  font-family: Circular Std;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 16px;
-  line-height: 18px;
-  /* identical to box margin] height */
-  margin: 20px 0;
-  text-align: center;
-  color: #000;
-}
-h3:first-of-type {
-  margin-top: 0px;
-}
-ol {
-  padding-left: 10px;
-  list-style-type: decimal;
-}
-ol li ul {
-  list-style-type: lower-alpha;
-}
-ol li ul li ul {
-  list-style-type: lower-roman;
-}
-
-    </style>
   </head>
+  <style>
+    span {
+      background-color: rgb(240, 240, 240);
+      min-width: 50px;
+      padding: 0 5px;
+    }
+    h1 {
+      font-family: Circular Std;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 22px;
+      margin: 0;
+      line-height: 30px;
+      text-align: center;
+      color: #000000;
+    }
+    p, ol {
+      font-family: DM Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 5px;
+      text-align: left;
+      color: #000000;
+    }
+    h3 {
+      font-family: Circular Std;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 16px;
+      line-height: 18px;
+      margin: 20px 0;
+      text-align: center;
+      color: #000000;
+    }
+    h3:first-of-type {
+      margin-top: 0px;
+    }
+    ol{
+      margin: 20px 0;
+    }
+    ol li{
+      /* text-decoration: underline; */
+    }
+    ol li:before{
+      content: "";
+      width: 40px;
+      display: inline-block;
+
+    }
+    ul{
+      /* margin: 5px 0; */
+    }
+    ul li{
+      padding-left: 30px;
+      margin-left: 20px;
+      margin: 10px 0 10px 10px;
+      /* text-decoration: unset; */
+    }
+      ul li:before{
+      content: unset;
+      width: unset;
+      display: inline-block;
+    }
+  </style>
   <body>
-    <h1>Mutual Non-Disclosure Agreement</h1>
+    <div class="mutual-non">
+      <h1>Mutual Non-Disclosure Agreement</h1>
     <h3>Business Relations</h3>
     <p>
       This Mutual Non-Disclosure Agreement ("<b>Agreement</b>"), dated as of
@@ -98,8 +113,8 @@ ol li ul li ul {
     </p>
     <ol>
       <li>
-        Confidentiality
-        <ul>
+        <b><u>Confidentiality</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             The Parties understand and acknowledge that in connection with the
             Purpose, each Party, and its Representatives, will receive, have
@@ -145,12 +160,6 @@ ol li ul li ul {
           <li>
             Confidential Information shall not include information that is
             generally available to and known by the public at the time of
-            disclosure to the Recipient, provided that such disclosure is
-            through no fault, directly or indirectly, of the Recipient.
-          </li>
-          <li>
-            Confidential Information shall not include information that is
-            generally available to and known by the public at the time of
             disclosure to a Recipient, provided that such disclosure is through
             no direct or indirect fault of a Recipient.
           </li>
@@ -179,8 +188,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        Degree of Care
-        <ul>
+        <b><u>Degree of Care</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             The Parties shall not use Confidential Information of the other
             Party for any purpose other than for the Purpose and shall hold in
@@ -192,7 +201,7 @@ ol li ul li ul {
             Confidential Information, but in no event with less than a
             commercially reasonable degree of care, including but not limited
             to:
-            <ul>
+            <ul style="list-style-type: lower-roman;">
               <li>
                 preventing any disclosure, publication, communication, or
                 otherwise making available Confidential Information of the
@@ -200,7 +209,7 @@ ol li ul li ul {
                 communicated, or made available, in whole or part, to any person
                 whatsoever, not having a need to know or authority to know;
               </li>
-              <li>
+              <li >
                 using any Confidential Information, except as may be required in
                 connection with the Purpose or authorized in writing by the
                 Disclosing Party, or its authorized Representative;
@@ -240,8 +249,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        No License.
-        <ul>
+        <b><u>No License.</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             Unless otherwise agreed to in writing by the Disclosing Party or its
             Representatives, Confidential Information disclosed hereunder shall
@@ -255,8 +264,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        Return or Destruction of Confidential Information
-        <ul>
+        <b><u>Return or Destruction of Confidential Information</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             At any time during or after the term of this Agreement and at the
             Disclosing Party's written request, or after expiration or
@@ -271,8 +280,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        Remedies
-        <ul>
+       <b><u> Remedies</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             Each Party understands and acknowledges that disclosure or improper
             usage of the Confidential Information by the Recipient may cause
@@ -295,8 +304,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        No Assignment
-        <ul>
+       <b><u> No Assignment</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             No Party may assign this Agreement or any part hereof. Any purported
             assignment by either Party shall be null and void from the initial
@@ -305,8 +314,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        Governing Law, Jurisdiction, and Venue
-        <ul>
+        <b><u>Governing Law, Jurisdiction, and Venue</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             This Agreement, for all purposes, shall be construed in accordance
             with laws of the State of
@@ -319,8 +328,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        Entire Agreement
-        <ul>
+        <b><u>Entire Agreement</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             Unless specifically provided herein, this Agreement contains all the
             understandings and representations between the Parties pertaining to
@@ -332,8 +341,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        Modification and Waiver
-        <ul>
+       <b><u> Modification and Waiver</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             No modification of or amendment to this Agreement, nor any waiver of
             any rights under this Agreement, will be effective unless in a
@@ -345,8 +354,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        Severability
-        <ul>
+        <b><u>Severability</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             Should any provision of this Agreement be held by a court of
             competent jurisdiction to be enforceable only if modified, or if any
@@ -359,8 +368,8 @@ ol li ul li ul {
         </ul>
       </li>
       <li>
-        Counterparts
-        <ul>
+        <b><u>Counterparts</u></b>
+        <ul style="list-style-type: lower-alpha;">
           <li>
             This Agreement may be executed in counterparts, each of which shall
             be deemed an original, but all of which taken together shall
@@ -413,6 +422,7 @@ ol li ul li ul {
 
       <br />
     </p>
+    </div>
   </body>
 </html>
 <!-- 

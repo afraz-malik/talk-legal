@@ -6,7 +6,15 @@ import Info from '../../../components/Info/Info'
 import NavBar from '../../../components/NavBar/NavBar'
 import SocialMediaPageCss from './SocialMediaPage.module.scss'
 const socialMediaForm = {
-  influencer: [],
+  influencer: [
+    {
+      id: 6,
+      src: 'images/bagpen.png',
+      title: 'Pro-Brand Influencer Agreement (Products Only)',
+      desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
+      price: '79',
+    },
+  ],
   photography: [
     {
       id: 4,

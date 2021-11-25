@@ -87,7 +87,7 @@ const HardCopy = ({ values, currentForm }) => {
   }
 
   return (
-    <div className={`${FormCss.page} hardcopy`} id="pdf">
+    <div className={`hardcopy`} id="pdf">
       {}
     </div>
   )

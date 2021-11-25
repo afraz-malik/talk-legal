@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './App.css'
+import './App.scss'
 import { HashRouter as Router } from 'react-router-dom'
 // Redux
 import { useDispatch } from 'react-redux'
