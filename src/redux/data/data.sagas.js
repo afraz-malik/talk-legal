@@ -40,6 +40,10 @@ function* gettingFormStart({ payload }) {
     const response = yield fetchDbGet(`api/legal-form-detail/${payload}`, null)
     if (response.status) {
       yield put(gettingFormSuccess(response))
+    } else {
+      // document.location.href = '/'
+      toast.error(response.msg)
+      yield put(gettingFormFailed(response.msg))
     }
   } catch (error) {
     toast.error(error)

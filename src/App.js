@@ -8,6 +8,7 @@ import { getCurrentUser } from './redux/user/user.action'
 import Routes from './routes/Routes.js'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function App() {
   const dispatch = useDispatch()

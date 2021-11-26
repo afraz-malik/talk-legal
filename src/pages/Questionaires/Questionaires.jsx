@@ -15,23 +15,31 @@ import NewForm from '../../components/LegalForm/NewForm'
 import update from 'react-addons-update' // ES6
 import $ from 'jquery'
 // import { pdfFromReact } from 'generate-pdf-from-react-html'
+import Skeleton from 'react-loading-skeleton'
+import { InsideSpinner } from '../../components/Spinner/Spinner'
 
 const Questionaires = ({ formSelector }) => {
   const history = useHistory()
   const dispatch = useDispatch()
   const currentUser = useSelector((state) => currentUserSelector(state))
-  const total_pages = formSelector.pages.length
   const [currentForm, setcurrentForm] = useState(formSelector)
   const [toggle, settoggle] = useState(false)
+
+  const total_pages = formSelector ? formSelector.pages.length : 4
+
   const [state, setstate] = useState({
     // percent: 100 / total_pages,
     percent: 0,
     currentPage: 0,
   })
+  console.log(formSelector)
+  React.useEffect(() => {
+    setcurrentForm(formSelector)
+  }, [formSelector])
   React.useEffect(() => {
     window.scrollTo(0, 0)
     dispatch(savingFormInState(currentForm))
-  }, [formSelector, dispatch, currentForm])
+  }, [dispatch, currentForm])
 
   const handleForm = (page, data) => {
     if (page < total_pages) {
@@ -116,16 +124,38 @@ const Questionaires = ({ formSelector }) => {
         {/* Progress Bar */}
         <div className={QCss.body}>
           <div className={QCss.form}>
-            <NewForm
-              newForm={currentForm.pages[state.currentPage]}
-              currentForm={currentForm}
-              handleForm={handleForm}
-              pageHandler={pageHandler}
-              currentPage={state.currentPage}
-              submitForm={submitForm}
-              lastPage={state.currentPage === total_pages - 1 ? true : false}
-              settoggle={settoggle}
-            />
+            {currentForm ? (
+              <NewForm
+                newForm={currentForm.pages[state.currentPage]}
+                currentForm={currentForm}
+                handleForm={handleForm}
+                pageHandler={pageHandler}
+                currentPage={state.currentPage}
+                submitForm={submitForm}
+                lastPage={state.currentPage === total_pages - 1 ? true : false}
+                settoggle={settoggle}
+              />
+            ) : (
+              <>
+                <Skeleton count={1} height={50} />
+                <br />
+                <br />
+                <br />
+                <br />
+                <Skeleton count={1} height={30} />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <Skeleton count={1} height={50} />
+              </>
+            )}
           </div>
           <div
             className={QCss.hardCopy}
@@ -134,7 +164,11 @@ const Questionaires = ({ formSelector }) => {
             }}
           >
             <div className={QCss.content} id="form">
-              <HardCopy values={currentForm} currentForm={formSelector} />
+              {formSelector && currentForm ? (
+                <HardCopy values={currentForm} currentForm={formSelector} />
+              ) : (
+                <InsideSpinner />
+              )}
             </div>
           </div>
         </div>
@@ -161,7 +195,11 @@ const Questionaires = ({ formSelector }) => {
               Downlaods
             </button> */}
             <div id="new">
-              <HardCopy values={currentForm} currentForm={formSelector} />
+              {formSelector && currentForm ? (
+                <HardCopy values={currentForm} currentForm={formSelector} />
+              ) : (
+                <InsideSpinner />
+              )}
             </div>
           </div>
         </Preview>
@@ -170,4 +208,7 @@ const Questionaires = ({ formSelector }) => {
   )
 }
 
+const formSkeleton = () => {
+  return <div></div>
+}
 export default Questionaires

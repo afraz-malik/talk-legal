@@ -18,17 +18,17 @@ const PreQuestionaires = () => {
       console.log('Same form')
     } else {
       if (formId) {
-        console.log(formId)
         dispatch(clearForm())
         dispatch(gettingFormStart(formId))
       } else {
-        history.push('/')
+        history.push('/business')
       }
     }
   }, [])
   return (
     <div>
-      {currentForm ? <Questionaires formSelector={currentForm} /> : <Spinner />}
+      {/* {currentForm ? <Questionaires formSelector={currentForm} /> : <Spinner />} */}
+      <Questionaires formSelector={currentForm} />
     </div>
   )
 }

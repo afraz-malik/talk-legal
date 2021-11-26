@@ -26,6 +26,7 @@
     "react-calendar": "^3.4.0",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.16.2",
+    "react-loading-skeleton": "^3.0.1",
     "react-placards": "^1.0.2",
     "react-redux": "^7.2.5",
     "react-reveal": "^1.2.2",
