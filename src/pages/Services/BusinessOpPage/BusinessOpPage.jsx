@@ -19,7 +19,7 @@ const businessOpForms = [
     desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
     price: '79',
   },
-  ,
+
   {
     id: 3,
     src: 'images/3rd form.png',

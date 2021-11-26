@@ -14,7 +14,7 @@ import { useHistory } from 'react-router'
 import NewForm from '../../components/LegalForm/NewForm'
 import update from 'react-addons-update' // ES6
 import $ from 'jquery'
-import { pdfFromReact } from 'generate-pdf-from-react-html'
+// import { pdfFromReact } from 'generate-pdf-from-react-html'
 
 const Questionaires = ({ formSelector }) => {
   const history = useHistory()
@@ -31,7 +31,7 @@ const Questionaires = ({ formSelector }) => {
   React.useEffect(() => {
     window.scrollTo(0, 0)
     dispatch(savingFormInState(currentForm))
-  }, [formSelector, currentForm])
+  }, [formSelector, dispatch, currentForm])
 
   const handleForm = (page, data) => {
     if (page < total_pages) {
