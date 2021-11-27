@@ -433,3 +433,96 @@
       
     }
 }
+.influencer2{
+   span {
+      background-color: rgb(240, 240, 240);
+      min-width: 50px;
+      padding: 0 5px;
+  }
+
+  h1 {
+      font-family: Circular Std;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 22px;
+      margin: 0;
+      line-height: 30px;
+      text-align: center;
+      color: #000000;
+  }
+
+  p,
+  ol {
+      font-family: DM Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 20px;
+      margin: 5px;
+      text-align: left;
+      color: #000000;
+  }
+
+  h3 {
+      font-family: Circular Std;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 16px;
+      line-height: 18px;
+      margin: 20px 0;
+      text-align: center;
+      color: #000000;
+
+
+  }
+
+  h3:first-of-type {
+      margin-top: 0px;
+  }
+
+  /* ol {
+padding-left: 0px;
+list-style-type: decimal;
+}
+ol li ul {
+list-style-type: lower-alpha;
+}
+ol li ul li ul {
+list-style-type: lower-roman;
+} */
+
+  .center {
+      text-align: center;
+  }
+
+  ol {
+      counter-reset: item
+  }
+
+  ol ol {
+      padding-left: 50px;
+  }
+
+  li {
+      display: block;
+      /* padding-left: 50px */
+  }
+
+  ol li:before {
+      content: counters(item, ".") "."" ";
+      counter-increment: item;
+      width: 50px;
+      display: inline-block;
+
+  }
+
+  ul li::before {
+      content: "\2022";
+      font-weight: bold;
+      /* If you want it to be bold */
+
+      counter-increment: unset;
+      vertical-align: middle;
+
+  }
+}

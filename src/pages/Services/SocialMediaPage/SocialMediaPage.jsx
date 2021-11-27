@@ -39,7 +39,7 @@ const socialMediaForm = [
         price: '79',
       },
       {
-        id: 7,
+        id: 8,
         src: 'images/2nd f.png',
         title: 'Pro-Brand Influencer Agreement (Services Only)',
         desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
