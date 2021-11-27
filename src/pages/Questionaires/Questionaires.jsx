@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import HardCopy from '../../components/LegalForm/HardCopy'
 import QCss from './Questionaires.module.scss'
 import Logo from '../../components/NavBar/Logo'
 import { useDispatch, useSelector } from 'react-redux'
+import { clearForm, gettingFormStart } from '../../redux/data/data.action'
+
 import Preview from '../../components/Preview/Preview'
 import {
   addingCartItem,
@@ -10,36 +12,58 @@ import {
   savingFormToApiAction,
 } from '../../redux/data/data.action'
 import { currentUserSelector } from '../../redux/user/user.selector'
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
 import NewForm from '../../components/LegalForm/NewForm'
 import update from 'react-addons-update' // ES6
 import $ from 'jquery'
 // import { pdfFromReact } from 'generate-pdf-from-react-html'
 import Skeleton from 'react-loading-skeleton'
 import { InsideSpinner } from '../../components/Spinner/Spinner'
+import { currentFormSelector } from '../../redux/data/data.selector'
 
-const Questionaires = ({ formSelector }) => {
+const Questionaires = ({}) => {
   const history = useHistory()
+  const location = useLocation()
   const dispatch = useDispatch()
+
   const currentUser = useSelector((state) => currentUserSelector(state))
+  const formSelector = useSelector((state) => currentFormSelector(state))
+
   const [currentForm, setcurrentForm] = useState(formSelector)
   const [toggle, settoggle] = useState(false)
 
   const total_pages = formSelector ? formSelector.pages.length : 4
+  const formId = location.search ? location.search.split('=')[1] : null
 
   const [state, setstate] = useState({
     // percent: 100 / total_pages,
     percent: 0,
     currentPage: 0,
   })
-  console.log(formSelector)
-  React.useEffect(() => {
+
+  useEffect(() => {
+    if (currentForm && currentForm.id == formId) {
+      console.log('Same form')
+    } else {
+      if (formId) {
+        dispatch(clearForm())
+        dispatch(gettingFormStart(formId))
+      } else {
+        history.push('/business')
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     setcurrentForm(formSelector)
   }, [formSelector])
-  React.useEffect(() => {
+
+  useEffect(() => {
     window.scrollTo(0, 0)
-    dispatch(savingFormInState(currentForm))
-  }, [dispatch, currentForm])
+    if (currentForm && currentForm.id == formId) {
+      dispatch(savingFormInState(currentForm))
+    }
+  }, [currentForm])
 
   const handleForm = (page, data) => {
     if (page < total_pages) {
@@ -72,6 +96,12 @@ const Questionaires = ({ formSelector }) => {
       }
     }
   }
+  const pageHandler = (currentPage) => {
+    setstate({
+      percent: state.percent - 100 / total_pages,
+      currentPage,
+    })
+  }
   const submitForm = () => {
     dispatch(addingCartItem(currentForm))
     if (currentUser) {
@@ -82,12 +112,6 @@ const Questionaires = ({ formSelector }) => {
     } else {
       history.push('/register?redirect=plans')
     }
-  }
-  const pageHandler = (currentPage) => {
-    setstate({
-      percent: state.percent - 100 / total_pages,
-      currentPage,
-    })
   }
 
   const clickEvent = (e) => {
@@ -111,17 +135,7 @@ const Questionaires = ({ formSelector }) => {
     <div className={QCss.container}>
       <div className={QCss.container2}>
         <Logo />
-        {/* Progress Bar */}
-        <div className={QCss.progress_bar}>
-          <div
-            className={QCss.progress_complete}
-            style={{ width: `${state.percent}%` }}
-          ></div>
-        </div>
-        <div className={QCss.progress_percent}>
-          {Math.floor(state.percent)}% Complete
-        </div>
-        {/* Progress Bar */}
+        <ProgressBar state={state} />
         <div className={QCss.body}>
           <div className={QCss.form}>
             {currentForm ? (
@@ -208,7 +222,19 @@ const Questionaires = ({ formSelector }) => {
   )
 }
 
-const formSkeleton = () => {
-  return <div></div>
+const ProgressBar = ({ state }) => {
+  return (
+    <>
+      <div className={QCss.progress_bar}>
+        <div
+          className={QCss.progress_complete}
+          style={{ width: `${state.percent}%` }}
+        ></div>
+      </div>
+      <div className={QCss.progress_percent}>
+        {Math.floor(state.percent)}% Complete
+      </div>
+    </>
+  )
 }
 export default Questionaires

@@ -16,6 +16,7 @@ import SocialMediaPage from '../pages/Services/SocialMediaPage/SocialMediaPage'
 
 import PublicRoute from './PublicRoute'
 import PrivateRoute from './PrivateRoute'
+import Questionaires from '../pages/Questionaires/Questionaires'
 const Routes = () => {
   return (
     <Switch>
@@ -50,7 +51,7 @@ const Routes = () => {
         restricted={false}
         exact
         path="/businessform"
-        component={PreQuestionaires}
+        component={Questionaires}
       />
 
       {/* Restricted Routes */}

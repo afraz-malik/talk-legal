@@ -9,6 +9,7 @@ import SocialMediaPageCss from './SocialMediaPage.module.scss'
 const socialMediaForm = [
   {
     id: 1,
+    name: 'photography',
     forms: [
       {
         id: 4,
@@ -28,6 +29,7 @@ const socialMediaForm = [
   },
   {
     id: 2,
+    name: 'influencer',
     forms: [
       {
         id: 6,

@@ -16,6 +16,7 @@ const NewForm = ({
   const [questions, setquestions] = useState(newForm.questions)
   const [previewed, setpreviewed] = useState(false)
   const [errors, seterrors] = useState([])
+
   React.useEffect(() => {
     window.scrollTo(0, 0)
     setquestions(newForm.questions)
@@ -74,6 +75,7 @@ const NewForm = ({
     }
     seterrors(localerrors)
   }
+
   $(document).click(function (e) {
     for (let i = 0; i < questions.length; i++) {
       if (e.target.id !== `dropdown${i}`) {
@@ -108,7 +110,6 @@ const NewForm = ({
         currentForm.pages.forEach((page) =>
           page.questions.forEach((qs) => {
             if (Number(question.parent_id) === Number(qs.id)) {
-              console.log(question.parent_value === qs.value.trim())
               if (question.parent_value === qs.value.trim()) {
                 response = 'show'
               } else {
@@ -121,13 +122,14 @@ const NewForm = ({
     })
     return response
   }
+
   return (
     <div className={FormCss.form}>
       <form onSubmit={handleSubmit}>
         <div className={FormCss.fields}>
           <h2>{newForm.title}</h2>
           <p>{newForm.description}</p>
-          {/* <hr style={{borderBottom:'1px solid lightgrey'}}/> */}
+          <hr style={{ borderTop: '1px solid #ffffff2e' }} />
           {questions.map((question, idx) => {
             switch (question.type) {
               case 'radio':
