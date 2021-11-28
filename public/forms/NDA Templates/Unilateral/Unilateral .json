@@ -1,0 +1,208 @@
+{
+  "title": "Unilateral Non-Disclosure Agreement",
+  "description": "",
+  "pages": [
+    {
+      "title": "Are you an individual or a company?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "",
+          "type": "radio",
+          "name": "master",
+          "value": "",
+          "placeholder": "",
+          "fields": "Company,Individual",
+          "parent_value": "",
+          "parent_name": ""
+        }
+      ]
+    },
+    {
+      "title": "Enter Your Details",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "Whats your name?",
+          "type": "text",
+          "name": "name",
+          "value": "",
+          "placeholder": "Enter your name",
+          "parent_value": "Individual",
+          "fields": "",
+          "parent_name": ""
+        },
+        {
+          "label": "What is the name of your company?",
+          "type": "text",
+          "name": "company_name",
+          "value": "",
+          "placeholder": "Enter your name",
+          "parent_value": "company",
+          "fields": "",
+          "parent_name": ""
+        }
+      ]
+    },
+    {
+      "title": "In what State would you like to form ____?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "What state do you live in?",
+          "type": "list",
+          "name": "state",
+          "value": "",
+          "placeholder": "Enter your state",
+          "parent_value": "Individual",
+          "fields": "",
+          "parent_name": ""
+        },
+        {
+          "label": "What state was your company formed in?",
+          "type": "list",
+          "name": "company_state",
+          "value": "",
+          "placeholder": "Enter your company's state",
+          "parent_value": "Company",
+          "fields": "",
+          "parent_name": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "California Resident or Illinois Resident?",
+          "type": "radio",
+          "name": "resident",
+          "value": "",
+          "placeholder": "",
+          "fields": "California Resident,Illinois Resident",
+          "parent_value": "Individual",
+          "parent_name": ""
+        },
+        {
+          "label": "What type of company is your company? For example, a limited liability company.",
+          "type": "text",
+          "name": "type_of_company",
+          "value": "",
+          "placeholder": "Enter your company's type",
+          "parent_value": "Company",
+          "fields": "",
+          "parent_name": ""
+        },
+        {
+          "label": "What is your address?",
+          "type": "text",
+          "name": "address",
+          "value": "",
+          "placeholder": "Enter your address",
+          "parent_value": "Individual",
+          "fields": "",
+          "parent_name": ""
+        },
+        {
+          "label": "What is the address to your company?",
+          "type": "text",
+          "name": "company_address",
+          "value": "",
+          "placeholder": "Enter your company's address",
+          "parent_value": "Company",
+          "fields": "",
+          "parent_name": ""
+        }
+      ]
+    },
+    {
+      "title": "Details of Independent Contractor?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "What’s the name of the independent contractor?",
+          "type": "text",
+          "name": "independent_character_name",
+          "value": "",
+          "placeholder": "Enter independent contractor's name",
+          "parent_value": "",
+          "fields": "",
+          "parent_name": ""
+        },
+        {
+          "label": "What state does independent contractor live in?",
+          "type": "list",
+          "name": "independent_character_state",
+          "value": "",
+          "placeholder": "Select state",
+          "parent_value": "",
+          "fields": "",
+          "parent_name": ""
+        },
+        {
+          "label": "Address of the independent contractor",
+          "type": "text",
+          "name": "independent_character_address",
+          "value": "",
+          "placeholder": "Enter contractor's address",
+          "parent_value": "",
+          "fields": "",
+          "parent_name": ""
+        }
+      ]
+    },
+    {
+      "title": "Details about Job",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "What is the type of job that you need and that Recipient does? For example, “social media marketing” or “consulting.",
+          "type": "text",
+          "name": "type_of_job",
+          "value": "",
+          "placeholder": "Enter job's type",
+          "parent_value": "",
+          "fields": "",
+          "parent_name": ""
+        },
+        {
+          "label": "What is the project that you will need to hire the Independent Contractor for?",
+          "type": "text",
+          "name": "project",
+          "value": "",
+          "placeholder": "Enter project",
+          "parent_value": "",
+          "fields": "",
+          "parent_name": ""
+        }
+      ]
+    },
+    {
+      "title": "In what State would you like to form ____?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "Which state’s laws do you want the contract to be governed by?",
+          "type": "list",
+          "name": "state_of_contract",
+          "value": "",
+          "placeholder": "Select your state",
+          "parent_value": "",
+          "fields": "",
+          "parent_name": ""
+        },
+        {
+          "label": "What state should handle a potential lawsuit?",
+          "type": "list",
+          "name": "state_of_lawsuit",
+          "value": "",
+          "placeholder": "Select your state",
+          "parent_value": "",
+          "fields": "",
+          "parent_name": ""
+        }
+      ]
+    }
+  ]
+}

@@ -90,7 +90,10 @@ const NewForm = ({
       currentForm.pages.forEach((page) =>
         page.questions.forEach((qs) => {
           if (Number(questions[idx].parent_id) === Number(qs.id)) {
-            if (questions[idx].parent_value === qs.value.trim())
+            if (
+              questions[idx].parent_value.toLowerCase() ===
+              qs.value.trim().toLowerCase()
+            )
               response = 'show'
             else {
               response = 'hide'

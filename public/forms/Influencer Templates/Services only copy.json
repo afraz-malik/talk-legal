@@ -194,7 +194,7 @@
           "name": "flat_installments",
           "value": "",
           "placeholder": "",
-          "fields": ["Flat", "Installments"],
+          "fields": "Flat,Installments",
           "parent_name": "",
           "parent_value": ""
         }
@@ -258,7 +258,7 @@
           "name": "exclusivity",
           "value": "",
           "placeholder": "",
-          "fields": ["Yes", "No"],
+          "fields": "Yes,No",
           "parent_name": "",
           "parent_value": ""
         }
@@ -316,7 +316,7 @@
           "name": "guidlines",
           "value": "",
           "placeholder": "Select state",
-          "fields": ["Yes", "No"],
+          "fields": "Yes,No",
           "parent_name": "",
           "parent_value": ""
         },
@@ -326,7 +326,7 @@
           "name": "our_guidlines",
           "value": "",
           "placeholder": "Select state",
-          "fields": ["Yes", "No"],
+          "fields": "Yes,No",
           "parent_name": "",
           "parent_value": ""
         }

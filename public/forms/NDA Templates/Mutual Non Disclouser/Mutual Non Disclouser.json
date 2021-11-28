@@ -1,0 +1,100 @@
+{
+  "title": "Mutual Non disclosurer Agreement",
+  "description": "",
+  "pages": [
+    {
+      "title": "In what State would you like to form ____?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "Which state’s laws do you want the contract to be governed by?",
+          "type": "list",
+          "name": "agreement_brought_state",
+          "value": "",
+          "placeholder": "Select your state",
+          "fields": "",
+          "parent_name": "",
+          "parent_value": ""
+        },
+        {
+          "label": "What state should handle a potential lawsuit?",
+          "type": "list",
+          "name": "agreement_constructed_state",
+          "value": "",
+          "placeholder": "Select your state",
+          "fields": "",
+          "parent_name": "",
+          "parent_value": ""
+        }
+      ]
+    },
+    {
+      "title": "When do you want to start your business?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "Select your Date",
+          "type": "date",
+          "name": "date_as_of",
+          "value": "",
+          "placeholder": "Select your date",
+          "fields": "",
+          "parent_name": "",
+          "parent_value": ""
+        }
+      ]
+    },
+    {
+      "title": "Enter Your Company Details",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "What is the name of your company?",
+          "type": "text",
+          "name": "company_one_name",
+          "value": "",
+          "placeholder": "Enter name",
+          "fields": "",
+          "parent_name": "",
+          "parent_value": ""
+        },
+        {
+          "label": "What is the address to your company?",
+          "type": "text",
+          "name": "company_one_street_address",
+          "value": "",
+          "placeholder": "Enter address",
+          "fields": "",
+          "parent_name": "",
+          "parent_value": ""
+        }
+      ]
+    },
+    {
+      "title": "Enter the company's detail you are potentially conducting business with",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "Name of the Company",
+          "type": "text",
+          "name": "company_two_name",
+          "value": "",
+          "placeholder": "Enter company name",
+          "fields": "",
+          "parent_name": "",
+          "parent_value": ""
+        },
+        {
+          "label": "Address of the Company",
+          "type": "text",
+          "name": "company_two_street_address",
+          "value": "",
+          "placeholder": "Enter address",
+          "fields": "",
+          "parent_name": "",
+          "parent_value": ""
+        }
+      ]
+    }
+  ]
+}

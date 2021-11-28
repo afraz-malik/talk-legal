@@ -1,0 +1,358 @@
+{
+  "title": "Commercial Client Photography Services Contract v.2",
+  "description": "",
+  "pages": [
+    {
+      "title": "Are you an individual or a company?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "",
+          "type": "radio",
+          "name": "master",
+          "value": "",
+          "placeholder": "",
+          "fields": "Company,Individual",
+          "parent_name": "",
+          "parent_value": ""
+        }
+      ]
+    },
+    {
+      "title": "Enter Your Details",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "Whats your name?",
+          "type": "text",
+          "name": "name",
+          "value": "",
+          "fields": "",
+          "placeholder": "Enter your name",
+          "parent_name": "master",
+          "parent_value": "Individual"
+        },
+        {
+          "label": "What is the name of your company?",
+          "type": "text",
+          "name": "company_name",
+          "value": "",
+          "placeholder": "Enter your company's name",
+          "parent_name": "master",
+          "parent_value": "company",
+          "fields": ""
+        }
+      ]
+    },
+    {
+      "title": "In what State would you like to form ____?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "What state do you live in?",
+          "type": "list",
+          "name": "state",
+          "value": "",
+          "placeholder": "Enter your state",
+          "parent_name": "master",
+          "parent_value": "Individual",
+          "fields": ""
+        },
+        {
+          "label": "What state was your company formed in?",
+          "type": "list",
+          "name": "company_state",
+          "value": "",
+          "placeholder": "Enter your company's state",
+          "parent_name": "master",
+          "parent_value": "Company",
+          "fields": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "California Resident or Illinois Resident?",
+          "type": "radio",
+          "name": "resident",
+          "value": "",
+          "placeholder": "",
+          "fields": "California Resident,Illinois Resident",
+          "parent_name": "master",
+          "parent_value": "Individual"
+        },
+        {
+          "label": "What type of company is your company? For example, a limited liability company.",
+          "type": "text",
+          "name": "type_of_company",
+          "value": "",
+          "placeholder": "Enter your company's type",
+          "parent_name": "master",
+          "parent_value": "Company",
+          "fields": ""
+        },
+        {
+          "label": "What is your address?",
+          "type": "text",
+          "name": "address",
+          "value": "",
+          "placeholder": "Enter your address",
+          "parent_name": "master",
+          "parent_value": "Individual",
+          "fields": ""
+        },
+        {
+          "label": "What is the address to your company?",
+          "type": "text",
+          "name": "company_address",
+          "value": "",
+          "placeholder": "Enter your company's address",
+          "parent_name": "master",
+          "parent_value": "Company",
+          "fields": ""
+        }
+      ]
+    },
+    {
+      "title": "Details of the company that hired you.",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "What is the name of the company that hired you for your services?",
+          "type": "text",
+          "name": "hired_company_name",
+          "value": "",
+          "placeholder": "Enter name of the company",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        },
+        {
+          "label": "What state is the Company formed in?",
+          "type": "list",
+          "name": "hired_company_state",
+          "value": "",
+          "placeholder": "Select state",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        },
+        {
+          "label": "What type of company is the company hiring you? For example, a limited liability company.?",
+          "type": "text",
+          "name": "hired_company_type",
+          "value": "",
+          "placeholder": "Enter company's type",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        },
+        {
+          "label": "What is the address of the Company that is hiring you",
+          "type": "text",
+          "name": "hired_company_address",
+          "value": "",
+          "placeholder": "Enter company's address",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        }
+      ]
+    },
+    {
+      "title": "For what purpose did the Company hire you for?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "",
+          "type": "radio",
+          "name": "purpose",
+          "value": "",
+          "placeholder": "",
+          "fields": "to promote the company’s products or services.,to photoshoot a model or models.",
+          "parent_name": "",
+          "parent_value": ""
+        }
+      ]
+    },
+    {
+      "title": "Are there any other specific services in the contract you’d like to include other than taking pictures and possibly editing services? Please list any specific additional services here:",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "You can add upto 3 Services",
+          "type": "text",
+          "name": "service1",
+          "value": "",
+          "placeholder": "Enter Service (if any)",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        },
+        {
+          "label": "",
+          "type": "text",
+          "name": "service2",
+          "value": "",
+          "placeholder": "Enter Service (if any)",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        },
+        {
+          "label": "",
+          "type": "text",
+          "name": "service3",
+          "value": "",
+          "placeholder": "Enter Service (if any)",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        }
+      ]
+    },
+    {
+      "title": "Details about Shoot",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "What is the date of the shoot?",
+          "type": "text",
+          "name": "date_of_shoot",
+          "value": "",
+          "placeholder": "",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        },
+        {
+          "label": "What time of the shoot?",
+          "type": "text",
+          "name": "time_of_shoot",
+          "value": "",
+          "placeholder": "",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        },
+        {
+          "label": "Where is the photoshoot located? ",
+          "type": "text",
+          "name": "location_of_shoot",
+          "value": "",
+          "placeholder": "",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        }
+      ]
+    },
+    {
+      "title": "Will you be paid a flat fee or hourly fee?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "",
+          "type": "radio",
+          "name": "flat_hourly",
+          "value": "",
+          "placeholder": "",
+          "fields": "Flat,Hourly",
+          "parent_name": "",
+          "parent_value": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "What will you be getting paid for your flat fee?",
+          "type": "text",
+          "name": "price_of_flat_fee",
+          "value": "",
+          "placeholder": "Select your fees",
+          "parent_name": "flat_hourly",
+          "parent_value": "Flat",
+          "fields": ""
+        },
+        {
+          "label": "What is the hourly rate you’ll be charging?",
+          "type": "text",
+          "name": "price_of_hourly_fee",
+          "value": "",
+          "placeholder": "Select your fees",
+          "parent_name": "flat_hourly",
+          "parent_value": "Hourly",
+          "fields": ""
+        },
+        {
+          "label": "For how many hours?",
+          "type": "number",
+          "name": "hours",
+          "value": "",
+          "placeholder": "Select your fees",
+          "parent_name": "flat_hourly",
+          "parent_value": "Hourly",
+          "fields": ""
+        },
+        {
+          "label": "What is the deposit you’ll be asking for?",
+          "type": "number",
+          "name": "deposit",
+          "value": "",
+          "placeholder": "Select your fees",
+          "parent_name": "flat_hourly",
+          "parent_value": "Hourly",
+          "fields": ""
+        }
+      ]
+    },
+    {
+      "title": "Will you be using the photos taken from this photoshoot for your own commercial use, for example, on your Instagram?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "",
+          "type": "radio",
+          "name": "social",
+          "value": "",
+          "placeholder": "",
+          "fields": "Yes,No",
+          "parent_name": "",
+          "parent_value": ""
+        }
+      ]
+    },
+    {
+      "title": "In what State would you like to form ____?",
+      "description": "For the purpose of industry regulation, your details are required.",
+      "questions": [
+        {
+          "label": "Which state’s laws do you want the contract to be governed by?",
+          "type": "list",
+          "name": "state_of_contract",
+          "value": "",
+          "placeholder": "Select your state",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        },
+        {
+          "label": "What state should handle a potential lawsuit?",
+          "type": "list",
+          "name": "state_of_lawsuit",
+          "value": "",
+          "placeholder": "Select your state",
+          "parent_name": "",
+          "parent_value": "",
+          "fields": ""
+        }
+      ]
+    }
+  ]
+}
