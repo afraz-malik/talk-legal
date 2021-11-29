@@ -8,14 +8,14 @@ const businessOpForms = [
   {
     id: 1,
     src: 'images/bagpen.png',
-    title: 'NDA Template',
+    title: 'Confidentiality Agreement (Mutual) - Business Discussions v.2',
     desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
     price: '79',
   },
   {
     id: 2,
     src: 'images/2nd f.png',
-    title: 'Unilateral Agreement',
+    title: 'Confidentiality Agreement (Unilateral) - Independent Contractor',
     desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
     price: '79',
   },
@@ -23,7 +23,7 @@ const businessOpForms = [
   {
     id: 3,
     src: 'images/3rd form.png',
-    title: 'Unilateral Agreement v2',
+    title: 'Confidentiality Agreement (Unilateral) - Potential Investor v.2',
     desp: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare  pretium placerat ut platea. Purus blandit integer sagittis massavel est hac',
     price: '79',
   },

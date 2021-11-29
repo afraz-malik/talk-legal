@@ -1,97 +1,33 @@
 /* Forms */
-.mutual-non{
-    span {
-        background-color: rgb(240, 240, 240);
-        min-width: 50px;
-        padding: 0 5px;
-      }
-      h1 {
-        font-family: Circular Std;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 22px;
-        margin: 0;
-        line-height: 30px;
-        text-align: center;
-        color: #000000;
-      }
-      p, ol {
-        font-family: DM Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 20px;
-        margin: 5px;
-        text-align: left;
-        color: #000000;
-      }
-      h3 {
-        font-family: Circular Std;
-        font-style: normal;
-        font-weight: 900;
-        font-size: 16px;
-        line-height: 18px;
-        margin: 20px 0;
-        text-align: center;
-        color: #000000;
-      }
-      h3:first-of-type {
-        margin-top: 0px;
-      }
-      ol{
-        margin: 20px 0;
-      }
-      ol li{
-        /* text-decoration: underline; */
-      }
-      ol li:before{
-        content: "";
-        width: 40px;
-        display: inline-block;
-  
-      }
-      ul{
-        /* margin: 5px 0; */
-      }
-      ul li{
-        padding-left: 30px;
-        margin-left: 20px;
-        margin: 10px 0 10px 10px;
-        /* text-decoration: unset; */
-      }
-        ul li:before{
-        content: unset;
-        width: unset;
-        display: inline-block;
-      }
-}
-.unilateral{
+.mutual-non {
   span {
     background-color: rgb(240, 240, 240);
     min-width: 50px;
     padding: 0 5px;
- }
- h1 {
+  }
+  h1 {
     font-family: Circular Std;
     font-style: normal;
     font-weight: bold;
     font-size: 22px;
-    /* margin: 0; */
+    margin: 0;
     line-height: 30px;
     text-align: center;
     color: #000000;
- }
- p, ol {
+  }
+  p,
+  ol {
     font-family: DM Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 20px;
-    /* margin: 5px; */
+    margin: 5px;
     text-align: left;
     color: #000000;
- }
- h3 {
+    text-align: justify;
+  }
+  h3 {
     font-family: Circular Std;
     font-style: normal;
     font-weight: 900;
@@ -100,49 +36,43 @@
     margin: 20px 0;
     text-align: center;
     color: #000000;
- }
- h3:first-of-type {
+  }
+  h3:first-of-type {
     margin-top: 0px;
- }
- ol{
+  }
+  ol {
     margin: 20px 0;
- }
- ol li{
-    font-weight: bold;
+  }
+  ol li {
     /* text-decoration: underline; */
- }
- ol li:before{
-    content: "";
+  }
+  ol li:before {
+    content: '';
     width: 40px;
     display: inline-block;
-
- }
- ul{
+  }
+  ul {
     /* margin: 5px 0; */
-    list-style-type: lower-alpha;
- }
- ul ul{
-    list-style-type: lower-roman;
- }
- ul li{
+  }
+  ul li {
     padding-left: 30px;
     margin-left: 20px;
     margin: 10px 0 10px 10px;
-    font-weight: normal;
- }
-    ul li:before{
+    /* text-decoration: unset; */
+  }
+  ul li:before {
     content: unset;
     width: unset;
     display: inline-block;
- }
+  }
 }
-.unilateral2{
+.unilateral {
   span {
     background-color: rgb(240, 240, 240);
     min-width: 50px;
     padding: 0 5px;
- }
- h1 {
+  }
+  h1 {
     font-family: Circular Std;
     font-style: normal;
     font-weight: bold;
@@ -151,8 +81,9 @@
     line-height: 30px;
     text-align: center;
     color: #000000;
- }
- p, ol {
+  }
+  p,
+  ol {
     font-family: DM Sans;
     font-style: normal;
     font-weight: normal;
@@ -161,8 +92,9 @@
     /* margin: 5px; */
     text-align: left;
     color: #000000;
- }
- h3 {
+    text-align: justify;
+  }
+  h3 {
     font-family: Circular Std;
     font-style: normal;
     font-weight: 900;
@@ -171,223 +103,296 @@
     margin: 20px 0;
     text-align: center;
     color: #000000;
- }
- h3:first-of-type {
+  }
+  h3:first-of-type {
     margin-top: 0px;
- }
- ol{
+  }
+  ol {
     margin: 20px 0;
- }
- ol li{
+  }
+  ol li {
     font-weight: bold;
     /* text-decoration: underline; */
- }
- ol li:before{
-    content: "";
+  }
+  ol li:before {
+    content: '';
     width: 40px;
     display: inline-block;
-
- }
- ul{
+  }
+  ul {
     /* margin: 5px 0; */
     list-style-type: lower-alpha;
- }
- ul ul{
+  }
+  ul ul {
     list-style-type: lower-roman;
- }
- ul li{
+  }
+  ul li {
     padding-left: 30px;
     margin-left: 20px;
     margin: 10px 0 10px 10px;
     font-weight: normal;
- }
-    ul li:before{
+  }
+  ul li:before {
     content: unset;
     width: unset;
     display: inline-block;
- }
+  }
 }
-.commercialpg{
-   span {
-      background-color: rgb(240, 240, 240);
-      min-width: 50px;
-      padding: 0 5px;
-   }
-   h1 {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 22px;
-      /* margin: 0; */
-      line-height: 30px;
-      text-align: center;
-      color: #000000;
-   }
-   p, ol {
-      font-family: DM Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 20px;
-      /* margin: 5px; */
-      text-align: left;
-      color: #000000;
-   }
-   h3 {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: 900;
-      font-size: 16px;
-      line-height: 18px;
-      margin: 20px 0;
-      text-align: center;
-      color: #000000;
-   }
-   h3:first-of-type {
-      margin-top: 0px;
-   }
-   ol{
-      margin: 20px 0;
-   }
-   ol li{
-      /* text-decoration: underline; */
-   }
-   ol li:before{
-      content: "";
-      width: 40px;
-      display: inline-block;
-
-   }
-   ul{
-      /* margin: 5px 0; */
-      list-style-type: lower-alpha;
-   }
-   ul ul{
-      list-style-type: lower-roman;
-   }
-   ul li{
-      padding-left: 30px;
-      margin-left: 20px;
-      margin: 10px 0 10px 10px;
-      /* text-decoration: unset; */
-   }
-      ul li:before{
-      content: unset;
-      width: unset;
-      display: inline-block;
-   }
+.unilateral2 {
+  span {
+    background-color: rgb(240, 240, 240);
+    min-width: 50px;
+    padding: 0 5px;
+  }
+  h1 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    /* margin: 0; */
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+  }
+  p,
+  ol {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    /* margin: 5px; */
+    text-align: left;
+    color: #000000;
+    text-align: justify;
+  }
+  h3 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 20px 0;
+    text-align: center;
+    color: #000000;
+  }
+  h3:first-of-type {
+    margin-top: 0px;
+  }
+  ol {
+    margin: 20px 0;
+  }
+  ol li {
+    font-weight: bold;
+    /* text-decoration: underline; */
+  }
+  ol li:before {
+    content: '';
+    width: 40px;
+    display: inline-block;
+  }
+  ul {
+    /* margin: 5px 0; */
+    list-style-type: lower-alpha;
+  }
+  ul ul {
+    list-style-type: lower-roman;
+  }
+  ul li {
+    padding-left: 30px;
+    margin-left: 20px;
+    margin: 10px 0 10px 10px;
+    font-weight: normal;
+  }
+  ul li:before {
+    content: unset;
+    width: unset;
+    display: inline-block;
+  }
 }
-.standardpg{
-   span {
-      background-color: rgb(240, 240, 240);
-      min-width: 50px;
-      padding: 0 5px;
-   }
-   h1 {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 22px;
-      /* margin: 0; */
-      line-height: 30px;
-      text-align: center;
-      color: #000000;
-   }
-   p, ol {
-      font-family: DM Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 20px;
-      /* margin: 5px; */
-      text-align: left;
-      color: #000000;
-   }
-   h3 {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: 900;
-      font-size: 16px;
-      line-height: 18px;
-      margin: 20px 0;
-      text-align: center;
-      color: #000000;
-   }
-   h3:first-of-type {
-      margin-top: 0px;
-   }
-   ol{
-      margin: 20px 0;
-   }
-   ol li{
-   }
-   ol li:before{
-      content: "";
-      width: 40px;
-      display: inline-block;
-
-   }
-   ul{
-      /* margin: 5px 0; */
-      list-style-type: lower-alpha;
-   }
-   ul ul{
-      list-style-type: lower-roman;
-    }
-    ul li{
-        padding-left: 30px;
-        margin-left: 20px;
-        margin: 10px 0 10px 10px;
-        /* text-decoration: none; */
-   }
-      ul li:before{
-      content: unset;
-      width: unset;
-      display: inline-block;
-   }
+.commercialpg {
+  span {
+    background-color: rgb(240, 240, 240);
+    min-width: 50px;
+    padding: 0 5px;
+  }
+  h1 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    /* margin: 0; */
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+  }
+  p,
+  ol {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    /* margin: 5px; */
+    text-align: left;
+    color: #000000;
+    text-align: justify;
+  }
+  h3 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 20px 0;
+    text-align: center;
+    color: #000000;
+  }
+  h3:first-of-type {
+    margin-top: 0px;
+  }
+  ol {
+    margin: 20px 0;
+  }
+  ol li {
+    /* text-decoration: underline; */
+  }
+  ol li:before {
+    content: '';
+    width: 40px;
+    display: inline-block;
+  }
+  ul {
+    /* margin: 5px 0; */
+    list-style-type: lower-alpha;
+  }
+  ul ul {
+    list-style-type: lower-roman;
+  }
+  ul li {
+    padding-left: 30px;
+    margin-left: 20px;
+    margin: 10px 0 10px 10px;
+    /* text-decoration: unset; */
+  }
+  ul li:before {
+    content: unset;
+    width: unset;
+    display: inline-block;
+  }
 }
-.influencer1{
-   span {
-      background-color: rgb(240, 240, 240);
-      min-width: 50px;
-      padding: 0 5px;
-    }
-    h1 {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 22px;
-      margin: 0;
-      line-height: 30px;
-      text-align: center;
-      color: #000000;
-    }
-    p,ol {
-      font-family: DM Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 20px;
-      margin: 5px;
-      text-align: left;
-      color: #000000;
-    }
-    h3 {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: 900;
-      font-size: 16px;
-      line-height: 18px;
-      margin: 20px 0;
-      text-align: center;
-      color: #000000;
-    
-    
-    }
-    h3:first-of-type {
-      margin-top: 0px;
-    }
-    /* ol {
+.standardpg {
+  span {
+    background-color: rgb(240, 240, 240);
+    min-width: 50px;
+    padding: 0 5px;
+  }
+  h1 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    /* margin: 0; */
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+  }
+  p,
+  ol {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    /* margin: 5px; */
+    text-align: left;
+    color: #000000;
+    text-align: justify;
+  }
+  h3 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 20px 0;
+    text-align: center;
+    color: #000000;
+  }
+  h3:first-of-type {
+    margin-top: 0px;
+  }
+  ol {
+    margin: 20px 0;
+  }
+  ol li {
+  }
+  ol li:before {
+    content: '';
+    width: 40px;
+    display: inline-block;
+  }
+  ul {
+    /* margin: 5px 0; */
+    list-style-type: lower-alpha;
+  }
+  ul ul {
+    list-style-type: lower-roman;
+  }
+  ul li {
+    padding-left: 30px;
+    margin-left: 20px;
+    margin: 10px 0 10px 10px;
+    /* text-decoration: none; */
+  }
+  ul li:before {
+    content: unset;
+    width: unset;
+    display: inline-block;
+  }
+}
+.influencer1 {
+  span {
+    background-color: rgb(240, 240, 240);
+    min-width: 50px;
+    padding: 0 5px;
+  }
+  h1 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    margin: 0;
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+  }
+  p,
+  ol {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 5px;
+    text-align: left;
+    color: #000000;
+    text-align: justify;
+  }
+  h3 {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 20px 0;
+    text-align: center;
+    color: #000000;
+  }
+  h3:first-of-type {
+    margin-top: 0px;
+  }
+  /* ol {
       padding-left: 0px;
       list-style-type: decimal;
     }
@@ -397,87 +402,78 @@
     ol li ul li ul {
       list-style-type: lower-roman;
     } */
-    
-    
-    
-    
-    
-    
-     .center{
-      text-align: center;
-    }
-    ol {
-      counter-reset: item
-    
-    }
-    ol ol{
-      padding-left: 50px;
-    }
-    li {
-      display: block;
-      /* padding-left: 50px */
-    }
-    ol li:before {
-      content: counters(item, ".") "." " ";
-      counter-increment: item;
-      width: 50px;
-      display: inline-block;
-    
-    }
-    ul li::before{
-      content:"\2022";
-      font-weight: bold; /* If you want it to be bold */
-    
-      counter-increment: unset;
-      vertical-align:middle;
-      
-    }
+
+  .center {
+    text-align: center;
+  }
+  ol {
+    counter-reset: item;
+  }
+  ol ol {
+    padding-left: 50px;
+  }
+  li {
+    display: block;
+    /* padding-left: 50px */
+  }
+  ol li:before {
+    content: counters(item, '.') '.' ' ';
+    counter-increment: item;
+    width: 50px;
+    display: inline-block;
+  }
+  ul li::before {
+    content: '\2022';
+    font-weight: bold; /* If you want it to be bold */
+
+    counter-increment: unset;
+    vertical-align: middle;
+  }
 }
-.influencer2{
-   span {
-      background-color: rgb(240, 240, 240);
-      min-width: 50px;
-      padding: 0 5px;
+.influencer2 {
+  span {
+    background-color: rgb(240, 240, 240);
+    min-width: 50px;
+    padding: 0 5px;
   }
 
   h1 {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 22px;
-      margin: 0;
-      line-height: 30px;
-      text-align: center;
-      color: #000000;
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    margin: 0;
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
   }
 
   p,
   ol {
-      font-family: DM Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 12px;
-      line-height: 20px;
-      margin: 5px;
-      text-align: left;
-      color: #000000;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    margin: 5px;
+    text-align: left;
+    color: #000000;
+    text-align: justify;
   }
 
   h3 {
-      font-family: Circular Std;
-      font-style: normal;
-      font-weight: 900;
-      font-size: 16px;
-      line-height: 18px;
-      margin: 20px 0;
-      text-align: center;
-      color: #000000;
-
-
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 20px 0;
+    text-align: center;
+    color: #000000;
   }
 
   h3:first-of-type {
-      margin-top: 0px;
+    margin-top: 0px;
   }
 
   /* ol {
@@ -492,37 +488,35 @@ list-style-type: lower-roman;
 } */
 
   .center {
-      text-align: center;
+    text-align: center;
   }
 
   ol {
-      counter-reset: item
+    counter-reset: item;
   }
 
   ol ol {
-      padding-left: 50px;
+    padding-left: 50px;
   }
 
   li {
-      display: block;
-      /* padding-left: 50px */
+    display: block;
+    /* padding-left: 50px */
   }
 
   ol li:before {
-      content: counters(item, ".") "."" ";
-      counter-increment: item;
-      width: 50px;
-      display: inline-block;
-
+    content: counters(item, '.') '.' ' ';
+    counter-increment: item;
+    width: 50px;
+    display: inline-block;
   }
 
   ul li::before {
-      content: "\2022";
-      font-weight: bold;
-      /* If you want it to be bold */
+    content: '\2022';
+    font-weight: bold;
+    /* If you want it to be bold */
 
-      counter-increment: unset;
-      vertical-align: middle;
-
+    counter-increment: unset;
+    vertical-align: middle;
   }
 }
