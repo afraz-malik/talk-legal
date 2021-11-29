@@ -388,9 +388,11 @@ const initialState = {
 const FormGenerator = () => {
   const [state, setstate] = useState(initialState)
   useEffect(() => {
-    setstate(initialState)
-    setstate(sample)
+    setstate(JSON.parse(localStorage.getItem('FormGenerator')))
   }, [])
+  useEffect(() => {
+    localStorage.setItem('FormGenerator', JSON.stringify(state))
+  }, [state])
 
   const handleChange = (e) => {
     setstate({ ...state, [e.target.name]: e.target.value })
@@ -450,28 +452,49 @@ const FormGenerator = () => {
     )
   }
   const deletePage = (idx) => {
-    const pages = state.pages.filter((page, index) => index !== idx)
-    setstate({ ...state, pages })
+    const confirm = window.confirm('Are you sure you wanna delete this page?')
+    if (confirm) {
+      const pages = state.pages.filter((page, index) => index !== idx)
+      setstate({ ...state, pages })
+    }
   }
   const deleteQuestion = (idx, idxx) => {
-    const questions = state.pages[idx].questions.filter(
-      (qs, qsindex) => qsindex !== idxx
+    const confirm = window.confirm(
+      'Are you sure you wanna delete this Question?'
     )
-    setstate(
-      update(state, {
-        pages: {
-          [idx]: {
-            $set: {
-              questions,
+
+    if (confirm) {
+      const questions = state.pages[idx].questions.filter(
+        (qs, qsindex) => qsindex !== idxx
+      )
+      setstate(
+        update(state, {
+          pages: {
+            [idx]: {
+              $set: {
+                questions,
+              },
             },
           },
-        },
-      })
-    )
+        })
+      )
+    }
+  }
+  const download = () => {
+    var dataStr =
+      'data:text/json;charset=utf-8,' +
+      encodeURIComponent(JSON.stringify(state))
+    var dlAnchorElem = document.getElementById('downloadAnchorElem')
+    dlAnchorElem.setAttribute('href', dataStr)
+    dlAnchorElem.setAttribute('download', 'scene.json')
+    dlAnchorElem.click()
   }
   return (
     <>
       {console.log(state)}
+      <button onClick={() => download()}>Download JSon</button>
+      <a id="downloadAnchorElem"> </a>
+
       <form className="form_generator">
         <div className="row">
           <label>Enter form title</label>
