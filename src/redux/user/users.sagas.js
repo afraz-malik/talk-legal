@@ -22,11 +22,8 @@ import { clearingCart, savingFormToApiAction } from '../data/data.action'
 // Helper Functions
 export function* refreshingUser(uid, token, local) {
   console.log(local)
-  const response = yield fetchDbGet(
-    `api/user/get-subscription-plan/${uid}`,
-    token
-  )
-  const user = response.data[0]
+  const { user } = yield fetchDbGet(`api/user/data`, token)
+
   yield put(
     signInSuccess({
       user,
@@ -118,11 +115,28 @@ export function* signInStart({ payload }) {
       password: payload.password,
     })
     if (response.user) {
-      yield refreshingUser(
-        response.user.id,
-        response.access_token.plainTextToken,
-        payload.keeplogin ? true : false
+      yield put(
+        signInSuccess({
+          user: response.user,
+          token: response.access_token.plainTextToken,
+        })
       )
+      yield sessionStorage.setItem(
+        'currentUser',
+        JSON.stringify({
+          user: response.user,
+          token: response.access_token.plainTextToken,
+        })
+      )
+      if (payload.keeplogin) {
+        yield localStorage.setItem(
+          'currentUser',
+          JSON.stringify({
+            user: response.user,
+            token: response.access_token.plainTextToken,
+          })
+        )
+      }
       if (cart.form) {
         yield put(
           savingFormToApiAction({ id: response.user.id, form: cart.form })
