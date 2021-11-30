@@ -7,6 +7,7 @@ import {
   forgetPasswordSuccess,
   passwordResetFailed,
   passwordResetSuccess,
+  paymentFailed,
   signInFailed,
   signInSuccess,
   signOutFailed,
@@ -245,5 +246,23 @@ function* subscribePlanStart({ payload }) {
 }
 export function* subscribePlan() {
   yield takeLatest('SUBSCRIBE_PLAN_START', subscribePlanStart)
+}
+// ----------------------------------------------------------
+
+function* paymentInitialize({ payload }) {
+  const state = yield select()
+  const token = state.userReducer.token
+  const uid = state.userReducer.currentUser.id
+  try {
+    console.log(payload)
+    const response = yield fetchDbPost(`api/user/plan-payment`, token, payload)
+    console.log(response)
+  } catch (error) {
+    console.log(error.message)
+    yield put(paymentFailed(error.message))
+  }
+}
+export function* paymentStart(payload) {
+  yield takeLatest('PAYMENT_START', paymentInitialize)
 }
 // ----------------------------------------------------------

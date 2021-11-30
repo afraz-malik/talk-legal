@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import DashboardCss from './Dashboard.module.scss'
 import NavBar from '../../components/NavBar/NavBar'
 import FilesDocs from '../../components/FilesDocs/FilesDocs'
@@ -10,21 +10,35 @@ import { currentUserSelector } from '../../redux/user/user.selector'
 import { useSelector } from 'react-redux'
 import { useHistory, useLocation } from 'react-router'
 import { cartSelector } from '../../redux/data/data.selector'
+import { fetchDbGet } from '../../backend/backend'
 const Dashboard = () => {
   const history = useHistory()
-  const location = useLocation()
   const currentUser = useSelector((state) => currentUserSelector(state))
+  const token = useSelector((state) => state.userReducer.token)
   const cart = useSelector((state) => cartSelector(state))
-  console.log(location)
-  useEffect(() => {
+  const [userLegalForms, setUserLegalForms] = useState([])
+  const [loading, setloading] = useState(false)
+  useEffect(async () => {
     // if (currentUser && !currentUser.subscription_plan && cart.form)
     //     history.push("/plans?cart=form");
+    try {
+      setloading(true)
+      const response = await fetchDbGet(`api/user/legal-forms`, token)
+      if (response.user_legal_forms) {
+        setUserLegalForms(response.user_legal_forms)
+        setloading(false)
+      }
+    } catch (error) {
+      setloading(false)
+      console.log(error.message)
+    }
     window.scrollTo(0, 0)
   }, [currentUser, cart.form, history])
   const [state, setstate] = React.useState({
     title: 'My Files & Documents',
     value: 1,
   })
+  console.log(userLegalForms)
   return (
     <div className={DashboardCss.container}>
       <NavBar currentPage="dashboard" />
@@ -81,9 +95,18 @@ const Dashboard = () => {
         <div className={DashboardCss.boxmodel}>
           <h1>{state.title}</h1>
           <div className={DashboardCss.boxmodel_body}>
-            {state.value === 1 ? <FilesDocs /> : null}
-            {state.value === 2 ? <OpenOrders /> : null}
-            {state.value === 3 ? <CompleteOrders /> : null}
+            {state.value === 1 ? (
+              <FilesDocs userLegalForms={userLegalForms} loading={loading} />
+            ) : null}
+            {state.value === 2 ? (
+              <OpenOrders userLegalForms={userLegalForms} loading={loading} />
+            ) : null}
+            {state.value === 3 ? (
+              <CompleteOrders
+                userLegalForms={userLegalForms}
+                loading={loading}
+              />
+            ) : null}
             {state.value === 4 ? (
               currentUser.subscription_plan ? (
                 <SubsciptionType

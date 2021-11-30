@@ -4,6 +4,7 @@ import {
   gettingForm,
   addingCartItem,
   savingFormInApiStart,
+  gettingUserLegalFormsStart,
 } from './data/data.sagas'
 import {
   signUp,
@@ -13,6 +14,7 @@ import {
   forgetPassword,
   passwordReset,
   subscribePlan,
+  paymentStart,
 } from './user/users.sagas'
 export default function* rootSaga() {
   yield all([
@@ -27,5 +29,7 @@ export default function* rootSaga() {
     call(addingCartItem),
     call(subscribePlan),
     call(savingFormInApiStart),
+    call(paymentStart),
+    call(gettingUserLegalFormsStart),
   ])
 }

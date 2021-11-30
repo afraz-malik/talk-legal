@@ -8,6 +8,7 @@ import Logo from '../NavBar/Logo'
 import HardCopy from '../LegalForm/HardCopy'
 import OrderCss from './OrderSummary.module.scss'
 import OrderSummaryGen from './OrderSummaryGen'
+import { InsideSpinner } from '../Spinner/Spinner'
 const OrderSummary = ({ handleCheckout, location }) => {
   const cart = useSelector((state) => cartSelector(state))
   const currentUser = useSelector((state) => currentUserSelector(state))
@@ -31,7 +32,7 @@ const OrderSummary = ({ handleCheckout, location }) => {
     // eslint-disable-next-line
   }, [planBill])
   useEffect(() => {
-    if (cart.form) setPlanBill({ ...planBill, form: 25 })
+    if (cart.form) setPlanBill({ ...planBill, form: 325 })
     // eslint-disable-next-line
   }, [])
   const handlePlan = (state) => {
@@ -49,7 +50,8 @@ const OrderSummary = ({ handleCheckout, location }) => {
           style={{ backgroundImage: 'url(images/TLTM.png)' }}
         >
           <div className={`${OrderCss.content} preview`}>
-            <HardCopy currentForm={cart.form} values={cart.form} />
+            {/* <HardCopy currentForm={cart.form} values={cart.form} /> */}
+            <InsideSpinner />
           </div>
         </div>
       ) : null}

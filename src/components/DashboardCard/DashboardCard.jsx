@@ -1,9 +1,16 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { addingCartItem } from '../../redux/data/data.action'
 import DashboardCardCss from './DashboardCard.module.scss'
 const DashboardCard = ({ idx, type, title, form }) => {
   const history = useHistory()
-
+  const dispatch = useDispatch()
+  const handleSubmit = (form) => {
+    console.log(form)
+    dispatch(addingCartItem(form))
+    history.push('/plans?cart=form')
+  }
   const tt = idx + 10 * 7 + '%'
   return (
     <div
@@ -32,7 +39,7 @@ const DashboardCard = ({ idx, type, title, form }) => {
       ) : (
         <button
           className={DashboardCardCss.progress}
-          onClick={() => history.push('/plans?cart=form')}
+          onClick={() => handleSubmit(form)}
         >
           <img alt="" src="images/rightarrow.svg" />
           <img alt="" src="images/rightarrow.svg" />

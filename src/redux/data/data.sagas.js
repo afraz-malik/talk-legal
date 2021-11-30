@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify'
 import { takeLatest, put, select } from 'redux-saga/effects'
 import { fetchDbGet, fetchDbPost } from '../../backend/backend'
-import { refreshingUser } from '../user/users.sagas'
 // import toast from 'cogo-toast'
 import {
   addingCartItemFailed,
@@ -54,9 +53,9 @@ export function* gettingForm() {
   yield takeLatest('GETTING_FORM_START', gettingFormStart)
 }
 // -------------------------------------------------------------
-function* addingCartItemStart(payload) {
+function* addingCartItemStart({ payload }) {
   try {
-    yield localStorage.setItem('currentForm', JSON.stringify({ ...payload }))
+    // yield localStorage.setItem('currentForm', JSON.stringify({ ...payload }))
     yield put(addingCartItemSuccess(payload))
   } catch (e) {
     yield put(addingCartItemFailed(e.message))
@@ -77,12 +76,38 @@ function* savingFormInApi({ payload }) {
       null,
       payload.form
     )
-    console.log(newresponse)
-    yield refreshingUser(uid, token, false)
+    if (newresponse.status) {
+      yield put(addingCartItemSuccess(newresponse.user_legal_form))
+    } else {
+      console.log(newresponse)
+      throw Error(newresponse.msg)
+    }
+    // yield refreshingUser(uid, token, false)
   } catch (e) {
     console.log(e)
   }
 }
 export function* savingFormInApiStart() {
   yield takeLatest('SAVING_FORM_TO_API', savingFormInApi)
+}
+// -------------------------------------------------------------
+function* gettingUserLegalForms({ payload }) {
+  const state = yield select()
+  const token = state.userReducer.token
+  const uid = state.userReducer.currentUser.id
+  try {
+    const newresponse = yield fetchDbPost(
+      `api/submit-legal-form/${payload.id}`,
+      // response.access_token.accessToken.plainTextToken,
+      null,
+      payload.form
+    )
+
+    // yield refreshingUser(uid, token, false)
+  } catch (e) {
+    console.log(e)
+  }
+}
+export function* gettingUserLegalFormsStart() {
+  yield takeLatest('GETTING_USER_LEGAL_FORMS_START', gettingUserLegalForms)
 }

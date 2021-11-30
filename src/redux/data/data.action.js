@@ -46,6 +46,7 @@ export const addingCartItemFailed = (payload) => ({
   payload,
 })
 // -------------------------------------------------------------
+
 export const clearingCart = (payload) => ({
   type: 'CLEARING_CART',
   payload,
@@ -56,8 +57,16 @@ export const savingFormToApiAction = (payload) => ({
   type: 'SAVING_FORM_TO_API',
   payload,
 })
+// -------------------------------------------------------------
 
-// export const addingCartItemFailed = (payload) => ({
-//   type: 'ADDING_CART_ITEM_FAILED',
-//   payload,
-// })
+export const gettingUserLegalFormsStart = () => ({
+  type: 'GETTING_USER_LEGAL_FORMS_START',
+})
+export const gettingUserLegalFormsSucces = (payload) => ({
+  type: 'GETTING_USER_LEGAL_FORMS_SUCCESS',
+  payload,
+})
+export const gettingUserLegalFormsFailed = (payload) => ({
+  type: 'GETTING_USER_LEGAL_FORMS_FAILED',
+  payload,
+})
