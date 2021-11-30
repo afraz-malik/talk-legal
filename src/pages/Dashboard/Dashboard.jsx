@@ -19,8 +19,6 @@ const Dashboard = () => {
   const [userLegalForms, setUserLegalForms] = useState([])
   const [loading, setloading] = useState(false)
   useEffect(async () => {
-    // if (currentUser && !currentUser.subscription_plan && cart.form)
-    //     history.push("/plans?cart=form");
     try {
       setloading(true)
       const response = await fetchDbGet(`api/user/legal-forms`, token)
@@ -32,6 +30,11 @@ const Dashboard = () => {
       setloading(false)
       console.log(error.message)
     }
+  }, [])
+  useEffect(() => {
+    // if (currentUser && !currentUser.subscription_plan && cart.form)
+    //     history.push("/plans?cart=form");
+
     window.scrollTo(0, 0)
   }, [currentUser, cart.form, history])
   const [state, setstate] = React.useState({
