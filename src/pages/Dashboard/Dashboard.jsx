@@ -34,7 +34,6 @@ const Dashboard = () => {
   useEffect(() => {
     // if (currentUser && !currentUser.subscription_plan && cart.form)
     //     history.push("/plans?cart=form");
-
     window.scrollTo(0, 0)
   }, [currentUser, cart.form, history])
   const [state, setstate] = React.useState({

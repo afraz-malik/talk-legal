@@ -1,6 +1,10 @@
 export const getCurrentUser = () => ({
   type: 'GETTING_USER',
 })
+export const refreshingUser = (payload) => ({
+  type: 'REFRESHING_USER',
+  payload,
+})
 // -------------------------------------------------------------
 export const signInStart = (payload) => ({
   type: 'SIGN_IN_START',
@@ -43,6 +47,19 @@ export const signOutFailed = (error) => ({
 })
 // -------------------------------------------------------------
 
+export const changePasswordStart = (payload) => ({
+  type: 'CHANGE_PASSWORD_START',
+  payload,
+})
+export const changePasswordSuccess = (payload) => ({
+  type: 'CHANGE_PASSWORD_SUCCESS',
+  payload,
+})
+export const changePasswordFailed = (payload) => ({
+  type: 'CHANGE_PASSWORD_FAILED',
+  payload,
+})
+// -------------------------------------------------------------
 export const forgetPasswordStart = (payload) => ({
   type: 'FORGET_PASSWORD_START',
   payload,

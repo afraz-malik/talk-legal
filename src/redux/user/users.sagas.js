@@ -3,6 +3,8 @@ import { fetchDbGet, fetchDbPost } from '../../backend/backend'
 import { toast } from 'react-toastify'
 
 import {
+  changePasswordFailed,
+  changePasswordSuccess,
   forgetPasswordFailed,
   forgetPasswordSuccess,
   passwordResetFailed,
@@ -21,10 +23,10 @@ import { clearingCart, savingFormToApiAction } from '../data/data.action'
 
 // ----------------------------------------------------------
 // Helper Functions
-export function* refreshingUser(uid, token, local) {
-  console.log(local)
+export function* refreshingUser(token, local) {
+  console.log('token')
   const { user } = yield fetchDbGet(`api/user/data`, token)
-
+  console.log(user)
   yield put(
     signInSuccess({
       user,
@@ -49,6 +51,13 @@ export function* refreshingUser(uid, token, local) {
     )
   }
   console.log('user refreshed')
+}
+function* refres({ payload }) {
+  console.log(payload)
+  yield refreshingUser(payload.token, payload.local)
+}
+export function* refreshingUserStart() {
+  yield takeLatest('REFRESHING_USER', refres)
 }
 // ----------------------------------------------------------
 
@@ -182,6 +191,37 @@ function* signOutStart() {
 }
 export function* signOut() {
   yield takeLatest('SIGN_OUT_START', signOutStart)
+}
+
+// ----------------------------------------------------------
+
+function* changePasswordStart({ payload }) {
+  const state = yield select()
+  const token = state.userReducer.token
+  try {
+    const response = yield fetchDbPost('api/user/change_pass', token, payload)
+    if (response.status) {
+      toast.success('Password Changed Successfully')
+      yield put(changePasswordSuccess())
+    } else {
+      throw new Error(response.msg)
+    }
+    // if (response.response === '200') {
+    //   toast.success(response.status)
+    //   yield put(forgetPasswordSuccess())
+    // } else if (response.response === '500') {
+    //   toast.warn(response.message)
+    //   yield put(forgetPasswordFailed(response.message))
+    // } else {
+    //   toast.error('No Email Found')
+    //   yield put(forgetPasswordFailed())
+  } catch (error) {
+    toast.error(error.message)
+    yield put(changePasswordFailed(error.message))
+  }
+}
+export function* changePassword() {
+  yield takeLatest('CHANGE_PASSWORD_START', changePasswordStart)
 }
 // ----------------------------------------------------------
 

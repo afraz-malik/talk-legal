@@ -86,24 +86,28 @@ const PaymentDetails = ({ checkout }) => {
         dispatch(
           paymentStart({
             ...state,
-            user_legal_form_id: cart.form,
+            cvv: parseInt(state.cvv),
+            card_number: parseInt(state.card_number.replace(/\s/g, '')),
+            user_legal_form_id: cart.form.id,
             amount: checkout.totalValue,
             payment_type: 2,
             plan_amount: checkout.plan.membership_cost,
             plan_id: checkout.plan.id,
-            expiry_year: state.expiry.split('-')[0],
-            expiry_month: state.expiry.split('-')[1],
+            expiry_year: parseInt(state.expiry.split('-')[0]),
+            expiry_month: parseInt(state.expiry.split('-')[1]),
           })
         )
       } else if (checkout.form) {
         dispatch(
           paymentStart({
             ...state,
-            user_legal_form_id: cart.form,
+            cvv: parseInt(state.cvv),
+            card_number: parseInt(state.card_number.replace(/\s/g, '')),
+            user_legal_form_id: cart.form.id,
             amount: checkout.totalValue,
             payment_type: 1,
-            expiry_year: state.expiry.split('-')[0],
-            expiry_month: state.expiry.split('-')[1],
+            expiry_year: parseInt(state.expiry.split('-')[0]),
+            expiry_month: parseInt(state.expiry.split('-')[1]),
           })
         )
       } else if (checkout.plan) {
