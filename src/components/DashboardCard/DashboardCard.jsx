@@ -1,15 +1,22 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { addingCartItem } from '../../redux/data/data.action'
+import { currentUserSelector } from '../../redux/user/user.selector'
 import DashboardCardCss from './DashboardCard.module.scss'
 const DashboardCard = ({ idx, type, title, form }) => {
+  const currentUser = useSelector((state) => currentUserSelector(state))
+
   const history = useHistory()
   const dispatch = useDispatch()
   const handleSubmit = (form) => {
     console.log(form)
     dispatch(addingCartItem(form))
-    history.push('/plans?cart=form')
+    if (currentUser.subscription_plan) {
+      history.push('/checkout')
+    } else {
+      history.push('/plans?cart=form')
+    }
   }
   const tt = idx + 10 * 7 + '%'
   return (

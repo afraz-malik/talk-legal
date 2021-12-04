@@ -18,8 +18,10 @@ import update from 'react-addons-update' // ES6
 import $ from 'jquery'
 // import { pdfFromReact } from 'generate-pdf-from-react-html'
 import Skeleton from 'react-loading-skeleton'
-import { InsideSpinner } from '../../components/Spinner/Spinner'
+import { InsideSpinner, Spinner } from '../../components/Spinner/Spinner'
 import { currentFormSelector } from '../../redux/data/data.selector'
+import { toast } from 'react-toastify'
+import { fetchDbPost } from '../../backend/backend'
 
 const Questionaires = ({}) => {
   const history = useHistory()
@@ -31,7 +33,7 @@ const Questionaires = ({}) => {
 
   const [currentForm, setcurrentForm] = useState(formSelector)
   const [toggle, settoggle] = useState(false)
-
+  const [loading, setloading] = useState(false)
   const total_pages = formSelector ? formSelector.pages.length : 4
   const formId = location.search ? location.search.split('=')[1] : null
 
@@ -102,13 +104,35 @@ const Questionaires = ({}) => {
       currentPage,
     })
   }
-  const submitForm = () => {
+  const submitForm = async () => {
     dispatch(addingCartItem(currentForm))
     if (currentUser) {
-      dispatch(savingFormToApiAction({ id: currentUser.id, form: currentForm }))
-      if (currentUser.subscription_plan) {
-        history.push('/checkout')
-      } else history.push('/plans?cart=form')
+      // dispatch(savingFormToApiAction({ id: currentUser.id, form: currentForm }))
+      try {
+        setloading(true)
+        const response = await fetchDbPost(
+          `api/submit-legal-form/${currentUser.id}`,
+          // response.access_token.accessToken.plainTextToken,
+          null,
+          currentForm
+        )
+        if (response.status) {
+          // await put(addingCartItemSuccess(response.user_legal_form))
+          dispatch(addingCartItem(response.user_legal_form))
+          if (currentUser.subscription_plan) {
+            setloading(false)
+            toast.success('Form Submitted Successfully')
+            history.push('/dashboard/complete-orders')
+          } else history.push('/plans?cart=form')
+        } else {
+          throw Error(response.msg)
+        }
+        // yield refreshingUser(uid, token, false)
+      } catch (e) {
+        console.log(e)
+        setloading(false)
+        toast.error(e)
+      }
     } else {
       history.push('/register?redirect=plans')
     }
@@ -218,6 +242,7 @@ const Questionaires = ({}) => {
           </div>
         </Preview>
       ) : null}
+      {loading ? <Spinner /> : null}
     </div>
   )
 }

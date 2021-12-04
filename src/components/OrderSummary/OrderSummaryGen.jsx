@@ -19,7 +19,7 @@ const OrderSummary = ({ planBill, form }) => {
       {form ? (
         <>
           <div className={OrderCss.price}>
-            <p className={OrderCss.p}>Legal Forms</p>
+            <p className={OrderCss.p}>{form.title}</p>
             <p className={OrderCss.p}>${planBill.form}</p>
           </div>
           {/* <div className={OrderCss.price}>

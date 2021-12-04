@@ -19,7 +19,11 @@ import {
   subscribePlanFailed,
   subscribePlanSuccess,
 } from './user.action'
-import { clearingCart, savingFormToApiAction } from '../data/data.action'
+import {
+  addingCartItemSuccess,
+  clearingCart,
+  savingFormToApiAction,
+} from '../data/data.action'
 
 // ----------------------------------------------------------
 // Helper Functions
@@ -90,6 +94,7 @@ export function* signUp() {
 export function* signInStart({ payload }) {
   const state = yield select()
   const cart = state.dataReducer.cart
+  const uid = state.userReducer.currentUser.id
   try {
     const response = yield fetchDbPost('api/login', null, {
       email: payload.email,
@@ -119,11 +124,29 @@ export function* signInStart({ payload }) {
         )
       }
       if (cart.form) {
-        yield put(
-          savingFormToApiAction({ id: response.user.id, form: cart.form })
+        // yield put(
+        // savingFormToApiAction({ id: response.user.id, form: cart.form })
+        // )
+
+        const newresponse = yield fetchDbPost(
+          `api/submit-legal-form/${uid}`,
+          // response.access_token.accessToken.plainTextToken,
+          null,
+          cart.form
         )
+        if (newresponse.status) {
+          yield put(addingCartItemSuccess(newresponse.user_legal_form))
+          yield toast.success(
+            `Welcome ${response.user.name}, Your Form has been submitted successfully`
+          )
+        } else {
+          console.log(newresponse)
+          throw Error(newresponse.msg)
+        }
+        // yield refreshingUser(uid, token, false)
+      } else {
+        yield toast.success(`Welcome ${response.user.name}`)
       }
-      yield toast.success(`Welcome ${response.user.name}`)
     } else if (response.message) {
       toast.error(response.message)
       yield put(signInFailed(response.message))

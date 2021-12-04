@@ -12,7 +12,10 @@ const BusinessForms = ({ forms }) => {
       <div className={BFormsCss.cards}>
         {forms.map((form) => (
           <Slide left>
-            <div className={BFormsCss.card}>
+            <div
+              className={BFormsCss.card}
+              onClick={() => history.push(`/businessform?form=${form.id}`)}
+            >
               <div className={BFormsCss.imgTaker}>
                 <img alt="" src={form.src} />
               </div>

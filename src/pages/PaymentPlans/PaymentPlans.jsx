@@ -1,12 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link, useHistory, withRouter } from 'react-router-dom'
 import Logo from '../../components/NavBar/Logo'
 import PaymentPlanCards from '../../components/PaymentPlanCards/PaymentPlanCards'
+import { currentUserSelector } from '../../redux/user/user.selector'
 import PaymentPlansCss from './PaymentPlans.module.scss'
 const PaymentPlans = ({ location, nologo }) => {
   const history = useHistory()
   const form = location.search ? location.search.split('=')[1] : null
+  const currentUser = useSelector((state) => currentUserSelector(state))
   React.useEffect(() => {
+    if (currentUser.subscription_plan) {
+      console.log(currentUser)
+      history.goBack()
+    }
     window.scrollTo(0, 0)
   }, [])
   const handleSubmit = (val) => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '../NavBar/Logo'
 import PDCss from './PaymentDetails.module.scss'
 
@@ -6,18 +6,17 @@ import { countryList } from '../../countryList'
 import {
   clearError,
   paymentStart,
+  refreshingUser,
   subscribePlanStart,
 } from '../../redux/user/user.action'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  LoadingSelector,
-  successSelector,
-} from '../../redux/user/user.selector'
+import { successSelector } from '../../redux/user/user.selector'
 import { Spinner } from '../Spinner/Spinner'
 import { useHistory } from 'react-router'
 import { toast } from 'react-toastify'
 import { clearingCart } from '../../redux/data/data.action'
 import { cartSelector } from '../../redux/data/data.selector'
+import { fetchDbGet, fetchDbPost } from '../../backend/backend'
 const initialState = {
   first_name: '',
   last_name: '',
@@ -35,13 +34,12 @@ const PaymentDetails = ({ checkout }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const cart = useSelector((state) => cartSelector(state))
-
-  const loading = useSelector((state) => LoadingSelector(state))
+  const token = useSelector((state) => state.userReducer.token)
   const success = useSelector((state) => successSelector(state))
 
   const [state, setstate] = React.useState(initialState)
   const [toggle, settoggle] = React.useState(false)
-
+  const [loading, setloading] = useState(false)
   useEffect(() => {
     window.addEventListener('mouseup', clickEvent)
     if (success) {
@@ -76,54 +74,57 @@ const PaymentDetails = ({ checkout }) => {
     }
     setstate({ ...state, [event.target.name]: event.target.value })
   }
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     if (!state.country) {
       toast.error('Select your country')
     } else {
       console.log(checkout)
-      if (checkout.form && checkout.plan) {
-        dispatch(
-          paymentStart({
+      if (checkout.form || checkout.plan) {
+        try {
+          const payload = {
             ...state,
             cvv: parseInt(state.cvv),
             card_number: parseInt(state.card_number.replace(/\s/g, '')),
-            user_legal_form_id: cart.form.id,
             amount: checkout.totalValue,
-            payment_type: 2,
-            plan_amount: checkout.plan.membership_cost,
-            plan_id: checkout.plan.id,
             expiry_year: parseInt(state.expiry.split('-')[0]),
             expiry_month: parseInt(state.expiry.split('-')[1]),
-          })
-        )
-      } else if (checkout.form) {
-        dispatch(
-          paymentStart({
-            ...state,
-            cvv: parseInt(state.cvv),
-            card_number: parseInt(state.card_number.replace(/\s/g, '')),
-            user_legal_form_id: cart.form.id,
-            amount: checkout.totalValue,
-            payment_type: 1,
-            expiry_year: parseInt(state.expiry.split('-')[0]),
-            expiry_month: parseInt(state.expiry.split('-')[1]),
-          })
-        )
-      } else if (checkout.plan) {
-        // dispatch(subscribePlanStart({ pid: checkout.plan.id }));
-        dispatch(
-          paymentStart({
-            ...state,
-            amount: checkout.totalValue,
-            payment_type: 2,
-            plan_amount: checkout.plan.membership_cost,
-            plan_id: checkout.plan.id,
-            expiry_year: state.expiry.split('-')[0],
-            expiry_month: state.expiry.split('-')[1],
-          })
-        )
+
+            payment_type: checkout.plan ? 2 : 1,
+
+            user_legal_form_id: checkout.form ? cart.form.id : null,
+            plan_amount: checkout.plan
+              ? parseInt(checkout.plan.membership_cost)
+              : null,
+            plan_id: checkout.plan ? checkout.plan.id : null,
+          }
+          setloading(true)
+          const response = await fetchDbPost(
+            `api/user/plan-payment`,
+            token,
+            payload
+          )
+
+          if (response.status) {
+            await fetchDbGet(`api/user/data`, token).then(({ user }) => {
+              if (user) {
+                dispatch(refreshingUser({ user, token }))
+                setloading(false)
+                toast.success(response.message)
+                history.push('/dashboard/complete-orders')
+              }
+            })
+          } else {
+            throw new Error(response.message)
+          }
+        } catch (error) {
+          setloading(false)
+          toast.error(error.message)
+          // console.log(error.message)
+        }
+        // )
       } else {
+        toast.error('Cart is Empty')
       }
       //   toast.success('Payment Success !')
       //   history.push('/dashboard')

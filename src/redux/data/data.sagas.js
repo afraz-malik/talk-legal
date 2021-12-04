@@ -71,7 +71,7 @@ function* savingFormInApi({ payload }) {
   const uid = state.userReducer.currentUser.id
   try {
     const newresponse = yield fetchDbPost(
-      `api/submit-legal-form/${payload.id}`,
+      `api/submit-legal-form/${uid}`,
       // response.access_token.accessToken.plainTextToken,
       null,
       payload.form

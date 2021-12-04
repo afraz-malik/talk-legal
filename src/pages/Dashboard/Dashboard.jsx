@@ -41,7 +41,7 @@ const Dashboard = ({ match }) => {
     //     history.push("/plans?cart=form");
     window.scrollTo(0, 0)
   }, [currentUser, cart.form, history])
-  console.log(match.path)
+  console.log(userLegalForms)
   return (
     <div className={DashboardCss.container}>
       <NavBar currentPage="dashboard" />

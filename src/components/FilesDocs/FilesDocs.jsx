@@ -13,7 +13,7 @@ const FilesDocs = ({ userLegalForms, loading }) => {
             <span>You don't have any forms yet ! </span>
           ) : null}
           {userLegalForms
-            .filter((form) => form.status === '1')
+            // .filter((form) => form.status === '1')
             .map((form, idx) => (
               <DashboardCard
                 key={idx}
