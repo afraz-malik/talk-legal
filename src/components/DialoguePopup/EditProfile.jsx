@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import { fetchDbPost } from '../../backend/backend'
+import { fetchDbGet, fetchDbPost } from '../../backend/backend'
 import { refreshingUser } from '../../redux/user/user.action'
 import { Spinner } from '../Spinner/Spinner'
 import DialoguePopupCss from './DialoguePopup.module.scss'
@@ -22,13 +22,17 @@ const EditProfile = ({ closePopup, user }) => {
       last_name: state.last_name,
       phone: state.phone,
     })
-      .then((res) => {
-        console.log(res)
+      .then(async (res) => {
         if (res.status) {
-          toast.success('Profile Updated Successfully')
-          setloading(false)
-          closePopup()
-          dispatch(refreshingUser({ token, local: true }))
+          await fetchDbGet(`api/user/data`, token).then(({ user }) => {
+            if (user) {
+              dispatch(refreshingUser({ user, token }))
+              toast.success('Profile Updated Successfully')
+              setloading(false)
+              closePopup()
+            }
+          })
+          // window.location.reload()
         } else {
           throw new Error(res.msg)
         }

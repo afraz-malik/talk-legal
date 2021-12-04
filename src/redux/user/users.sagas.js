@@ -26,39 +26,10 @@ import { clearingCart, savingFormToApiAction } from '../data/data.action'
 export function* refreshingUser(token, local) {
   console.log('token')
   const { user } = yield fetchDbGet(`api/user/data`, token)
-  console.log(user)
-  yield put(
-    signInSuccess({
-      user,
-      token,
-    })
-  )
-  yield sessionStorage.setItem(
-    'currentUser',
-    JSON.stringify({
-      user,
-      token,
-    })
-  )
-  if (local) {
-    console.log('putting')
-    yield localStorage.setItem(
-      'currentUser',
-      JSON.stringify({
-        user,
-        token,
-      })
-    )
-  }
-  console.log('user refreshed')
+
+  console.log('user')
 }
-function* refres({ payload }) {
-  console.log(payload)
-  yield refreshingUser(payload.token, payload.local)
-}
-export function* refreshingUserStart() {
-  yield takeLatest('REFRESHING_USER', refres)
-}
+
 // ----------------------------------------------------------
 
 function* gettingCurrentUserStart() {
@@ -274,7 +245,7 @@ function* subscribePlanStart({ payload }) {
       token
     )
     if (response.response === '200') {
-      yield refreshingUser(uid, token, false)
+      // yield refreshingUser(uid, token, false)
       yield put(subscribePlanSuccess())
       toast.success('Plan Has Been Updated !')
     } else {

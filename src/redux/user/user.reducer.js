@@ -26,6 +26,11 @@ export const userReducer = (state = initialState, action) => {
         currentUser: null,
         token: null,
       }
+    case 'REFRESHING_USER':
+      return {
+        ...state,
+        currentUser: action.payload.user,
+      }
     case 'SIGN_IN_SUCCESS':
       return {
         ...state,

@@ -6,12 +6,17 @@ import OpenOrders from '../../components/OpenOrders/OpenOrders'
 import CompleteOrders from '../../components/CompleteOrders/CompleteOrders'
 import SubsciptionType from '../../components/SubsciptionType/SubsciptionType'
 import AccountSettings from '../../components/AccountSettings/AccountSettings'
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
+
 import { currentUserSelector } from '../../redux/user/user.selector'
 import { useSelector } from 'react-redux'
-import { useHistory, useLocation } from 'react-router'
+import { useHistory } from 'react-router'
 import { cartSelector } from '../../redux/data/data.selector'
 import { fetchDbGet } from '../../backend/backend'
-const Dashboard = () => {
+import Boxmodel from './Boxmodel'
+import SideBar from './SideBar'
+import PaymentPlans from '../PaymentPlans/PaymentPlans'
+const Dashboard = ({ match }) => {
   const history = useHistory()
   const currentUser = useSelector((state) => currentUserSelector(state))
   const token = useSelector((state) => state.userReducer.token)
@@ -36,96 +41,53 @@ const Dashboard = () => {
     //     history.push("/plans?cart=form");
     window.scrollTo(0, 0)
   }, [currentUser, cart.form, history])
-  const [state, setstate] = React.useState({
-    title: 'My Files & Documents',
-    value: 1,
-  })
-  console.log(userLegalForms)
+  console.log(match.path)
   return (
     <div className={DashboardCss.container}>
       <NavBar currentPage="dashboard" />
       <div className={DashboardCss.body}>
-        <div className={DashboardCss.navigation}>
-          <ul>
-            <li
-              className={state.value === 1 ? DashboardCss.active : null}
-              onClick={() =>
-                setstate({
-                  title: 'My Files & Documents',
-                  value: 1,
-                })
-              }
-            >
-              <img alt="" src="images/files.svg" />
-              <span> My Files & Documents </span>
-            </li>
-            <li
-              className={state.value === 2 ? DashboardCss.active : null}
-              onClick={() => setstate({ title: 'Open Order', value: 2 })}
-            >
-              <img alt="" src="images/open-order.svg" />
-              <span> Open Order </span>
-            </li>
-            <li
-              className={state.value === 3 ? DashboardCss.active : null}
-              onClick={() => setstate({ title: 'Complete Order', value: 3 })}
-            >
-              <img alt="" src="images/complete-order.svg" />
-              <span> Complete Order </span>
-            </li>
-            <li
-              className={state.value === 4 ? DashboardCss.active : null}
-              onClick={() =>
-                setstate({
-                  title: 'Subscription Type',
-                  value: 4,
-                })
-              }
-            >
-              <img alt="" src="images/subtype.svg" />
-              <span> Subscription Type </span>
-            </li>
-            <li
-              className={state.value === 5 ? DashboardCss.active : null}
-              onClick={() => setstate({ title: 'Account Setting', value: 5 })}
-            >
-              <img alt="" src="images/settings.svg" />
-              <span> Account Setting </span>
-            </li>
-          </ul>
-        </div>
-        <div className={DashboardCss.boxmodel}>
-          <h1>{state.title}</h1>
-          <div className={DashboardCss.boxmodel_body}>
-            {state.value === 1 ? (
+        <SideBar />
+        <Switch>
+          <Route exact path={match.path}>
+            <Boxmodel title="My Files & Documents">
               <FilesDocs userLegalForms={userLegalForms} loading={loading} />
-            ) : null}
-            {state.value === 2 ? (
+            </Boxmodel>
+          </Route>
+          <Route exact path={`${match.path}/open-orders`}>
+            <Boxmodel title="Open Orders">
               <OpenOrders userLegalForms={userLegalForms} loading={loading} />
-            ) : null}
-            {state.value === 3 ? (
+            </Boxmodel>
+          </Route>
+          <Route exact path={`${match.path}/complete-orders`}>
+            <Boxmodel title="Complete Orders">
               <CompleteOrders
                 userLegalForms={userLegalForms}
                 loading={loading}
               />
-            ) : null}
-            {state.value === 4 ? (
-              currentUser.subscription_plan ? (
+            </Boxmodel>
+          </Route>
+          <Route exact path={`${match.path}/subscription`}>
+            <Boxmodel title="Subscription Type">
+              {currentUser.subscription_plan ? (
                 <SubsciptionType
                   subscription_plan={currentUser.subscription_plan}
                 />
               ) : (
-                history.push('/plans')
-              )
-            ) : null}
-            {state.value === 5 ? (
+                // <Redirect to={`/plans`} />
+                <PaymentPlans nologo={true} />
+              )}
+            </Boxmodel>
+          </Route>
+          <Route exact path={`${match.path}/settings`}>
+            <Boxmodel title="Account Setting">
               <AccountSettings currentUser={currentUser} />
-            ) : null}
-          </div>
-        </div>
+            </Boxmodel>
+          </Route>
+          <Redirect to={match.path} />
+        </Switch>
       </div>
     </div>
   )
 }
 
-export default Dashboard
+export default withRouter(Dashboard)

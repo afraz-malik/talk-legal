@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
-import { fetchDbPost } from '../../backend/backend'
+
 import { currentUserSelector } from '../../redux/user/user.selector'
 import AddCard from '../DialoguePopup/AddCard'
 import DialoguePopup from '../DialoguePopup/DialoguePopup'
 import EditProfile from '../DialoguePopup/EditProfile'
 import Preview from '../Preview/Preview'
-import { Spinner } from '../Spinner/Spinner'
 import AccountSettingsCss from './AccountSettings.module.scss'
+import ChangePassword from './ChangePassword'
 const AccountSettings = () => {
-  const token = useSelector((state) => state.userReducer.token)
   const currentUser = useSelector((state) => currentUserSelector(state))
-  const [loading, setloading] = useState(false)
+  console.log(currentUser)
   useEffect(() => {
     setstate({ ...state, user: currentUser })
   }, [currentUser])
@@ -29,41 +26,7 @@ const AccountSettings = () => {
   const closePopup = () => {
     setpopup({ editCard: false, editProfile: false })
   }
-  const togglePassword = (val) => {
-    var x = document.getElementById(`${val}`)
-    if (x.type === 'password') {
-      x.type = 'text'
-    } else {
-      x.type = 'password'
-    }
-  }
 
-  const { handleSubmit, register, reset } = useForm()
-  const handlePasswordSubmit = async (data) => {
-    if (data.new_password === data.confirm_new_password) {
-      setloading(true)
-      fetchDbPost('api/user/change_pass', token, {
-        old_password: data.old_password,
-        password: data.new_password,
-        password_confirmation: data.confirm_new_password,
-      })
-        .then((res) => {
-          if (res.status) {
-            toast.success('Password Changed Successfully')
-            setloading(false)
-            reset()
-          } else {
-            throw new Error(res.msg)
-          }
-        })
-        .catch((e) => {
-          toast.error(e.message)
-          setloading(false)
-        })
-    } else {
-      toast.error('Password Not Matched')
-    }
-  }
   return (
     <div className={AccountSettingsCss.container}>
       <div className={AccountSettingsCss.top}>
@@ -80,7 +43,7 @@ const AccountSettings = () => {
             <input
               type="text"
               placeholder="Enter First Name"
-              defaultValue={currentUser.name}
+              value={state.user.name}
               disabled
             />
           </div>
@@ -89,8 +52,7 @@ const AccountSettings = () => {
             <input
               type="text"
               placeholder="Enter First Name"
-              defaultValue=""
-              defaultValue={currentUser.last_name}
+              value={state.user.last_name}
               disabled
             />
           </div>
@@ -99,146 +61,15 @@ const AccountSettings = () => {
             <input
               type="text"
               placeholder="Enter Phone Number"
-              defaultValue={state.user.phone}
+              value={state.user.phone}
               disabled
             />
           </div>
         </div>
       </form>
       <hr />
-      <form onSubmit={handleSubmit(handlePasswordSubmit)}>
-        <h5>Password Setting</h5>
-        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do.</p>
-        <div className={AccountSettingsCss.col}>
-          <label>Current Password</label>
-          <input
-            type="password"
-            placeholder="Enter Current Password"
-            // defaultValue="Johnfudoe"
-            id="cp"
-            required
-            {...register('old_password', {
-              minLength: 6,
-            })}
-          />
-          <img
-            alt=""
-            src="images/Group 1000001848.svg"
-            onClick={() => togglePassword('cp')}
-          />
-        </div>
-        <div className={AccountSettingsCss.col}>
-          <label>New Password</label>
-          <input
-            type="password"
-            required
-            placeholder="Enter New Password"
-            id="np"
-            {...register('new_password', {
-              minLength: 6,
-            })}
-          />
-          <img
-            alt=""
-            src="images/Group 1000001848.svg"
-            onClick={() => togglePassword('np')}
-          />
-        </div>
-        <div className={AccountSettingsCss.col}>
-          <label>Re-enter Password</label>
-          <input
-            type="password"
-            required
-            placeholder="Enter New Password again"
-            id="rp"
-            {...register('confirm_new_password', {
-              minLength: 6,
-            })}
-          />
-          <img
-            alt=""
-            src="images/Group 1000001848.svg"
-            onClick={() => togglePassword('rp')}
-          />
-        </div>
-        <div className={AccountSettingsCss.col}>
-          <input type="submit" value="Change Password" />
-        </div>
-        <hr />
-        <div className={AccountSettingsCss.top}>
-          <h4>Payment Setting</h4>
-          <h5 onClick={() => setpopup({ editCard: true, editProfile: false })}>
-            Add Card ›
-          </h5>
-        </div>
-        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do.</p>
-        <div className={AccountSettingsCss.ad_ons}>
-          <div className={AccountSettingsCss.ad_on}>
-            <div
-              className={`${AccountSettingsCss.card} ${
-                state.activeCard === 'silver'
-                  ? AccountSettingsCss.activeCard
-                  : null
-              }`}
-              onClick={() => setstate({ ...state, activeCard: 'silver' })}
-            >
-              <label className={AccountSettingsCss.container2}>
-                <input
-                  type="radio"
-                  name="activeCard"
-                  value="silver"
-                  checked={state.activeCard === 'silver'}
-                  onChange={(e) =>
-                    setstate({
-                      ...state,
-                      activeCard: e.target.value,
-                    })
-                  }
-                />
-                <span className={AccountSettingsCss.checkmark}></span>
-              </label>
-              <div className={AccountSettingsCss.top}>
-                <h2>
-                  4756 &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226;
-                  3847
-                </h2>
-                <img alt="" src="images/path3789.svg" />
-              </div>
-            </div>
-            <div
-              className={`${AccountSettingsCss.card} ${
-                state.activeCard === 'gold'
-                  ? AccountSettingsCss.activeCard
-                  : null
-              }`}
-              onClick={() => setstate({ ...state, activeCard: 'gold' })}
-            >
-              <label className={AccountSettingsCss.container2}>
-                <input
-                  type="radio"
-                  name="activeCard"
-                  value="gold"
-                  checked={state.activeCard === 'gold'}
-                  onChange={(e) =>
-                    setstate({
-                      ...state,
-                      activeCard: e.target.value,
-                    })
-                  }
-                />
-                <span className={AccountSettingsCss.checkmark}></span>
-              </label>
-              <div className={AccountSettingsCss.top}>
-                <h2>
-                  4756 &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226;
-                  3847
-                </h2>
-                <img alt="" src="images/Group 1000001865.svg" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
+      {console.log(state)}
+      <ChangePassword />
       {popup.editProfile ? (
         <Preview>
           <DialoguePopup title={'Edit Your Profile'} closePopup={closePopup}>
@@ -246,7 +77,6 @@ const AccountSettings = () => {
               popup={popup}
               closePopup={closePopup}
               user={state.user}
-              setstate={setstate}
             />
           </DialoguePopup>
         </Preview>
@@ -258,7 +88,6 @@ const AccountSettings = () => {
           </DialoguePopup>
         </Preview>
       ) : null}
-      {loading ? <Spinner /> : null}
     </div>
   )
 }

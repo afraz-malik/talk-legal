@@ -1,10 +1,29 @@
 export const getCurrentUser = () => ({
   type: 'GETTING_USER',
 })
-export const refreshingUser = (payload) => ({
-  type: 'REFRESHING_USER',
-  payload,
-})
+export const refreshingUser = (payload) => {
+  sessionStorage.setItem(
+    'currentUser',
+    JSON.stringify({
+      user: payload.user,
+      token: payload.token,
+    })
+  )
+
+  // console.log('putting')
+  //  localStorage.setItem(
+  //   'currentUser',
+  //   JSON.stringify({
+  //     user,
+  //     token,
+  //   })
+  // )
+
+  return {
+    type: 'REFRESHING_USER',
+    payload,
+  }
+}
 // -------------------------------------------------------------
 export const signInStart = (payload) => ({
   type: 'SIGN_IN_START',

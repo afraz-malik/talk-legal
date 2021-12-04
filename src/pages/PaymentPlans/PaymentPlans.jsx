@@ -3,7 +3,7 @@ import { Link, useHistory, withRouter } from 'react-router-dom'
 import Logo from '../../components/NavBar/Logo'
 import PaymentPlanCards from '../../components/PaymentPlanCards/PaymentPlanCards'
 import PaymentPlansCss from './PaymentPlans.module.scss'
-const PaymentPlans = ({ location }) => {
+const PaymentPlans = ({ location, nologo }) => {
   const history = useHistory()
   const form = location.search ? location.search.split('=')[1] : null
   React.useEffect(() => {
@@ -14,7 +14,7 @@ const PaymentPlans = ({ location }) => {
   }
   return (
     <div className={PaymentPlansCss.container}>
-      <Logo />
+      {nologo ? null : <Logo />}
       {form ? (
         <div className={PaymentPlansCss.body}>
           <h1>

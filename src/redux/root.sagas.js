@@ -16,7 +16,6 @@ import {
   subscribePlan,
   paymentStart,
   changePassword,
-  refreshingUserStart,
 } from './user/users.sagas'
 export default function* rootSaga() {
   yield all([
@@ -34,6 +33,5 @@ export default function* rootSaga() {
     call(paymentStart),
     call(gettingUserLegalFormsStart),
     call(changePassword),
-    call(refreshingUserStart),
   ])
 }

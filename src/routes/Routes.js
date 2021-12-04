@@ -8,7 +8,6 @@ import ResetPasswordPage from '../pages/ResetPasswordPage/ResetPasswordPage'
 import ForgetPage from '../pages/ForgetPage/ForgetPage'
 import PaymentPlans from '../pages/PaymentPlans/PaymentPlans'
 import CheckoutPage from '../pages/CheckoutPage/CheckoutPage'
-import Dashboard from '../pages/Dashboard/Dashboard'
 import PreQuestionaires from '../pages/Questionaires/PreQuestionaires'
 import BusinessOpPage from '../pages/Services/BusinessOpPage/BusinessOpPage'
 import StartupAndPage from '../pages/Services/StartupAndPage/StartupAndPage'
@@ -18,13 +17,14 @@ import PublicRoute from './PublicRoute'
 import PrivateRoute from './PrivateRoute'
 import Questionaires from '../pages/Questionaires/Questionaires'
 import FormGenerator from '../pages/FormGenerator/FormGenerator'
+import DashboardRoutes from '../pages/Dashboard/Dashboard.jsx'
 const Routes = () => {
   return (
     <Switch>
       {/* Private Routes */}
 
       <PrivateRoute exact path="/checkout" component={CheckoutPage} />
-      <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute path="/dashboard" component={DashboardRoutes} />
       <PrivateRoute exact path="/plans" component={PaymentPlans} />
       {/* <PublicRoute component={PageNotFound} /> */}
 
