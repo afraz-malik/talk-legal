@@ -12,7 +12,7 @@ const PaymentPlans = ({ location, nologo }) => {
   React.useEffect(() => {
     if (currentUser.subscription_plan) {
       console.log(currentUser)
-      history.goBack()
+      history.push('/dashboard')
     }
     window.scrollTo(0, 0)
   }, [])

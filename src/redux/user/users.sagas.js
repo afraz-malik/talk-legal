@@ -94,7 +94,7 @@ export function* signUp() {
 export function* signInStart({ payload }) {
   const state = yield select()
   const cart = state.dataReducer.cart
-  const uid = state.userReducer.currentUser.id
+  const currentUser = state.userReducer.currentUser
   try {
     const response = yield fetchDbPost('api/login', null, {
       email: payload.email,
@@ -129,16 +129,21 @@ export function* signInStart({ payload }) {
         // )
 
         const newresponse = yield fetchDbPost(
-          `api/submit-legal-form/${uid}`,
+          `api/submit-legal-form/${response.user.id}`,
           // response.access_token.accessToken.plainTextToken,
           null,
           cart.form
         )
         if (newresponse.status) {
           yield put(addingCartItemSuccess(newresponse.user_legal_form))
-          yield toast.success(
-            `Welcome ${response.user.name}, Your Form has been submitted successfully`
-          )
+          if (response.user.subscription_plan) {
+            yield toast.success(
+              `Welcome ${response.user.name}, Your Form has been submitted successfully`
+            )
+            yield put(clearingCart())
+          } else {
+            yield toast.success(`Welcome ${response.user.name}.`)
+          }
         } else {
           console.log(newresponse)
           throw Error(newresponse.msg)

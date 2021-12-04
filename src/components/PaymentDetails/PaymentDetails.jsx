@@ -110,8 +110,11 @@ const PaymentDetails = ({ checkout }) => {
               if (user) {
                 dispatch(refreshingUser({ user, token }))
                 setloading(false)
+                dispatch(clearingCart())
                 toast.success(response.message)
-                history.push('/dashboard/complete-orders')
+                if (checkout.form) toast.success('Form Submitted Successfully')
+
+                history.push('/dashboard')
               }
             })
           } else {

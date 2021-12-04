@@ -3,7 +3,11 @@ import HardCopy from '../../components/LegalForm/HardCopy'
 import QCss from './Questionaires.module.scss'
 import Logo from '../../components/NavBar/Logo'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearForm, gettingFormStart } from '../../redux/data/data.action'
+import {
+  clearForm,
+  clearingCart,
+  gettingFormStart,
+} from '../../redux/data/data.action'
 
 import Preview from '../../components/Preview/Preview'
 import {
@@ -122,7 +126,8 @@ const Questionaires = ({}) => {
           if (currentUser.subscription_plan) {
             setloading(false)
             toast.success('Form Submitted Successfully')
-            history.push('/dashboard/complete-orders')
+            dispatch(clearingCart())
+            history.push('/dashboard')
           } else history.push('/plans?cart=form')
         } else {
           throw Error(response.msg)
