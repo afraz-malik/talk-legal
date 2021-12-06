@@ -25,3 +25,7 @@ export const cartSelector = createSelector(
   [dataSelector],
   (dataReducer) => dataReducer.cart
 )
+export const userLegalFormsSelector = createSelector(
+  [dataSelector],
+  (dataReducer) => dataReducer.userLegalForms
+)

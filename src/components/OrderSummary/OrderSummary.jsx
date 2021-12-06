@@ -50,8 +50,11 @@ const OrderSummary = ({ handleCheckout, location }) => {
           style={{ backgroundImage: 'url(images/TLTM.png)' }}
         >
           <div className={`${OrderCss.content} preview`}>
-            {/* <HardCopy currentForm={cart.form} values={cart.form} /> */}
-            <InsideSpinner />
+            <HardCopy
+              currentForm={cart.form.legal_form_detail}
+              values={cart.form.legal_form_detail}
+            />
+            {/* <InsideSpinner /> */}
           </div>
         </div>
       ) : null}

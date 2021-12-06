@@ -3,6 +3,7 @@ import FormCss from './Form.module.scss'
 
 import $ from 'jquery'
 const HardCopy = ({ values, currentForm }) => {
+  console.log(currentForm)
   // eslint-disable-next-line
   const [stateForm, setstate] = useState(currentForm)
   let state = {}

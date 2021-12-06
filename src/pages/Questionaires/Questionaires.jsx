@@ -34,7 +34,7 @@ const Questionaires = ({}) => {
 
   const currentUser = useSelector((state) => currentUserSelector(state))
   const formSelector = useSelector((state) => currentFormSelector(state))
-
+  const token = useSelector((state) => state.userReducer.token)
   const [currentForm, setcurrentForm] = useState(formSelector)
   const [toggle, settoggle] = useState(false)
   const [loading, setloading] = useState(false)
@@ -115,9 +115,9 @@ const Questionaires = ({}) => {
       try {
         setloading(true)
         const response = await fetchDbPost(
-          `api/submit-legal-form/${currentUser.id}`,
+          `api/user/submit-legal-form/`,
           // response.access_token.accessToken.plainTextToken,
-          null,
+          token,
           currentForm
         )
         if (response.status) {

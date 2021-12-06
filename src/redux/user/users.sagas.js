@@ -94,6 +94,7 @@ export function* signUp() {
 export function* signInStart({ payload }) {
   const state = yield select()
   const cart = state.dataReducer.cart
+
   const currentUser = state.userReducer.currentUser
   try {
     const response = yield fetchDbPost('api/login', null, {
@@ -129,9 +130,9 @@ export function* signInStart({ payload }) {
         // )
 
         const newresponse = yield fetchDbPost(
-          `api/submit-legal-form/${response.user.id}`,
+          `api/user/submit-legal-form`,
           // response.access_token.accessToken.plainTextToken,
-          null,
+          response.access_token.plainTextToken,
           cart.form
         )
         if (newresponse.status) {

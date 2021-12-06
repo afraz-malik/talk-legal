@@ -1,20 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { addingCartItem } from '../../redux/data/data.action'
+import { toast } from 'react-toastify'
+import { fetchDbGet, fetchDbPost } from '../../backend/backend'
+import {
+  addingCartItem,
+  clearingCart,
+  gettingUserLegalFormsStart,
+} from '../../redux/data/data.action'
 import { currentUserSelector } from '../../redux/user/user.selector'
+import { Spinner } from '../Spinner/Spinner'
 import DashboardCardCss from './DashboardCard.module.scss'
 const DashboardCard = ({ idx, type, title, form }) => {
   const currentUser = useSelector((state) => currentUserSelector(state))
-
+  const token = useSelector((state) => state.userReducer.token)
+  const [loading, setloading] = useState(false)
   const history = useHistory()
   const dispatch = useDispatch()
-  const handleSubmit = (form) => {
-    console.log(form)
-    dispatch(addingCartItem(form))
+  const handleSubmit = async (form) => {
     if (currentUser.subscription_plan) {
-      history.push('/checkout')
+      try {
+        setloading(true)
+        const response = await fetchDbGet(
+          `api/user/complete-form/${form.id}`,
+          // response.access_token.accessToken.plainTextToken,
+          token
+        )
+        console.log(response)
+        if (response.status) {
+          setloading(false)
+          toast.success('Form Submitted Successfully')
+          dispatch(clearingCart())
+          dispatch(gettingUserLegalFormsStart())
+          history.push('/dashboard/complete-orders')
+        } else {
+          throw Error(response.msg)
+        }
+        // yield refreshingUser(uid, token, false)
+      } catch (e) {
+        console.log(e)
+        setloading(false)
+        toast.error(e)
+      }
     } else {
+      dispatch(addingCartItem(form))
       history.push('/plans?cart=form')
     }
   }
@@ -53,6 +82,7 @@ const DashboardCard = ({ idx, type, title, form }) => {
           Complete
         </button>
       )}
+      {loading ? <Spinner /> : null}
     </div>
   )
 }

@@ -7,6 +7,7 @@ const initialState = {
   loading: false,
   currentForm: null,
   cart: initialCart,
+  userLegalForms: null,
 }
 
 export const dataReducer = (state = initialState, action) => {
@@ -37,6 +38,8 @@ export const dataReducer = (state = initialState, action) => {
       return { ...state, cart: initialCart }
     case 'CLEAR_FORM':
       return { ...state, currentForm: null }
+    case 'GETTING_USER_LEGAL_FORMS_SUCCESS':
+      return { ...state, userLegalForms: action.payload }
     default:
       return state
   }

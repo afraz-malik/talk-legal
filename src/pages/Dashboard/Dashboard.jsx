@@ -9,37 +9,52 @@ import AccountSettings from '../../components/AccountSettings/AccountSettings'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 
 import { currentUserSelector } from '../../redux/user/user.selector'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
-import { cartSelector } from '../../redux/data/data.selector'
+import {
+  cartSelector,
+  userLegalFormsSelector,
+} from '../../redux/data/data.selector'
 import { fetchDbGet } from '../../backend/backend'
 import Boxmodel from './Boxmodel'
 import SideBar from './SideBar'
 import PaymentPlans from '../PaymentPlans/PaymentPlans'
+import { gettingUserLegalFormsStart } from '../../redux/data/data.action'
 const Dashboard = ({ match }) => {
   const history = useHistory()
   const currentUser = useSelector((state) => currentUserSelector(state))
+  const useforms = useSelector((state) => userLegalFormsSelector(state))
+  const dispatch = useDispatch()
   const token = useSelector((state) => state.userReducer.token)
   const cart = useSelector((state) => cartSelector(state))
   const [userLegalForms, setUserLegalForms] = useState([])
   const [loading, setloading] = useState(false)
-  useEffect(async () => {
-    try {
-      setloading(true)
-      const response = await fetchDbGet(`api/user/legal-forms`, token)
-      if (response.user_legal_forms) {
-        setUserLegalForms(response.user_legal_forms)
-        setloading(false)
-      }
-    } catch (error) {
+  console.log(userLegalForms)
+  useEffect(() => {
+    // try {
+    //   setloading(true)
+    //   const response = await fetchDbGet(`api/user/legal-forms`, token)
+    //   if (response.user_legal_forms) {
+    //     setUserLegalForms(response.user_legal_forms)
+    //     setloading(false)
+    //   }
+    // } catch (error) {
+    //   setloading(false)
+    //   console.log(error.message)
+    // }
+    window.scrollTo(0, 0)
+
+    setloading(true)
+    if (useforms) {
+      setUserLegalForms(useforms)
       setloading(false)
-      console.log(error.message)
     }
-  }, [])
+  }, [useforms])
   useEffect(() => {
     // if (currentUser && !currentUser.subscription_plan && cart.form)
     //     history.push("/plans?cart=form");
     window.scrollTo(0, 0)
+    dispatch(gettingUserLegalFormsStart())
   }, [currentUser, cart.form, history])
   console.log(userLegalForms)
   return (

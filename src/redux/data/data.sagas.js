@@ -9,6 +9,8 @@ import {
   getSubscriptionsPlansSuccess,
   gettingFormFailed,
   gettingFormSuccess,
+  gettingUserLegalFormsFailed,
+  gettingUserLegalFormsSucces,
 } from './data.action'
 // -------------------------------------------------------------
 
@@ -71,9 +73,9 @@ function* savingFormInApi({ payload }) {
   const uid = state.userReducer.currentUser.id
   try {
     const newresponse = yield fetchDbPost(
-      `api/submit-legal-form/${uid}`,
+      `api/user/submit-legal-form`,
       // response.access_token.accessToken.plainTextToken,
-      null,
+      token,
       payload.form
     )
     if (newresponse.status) {
@@ -91,21 +93,20 @@ export function* savingFormInApiStart() {
   yield takeLatest('SAVING_FORM_TO_API', savingFormInApi)
 }
 // -------------------------------------------------------------
-function* gettingUserLegalForms({ payload }) {
+function* gettingUserLegalForms() {
   const state = yield select()
   const token = state.userReducer.token
   const uid = state.userReducer.currentUser.id
   try {
-    const newresponse = yield fetchDbPost(
-      `api/submit-legal-form/${payload.id}`,
-      // response.access_token.accessToken.plainTextToken,
-      null,
-      payload.form
-    )
-
-    // yield refreshingUser(uid, token, false)
-  } catch (e) {
-    console.log(e)
+    const response = yield fetchDbGet(`api/user/legal-forms`, token)
+    if (response.user_legal_forms) {
+      yield put(gettingUserLegalFormsSucces(response.user_legal_forms))
+    } else {
+      throw new Error(response.msg)
+    }
+  } catch (error) {
+    yield put(gettingUserLegalFormsFailed(error.message))
+    console.log(error.message)
   }
 }
 export function* gettingUserLegalFormsStart() {
