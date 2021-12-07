@@ -115,7 +115,7 @@ const Questionaires = ({}) => {
       try {
         setloading(true)
         const response = await fetchDbPost(
-          `api/user/submit-legal-form/`,
+          `api/user/submit-legal-form`,
           // response.access_token.accessToken.plainTextToken,
           token,
           currentForm
