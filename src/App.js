@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './App.scss'
-import { HashRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 // Redux
 import { useDispatch } from 'react-redux'
 import { getSubscriptionsPlansStart } from './redux/data/data.action'
