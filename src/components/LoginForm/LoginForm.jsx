@@ -38,6 +38,7 @@ const LoginForm = ({ location }) => {
   }
   const handleSubmit = async (event) => {
     event.preventDefault()
+
     if (state.password.length < 6) {
       toast.warn('Password Must be at least 6 characters long')
     } else {

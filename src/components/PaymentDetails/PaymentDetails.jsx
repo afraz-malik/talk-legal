@@ -271,7 +271,7 @@ const PaymentDetails = ({ checkout }) => {
         </div>
         <div className={PDCss.row}>
           <div className={PDCss.col}>
-            <label>Cardholder Name</label>
+            <label>Card Holder Name</label>
             <input
               type="text"
               placeholder="Enter Card holder Name"

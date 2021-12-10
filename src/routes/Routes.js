@@ -61,6 +61,12 @@ const Routes = () => {
         path="/formgenerator"
         component={FormGenerator}
       />
+      <PublicRoute
+        restricted={false}
+        exact
+        path="/resetpassword"
+        component={ResetPasswordPage}
+      />
 
       {/* Restricted Routes */}
       <PublicRoute
@@ -80,12 +86,6 @@ const Routes = () => {
         exact
         path="/login"
         component={LoginPage}
-      />
-      <PublicRoute
-        restricted={true}
-        exact
-        path="/resetpassword"
-        component={ResetPasswordPage}
       />
     </Switch>
   )

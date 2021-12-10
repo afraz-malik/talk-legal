@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import COrdersCss from './CompleteOrders.module.scss'
 import Preview from '../Preview/Preview'
 import DeletePopUp from '../DialoguePopup/DeletePopUp'
@@ -7,9 +7,13 @@ import { InsideSpinner } from '../Spinner/Spinner'
 import moment from 'moment'
 const CompleteOrders = ({ userLegalForms, loading }) => {
   const [popup, setpopup] = React.useState(false)
+  const [search, setsearch] = useState('')
   const closePopup = () => {
     setpopup(false)
   }
+  const refinedForms = userLegalForms.filter((form) =>
+    form.title.toLowerCase().includes(search.toLowerCase())
+  )
   return (
     <div className={COrdersCss.container}>
       {loading ? (
@@ -18,7 +22,12 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
         <>
           <div className={COrdersCss.topbar}>
             <div className={COrdersCss.search}>
-              <input type="text" placeholder="Search Here..." />
+              <input
+                type="text"
+                placeholder="Search Here..."
+                value={search}
+                onChange={(e) => setsearch(e.target.value)}
+              />
               <img alt="" src="images/Group 18.svg" />
             </div>
             <img alt="" src="images/Button.svg" />
@@ -35,7 +44,7 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                 </tr>
               </thead>
               <tbody>
-                {userLegalForms
+                {refinedForms
                   .filter((form) => form.status === '2')
                   .map((form, idx) => {
                     console.log(form)
