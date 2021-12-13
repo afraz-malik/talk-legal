@@ -93,7 +93,7 @@ export const forgetPasswordFailed = (payload) => ({
 })
 // -------------------------------------------------------------
 export const passwordResetStart = (payload) => ({
-  type: 'SUBSCRIBE_PLAN_START',
+  type: 'PASSWORD_RESET_START',
   payload,
 })
 export const passwordResetSuccess = (payload) => ({

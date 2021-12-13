@@ -231,11 +231,8 @@ function* forgetPasswordStart({ payload }) {
     if (response.response === '200') {
       toast.success(response.status)
       yield put(forgetPasswordSuccess())
-    } else if (response.response === '500') {
-      toast.warn(response.message)
-      yield put(forgetPasswordFailed(response.message))
     } else {
-      toast.error('No Email Found')
+      toast.warn(response.message)
       yield put(forgetPasswordFailed())
     }
   } catch (error) {
@@ -250,11 +247,12 @@ export function* forgetPassword() {
 function* passwordResetStart({ payload }) {
   try {
     const response = yield fetchDbPost('api/reset-password', null, payload)
-    if (response.response === '500') {
-      toast.error('Link Has been expired, Kindly Request a New Link')
-      yield put(passwordResetFailed(response.message))
-    } else {
+    console.log(response)
+    if (response.response === '200') {
       yield put(passwordResetSuccess())
+    } else {
+      toast.error(response.message)
+      yield put(passwordResetFailed(response.message))
     }
   } catch (error) {
     yield put(passwordResetFailed(error))

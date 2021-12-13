@@ -1,22 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ResetPasswordCss from './ResetPassword.module.scss'
-
+import { useHistory, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { LoadingSelector } from '../../redux/user/user.selector'
+import {
+  LoadingSelector,
+  successSelector,
+} from '../../redux/user/user.selector'
 import { Spinner } from '../../components/Spinner/Spinner'
 import { useForm } from 'react-hook-form'
-import { passwordResetStart } from '../../redux/user/user.action'
+import { clearError, passwordResetStart } from '../../redux/user/user.action'
 
 const ResetPassword = () => {
+  const search = useLocation().search
+  const token = new URLSearchParams(search).get('token')
+  const email = new URLSearchParams(search).get('email')
+  const history = useHistory()
+  useEffect(() => {
+    if (!token && !email) {
+      history.push('/')
+    }
+  }, [])
+  const success = useSelector((state) => successSelector(state))
+  useEffect(() => {
+    if (success) {
+      history.push('/login')
+      dispatch(clearError())
+    }
+  }, [success])
   const { register, handleSubmit } = useForm()
   const dispatch = useDispatch()
   const onSubmit = (data) => {
     if (data.password === data.password_confirmation) {
       dispatch(
         passwordResetStart({
-          ...data.password,
-          email: 'nbutt@gmail.com',
-          token: '$2y$10$s65fL0FG50GolV2eSqzr0.0Nn4eS/IKIYIvIfRT6Ez0pwnR/Oruia',
+          password: data.password,
+          password_confirmation: data.password_confirmation,
+          email,
+          token,
         })
       )
     } else {
