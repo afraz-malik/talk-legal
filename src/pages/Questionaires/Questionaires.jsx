@@ -122,14 +122,14 @@ const Questionaires = ({}) => {
         )
         if (response.status) {
           // await put(addingCartItemSuccess(response.user_legal_form))
+          console.log(response)
           dispatch(addingCartItem(response.user_legal_form))
-          console.log(response.user_legal_form.status)
           if (
             currentUser.subscription_plan &&
             response.user_legal_form.status === '2'
           ) {
             setloading(false)
-            toast.success('Form Completed Successfully')
+            toast.success(response.msg)
             dispatch(clearingCart())
             history.push('/dashboard')
           } else history.push('/plans?cart=form')

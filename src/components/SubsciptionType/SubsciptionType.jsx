@@ -39,11 +39,21 @@ const SubsciptionType = ({ subscription_plan }) => {
             {subscription_plan.no_of_documents > 0 ? (
               <div className={SubTypeCss.left}>
                 <p>
-                  3 out of {subscription_plan.no_of_documents}
-                  Documents
+                  {subscription_plan.no_of_documents - currentUser.forms_left}{' '}
+                  out of {subscription_plan.no_of_documents} Documents
                 </p>
                 <div className={SubTypeCss.progress}>
-                  <div className={SubTypeCss.total}></div>
+                  <div
+                    className={SubTypeCss.total}
+                    style={{
+                      width: `${
+                        ((subscription_plan.no_of_documents -
+                          currentUser.forms_left) /
+                          subscription_plan.no_of_documents) *
+                        100
+                      }%`,
+                    }}
+                  ></div>
                 </div>
               </div>
             ) : null}
