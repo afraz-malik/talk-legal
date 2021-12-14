@@ -36,7 +36,7 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         error: null,
         loading: false,
-        success: true,
+        // success: true,
         currentUser: action.payload.user,
         token: action.payload.token,
       }
@@ -47,15 +47,19 @@ export const userReducer = (state = initialState, action) => {
         loading: false,
         currentUser: null,
         token: null,
-        success: false,
+        // success: false,
       }
-    case 'FORGET_PASSWORD_SUCCESS':
     case 'PASSWORD_RESET_SUCCESS':
-    case 'SUBSCRIBE_PLAN_SUCCESS':
       return {
         ...state,
         loading: false,
         success: true,
+      }
+    case 'FORGET_PASSWORD_SUCCESS':
+    case 'SUBSCRIBE_PLAN_SUCCESS':
+      return {
+        ...state,
+        loading: false,
       }
     case 'SIGN_UP_FAILED':
     case 'SIGN_IN_FAILED':

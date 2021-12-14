@@ -112,8 +112,8 @@ const PaymentDetails = ({ checkout }) => {
                 setloading(false)
                 dispatch(clearingCart())
                 toast.success(response.message)
-                if (checkout.form) toast.success('Form Submitted Successfully')
-
+                if (checkout.form && !checkout.plan)
+                  toast.success('Form Completed Successfully')
                 history.push('/dashboard')
               }
             })

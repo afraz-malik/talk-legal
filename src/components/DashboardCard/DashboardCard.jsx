@@ -29,7 +29,7 @@ const DashboardCard = ({ idx, type, title, form }) => {
         console.log(response)
         if (response.status) {
           setloading(false)
-          toast.success('Form Submitted Successfully')
+          toast.success(response.msg)
           dispatch(clearingCart())
           dispatch(gettingUserLegalFormsStart())
           history.push('/dashboard/complete-orders')

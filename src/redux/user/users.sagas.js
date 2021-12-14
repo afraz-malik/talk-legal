@@ -137,9 +137,9 @@ export function* signInStart({ payload }) {
         )
         if (newresponse.status) {
           yield put(addingCartItemSuccess(newresponse.user_legal_form))
-          if (response.user.subscription_plan) {
+          if (newresponse.user_legal_form.status === '2') {
             yield toast.success(
-              `Welcome ${response.user.name}, Your Form has been submitted successfully`
+              `Welcome ${response.user.name}, Your Form has been completed successfully`
             )
             yield put(clearingCart())
           } else {
@@ -249,9 +249,11 @@ function* passwordResetStart({ payload }) {
     const response = yield fetchDbPost('api/reset-password', null, payload)
     console.log(response)
     if (response.response === '200') {
+      yield toast.success(response.message)
       yield put(passwordResetSuccess())
     } else {
       toast.error(response.message)
+
       yield put(passwordResetFailed(response.message))
     }
   } catch (error) {
