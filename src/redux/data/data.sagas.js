@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify'
 import { takeLatest, put, select } from 'redux-saga/effects'
 import { fetchDbGet, fetchDbPost } from '../../backend/backend'
+import { refreshingUser } from '../user/user.action'
 // import toast from 'cogo-toast'
 import {
   addingCartItemFailed,
@@ -80,11 +81,11 @@ function* savingFormInApi({ payload }) {
     )
     if (newresponse.status) {
       yield put(addingCartItemSuccess(newresponse.user_legal_form))
+      yield put(refreshingUser())
     } else {
       console.log(newresponse)
       throw Error(newresponse.msg)
     }
-    // yield refreshingUser(uid, token, false)
   } catch (e) {
     console.log(e)
   }

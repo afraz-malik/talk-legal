@@ -14,9 +14,11 @@ const EditProfile = ({ closePopup, user }) => {
   const handleChange = (event) => {
     setstate({ ...state, [event.target.name]: event.target.value })
   }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     setloading(true)
+    console.log(token)
     fetchDbPost('api/user/update_profile', token, {
       name: state.name,
       last_name: state.last_name,
@@ -24,14 +26,14 @@ const EditProfile = ({ closePopup, user }) => {
     })
       .then(async (res) => {
         if (res.status) {
-          await fetchDbGet(`api/user/data`, token).then(({ user }) => {
-            if (user) {
-              dispatch(refreshingUser({ user, token }))
-              toast.success('Profile Updated Successfully')
-              setloading(false)
-              closePopup()
-            }
-          })
+          // await fetchDbGet(`api/user/data`, token).then(({ user }) => {
+          //   if (user) {
+          //   }
+          // })
+          dispatch(refreshingUser())
+          toast.success('Profile Updated Successfully')
+          setloading(false)
+          closePopup()
           // window.location.reload()
         } else {
           throw new Error(res.msg)

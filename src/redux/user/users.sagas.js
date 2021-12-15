@@ -10,6 +10,7 @@ import {
   passwordResetFailed,
   passwordResetSuccess,
   paymentFailed,
+  refreshingUser,
   signInFailed,
   signInSuccess,
   signOutFailed,
@@ -27,12 +28,12 @@ import {
 
 // ----------------------------------------------------------
 // Helper Functions
-export function* refreshingUser(token, local) {
-  console.log('token')
-  const { user } = yield fetchDbGet(`api/user/data`, token)
+// export function* refreshingUser(token, local) {
+//   console.log('token')
+//   const { user } = yield fetchDbGet(`api/user/data`, token)
 
-  console.log('user')
-}
+//   console.log('user')
+// }
 
 // ----------------------------------------------------------
 
@@ -71,7 +72,6 @@ export function* signUpStart({ payload }) {
     if (response.user) {
       toast.success('Register SuccessFully, Kindly Login')
       yield put(signUpSuccess())
-      // yield refreshingUser(user.id, access_token.plainTextToken, true);
     } else if (response.error) {
       for (const key in response.error) {
         if (response.error.hasOwnProperty(key)) {
@@ -141,6 +141,7 @@ export function* signInStart({ payload }) {
             yield toast.success(
               `Welcome ${response.user.name}, Your Form has been completed successfully`
             )
+            yield put(refreshingUser())
             yield put(clearingCart())
           } else {
             yield toast.success(`Welcome ${response.user.name}.`)
@@ -149,7 +150,6 @@ export function* signInStart({ payload }) {
           console.log(newresponse)
           throw Error(newresponse.msg)
         }
-        // yield refreshingUser(uid, token, false)
       } else {
         yield toast.success(`Welcome ${response.user.name}`)
       }
@@ -274,7 +274,6 @@ function* subscribePlanStart({ payload }) {
       token
     )
     if (response.response === '200') {
-      // yield refreshingUser(uid, token, false)
       yield put(subscribePlanSuccess())
       toast.success('Plan Has Been Updated !')
     } else {
@@ -296,7 +295,7 @@ function* paymentInitialize({ payload }) {
   try {
     console.log(payload)
     const response = yield fetchDbPost(`api/user/plan-payment`, token, payload)
-    console.log(response)
+    yield put(refreshingUser())
   } catch (error) {
     console.log(error.message)
     yield put(paymentFailed(error.message))

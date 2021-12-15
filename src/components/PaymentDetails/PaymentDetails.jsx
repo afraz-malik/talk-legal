@@ -108,7 +108,7 @@ const PaymentDetails = ({ checkout }) => {
           if (response.status) {
             await fetchDbGet(`api/user/data`, token).then(({ user }) => {
               if (user) {
-                dispatch(refreshingUser({ user, token }))
+                dispatch(refreshingUser())
                 setloading(false)
                 dispatch(clearingCart())
                 toast.success(response.message)

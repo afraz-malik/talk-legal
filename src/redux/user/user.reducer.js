@@ -29,7 +29,7 @@ export const userReducer = (state = initialState, action) => {
     case 'REFRESHING_USER':
       return {
         ...state,
-        currentUser: action.payload.user,
+        currentUser: action.payload,
       }
     case 'SIGN_IN_SUCCESS':
       return {

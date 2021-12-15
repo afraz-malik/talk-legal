@@ -8,6 +8,7 @@ import {
   clearingCart,
   gettingUserLegalFormsStart,
 } from '../../redux/data/data.action'
+import { refreshingUser } from '../../redux/user/user.action'
 import { currentUserSelector } from '../../redux/user/user.selector'
 import { Spinner } from '../Spinner/Spinner'
 import DashboardCardCss from './DashboardCard.module.scss'
@@ -26,21 +27,21 @@ const DashboardCard = ({ idx, type, title, form }) => {
           // response.access_token.accessToken.plainTextToken,
           token
         )
-        console.log(response)
+
         if (response.status) {
           setloading(false)
           toast.success(response.msg)
           dispatch(clearingCart())
+          dispatch(refreshingUser())
           dispatch(gettingUserLegalFormsStart())
           history.push('/dashboard/complete-orders')
         } else {
           throw Error(response.msg)
         }
-        // yield refreshingUser(uid, token, false)
       } catch (e) {
         console.log(e)
         setloading(false)
-        toast.error(e)
+        toast.error(e.message)
       }
     } else {
       dispatch(addingCartItem(form))

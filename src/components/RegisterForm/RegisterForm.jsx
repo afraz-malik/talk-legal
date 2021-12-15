@@ -10,7 +10,7 @@ import {
 } from '../../redux/user/user.selector'
 import { Spinner } from '../Spinner/Spinner'
 import { toast } from 'react-toastify'
-
+import $ from 'jquery'
 const RegisterForm = ({ location }) => {
   const [state, setstate] = useState({
     name: '',
@@ -25,8 +25,12 @@ const RegisterForm = ({ location }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const redirect = location.search ? location.search.split('=')[1] : null
+  const [formError, setformError] = useState({
+    checkbox: false,
+  })
   React.useEffect(() => {
     setstate({ ...state, password: '' })
+    console.log(success)
     if (success) {
       setstate({ name: '', email: '', password: '' })
       redirect ? history.push('/login?redirect=plans') : history.push('/login')
@@ -43,12 +47,25 @@ const RegisterForm = ({ location }) => {
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (state.password.length < 6) {
-      toast.error('Password Length Must be greater than 6 characters')
+
+    if ($('#' + 'checkbox').is(':checked')) {
+      setformError({
+        ...formError,
+        error: false,
+      })
+      if (state.password.length < 6) {
+        toast.error('Password Length Must be greater than 6 characters')
+      } else {
+        dispatch(signUpStart(state))
+      }
     } else {
-      dispatch(signUpStart(state))
+      // $('input[name^=checbox]')[0].focus()
+      // console.log($('input[name=checbox]')[0])
+      setformError({
+        ...formError,
+        error: true,
+      })
     }
-    // history.push("/plans");
   }
   const togglePassword = () => {
     var x = document.getElementById('password')
@@ -116,9 +133,10 @@ const RegisterForm = ({ location }) => {
           />
         </div>
         <div className={RegisterFormCss.checkbox}>
-          <input type="checkbox" name="checkbox" id="checkbox" required />
+          <input type="checkbox" name="checkbox" id="checkbox" autoFocus />
           <label htmlFor="checkbox">I agree to terms & conditions</label>
         </div>
+        {formError.checkbox ? 'Kindly Check this box' : null}
         <input type="submit" value="Register Account" />
         <span className={RegisterFormCss.or}>Or</span>
         <div className={RegisterFormCss.google}>

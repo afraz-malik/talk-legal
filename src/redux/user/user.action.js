@@ -1,27 +1,42 @@
+import { toast } from 'react-toastify'
+import { fetchDbGet } from '../../backend/backend'
+
 export const getCurrentUser = () => ({
   type: 'GETTING_USER',
 })
-export const refreshingUser = (payload) => {
-  sessionStorage.setItem(
-    'currentUser',
-    JSON.stringify({
-      user: payload.user,
-      token: payload.token,
-    })
-  )
+export const refreshingUser = () => {
+  return (dispatch, getState) => {
+    console.log(getState())
+    if (getState().userReducer.token) {
+      fetchDbGet(`api/user/data`, getState().userReducer.token).then(
+        ({ user }) => {
+          if (user) {
+            // toast.success('Profile Updated Successfully')
+            // sessionStorage.setItem(
+            //   'currentUser',
+            //   JSON.stringify({
+            //     user: payload.user,
+            //     token: payload.token,
+            //   })
+            // )
+            dispatch({
+              type: 'REFRESHING_USER',
+              payload: user,
+            })
+            return 'success'
+          }
+        }
+      )
+    }
 
-  // console.log('putting')
-  //  localStorage.setItem(
-  //   'currentUser',
-  //   JSON.stringify({
-  //     user,
-  //     token,
-  //   })
-  // )
-
-  return {
-    type: 'REFRESHING_USER',
-    payload,
+    // console.log('putting')
+    //  localStorage.setItem(
+    //   'currentUser',
+    //   JSON.stringify({
+    //     user,
+    //     token,
+    //   })
+    // )
   }
 }
 // -------------------------------------------------------------

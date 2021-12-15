@@ -26,6 +26,7 @@ import { InsideSpinner, Spinner } from '../../components/Spinner/Spinner'
 import { currentFormSelector } from '../../redux/data/data.selector'
 import { toast } from 'react-toastify'
 import { fetchDbPost } from '../../backend/backend'
+import { refreshingUser } from '../../redux/user/user.action'
 
 const Questionaires = ({}) => {
   const history = useHistory()
@@ -122,7 +123,7 @@ const Questionaires = ({}) => {
         )
         if (response.status) {
           // await put(addingCartItemSuccess(response.user_legal_form))
-          console.log(response)
+          dispatch(refreshingUser())
           dispatch(addingCartItem(response.user_legal_form))
           if (
             currentUser.subscription_plan &&
@@ -136,7 +137,6 @@ const Questionaires = ({}) => {
         } else {
           throw Error(response.msg)
         }
-        // yield refreshingUser(uid, token, false)
       } catch (e) {
         console.log(e)
         setloading(false)
