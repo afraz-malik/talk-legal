@@ -19,11 +19,11 @@ import thunk from 'redux-thunk'
 // const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware()
 const middleWares = [sagaMiddleware, thunk]
-
 export const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(...middleWares))
 )
+
 // export const store = createStore(rootReducer, applyMiddleware(...middleWares));
 sagaMiddleware.run(rootSaga)
 

@@ -6,7 +6,10 @@ import { currentUserSelector } from '../redux/user/user.selector'
 const PublicRoute = ({ component: Component, restricted, ...rest }) => {
   const currentUser = useSelector((state) => currentUserSelector(state))
   const location = useLocation()
-  const redirect = location.search ? location.search.split('=')[1] : null
+  let redirect = location.search ? location.search.split('=')[1] : null
+  if (currentUser && currentUser.forms_left != '0') {
+    redirect = null
+  }
   return (
     <Route
       {...rest}

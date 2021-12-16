@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FormCss from './Form.module.scss'
 
 import $ from 'jquery'
-const HardCopy = ({ values, currentForm }) => {
-  console.log(currentForm)
+const HardCopy = ({ values, currentForm, setfilledForm }) => {
+  // console.log(currentForm)
   // eslint-disable-next-line
   const [stateForm, setstate] = useState(currentForm)
   let state = {}
@@ -75,9 +75,18 @@ const HardCopy = ({ values, currentForm }) => {
         }
       }
     }
+
     // eslint-disable-next-line
   }, [currentForm, values])
-
+  useEffect(() => {
+    const ele = document.getElementById('new')
+    if (ele) {
+      setfilledForm(ele.innerHTML)
+      // console.log()
+    }
+    // setTimeout(() => {
+    // }, 1000)
+  }, [])
   // Fill State with each object name and their values
   const fillingState = () => {
     values.pages.map((page) =>
@@ -95,3 +104,9 @@ const HardCopy = ({ values, currentForm }) => {
 }
 
 export default HardCopy
+// var EXPORT_PDF = (function name(params) {
+
+//   return{
+
+//   }
+// })

@@ -20,7 +20,7 @@ import { useHistory, useLocation } from 'react-router'
 import NewForm from '../../components/LegalForm/NewForm'
 import update from 'react-addons-update' // ES6
 import $ from 'jquery'
-// import { pdfFromReact } from 'generate-pdf-from-react-html'
+import { pdfFromReact } from 'generate-pdf-from-react-html'
 import Skeleton from 'react-loading-skeleton'
 import { InsideSpinner, Spinner } from '../../components/Spinner/Spinner'
 import { currentFormSelector } from '../../redux/data/data.selector'
@@ -41,7 +41,7 @@ const Questionaires = ({}) => {
   const [loading, setloading] = useState(false)
   const total_pages = formSelector ? formSelector.pages.length : 4
   const formId = location.search ? location.search.split('=')[1] : null
-
+  const [filledForm, setfilledForm] = useState('')
   const [state, setstate] = useState({
     // percent: 100 / total_pages,
     percent: 0,
@@ -110,16 +110,22 @@ const Questionaires = ({}) => {
     })
   }
   const submitForm = async () => {
-    dispatch(addingCartItem(currentForm))
+    let filledcurrentForm = {
+      ...currentForm,
+      filled_form_description: filledForm,
+    }
+
+    dispatch(addingCartItem(filledcurrentForm))
     if (currentUser) {
-      // dispatch(savingFormToApiAction({ id: currentUser.id, form: currentForm }))
+      // dispatch(savingFormToApiAction({ id: currentUser.id, form: filledcurrentForm }))
+      console.log(filledForm)
       try {
         setloading(true)
         const response = await fetchDbPost(
           `api/user/submit-legal-form`,
           // response.access_token.accessToken.plainTextToken,
           token,
-          currentForm
+          filledcurrentForm
         )
         if (response.status) {
           // await put(addingCartItemSuccess(response.user_legal_form))
@@ -133,7 +139,9 @@ const Questionaires = ({}) => {
             toast.success(response.msg)
             dispatch(clearingCart())
             history.push('/dashboard')
-          } else history.push('/plans?cart=form')
+          } else {
+            history.push('/plans?cart=form')
+          }
         } else {
           throw Error(response.msg)
         }
@@ -163,7 +171,9 @@ const Questionaires = ({}) => {
   } else {
     window.removeEventListener('mouseup', clickEvent)
   }
-
+  const downloadPdf = () => {
+    const res = pdfFromReact('#new', 'My-file', 'p', true, true)
+  }
   return (
     <div className={QCss.container}>
       <div className={QCss.container2}>
@@ -212,7 +222,11 @@ const Questionaires = ({}) => {
           >
             <div className={QCss.content} id="form">
               {formSelector && currentForm ? (
-                <HardCopy values={currentForm} currentForm={formSelector} />
+                <HardCopy
+                  values={currentForm}
+                  currentForm={formSelector}
+                  setfilledForm={setfilledForm}
+                />
               ) : (
                 <InsideSpinner />
               )}
@@ -236,14 +250,14 @@ const Questionaires = ({}) => {
               src="images/x-circle.png"
               onClick={() => settoggle(false)}
             />
-            {/* <button
-              onClick={() => pdfFromReact('#new', 'My-file', 'p', true, true)}
-            >
-              Downlaods
-            </button> */}
+            {/* <button onClick={() => downloadPdf()}>Downlaods</button> */}
             <div id="new">
               {formSelector && currentForm ? (
-                <HardCopy values={currentForm} currentForm={formSelector} />
+                <HardCopy
+                  values={currentForm}
+                  currentForm={formSelector}
+                  setfilledForm={setfilledForm}
+                />
               ) : (
                 <InsideSpinner />
               )}

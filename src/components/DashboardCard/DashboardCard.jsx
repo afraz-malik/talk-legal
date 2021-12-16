@@ -36,7 +36,12 @@ const DashboardCard = ({ idx, type, title, form }) => {
           dispatch(gettingUserLegalFormsStart())
           history.push('/dashboard/complete-orders')
         } else {
-          throw Error(response.msg)
+          if (response.response === '402') {
+            dispatch(addingCartItem(form))
+            history.push('/plans?cart=form')
+          } else {
+            throw Error(response.msg)
+          }
         }
       } catch (e) {
         console.log(e)

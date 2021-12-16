@@ -10,10 +10,10 @@ const PaymentPlans = ({ location, nologo }) => {
   const form = location.search ? location.search.split('=')[1] : null
   const currentUser = useSelector((state) => currentUserSelector(state))
   React.useEffect(() => {
-    if (currentUser.subscription_plan) {
-      console.log(currentUser)
-      history.push('/dashboard')
-    }
+    // if (currentUser.subscription_plan) {
+    //   console.log(currentUser)
+    //   history.push('/dashboard')
+    // }
     window.scrollTo(0, 0)
   }, [])
   const handleSubmit = (val) => {
@@ -22,16 +22,23 @@ const PaymentPlans = ({ location, nologo }) => {
   return (
     <div className={PaymentPlansCss.container}>
       {nologo ? null : <Logo />}
-      {form ? (
-        <div className={PaymentPlansCss.body}>
+      <div className={PaymentPlansCss.body}>
+        {form ? (
           <h1>
             Your Mutual Non-Disclosure <br />
             Agreement agreement is ready.
           </h1>
-          <p>
-            Select a membership to save money and access multiple documents.
-          </p>
-          <PaymentPlanCards handleSubmit={handleSubmit} />
+        ) : (
+          <h1>Your Agreement, Our responsibilty</h1>
+        )}
+
+        <p>
+          {currentUser && currentUser.subscription_plan
+            ? 'Change or Renew your membership to be served better'
+            : 'Select a membership to save money and access multiple documents.'}
+        </p>
+        <PaymentPlanCards handleSubmit={handleSubmit} />
+        {form ? (
           <div className={PaymentPlansCss.single}>
             <Link
               to={{
@@ -44,16 +51,12 @@ const PaymentPlans = ({ location, nologo }) => {
               Skip this membership step to purchase a single document ›
             </Link>
           </div>
-        </div>
-      ) : (
-        <div className={PaymentPlansCss.body}>
-          <h1>Your Agreement, Our responsibilty</h1>
-          <p>
-            Select a membership to save money and access multiple documents.
-          </p>
-          <PaymentPlanCards handleSubmit={handleSubmit} />
-        </div>
-      )}
+        ) : null}
+      </div>
+      {/* <div className={PaymentPlansCss.body}>
+        <p>Select a membership to save money and access multiple documents.</p>
+        <PaymentPlanCards handleSubmit={handleSubmit} />
+      </div> */}
     </div>
   )
 }

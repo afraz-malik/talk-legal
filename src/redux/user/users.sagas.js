@@ -70,7 +70,18 @@ export function* signUpStart({ payload }) {
   try {
     const response = yield fetchDbPost('api/register', null, payload)
     if (response.user) {
-      toast.success('Register SuccessFully, Kindly Login')
+      toast.success(
+        'We have sent you a verification link. Kindly Verify yourself before logging in!',
+        {
+          position: 'top-center',
+          autoClose: 55000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      )
       yield put(signUpSuccess())
     } else if (response.error) {
       for (const key in response.error) {
@@ -101,7 +112,7 @@ export function* signInStart({ payload }) {
       email: payload.email,
       password: payload.password,
     })
-    if (response.user) {
+    if (response.user && response.user.email_verified_at) {
       yield put(
         signInSuccess({
           user: response.user,
@@ -156,6 +167,20 @@ export function* signInStart({ payload }) {
     } else if (response.message) {
       toast.error(response.message)
       yield put(signInFailed(response.message))
+    } else if (response.user && !response.user.email_verified_at) {
+      toast.error(
+        'Kindly verify your email first. Verify link has sent to this email',
+        {
+          position: 'top-center',
+          autoClose: 55000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      )
+      throw new Error('Email not verified')
     } else {
       toast.error(response)
       yield put(signInFailed(response))

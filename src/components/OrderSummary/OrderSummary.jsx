@@ -59,8 +59,7 @@ const OrderSummary = ({ handleCheckout, location }) => {
         </div>
       ) : null}
 
-      {currentUser.subscription_plan ? null : location.state &&
-        location.state.form === 'single' ? null : (
+      {location.state && location.state.form === 'single' ? null : (
         <CheckoutPlans handlePlan={handlePlan} />
       )}
       <br />

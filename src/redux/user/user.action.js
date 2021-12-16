@@ -6,7 +6,6 @@ export const getCurrentUser = () => ({
 })
 export const refreshingUser = () => {
   return (dispatch, getState) => {
-    console.log(getState())
     if (getState().userReducer.token) {
       fetchDbGet(`api/user/data`, getState().userReducer.token).then(
         ({ user }) => {
