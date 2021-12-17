@@ -52,11 +52,18 @@ const PaymentPlanCards = ({ handleSubmit }) => {
                 </div>
               </div>
               <div className={PPCardsCss.button}>
-                <button onClick={() => handleSubmit(plan)}>
+                <button
+                  onClick={() => handleSubmit(plan)}
+                  disabled={
+                    currentUser &&
+                    currentUser.subscription_plan &&
+                    currentUser.subscription_plan.id === plan.id
+                  }
+                >
                   {currentUser &&
                   currentUser.subscription_plan &&
                   currentUser.subscription_plan.id === plan.id
-                    ? 'Renew'
+                    ? 'Current Plan'
                     : 'Get Started'}
                 </button>
               </div>

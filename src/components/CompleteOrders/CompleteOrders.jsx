@@ -14,6 +14,7 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
   const refinedForms = userLegalForms.filter((form) =>
     form.title.toLowerCase().includes(search.toLowerCase())
   )
+
   return (
     <div className={COrdersCss.container}>
       {loading ? (

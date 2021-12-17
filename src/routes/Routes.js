@@ -18,6 +18,7 @@ import PrivateRoute from './PrivateRoute'
 import Questionaires from '../pages/Questionaires/Questionaires'
 import FormGenerator from '../pages/FormGenerator/FormGenerator'
 import DashboardRoutes from '../pages/Dashboard/Dashboard.jsx'
+import Verification from '../pages/Verification/Verification'
 const Routes = () => {
   return (
     <Switch>
@@ -86,6 +87,12 @@ const Routes = () => {
         exact
         path="/login"
         component={LoginPage}
+      />
+      <PublicRoute
+        restricted={false}
+        exact
+        path="/verify"
+        component={Verification}
       />
     </Switch>
   )

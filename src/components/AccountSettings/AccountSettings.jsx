@@ -8,6 +8,7 @@ import EditProfile from '../DialoguePopup/EditProfile'
 import Preview from '../Preview/Preview'
 import AccountSettingsCss from './AccountSettings.module.scss'
 import ChangePassword from './ChangePassword'
+// import Cards from './Cards'
 const AccountSettings = () => {
   const currentUser = useSelector((state) => currentUserSelector(state))
   console.log(currentUser)
@@ -68,8 +69,67 @@ const AccountSettings = () => {
         </div>
       </form>
       <hr />
-      {console.log(state)}
       <ChangePassword />
+      <hr />
+      <div className={AccountSettingsCss.top}>
+        <h4>Payment Setting</h4>
+        <h5 onClick={() => setpopup({ ...popup, editCard: true })}>
+          Add Card ›{' '}
+        </h5>
+      </div>
+      <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do.</p>
+      <div className={AccountSettingsCss.ad_ons}>
+        <div className={AccountSettingsCss.ad_on}>
+          <div
+            className={`${AccountSettingsCss.card} ${
+              state.plans === 'silver' ? AccountSettingsCss.activeCard : null
+            }`}
+            onClick={() => setstate({ ...state, plans: 'silver' })}
+          >
+            <label className={AccountSettingsCss.container2}>
+              <input
+                type="radio"
+                name="plans"
+                value="silver"
+                checked={state.plans === 'silver'}
+                onChange={(e) => setstate({ ...state, plans: e.target.value })}
+              />
+              <span className={AccountSettingsCss.checkmark}></span>
+            </label>
+            <div className={AccountSettingsCss.top}>
+              <h2>
+                4756 &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226;
+                3847
+              </h2>
+              <img alt="" src="images/path3789.svg" />
+            </div>
+          </div>
+          <div
+            className={`${AccountSettingsCss.card} ${
+              state.plans === 'gold' ? AccountSettingsCss.activeCard : null
+            }`}
+            onClick={() => setstate({ ...state, plans: 'gold' })}
+          >
+            <label className={AccountSettingsCss.container2}>
+              <input
+                type="radio"
+                name="plans"
+                value="gold"
+                checked={state.plans === 'gold'}
+                onChange={(e) => setstate({ ...state, plans: e.target.value })}
+              />
+              <span className={AccountSettingsCss.checkmark}></span>
+            </label>
+            <div className={AccountSettingsCss.top}>
+              <h2>
+                4756 &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226;
+                3847
+              </h2>
+              <img alt="" src="images/Group 1000001865.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
       {popup.editProfile ? (
         <Preview>
           <DialoguePopup title={'Edit Your Profile'} closePopup={closePopup}>

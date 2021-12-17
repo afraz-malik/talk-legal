@@ -34,7 +34,7 @@ const PaymentPlans = ({ location, nologo }) => {
 
         <p>
           {currentUser && currentUser.subscription_plan
-            ? 'Change or Renew your membership to be served better'
+            ? 'Upgrade your membership to be served better'
             : 'Select a membership to save money and access multiple documents.'}
         </p>
         <PaymentPlanCards handleSubmit={handleSubmit} />
