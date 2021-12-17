@@ -1,0 +1,513 @@
+/* Forms */
+ .mutual-non span {
+	 background-color: #f0f0f0;
+	 min-width: 50px;
+	 padding: 0 5px;
+}
+ .mutual-non h1 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: bold;
+	 font-size: 22px;
+	 margin: 0;
+	 line-height: 30px;
+	 text-align: center;
+	 color: #000;
+}
+ .mutual-non p, .mutual-non ol {
+	 font-family: DM Sans;
+	 font-style: normal;
+	 font-weight: normal;
+	 font-size: 14px;
+	 line-height: 20px;
+	 margin: 5px;
+	 text-align: left;
+	 color: #000;
+	 text-align: justify;
+}
+ .mutual-non h3 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: 900;
+	 font-size: 16px;
+	 line-height: 18px;
+	 margin: 20px 0;
+	 text-align: center;
+	 color: #000;
+}
+ .mutual-non h3:first-of-type {
+	 margin-top: 0px;
+}
+ .mutual-non ol {
+	 margin: 20px 0;
+}
+ .mutual-non ol li {
+	/* text-decoration: underline;
+	 */
+}
+ .mutual-non ol li:before {
+	 content: '';
+	 width: 40px;
+	 display: inline-block;
+}
+ .mutual-non ul {
+	/* margin: 5px 0;
+	 */
+}
+ .mutual-non ul li {
+	 padding-left: 30px;
+	 margin-left: 20px;
+	 margin: 10px 0 10px 10px;
+	/* text-decoration: unset;
+	 */
+}
+ .mutual-non ul li:before {
+	 content: unset;
+	 width: unset;
+	 display: inline-block;
+}
+ .unilateral span {
+	 background-color: #f0f0f0;
+	 min-width: 50px;
+	 padding: 0 5px;
+}
+ .unilateral h1 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: bold;
+	 font-size: 22px;
+	/* margin: 0;
+	 */
+	 line-height: 30px;
+	 text-align: center;
+	 color: #000;
+}
+ .unilateral p, .unilateral ol {
+	 font-family: DM Sans;
+	 font-style: normal;
+	 font-weight: normal;
+	 font-size: 14px;
+	 line-height: 20px;
+	/* margin: 5px;
+	 */
+	 text-align: left;
+	 color: #000;
+	 text-align: justify;
+}
+ .unilateral h3 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: 900;
+	 font-size: 16px;
+	 line-height: 18px;
+	 margin: 20px 0;
+	 text-align: center;
+	 color: #000;
+}
+ .unilateral h3:first-of-type {
+	 margin-top: 0px;
+}
+ .unilateral ol {
+	 margin: 20px 0;
+}
+ .unilateral ol li {
+	 font-weight: bold;
+	/* text-decoration: underline;
+	 */
+}
+ .unilateral ol li:before {
+	 content: '';
+	 width: 40px;
+	 display: inline-block;
+}
+ .unilateral ul {
+	/* margin: 5px 0;
+	 */
+	 list-style-type: lower-alpha;
+}
+ .unilateral ul ul {
+	 list-style-type: lower-roman;
+}
+ .unilateral ul li {
+	 padding-left: 30px;
+	 margin-left: 20px;
+	 margin: 10px 0 10px 10px;
+	 font-weight: normal;
+}
+ .unilateral ul li:before {
+	 content: unset;
+	 width: unset;
+	 display: inline-block;
+}
+ .unilateral2 span {
+	 background-color: #f0f0f0;
+	 min-width: 50px;
+	 padding: 0 5px;
+}
+ .unilateral2 h1 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: bold;
+	 font-size: 22px;
+	/* margin: 0;
+	 */
+	 line-height: 30px;
+	 text-align: center;
+	 color: #000;
+}
+ .unilateral2 p, .unilateral2 ol {
+	 font-family: DM Sans;
+	 font-style: normal;
+	 font-weight: normal;
+	 font-size: 14px;
+	 line-height: 20px;
+	/* margin: 5px;
+	 */
+	 text-align: left;
+	 color: #000;
+	 text-align: justify;
+}
+ .unilateral2 h3 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: 900;
+	 font-size: 16px;
+	 line-height: 18px;
+	 margin: 20px 0;
+	 text-align: center;
+	 color: #000;
+}
+ .unilateral2 h3:first-of-type {
+	 margin-top: 0px;
+}
+ .unilateral2 ol {
+	 margin: 20px 0;
+}
+ .unilateral2 ol li {
+	 font-weight: bold;
+	/* text-decoration: underline;
+	 */
+}
+ .unilateral2 ol li:before {
+	 content: '';
+	 width: 40px;
+	 display: inline-block;
+}
+ .unilateral2 ul {
+	/* margin: 5px 0;
+	 */
+	 list-style-type: lower-alpha;
+}
+ .unilateral2 ul ul {
+	 list-style-type: lower-roman;
+}
+ .unilateral2 ul li {
+	 padding-left: 30px;
+	 margin-left: 20px;
+	 margin: 10px 0 10px 10px;
+	 font-weight: normal;
+}
+ .unilateral2 ul li:before {
+	 content: unset;
+	 width: unset;
+	 display: inline-block;
+}
+ .commercialpg span {
+	 background-color: #f0f0f0;
+	 min-width: 50px;
+	 padding: 0 5px;
+}
+ .commercialpg h1 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: bold;
+	 font-size: 22px;
+	/* margin: 0;
+	 */
+	 line-height: 30px;
+	 text-align: center;
+	 color: #000;
+}
+ .commercialpg p, .commercialpg ol {
+	 font-family: DM Sans;
+	 font-style: normal;
+	 font-weight: normal;
+	 font-size: 14px;
+	 line-height: 20px;
+	/* margin: 5px;
+	 */
+	 text-align: left;
+	 color: #000;
+	 text-align: justify;
+}
+ .commercialpg h3 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: 900;
+	 font-size: 16px;
+	 line-height: 18px;
+	 margin: 20px 0;
+	 text-align: center;
+	 color: #000;
+}
+ .commercialpg h3:first-of-type {
+	 margin-top: 0px;
+}
+ .commercialpg ol {
+	 margin: 20px 0;
+}
+ .commercialpg ol li {
+	/* text-decoration: underline;
+	 */
+}
+ .commercialpg ol li:before {
+	 content: '';
+	 width: 40px;
+	 display: inline-block;
+}
+ .commercialpg ul {
+	/* margin: 5px 0;
+	 */
+	 list-style-type: lower-alpha;
+}
+ .commercialpg ul ul {
+	 list-style-type: lower-roman;
+}
+ .commercialpg ul li {
+	 padding-left: 30px;
+	 margin-left: 20px;
+	 margin: 10px 0 10px 10px;
+	/* text-decoration: unset;
+	 */
+}
+ .commercialpg ul li:before {
+	 content: unset;
+	 width: unset;
+	 display: inline-block;
+}
+ .standardpg span {
+	 background-color: #f0f0f0;
+	 min-width: 50px;
+	 padding: 0 5px;
+}
+ .standardpg h1 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: bold;
+	 font-size: 22px;
+	/* margin: 0;
+	 */
+	 line-height: 30px;
+	 text-align: center;
+	 color: #000;
+}
+ .standardpg p, .standardpg ol {
+	 font-family: DM Sans;
+	 font-style: normal;
+	 font-weight: normal;
+	 font-size: 14px;
+	 line-height: 20px;
+	/* margin: 5px;
+	 */
+	 text-align: left;
+	 color: #000;
+	 text-align: justify;
+}
+ .standardpg h3 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: 900;
+	 font-size: 16px;
+	 line-height: 18px;
+	 margin: 20px 0;
+	 text-align: center;
+	 color: #000;
+}
+ .standardpg h3:first-of-type {
+	 margin-top: 0px;
+}
+ .standardpg ol {
+	 margin: 20px 0;
+}
+ .standardpg ol li:before {
+	 content: '';
+	 width: 40px;
+	 display: inline-block;
+}
+ .standardpg ul {
+	/* margin: 5px 0;
+	 */
+	 list-style-type: lower-alpha;
+}
+ .standardpg ul ul {
+	 list-style-type: lower-roman;
+}
+ .standardpg ul li {
+	 padding-left: 30px;
+	 margin-left: 20px;
+	 margin: 10px 0 10px 10px;
+	/* text-decoration: none;
+	 */
+}
+ .standardpg ul li:before {
+	 content: unset;
+	 width: unset;
+	 display: inline-block;
+}
+ .influencer1 {
+	/* ol {
+		 padding-left: 0px;
+		 list-style-type: decimal;
+	}
+	 ol li ul {
+		 list-style-type: lower-alpha;
+	}
+	 ol li ul li ul {
+		 list-style-type: lower-roman;
+	}
+	 */
+}
+ .influencer1 span {
+	 background-color: #f0f0f0;
+	 min-width: 50px;
+	 padding: 0 5px;
+}
+ .influencer1 h1 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: bold;
+	 font-size: 22px;
+	 margin: 0;
+	 line-height: 30px;
+	 text-align: center;
+	 color: #000;
+}
+ .influencer1 p, .influencer1 ol {
+	 font-family: DM Sans;
+	 font-style: normal;
+	 font-weight: normal;
+	 font-size: 14px;
+	 line-height: 20px;
+	 margin: 5px;
+	 text-align: left;
+	 color: #000;
+	 text-align: justify;
+}
+ .influencer1 h3 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: 900;
+	 font-size: 16px;
+	 line-height: 18px;
+	 margin: 20px 0;
+	 text-align: center;
+	 color: #000;
+}
+ .influencer1 h3:first-of-type {
+	 margin-top: 0px;
+}
+ .influencer1 .center {
+	 text-align: center;
+}
+ .influencer1 ol {
+	 counter-reset: item;
+}
+ .influencer1 ol ol {
+	 padding-left: 50px;
+}
+ .influencer1 li {
+	 display: block;
+	/* padding-left: 50px */
+}
+ .influencer1 ol li:before {
+	 content: counters(item, '.') '.' ' ';
+	 counter-increment: item;
+	 width: 50px;
+	 display: inline-block;
+}
+ .influencer1 ul li::before {
+	 content: '\2022';
+	 font-weight: bold;
+	/* If you want it to be bold */
+	 counter-increment: unset;
+	 vertical-align: middle;
+}
+ .influencer2 {
+	/* ol {
+		 padding-left: 0px;
+		 list-style-type: decimal;
+	}
+	 ol li ul {
+		 list-style-type: lower-alpha;
+	}
+	 ol li ul li ul {
+		 list-style-type: lower-roman;
+	}
+	 */
+}
+ .influencer2 span {
+	 background-color: #f0f0f0;
+	 min-width: 50px;
+	 padding: 0 5px;
+}
+ .influencer2 h1 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: bold;
+	 font-size: 22px;
+	 margin: 0;
+	 line-height: 30px;
+	 text-align: center;
+	 color: #000;
+}
+ .influencer2 p, .influencer2 ol {
+	 font-family: DM Sans;
+	 font-style: normal;
+	 font-weight: normal;
+	 font-size: 12px;
+	 line-height: 20px;
+	 margin: 5px;
+	 text-align: left;
+	 color: #000;
+	 text-align: justify;
+}
+ .influencer2 h3 {
+	 font-family: Circular Std;
+	 font-style: normal;
+	 font-weight: 900;
+	 font-size: 16px;
+	 line-height: 18px;
+	 margin: 20px 0;
+	 text-align: center;
+	 color: #000;
+}
+ .influencer2 h3:first-of-type {
+	 margin-top: 0px;
+}
+ .influencer2 .center {
+	 text-align: center;
+}
+ .influencer2 ol {
+	 counter-reset: item;
+}
+ .influencer2 ol ol {
+	 padding-left: 50px;
+}
+ .influencer2 li {
+	 display: block;
+	/* padding-left: 50px */
+}
+ .influencer2 ol li:before {
+	 content: counters(item, '.') '.' ' ';
+	 counter-increment: item;
+	 width: 50px;
+	 display: inline-block;
+}
+ .influencer2 ul li::before {
+	 content: '\2022';
+	 font-weight: bold;
+	/* If you want it to be bold */
+	 counter-increment: unset;
+	 vertical-align: middle;
+}
+ 

@@ -4,9 +4,15 @@ import Preview from '../Preview/Preview'
 import DeletePopUp from '../DialoguePopup/DeletePopUp'
 import DialoguePopup from '../DialoguePopup/DialoguePopup'
 import { InsideSpinner } from '../Spinner/Spinner'
+import { fetchDbGet } from '../../backend/backend'
 import moment from 'moment'
+import download from 'downloadjs'
+import axios from 'axios'
+import { useSelector } from 'react-redux'
 const CompleteOrders = ({ userLegalForms, loading }) => {
   const [popup, setpopup] = React.useState(false)
+  const token = useSelector((state) => state.userReducer.token)
+
   const [search, setsearch] = useState('')
   const closePopup = () => {
     setpopup(false)
@@ -14,6 +20,27 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
   const refinedForms = userLegalForms.filter((form) =>
     form.title.toLowerCase().includes(search.toLowerCase())
   )
+  const getPdf = (id) => {
+    const link = document.createElement('a')
+    link.target = '_blank'
+    link.download = 'Legal Document'
+    axios({
+      url: `http://tlts-back.maqware.com/api/user/download-form/${id}`,
+      method: 'get',
+      headers: {
+        Accept: 'application/pdf',
+        'Content-Type': 'application/pdf',
+        mode: 'no-cors',
+        Authorization: 'Bearer ' + token,
+      },
+      responseType: 'blob',
+    }).then((res) => {
+      link.href = URL.createObjectURL(
+        new Blob([res.data], { type: 'application/pdf' })
+      )
+      link.click()
+    })
+  }
 
   return (
     <div className={COrdersCss.container}>
@@ -62,7 +89,11 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                           </span>
                         </td>
                         <td>
-                          <img alt="" src="images/Inbox - In.svg" />
+                          <img
+                            alt=""
+                            src="images/Inbox - In.svg"
+                            onClick={() => getPdf(form.id)}
+                          />
                           <img alt="" src="images/Edit.svg" />
                           <img
                             alt=""
