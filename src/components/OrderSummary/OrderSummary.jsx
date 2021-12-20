@@ -32,7 +32,7 @@ const OrderSummary = ({ handleCheckout, location }) => {
     // eslint-disable-next-line
   }, [planBill])
   useEffect(() => {
-    if (cart.form) setPlanBill({ ...planBill, form: 325 })
+    if (cart.form) setPlanBill({ ...planBill, form: 50 })
     // eslint-disable-next-line
   }, [])
   const handlePlan = (state) => {
