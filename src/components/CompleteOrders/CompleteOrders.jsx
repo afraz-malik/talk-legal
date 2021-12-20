@@ -12,12 +12,16 @@ import { useSelector } from 'react-redux'
 const CompleteOrders = ({ userLegalForms, loading }) => {
   const [popup, setpopup] = React.useState(false)
   const token = useSelector((state) => state.userReducer.token)
-
+  const [currentPage, setcurrentPage] = useState(1)
   const [search, setsearch] = useState('')
   const closePopup = () => {
     setpopup(false)
   }
-  const refinedForms = userLegalForms.filter((form) =>
+  const completeUserLegalforms = userLegalForms.filter(
+    (form) => form.status === '2'
+  )
+
+  const refinedForms = completeUserLegalforms.filter((form) =>
     form.title.toLowerCase().includes(search.toLowerCase())
   )
   const getPdf = (id) => {
@@ -42,10 +46,31 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
     })
   }
 
+  const paginate = (array, page_size, page_number) => {
+    return array.slice((page_number - 1) * page_size, page_number * page_size)
+  }
+  const paginateArray = paginate(refinedForms, 5, currentPage)
+
+  const pageNumbers = []
+  for (let i = 1; i <= Math.ceil(paginateArray / 5); i++) {
+    pageNumbers.push(i)
+  }
+  console.log(pageNumbers)
+  let totalPages = 1
+  if (currentPage > totalPages) setcurrentPage(1)
+  if (paginateArray.length === 0) {
+    totalPages = 1
+  } else {
+    totalPages = Math.ceil(paginateArray.length / 5)
+  }
   return (
     <div className={COrdersCss.container}>
       {loading ? (
         <InsideSpinner />
+      ) : completeUserLegalforms.length === 0 ? (
+        <div className={COrdersCss.noforms}>
+          <span>You don't have any open orders yet ! </span>
+        </div>
       ) : (
         <>
           <div className={COrdersCss.topbar}>
@@ -72,46 +97,48 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                 </tr>
               </thead>
               <tbody>
-                {refinedForms
-                  .filter((form) => form.status === '2')
-                  .map((form, idx) => {
-                    console.log(form)
-                    return (
-                      <tr key={idx}>
-                        <td>{form.title}</td>
-                        <td>
-                          {' '}
-                          {moment(form.payment_date).format('MMM Do, YYYY')}
-                        </td>
-                        <td>
-                          <span>
-                            <i className="fal fa-clock"></i> 18 Days left
-                          </span>
-                        </td>
-                        <td>
-                          <img
-                            alt=""
-                            src="images/Inbox - In.svg"
-                            onClick={() => getPdf(form.id)}
-                          />
-                          <img alt="" src="images/Edit.svg" />
-                          <img
-                            alt=""
-                            src="images/Trash.svg"
-                            onClick={() => setpopup(true)}
-                          />
-                        </td>
-                      </tr>
-                    )
-                  })}
+                {paginateArray.map((form, idx) => {
+                  console.log(form)
+                  return (
+                    <tr key={idx}>
+                      <td>{form.title}</td>
+                      <td>
+                        {' '}
+                        {moment(form.payment_date).format('MMM Do, YYYY')}
+                      </td>
+                      <td>
+                        <span>
+                          <i className="fal fa-clock"></i> 18 Days left
+                        </span>
+                      </td>
+                      <td>
+                        <img
+                          alt=""
+                          src="images/Inbox - In.svg"
+                          onClick={() => getPdf(form.id)}
+                        />
+                        <img alt="" src="images/Edit.svg" />
+                        <img
+                          alt=""
+                          src="images/Trash.svg"
+                          onClick={() => setpopup(true)}
+                        />
+                      </td>
+                    </tr>
+                  )
+                })}
               </tbody>
             </table>
           </div>
           <div className={COrdersCss.pages}>
             <div className={COrdersCss.back}>&lt;</div>
-            {[...Array(5)].map((i, j) => {
-              return <NumberGen key={j} counter={j + 1} pageNumber={2} />
-            })}
+            {[...Array(totalPages)].map((i, j) => (
+              <NumberGen
+                counter={j + 1}
+                setcurrentPage={setcurrentPage}
+                currentPage={currentPage}
+              />
+            ))}
             <div className={COrdersCss.front}>&gt;</div>
           </div>
         </>
@@ -127,15 +154,16 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
   )
 }
 
-const NumberGen = ({ counter, pageNumber }) => {
+const NumberGen = ({ counter, currentPage, setcurrentPage }) => {
   return (
     <div
       className={COrdersCss.numbers}
       style={
-        counter === pageNumber
+        counter === currentPage
           ? { border: '2px solid #4200FF', color: '#4200FF' }
           : null
       }
+      onClick={() => setcurrentPage(counter)}
     >
       {counter}
     </div>

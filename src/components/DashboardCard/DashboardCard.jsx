@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -54,6 +55,27 @@ const DashboardCard = ({ idx, type, title, form }) => {
     }
   }
   const tt = idx + 10 * 7 + '%'
+  const getPdf = (id) => {
+    const link = document.createElement('a')
+    link.target = '_blank'
+    link.download = 'Legal Document'
+    axios({
+      url: `http://tlts-back.maqware.com/api/user/download-form/${id}`,
+      method: 'get',
+      headers: {
+        Accept: 'application/pdf',
+        'Content-Type': 'application/pdf',
+        mode: 'no-cors',
+        Authorization: 'Bearer ' + token,
+      },
+      responseType: 'blob',
+    }).then((res) => {
+      link.href = URL.createObjectURL(
+        new Blob([res.data], { type: 'application/pdf' })
+      )
+      link.click()
+    })
+  }
   return (
     <div
       className={` ${DashboardCardCss.card} ${'hey'}`}
@@ -74,7 +96,10 @@ const DashboardCard = ({ idx, type, title, form }) => {
         style={type === '1' ? { width: tt } : { width: '100%' }}
       ></div>
       {type === '2' ? (
-        <button className={DashboardCardCss.download}>
+        <button
+          className={DashboardCardCss.download}
+          onClick={() => getPdf(form.id)}
+        >
           <img alt="" src="images/arrow-down-circle.svg" />
           Download
         </button>
