@@ -67,9 +67,7 @@ const PaymentPlanCards = ({ handleSubmit }) => {
                   currentUser.subscription_plan &&
                   currentUser.subscription_plan.id === plan.id
                     ? 'Current Plan'
-                    : currentUser && !currentUser.subscription_plan
-                    ? 'Get Started'
-                    : 'Downgrade'}
+                    : 'Get Started'}
                 </button>
               </div>
             </div>
