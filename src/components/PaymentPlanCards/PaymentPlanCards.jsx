@@ -32,9 +32,9 @@ const PaymentPlanCards = ({ handleSubmit }) => {
                 <div className={PPCardsCss.point}>
                   <img alt="" src="images/tick.svg" />
                   <p>
-                    {plan.no_of_documents === -1
-                      ? 'Unlimited'
-                      : plan.no_of_documents}
+                    {plan.no_of_documents === '-1'
+                      ? ' Unlimited '
+                      : plan.no_of_documents}{' '}
                     numbers of Documents.
                   </p>
                 </div>
@@ -55,16 +55,21 @@ const PaymentPlanCards = ({ handleSubmit }) => {
                 <button
                   onClick={() => handleSubmit(plan)}
                   disabled={
-                    currentUser &&
-                    currentUser.subscription_plan &&
-                    currentUser.subscription_plan.id === plan.id
+                    (currentUser &&
+                      currentUser.subscription_plan &&
+                      currentUser.subscription_plan.id === plan.id) ||
+                    (currentUser &&
+                      currentUser.next_subscription_id &&
+                      currentUser.next_subscription_id === plan.id)
                   }
                 >
                   {currentUser &&
                   currentUser.subscription_plan &&
                   currentUser.subscription_plan.id === plan.id
                     ? 'Current Plan'
-                    : 'Get Started'}
+                    : currentUser && !currentUser.subscription_plan
+                    ? 'Get Started'
+                    : 'Downgrade'}
                 </button>
               </div>
             </div>

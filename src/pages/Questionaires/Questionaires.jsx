@@ -31,6 +31,7 @@ import { refreshingUser } from '../../redux/user/user.action'
 const Questionaires = ({}) => {
   const history = useHistory()
   const location = useLocation()
+  const search = useLocation().search
   const dispatch = useDispatch()
 
   const currentUser = useSelector((state) => currentUserSelector(state))
@@ -40,7 +41,10 @@ const Questionaires = ({}) => {
   const [toggle, settoggle] = useState(false)
   const [loading, setloading] = useState(false)
   const total_pages = formSelector ? formSelector.pages.length : 4
-  const formId = location.search ? location.search.split('=')[1] : null
+  // const formId = location.search ? location.search.split('=')[1] : null
+  const formId = new URLSearchParams(search).get('form')
+  const edit = new URLSearchParams(search).get('edit')
+  const uid = new URLSearchParams(search).get('uid')
   const [filledForm, setfilledForm] = useState('')
   const [state, setstate] = useState({
     // percent: 100 / total_pages,
@@ -110,48 +114,60 @@ const Questionaires = ({}) => {
     })
   }
   const submitForm = async () => {
+    setloading(true)
     let filledcurrentForm = {
       ...currentForm,
       filled_form_description: filledForm,
     }
-
-    dispatch(addingCartItem(filledcurrentForm))
-    if (currentUser) {
-      // dispatch(savingFormToApiAction({ id: currentUser.id, form: filledcurrentForm }))
-      console.log(filledForm)
-      try {
-        setloading(true)
-        const response = await fetchDbPost(
-          `api/user/submit-legal-form`,
-          // response.access_token.accessToken.plainTextToken,
-          token,
-          filledcurrentForm
-        )
+    if (edit) {
+      fetchDbPost(
+        `api/user/update-legal-form/${uid}`,
+        token,
+        filledcurrentForm
+      ).then((response) => {
         if (response.status) {
-          // await put(addingCartItemSuccess(response.user_legal_form))
-          dispatch(refreshingUser())
-          dispatch(addingCartItem(response.user_legal_form))
-          if (
-            currentUser.subscription_plan &&
-            response.user_legal_form.status === '2'
-          ) {
-            setloading(false)
-            toast.success(response.msg)
-            dispatch(clearingCart())
-            history.push('/dashboard')
-          } else {
-            history.push('/plans?cart=form')
-          }
-        } else {
-          throw Error(response.msg)
+          setloading(false)
+          toast.success(response.msg)
+          history.push('/dashboard/complete-orders')
+          dispatch(clearForm())
         }
-      } catch (e) {
-        console.log(e)
-        setloading(false)
-        toast.error(e)
-      }
+      })
     } else {
-      history.push('/register?redirect=plans')
+      dispatch(addingCartItem(filledcurrentForm))
+      if (currentUser) {
+        // dispatch(savingFormToApiAction({ id: currentUser.id, form: filledcurrentForm }))
+        try {
+          const response = await fetchDbPost(
+            `api/user/submit-legal-form`,
+            // response.access_token.accessToken.plainTextToken,
+            token,
+            filledcurrentForm
+          )
+          if (response.status) {
+            // await put(addingCartItemSuccess(response.user_legal_form))
+            dispatch(refreshingUser())
+            dispatch(addingCartItem(response.user_legal_form))
+            if (
+              currentUser.subscription_plan &&
+              response.user_legal_form.status === '2'
+            ) {
+              setloading(false)
+              toast.success(response.msg)
+              dispatch(clearingCart())
+              history.push('/dashboard')
+            } else {
+              history.push('/plans?cart=form')
+            }
+          } else {
+            throw Error(response.msg)
+          }
+        } catch (e) {
+          setloading(false)
+          toast.error(e)
+        }
+      } else {
+        history.push('/register?redirect=plans')
+      }
     }
   }
 
@@ -171,9 +187,7 @@ const Questionaires = ({}) => {
   } else {
     window.removeEventListener('mouseup', clickEvent)
   }
-  const downloadPdf = () => {
-    const res = pdfFromReact('#new', 'My-file', 'p', true, true)
-  }
+
   return (
     <div className={QCss.container}>
       <div className={QCss.container2}>

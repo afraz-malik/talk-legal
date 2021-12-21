@@ -3,28 +3,45 @@ import COrdersCss from './CompleteOrders.module.scss'
 import Preview from '../Preview/Preview'
 import DeletePopUp from '../DialoguePopup/DeletePopUp'
 import DialoguePopup from '../DialoguePopup/DialoguePopup'
-import { InsideSpinner } from '../Spinner/Spinner'
+import { InsideSpinner, Spinner } from '../Spinner/Spinner'
 import { fetchDbGet } from '../../backend/backend'
 import moment from 'moment'
 import download from 'downloadjs'
 import axios from 'axios'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { savingFormInState } from '../../redux/data/data.action'
+import { useHistory } from 'react-router-dom'
 const CompleteOrders = ({ userLegalForms, loading }) => {
   const [popup, setpopup] = React.useState(false)
   const token = useSelector((state) => state.userReducer.token)
   const [currentPage, setcurrentPage] = useState(1)
   const [search, setsearch] = useState('')
+  const dispatch = useDispatch()
+  const history = useHistory()
   const closePopup = () => {
     setpopup(false)
   }
   const completeUserLegalforms = userLegalForms.filter(
     (form) => form.status === '2'
   )
+  const [newloading, setloading] = useState(false)
 
   const refinedForms = completeUserLegalforms.filter((form) =>
     form.title.toLowerCase().includes(search.toLowerCase())
   )
+  const editForm = (form) => {
+    console.log(form.legal_form_detail)
+    dispatch(savingFormInState(form.legal_form_detail))
+    setloading(true)
+    setTimeout(() => {
+      history.push(
+        `/businessform?form=${form.legal_form_detail.id}&edit=true&uid=${form.id}`
+      )
+      setloading(false)
+    }, 1000)
+  }
   const getPdf = (id) => {
+    setloading(true)
     const link = document.createElement('a')
     link.target = '_blank'
     link.download = 'Legal Document'
@@ -43,6 +60,7 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
         new Blob([res.data], { type: 'application/pdf' })
       )
       link.click()
+      setloading(false)
     })
   }
 
@@ -55,7 +73,6 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
   for (let i = 1; i <= Math.ceil(paginateArray / 5); i++) {
     pageNumbers.push(i)
   }
-  console.log(pageNumbers)
   let totalPages = 1
   if (currentPage > totalPages) setcurrentPage(1)
   if (paginateArray.length === 0) {
@@ -65,6 +82,7 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
   }
   return (
     <div className={COrdersCss.container}>
+      {newloading ? <Spinner /> : null}
       {loading ? (
         <InsideSpinner />
       ) : completeUserLegalforms.length === 0 ? (
@@ -98,7 +116,6 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
               </thead>
               <tbody>
                 {paginateArray.map((form, idx) => {
-                  console.log(form)
                   return (
                     <tr key={idx}>
                       <td>{form.title}</td>
@@ -108,7 +125,8 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                       </td>
                       <td>
                         <span>
-                          <i className="fal fa-clock"></i> 18 Days left
+                          <i className="fal fa-clock"></i> {form.edit_days_left}{' '}
+                          Days left
                         </span>
                       </td>
                       <td>
@@ -117,7 +135,11 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                           src="images/Inbox - In.svg"
                           onClick={() => getPdf(form.id)}
                         />
-                        <img alt="" src="images/Edit.svg" />
+                        <img
+                          alt=""
+                          src="images/Edit.svg"
+                          onClick={() => editForm(form)}
+                        />
                         <img
                           alt=""
                           src="images/Trash.svg"

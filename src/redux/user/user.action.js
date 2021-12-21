@@ -149,3 +149,8 @@ export const paymentFailed = (payload) => ({
   type: 'PAYMENT_FAILED',
   payload,
 })
+// -------------------------------------------------------------
+export const addCardStart = (payload) => ({
+  type: 'ADD_CARD_START',
+  payload,
+})

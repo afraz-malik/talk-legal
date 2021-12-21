@@ -326,7 +326,21 @@ function* paymentInitialize({ payload }) {
     yield put(paymentFailed(error.message))
   }
 }
-export function* paymentStart(payload) {
+export function* paymentStart() {
   yield takeLatest('PAYMENT_START', paymentInitialize)
 }
 // ----------------------------------------------------------
+export function* addCardStart({ payload }) {
+  const state = yield select()
+  const token = state.userReducer.token
+  try {
+    const response = yield fetchDbPost(`api/user/create-card`, token, payload)
+    if (response.status) {
+      toast.success(response.message)
+      yield put(refreshingUser())
+    }
+  } catch (error) {}
+}
+export function* addCard() {
+  yield takeLatest('ADD_CARD_START', addCardStart)
+}

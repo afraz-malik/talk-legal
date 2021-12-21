@@ -10,7 +10,10 @@ import {
   subscribePlanStart,
 } from '../../redux/user/user.action'
 import { useDispatch, useSelector } from 'react-redux'
-import { successSelector } from '../../redux/user/user.selector'
+import {
+  currentUserSelector,
+  successSelector,
+} from '../../redux/user/user.selector'
 import { Spinner } from '../Spinner/Spinner'
 import { useHistory } from 'react-router'
 import { toast } from 'react-toastify'
@@ -36,7 +39,7 @@ const PaymentDetails = ({ checkout }) => {
   const cart = useSelector((state) => cartSelector(state))
   const token = useSelector((state) => state.userReducer.token)
   const success = useSelector((state) => successSelector(state))
-
+  const currentUser = useSelector((state) => currentUserSelector(state))
   const [state, setstate] = React.useState(initialState)
   const [toggle, settoggle] = React.useState(false)
   const [loading, setloading] = useState(false)
@@ -54,7 +57,17 @@ const PaymentDetails = ({ checkout }) => {
     }
     // eslint-disable-next-line
   }, [success])
-
+  useEffect(() => {
+    fetchDbGet(`api/user/cards`, token).then((response) => {
+      if (response.response == 200 && response.data.length > 0) {
+        setstate({
+          ...state,
+          card_holder_name: response.data[0].card_holder_name,
+          card_number: response.data[0].card_number,
+        })
+      }
+    })
+  }, [])
   const clickEvent = (e) => {
     var container = document.getElementById('dd_content')
     if (!container.contains(e.target)) {
@@ -99,12 +112,20 @@ const PaymentDetails = ({ checkout }) => {
             plan_id: checkout.plan ? checkout.plan.id : null,
           }
           setloading(true)
-          const response = await fetchDbPost(
-            `api/user/plan-payment`,
-            token,
-            payload
-          )
-
+          let response
+          if (checkout.plan.id < currentUser.subscription_plan.id) {
+            response = await fetchDbGet(
+              `api/user/downgrade-subscription/${checkout.plan.id}`,
+              token
+            )
+            // if(response.status)
+          } else {
+            response = await fetchDbPost(
+              `api/user/plan-payment`,
+              token,
+              payload
+            )
+          }
           if (response.status) {
             await fetchDbGet(`api/user/data`, token).then(({ user }) => {
               if (user) {
