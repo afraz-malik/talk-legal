@@ -88,9 +88,11 @@ const Dashboard = ({ match }) => {
                   subscription_plan={currentUser.subscription_plan}
                 />
               ) : (
-                // <Redirect to={`/plans`} />
                 <PaymentPlans nologo={true} />
               )}
+              {/* <SubsciptionType
+                subscription_plan={currentUser.subscription_plan}
+              /> */}
             </Boxmodel>
           </Route>
           <Route exact path={`${match.path}/settings`}>

@@ -57,17 +57,17 @@ const PaymentDetails = ({ checkout }) => {
     }
     // eslint-disable-next-line
   }, [success])
-  useEffect(() => {
-    fetchDbGet(`api/user/cards`, token).then((response) => {
-      if (response.response == 200 && response.data.length > 0) {
-        setstate({
-          ...state,
-          card_holder_name: response.data[0].card_holder_name,
-          card_number: response.data[0].card_number,
-        })
-      }
-    })
-  }, [])
+  // useEffect(() => {
+  //   fetchDbGet(`api/user/cards`, token).then((response) => {
+  //     if (response.response == 200 && response.data.length > 0) {
+  //       setstate({
+  //         ...state,
+  //         card_holder_name: response.data[0].card_holder_name,
+  //         card_number: response.data[0].card_number,
+  //       })
+  //     }
+  //   })
+  // }, [])
   const clickEvent = (e) => {
     var container = document.getElementById('dd_content')
     if (!container.contains(e.target)) {
@@ -113,7 +113,10 @@ const PaymentDetails = ({ checkout }) => {
           }
           setloading(true)
           let response
-          if (checkout.plan.id < currentUser.subscription_plan.id) {
+          if (
+            currentUser.subscription_plan &&
+            checkout.plan.id < currentUser.subscription_plan.id
+          ) {
             response = await fetchDbGet(
               `api/user/downgrade-subscription/${checkout.plan.id}`,
               token

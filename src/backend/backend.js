@@ -13,9 +13,9 @@ export const fetchDbPost = async (url, token, payload) => {
       body: JSON.stringify(payload),
     })
       .then((res) => res.json())
-      .catch((error) => error)
+      .catch((error) => console.log(error))
   } catch (error) {
-    throw error
+    console.log(error)
   }
 }
 
@@ -28,5 +28,7 @@ export const fetchDbGet = async (url, token) => {
       Authorization: 'Bearer ' + token,
       mode: 'no-cors',
     },
-  }).then((res) => res.json())
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(console.log(err.message)))
 }

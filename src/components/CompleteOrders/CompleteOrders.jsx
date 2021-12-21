@@ -6,7 +6,6 @@ import DialoguePopup from '../DialoguePopup/DialoguePopup'
 import { InsideSpinner, Spinner } from '../Spinner/Spinner'
 import { fetchDbGet } from '../../backend/backend'
 import moment from 'moment'
-import download from 'downloadjs'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { savingFormInState } from '../../redux/data/data.action'
@@ -55,13 +54,16 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
         Authorization: 'Bearer ' + token,
       },
       responseType: 'blob',
-    }).then((res) => {
-      link.href = URL.createObjectURL(
-        new Blob([res.data], { type: 'application/pdf' })
-      )
-      link.click()
-      setloading(false)
     })
+      .then((res) => {
+        link.href = URL.createObjectURL(
+          new Blob([res.data], { type: 'application/pdf' })
+        )
+        link.click()
+        setloading(false)
+        console.log('here')
+      })
+      .catch((err) => setloading(false))
   }
 
   const paginate = (array, page_size, page_number) => {

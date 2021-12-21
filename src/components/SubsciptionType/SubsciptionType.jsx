@@ -52,13 +52,15 @@ const SubsciptionType = ({ subscription_plan }) => {
         Authorization: 'Bearer ' + token,
       },
       responseType: 'blob',
-    }).then((res) => {
-      link.href = URL.createObjectURL(
-        new Blob([res.data], { type: 'application/pdf' })
-      )
-      link.click()
-      setloading(false)
     })
+      .then((res) => {
+        link.href = URL.createObjectURL(
+          new Blob([res.data], { type: 'application/pdf' })
+        )
+        link.click()
+        setloading(false)
+      })
+      .catch((err) => setloading(false))
   }
   return (
     <div className={SubTypeCss.container}>
