@@ -83,16 +83,16 @@ const Dashboard = ({ match }) => {
           </Route>
           <Route exact path={`${match.path}/subscription`}>
             <Boxmodel title="Subscription Type">
-              {currentUser.subscription_plan ? (
+              {/* {currentUser.subscription_plan ? (
                 <SubsciptionType
                   subscription_plan={currentUser.subscription_plan}
                 />
               ) : (
                 <PaymentPlans nologo={true} />
-              )}
-              {/* <SubsciptionType
+              )} */}
+              <SubsciptionType
                 subscription_plan={currentUser.subscription_plan}
-              /> */}
+              />
             </Boxmodel>
           </Route>
           <Route exact path={`${match.path}/settings`}>
