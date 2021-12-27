@@ -280,80 +280,85 @@ const PaymentDetails = ({ checkout }) => {
             />
           </div>
         </div>
-        <div className={PDCss.row}>
-          <div className={`${PDCss.col} ${PDCss.carddetails}`}>
-            <img alt="" src="images/card_icon.png" />
-            <label>Card Number</label>
-            <input
-              id="cardnumber"
-              type="tel"
-              inputmode="numeric"
-              autoComplete="cc-number"
-              pattern="[0-9\s]{19}"
-              maxLength="19"
-              placeholder="xxxx xxxx xxxx xxxx"
-              required
-              name="card_number"
-              value={state.card_number}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className={PDCss.row}>
-          <div className={PDCss.col}>
-            <label>Card Holder Name</label>
-            <input
-              type="text"
-              placeholder="Enter Card holder Name"
-              required
-              name="card_holder_name"
-              value={state.card_holder_name}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className={PDCss.row}>
-          <div className={PDCss.col}>
-            <label>Expiry Date</label>
-            <input
-              type="month"
-              placeholder="MM/YY"
-              required
-              name="expiry"
-              value={state.expiry}
-              onChange={handleChange}
-            />
-          </div>
-          <div className={PDCss.col}>
-            <label>CVV</label>
-            <input
-              type="tel"
-              inputmode="numeric"
-              autoComplete="cc-number"
-              pattern="[0-9\s]{3}"
-              maxLength="3"
-              id="cardnumber"
-              placeholder="Enter CVV"
-              required
-              name="cvv"
-              value={state.cvv}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className={`${PDCss.row} ${PDCss.cardsave}`}>
-          <input type="checkbox" id="cardsave" checked={state.saveCard} />
-          <label htmlFor="cardsave">
-            Save this card for future transactions
-          </label>
-        </div>
+        {true ? (
+          <CreditCards />
+        ) : (
+          <>
+            <div className={PDCss.row}>
+              <div className={`${PDCss.col} ${PDCss.carddetails}`}>
+                <img alt="" src="images/card_icon.png" />
+                <label>Card Number</label>
+                <input
+                  id="cardnumber"
+                  type="tel"
+                  inputmode="numeric"
+                  autoComplete="cc-number"
+                  pattern="[0-9\s]{19}"
+                  maxLength="19"
+                  placeholder="xxxx xxxx xxxx xxxx"
+                  required
+                  name="card_number"
+                  value={state.card_number}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className={PDCss.row}>
+              <div className={PDCss.col}>
+                <label>Card Holder Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter Card holder Name"
+                  required
+                  name="card_holder_name"
+                  value={state.card_holder_name}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className={PDCss.row}>
+              <div className={PDCss.col}>
+                <label>Expiry Date</label>
+                <input
+                  type="month"
+                  placeholder="MM/YY"
+                  required
+                  name="expiry"
+                  value={state.expiry}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className={PDCss.col}>
+                <label>CVV</label>
+                <input
+                  type="tel"
+                  inputmode="numeric"
+                  autoComplete="cc-number"
+                  pattern="[0-9\s]{3}"
+                  maxLength="3"
+                  id="cardnumber"
+                  placeholder="Enter CVV"
+                  required
+                  name="cvv"
+                  value={state.cvv}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className={`${PDCss.row} ${PDCss.cardsave}`}>
+              <input type="checkbox" id="cardsave" checked={state.saveCard} />
+              <label htmlFor="cardsave">
+                Save this card for future transactions
+              </label>
+            </div>
+          </>
+        )}
         <div className={PDCss.row}>
           <input
             type="submit"
             value={`Pay $${checkout ? checkout.totalValue : 0}`}
           />
         </div>
-        <CreditCards />
       </form>
       {loading ? <Spinner /> : null}
     </div>
