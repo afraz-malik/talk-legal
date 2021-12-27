@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { Link, withRouter, useHistory } from 'react-router-dom'
 import RegisterFormCss from './RegisterForm.module.scss'
-import { clearError, signUpStart } from '../../redux/user/user.action'
+import {
+  clearError,
+  signUpFailed,
+  signUpStart,
+  signUpSuccess,
+} from '../../redux/user/user.action'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   errorSelector,
@@ -11,6 +16,7 @@ import {
 import { Spinner } from '../Spinner/Spinner'
 import { toast } from 'react-toastify'
 import $ from 'jquery'
+import { fetchDbPost } from '../../backend/backend'
 const RegisterForm = ({ location }) => {
   const [state, setstate] = useState({
     name: '',
@@ -19,7 +25,7 @@ const RegisterForm = ({ location }) => {
     password: '',
     // phone: "+92 324 8205435",
   })
-  const loading = useSelector((state) => LoadingSelector(state))
+  const [loading, setloading] = useState(false)
   const success = useSelector((state) => successSelector(state))
   const error = useSelector((state) => errorSelector(state))
   const dispatch = useDispatch()
@@ -30,11 +36,6 @@ const RegisterForm = ({ location }) => {
   })
   React.useEffect(() => {
     setstate({ ...state, password: '' })
-    console.log(success)
-    if (success) {
-      setstate({ name: '', email: '', password: '' })
-      redirect ? history.push('/login?redirect=plans') : history.push('/login')
-    }
     return () => {
       setstate({ ...state, password: '' })
       dispatch(clearError())
@@ -45,9 +46,8 @@ const RegisterForm = ({ location }) => {
   const handleChange = (event) => {
     setstate({ ...state, [event.target.name]: event.target.value })
   }
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-
     if ($('#' + 'checkbox').is(':checked')) {
       setformError({
         ...formError,
@@ -56,7 +56,52 @@ const RegisterForm = ({ location }) => {
       if (state.password.length < 6) {
         toast.error('Password Length Must be greater than 6 characters')
       } else {
-        dispatch(signUpStart(state))
+        // dispatch(signUpStart(state))
+        try {
+          setloading(true)
+          const response = await fetchDbPost('api/register', null, state)
+          console.log(response)
+          // setloading(false)
+          if (response.user) {
+            toast.dismiss()
+            toast.success(
+              'We have sent you a verification link. Kindly Verify yourself before logging in!',
+              {
+                position: 'top-right',
+                autoClose: 55000,
+                hideProgressBar: true,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              }
+            )
+            dispatch(signUpSuccess())
+            setloading(false)
+
+            redirect
+              ? history.push({
+                  pathname: '/login?redirect=plans',
+                  email: state.email,
+                })
+              : history.push({ pathname: '/login', email: state.email })
+          } else if (response.error) {
+            setloading(false)
+            // setloading(false)
+            for (const key in response.error) {
+              if (response.error.hasOwnProperty(key)) {
+                // console.log(`${key}: ${response.error[key]}`)
+                console.log(response.error[key][0])
+                toast.error(response.error[key][0])
+              }
+            }
+            dispatch(signUpFailed(response.error))
+          }
+        } catch (err) {
+          setloading(false)
+
+          dispatch(signUpFailed(err.message))
+        }
       }
     } else {
       // $('input[name^=checbox]')[0].focus()

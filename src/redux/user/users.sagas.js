@@ -70,18 +70,18 @@ export function* signUpStart({ payload }) {
   try {
     const response = yield fetchDbPost('api/register', null, payload)
     if (response.user) {
-      toast.success(
-        'We have sent you a verification link. Kindly Verify yourself before logging in!',
-        {
-          position: 'top-center',
-          autoClose: 55000,
-          hideProgressBar: true,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
-      )
+      // toast.success(
+      //   'We have sent you a verification link. Kindly Verify yourself before logging in!',
+      //   {
+      //     position: 'top-center',
+      //     autoClose: 55000,
+      //     hideProgressBar: true,
+      //     closeOnClick: false,
+      //     pauseOnHover: true,
+      //     draggable: true,
+      //     progress: undefined,
+      //   }
+      // )
       yield put(signUpSuccess())
     } else if (response.error) {
       for (const key in response.error) {
@@ -254,10 +254,26 @@ function* forgetPasswordStart({ payload }) {
   try {
     const response = yield fetchDbPost('api/forgot-password', null, payload)
     if (response.response === '200') {
-      toast.success(response.status)
+      toast.success(response.status, {
+        position: 'top-right',
+        autoClose: 55000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
       yield put(forgetPasswordSuccess())
     } else {
-      toast.warn(response.message)
+      toast.warn(response.message, {
+        position: 'top-right',
+        autoClose: 55000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
       yield put(forgetPasswordFailed())
     }
   } catch (error) {

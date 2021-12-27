@@ -11,6 +11,7 @@ import {
 } from '../../redux/user/user.selector'
 import { Spinner } from '../../components/Spinner/Spinner'
 import { Link, useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const ForgetPassword = () => {
   const { register, handleSubmit, reset } = useForm()
@@ -23,6 +24,9 @@ const ForgetPassword = () => {
         // history.push('/')
       }, 3000)
       dispatch(clearError())
+    }
+    return () => {
+      toast.dismiss()
     }
   }, [success])
   const dispatch = useDispatch()

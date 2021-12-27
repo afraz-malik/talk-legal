@@ -22,7 +22,7 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         error: null,
         loading: false,
-        success: true,
+        // success: true,
         currentUser: null,
         token: null,
       }
