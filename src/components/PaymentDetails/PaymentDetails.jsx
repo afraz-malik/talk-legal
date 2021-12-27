@@ -20,6 +20,7 @@ import { toast } from 'react-toastify'
 import { clearingCart } from '../../redux/data/data.action'
 import { cartSelector } from '../../redux/data/data.selector'
 import { fetchDbGet, fetchDbPost } from '../../backend/backend'
+import CreditCards from './CreditCards'
 const initialState = {
   first_name: '',
   last_name: '',
@@ -32,6 +33,7 @@ const initialState = {
   card_holder_name: '',
   expiry: '',
   cvv: '',
+  saveCard: true,
 }
 const PaymentDetails = ({ checkout }) => {
   const dispatch = useDispatch()
@@ -339,12 +341,19 @@ const PaymentDetails = ({ checkout }) => {
             />
           </div>
         </div>
+        <div className={`${PDCss.row} ${PDCss.cardsave}`}>
+          <input type="checkbox" id="cardsave" checked={state.saveCard} />
+          <label htmlFor="cardsave">
+            Save this card for future transactions
+          </label>
+        </div>
         <div className={PDCss.row}>
           <input
             type="submit"
             value={`Pay $${checkout ? checkout.totalValue : 0}`}
           />
         </div>
+        <CreditCards />
       </form>
       {loading ? <Spinner /> : null}
     </div>
