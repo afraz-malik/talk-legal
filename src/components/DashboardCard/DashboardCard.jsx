@@ -31,6 +31,7 @@ const DashboardCard = ({ idx, type, title, form }) => {
 
         if (response.status) {
           setloading(false)
+          toast.dismiss()
           toast.success(response.msg)
           dispatch(clearingCart())
           dispatch(refreshingUser())
@@ -47,6 +48,7 @@ const DashboardCard = ({ idx, type, title, form }) => {
       } catch (e) {
         console.log(e)
         setloading(false)
+        toast.dismiss()
         toast.error(e.message)
       }
     } else {

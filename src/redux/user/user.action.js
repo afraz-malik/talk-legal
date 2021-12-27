@@ -10,7 +10,7 @@ export const refreshingUser = () => {
       fetchDbGet(`api/user/data`, getState().userReducer.token).then(
         ({ user }) => {
           if (user) {
-            // toast.success('Profile Updated Successfully')
+            // toast.dismiss();toast.success('Profile Updated Successfully')
             // sessionStorage.setItem(
             //   'currentUser',
             //   JSON.stringify({

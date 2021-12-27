@@ -90,6 +90,7 @@ const PaymentDetails = ({ checkout }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (!state.country) {
+      toast.dismiss()
       toast.error('Select your country')
     } else {
       console.log(checkout)
@@ -135,9 +136,10 @@ const PaymentDetails = ({ checkout }) => {
                 dispatch(refreshingUser())
                 setloading(false)
                 dispatch(clearingCart())
+                toast.dismiss()
                 toast.success(response.message)
                 // if (checkout.form && !checkout.plan)
-                //   toast.success('Form Completed Successfully')
+                //   toast.dismiss();toast.success('Form Completed Successfully')
                 history.push('/dashboard')
               }
             })
@@ -146,14 +148,16 @@ const PaymentDetails = ({ checkout }) => {
           }
         } catch (error) {
           setloading(false)
+          toast.dismiss()
           toast.error(error.message)
           // console.log(error.message)
         }
         // )
       } else {
+        toast.dismiss()
         toast.error('Cart is Empty')
       }
-      //   toast.success('Payment Success !')
+      //   toast.dismiss();toast.success('Payment Success !')
       //   history.push('/dashboard')
       //   dispatch(clearingCart())
     }

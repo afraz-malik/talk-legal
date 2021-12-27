@@ -44,10 +44,12 @@ function* gettingFormStart({ payload }) {
       yield put(gettingFormSuccess(response))
     } else {
       // document.location.href = '/'
+      toast.dismiss()
       toast.error(response.msg)
       yield put(gettingFormFailed(response.msg))
     }
   } catch (error) {
+    toast.dismiss()
     toast.error(error)
     yield put(gettingFormFailed(error))
   }

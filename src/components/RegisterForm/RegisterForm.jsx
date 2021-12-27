@@ -54,6 +54,7 @@ const RegisterForm = ({ location }) => {
         error: false,
       })
       if (state.password.length < 6) {
+        toast.dismiss()
         toast.error('Password Length Must be greater than 6 characters')
       } else {
         // dispatch(signUpStart(state))
@@ -63,6 +64,7 @@ const RegisterForm = ({ location }) => {
           console.log(response)
           // setloading(false)
           if (response.user) {
+            toast.dismiss()
             toast.dismiss()
             toast.success(
               'We have sent you a verification link. Kindly Verify yourself before logging in!',
@@ -92,6 +94,7 @@ const RegisterForm = ({ location }) => {
               if (response.error.hasOwnProperty(key)) {
                 // console.log(`${key}: ${response.error[key]}`)
                 console.log(response.error[key][0])
+                toast.dismiss()
                 toast.error(response.error[key][0])
               }
             }

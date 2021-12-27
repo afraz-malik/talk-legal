@@ -22,7 +22,7 @@ const AddCard = ({ popup, closePopup }) => {
     if (event.target.name === 'card_number' || event.target.name === 'cvv') {
       // event.preventDefault();
       // console.log(event.target.name, event.target.value);
-      // toast.warn("Enter Only digits");
+      // toast.dismiss();toast.warn("Enter Only digits");
       event.target.value = event.target.value
         .replace(/[^\dA-Z]/g, '')
         .replace(/(.{4})/g, '$1 ')
@@ -40,12 +40,14 @@ const AddCard = ({ popup, closePopup }) => {
     }
     fetchDbPost(`api/user/create-card`, token, payload).then((response) => {
       if (response.status) {
+        toast.dismiss()
         toast.success(response.message)
         dispatch(refreshingUser)
         history.push('/dashboard')
-        //   toast.success('Check Console Log')
+        //   toast.dismiss();toast.success('Check Console Log')
         closePopup()
       } else {
+        toast.dismiss()
         toast.error(response.message)
       }
     })

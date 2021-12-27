@@ -38,6 +38,7 @@ const ChangePassword = () => {
         .then((res) => {
           if (res.status) {
             setState(initialState)
+            toast.dismiss()
             toast.success('Password Changed Successfully')
             setloading(false)
           } else {
@@ -45,10 +46,12 @@ const ChangePassword = () => {
           }
         })
         .catch((e) => {
+          toast.dismiss()
           toast.error(e.message)
           setloading(false)
         })
     } else {
+      toast.dismiss()
       toast.error('Password Not Matched')
     }
   }

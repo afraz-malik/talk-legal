@@ -127,6 +127,7 @@ const Questionaires = ({}) => {
       ).then((response) => {
         if (response.status) {
           setloading(false)
+          toast.dismiss()
           toast.success(response.msg)
           history.push('/dashboard/complete-orders')
           dispatch(clearForm())
@@ -152,6 +153,7 @@ const Questionaires = ({}) => {
               response.user_legal_form.status === '2'
             ) {
               setloading(false)
+              toast.dismiss()
               toast.success(response.msg)
               dispatch(clearingCart())
               history.push('/dashboard')
@@ -163,6 +165,7 @@ const Questionaires = ({}) => {
           }
         } catch (e) {
           setloading(false)
+          toast.dismiss()
           toast.error(e)
         }
       } else {

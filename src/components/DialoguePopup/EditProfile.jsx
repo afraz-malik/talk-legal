@@ -31,6 +31,7 @@ const EditProfile = ({ closePopup, user }) => {
           //   }
           // })
           dispatch(refreshingUser())
+          toast.dismiss()
           toast.success('Profile Updated Successfully')
           setloading(false)
           closePopup()
@@ -40,10 +41,11 @@ const EditProfile = ({ closePopup, user }) => {
         }
       })
       .catch((e) => {
+        toast.dismiss()
         toast.error(e.message)
         setloading(false)
       })
-    // toast.success('Check Console Log')
+    // toast.dismiss();toast.success('Check Console Log')
   }
   return (
     <div className={DialoguePopupCss.edit}>

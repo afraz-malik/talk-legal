@@ -66,40 +66,41 @@ export function* gettingCurrentUser() {
   yield takeLatest('GETTING_USER', gettingCurrentUserStart)
 }
 
-export function* signUpStart({ payload }) {
-  try {
-    const response = yield fetchDbPost('api/register', null, payload)
-    if (response.user) {
-      // toast.success(
-      //   'We have sent you a verification link. Kindly Verify yourself before logging in!',
-      //   {
-      //     position: 'top-center',
-      //     autoClose: 55000,
-      //     hideProgressBar: true,
-      //     closeOnClick: false,
-      //     pauseOnHover: true,
-      //     draggable: true,
-      //     progress: undefined,
-      //   }
-      // )
-      yield put(signUpSuccess())
-    } else if (response.error) {
-      for (const key in response.error) {
-        if (response.error.hasOwnProperty(key)) {
-          // console.log(`${key}: ${response.error[key]}`)
-          console.log(response.error[key][0])
-          toast.error(response.error[key][0])
-        }
-      }
-      yield put(signUpFailed(response.error))
-    }
-  } catch (err) {
-    yield put(signUpFailed(err.message))
-  }
-}
-export function* signUp() {
-  yield takeLatest('SIGN_UP_START', signUpStart)
-}
+// export function* signUpStart({ payload }) {
+//   try {
+//     const response = yield fetchDbPost('api/register', null, payload)
+//     if (response.user) {
+//       // toast.dismiss();toast.success(
+//       //   'We have sent you a verification link. Kindly Verify yourself before logging in!',
+//       //   {
+//       //     position: 'top-center',
+//       //     autoClose: 55000,
+//       //     hideProgressBar: true,
+//       //     closeOnClick: false,
+//       //     pauseOnHover: true,
+//       //     draggable: true,
+//       //     progress: undefined,
+//       //   }
+//       // )
+//       yield put(signUpSuccess())
+//     } else if (response.error) {
+//       for (const key in response.error) {
+//         if (response.error.hasOwnProperty(key)) {
+//           // console.log(`${key}: ${response.error[key]}`)
+//           console.log(response.error[key][0])
+//           toast.dismiss()
+//           toast.error(response.error[key][0])
+//         }
+//       }
+//       yield put(signUpFailed(response.error))
+//     }
+//   } catch (err) {
+//     yield put(signUpFailed(err.message))
+//   }
+// }
+// export function* signUp() {
+//   yield takeLatest('SIGN_UP_START', signUpStart)
+// }
 // ----------------------------------------------------------
 
 export function* signInStart({ payload }) {
@@ -149,25 +150,30 @@ export function* signInStart({ payload }) {
         if (newresponse.status) {
           yield put(addingCartItemSuccess(newresponse.user_legal_form))
           if (newresponse.user_legal_form.status === '2') {
-            yield toast.success(
+            yield toast.dismiss()
+            toast.success(
               `Welcome ${response.user.name}, Your Form has been completed successfully`
             )
             yield put(refreshingUser())
             yield put(clearingCart())
           } else {
-            yield toast.success(`Welcome ${response.user.name}.`)
+            yield toast.dismiss()
+            toast.success(`Welcome ${response.user.name}.`)
           }
         } else {
           console.log(newresponse)
           throw Error(newresponse.msg)
         }
       } else {
-        yield toast.success(`Welcome ${response.user.name}`)
+        yield toast.dismiss()
+        toast.success(`Welcome ${response.user.name}`)
       }
     } else if (response.message) {
+      toast.dismiss()
       toast.error(response.message)
       yield put(signInFailed(response.message))
     } else if (response.user && !response.user.email_verified_at) {
+      toast.dismiss()
       toast.error(
         'Kindly verify your email first. Verify link has sent to this email',
         {
@@ -182,6 +188,7 @@ export function* signInStart({ payload }) {
       )
       throw new Error('Email not verified')
     } else {
+      toast.dismiss()
       toast.error(response)
       yield put(signInFailed(response))
     }
@@ -200,6 +207,7 @@ function* signOutStart() {
   try {
     localStorage.removeItem('currentUser')
     sessionStorage.removeItem('currentUser')
+    toast.dismiss()
     toast.success('Logout Successfully')
     yield put(signOutSuccess())
     yield put(clearingCart())
@@ -211,6 +219,7 @@ function* signOutStart() {
     yield put(signOutSuccess())
     localStorage.removeItem('currentUser')
     sessionStorage.removeItem('currentUser')
+    toast.dismiss()
     toast.success('Logout Successfully')
   }
 }
@@ -226,21 +235,23 @@ function* changePasswordStart({ payload }) {
   try {
     const response = yield fetchDbPost('api/user/change_pass', token, payload)
     if (response.status) {
+      toast.dismiss()
       toast.success('Password Changed Successfully')
       yield put(changePasswordSuccess())
     } else {
       throw new Error(response.msg)
     }
     // if (response.response === '200') {
-    //   toast.success(response.status)
+    //   toast.dismiss();toast.success(response.status)
     //   yield put(forgetPasswordSuccess())
     // } else if (response.response === '500') {
-    //   toast.warn(response.message)
+    //   toast.dismiss();toast.warn(response.message)
     //   yield put(forgetPasswordFailed(response.message))
     // } else {
-    //   toast.error('No Email Found')
+    //   toast.dismiss();toast.error('No Email Found')
     //   yield put(forgetPasswordFailed())
   } catch (error) {
+    toast.dismiss()
     toast.error(error.message)
     yield put(changePasswordFailed(error.message))
   }
@@ -254,6 +265,7 @@ function* forgetPasswordStart({ payload }) {
   try {
     const response = yield fetchDbPost('api/forgot-password', null, payload)
     if (response.response === '200') {
+      toast.dismiss()
       toast.success(response.status, {
         position: 'top-right',
         autoClose: 55000,
@@ -265,6 +277,7 @@ function* forgetPasswordStart({ payload }) {
       })
       yield put(forgetPasswordSuccess())
     } else {
+      toast.dismiss()
       toast.warn(response.message, {
         position: 'top-right',
         autoClose: 55000,
@@ -290,9 +303,11 @@ function* passwordResetStart({ payload }) {
     const response = yield fetchDbPost('api/reset-password', null, payload)
     console.log(response)
     if (response.response === '200') {
-      yield toast.success(response.message)
+      yield toast.dismiss()
+      toast.success(response.message)
       yield put(passwordResetSuccess())
     } else {
+      toast.dismiss()
       toast.error(response.message)
 
       yield put(passwordResetFailed(response.message))
@@ -316,6 +331,7 @@ function* subscribePlanStart({ payload }) {
     )
     if (response.response === '200') {
       yield put(subscribePlanSuccess())
+      toast.dismiss()
       toast.success('Plan Has Been Updated !')
     } else {
       yield put(subscribePlanFailed())
@@ -352,6 +368,7 @@ export function* addCardStart({ payload }) {
   try {
     const response = yield fetchDbPost(`api/user/create-card`, token, payload)
     if (response.status) {
+      toast.dismiss()
       toast.success(response.message)
       yield put(refreshingUser())
     }
