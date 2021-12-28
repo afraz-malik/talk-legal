@@ -278,6 +278,19 @@
         -webkit-appearance: checkbox;
       }
     }
+    .addcc {
+      font-family: Circular Std;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      // line-height: 25px;
+      // text-align: center;
+      cursor: pointer;
+      // letter-spacing: -0.333333px;
+      text-decoration-line: underline;
+      margin: 20px;
+      color: #299ef3;
+    }
   }
 }
 .cccontainer {
@@ -306,7 +319,21 @@
         // left: 30px;
         // display: flex;
         // grid-gap: 20px;
+        .ccname_title {
+          font-family: Cera Pro;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 18px;
+          top: 15px;
+          left: 30px;
+          position: absolute;
+          color: #ffffff;
+
+          opacity: 0.54;
+        }
         .ccname {
+          text-transform: capitalize;
           position: absolute;
           top: 35px;
           left: 30px;
@@ -365,6 +392,7 @@
         }
       }
     }
+    margin: 20px 0;
   }
 }
 

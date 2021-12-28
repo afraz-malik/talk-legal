@@ -45,6 +45,8 @@ const PaymentDetails = ({ checkout }) => {
   const [state, setstate] = React.useState(initialState)
   const [toggle, settoggle] = React.useState(false)
   const [loading, setloading] = useState(false)
+  const [addNewCard, setaddNewCard] = useState(false)
+  const [userCards, setuserCards] = useState([])
   useEffect(() => {
     window.addEventListener('mouseup', clickEvent)
     if (success) {
@@ -59,17 +61,14 @@ const PaymentDetails = ({ checkout }) => {
     }
     // eslint-disable-next-line
   }, [success])
-  // useEffect(() => {
-  //   fetchDbGet(`api/user/cards`, token).then((response) => {
-  //     if (response.response == 200 && response.data.length > 0) {
-  //       setstate({
-  //         ...state,
-  //         card_holder_name: response.data[0].card_holder_name,
-  //         card_number: response.data[0].card_number,
-  //       })
-  //     }
-  //   })
-  // }, [])
+
+  useEffect(() => {
+    fetchDbGet(`api/user/cards`, token).then((response) => {
+      if (response.response == 200) {
+        setuserCards(response.data)
+      }
+    })
+  }, [])
   const clickEvent = (e) => {
     var container = document.getElementById('dd_content')
     if (!container.contains(e.target)) {
@@ -198,6 +197,21 @@ const PaymentDetails = ({ checkout }) => {
         </div>
         <div className={PDCss.row}>
           <div className={PDCss.col}>
+            <label>Phone Number</label>
+            <input
+              type="phone"
+              pattern="[0-9]{8,15}"
+              placeholder="Enter Phone Number"
+              required
+              name="phone"
+              value={state.phone}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={PDCss.col}></div>
+        </div>
+        {/* <div className={PDCss.row}>
+          <div className={PDCss.col}>
             <label>Address</label>
             <input
               type="text"
@@ -208,7 +222,7 @@ const PaymentDetails = ({ checkout }) => {
               onChange={handleChange}
             />
           </div>
-        </div>
+        </div> */}
         <div className={PDCss.row}>
           <div className={`${PDCss.col} ${PDCss.group}`}>
             <label>Billing Address</label>
@@ -266,22 +280,12 @@ const PaymentDetails = ({ checkout }) => {
             </div>
           </div>
         </div>
-        <div className={PDCss.row}>
-          <div className={PDCss.col}>
-            <label>Phone Number</label>
-            <input
-              type="phone"
-              pattern="[0-9]{8,15}"
-              placeholder="Enter Phone Number"
-              required
-              name="phone"
-              value={state.phone}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        {true ? (
-          <CreditCards />
+
+        {console.log(userCards)}
+        {!addNewCard && userCards.length > 0 ? (
+          <>
+            <CreditCards userCards={userCards} />
+          </>
         ) : (
           <>
             <div className={PDCss.row}>
@@ -352,6 +356,15 @@ const PaymentDetails = ({ checkout }) => {
               </label>
             </div>
           </>
+        )}
+        {userCards.length > 0 && addNewCard ? (
+          <span className={PDCss.addcc} onClick={() => setaddNewCard(false)}>
+            OR - Select from cards
+          </span>
+        ) : (
+          <span className={PDCss.addcc} onClick={() => setaddNewCard(true)}>
+            + Add a new Card
+          </span>
         )}
         <div className={PDCss.row}>
           <input

@@ -1,22 +1,29 @@
 import React from 'react'
-import PaymentDetailsCss from './PaymentDetails.module.scss'
-const CreditCards = () => {
+import Pdcss from './PaymentDetails.module.scss'
+const CreditCards = ({ userCards }) => {
   return (
-    <div className={PaymentDetailsCss.cccontainer}>
+    <div className={Pdcss.cccontainer}>
       {/* <h2>Select Your Cards</h2> */}
-      <div className={PaymentDetailsCss.creditcards}>
-        <div className={PaymentDetailsCss.creditcard}>
-          <div className={PaymentDetailsCss.ccdata}>
-            <span className={PaymentDetailsCss.ccname}>Afraz Malik</span>
+      <div className={Pdcss.creditcards}>
+        <div className={Pdcss.creditcard}>
+          <div className={Pdcss.ccdata}>
+            {/* <span className={Pdcss.ccname_title}>Card Holder Name</span> */}
+            <span className={Pdcss.ccname}>
+              {userCards[0].card_holder_name}
+            </span>
             <img
               alt=""
               src="images/Group 1000001899.svg"
-              className={false ? PaymentDetailsCss.active : null}
+              className={true ? Pdcss.active : null}
             />
-            <span className={PaymentDetailsCss.ccnumber}>
-              5282 3456 7890 1289
+            <span className={Pdcss.ccnumber}>
+              {userCards[0].card_number.substring(0, 4)}{' '}
+              &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226;{' '}
+              {userCards[0].card_number.substring(
+                userCards[0].card_number.length - 4
+              )}
             </span>
-            <span className={PaymentDetailsCss.ccexp}>09/25</span>
+            <span className={Pdcss.ccexp}>09/25</span>
           </div>
         </div>
       </div>
