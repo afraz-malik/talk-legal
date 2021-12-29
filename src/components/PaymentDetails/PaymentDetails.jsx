@@ -33,7 +33,7 @@ const initialState = {
   card_holder_name: '',
   expiry: '',
   cvv: '',
-  saveCard: true,
+  save_card: true,
 }
 const PaymentDetails = ({ checkout }) => {
   const dispatch = useDispatch()
@@ -46,7 +46,7 @@ const PaymentDetails = ({ checkout }) => {
   const [toggle, settoggle] = React.useState(false)
   const [loading, setloading] = useState(false)
   const [addNewCard, setaddNewCard] = useState(false)
-  const [userCards, setuserCards] = useState([])
+  const [selectedUserCard, setselectedUserCard] = useState(currentUser.cards[0])
   useEffect(() => {
     window.addEventListener('mouseup', clickEvent)
     if (success) {
@@ -62,13 +62,13 @@ const PaymentDetails = ({ checkout }) => {
     // eslint-disable-next-line
   }, [success])
 
-  useEffect(() => {
-    fetchDbGet(`api/user/cards`, token).then((response) => {
-      if (response.response == 200) {
-        setuserCards(response.data)
-      }
-    })
-  }, [])
+  // useEffect(() => {
+  //   fetchDbGet(`api/user/cards`, token).then((response) => {
+  //     if (response.response == 200) {
+  //       setuserCards(response.data)
+  //     }
+  //   })
+  // }, [])
   const clickEvent = (e) => {
     var container = document.getElementById('dd_content')
     if (!container.contains(e.target)) {
@@ -94,7 +94,6 @@ const PaymentDetails = ({ checkout }) => {
       toast.dismiss()
       toast.error('Select your country')
     } else {
-      console.log(checkout)
       if (checkout.form || checkout.plan) {
         try {
           const payload = {
@@ -112,6 +111,7 @@ const PaymentDetails = ({ checkout }) => {
               ? parseInt(checkout.plan.membership_cost)
               : null,
             plan_id: checkout.plan ? checkout.plan.id : null,
+            card_id: selectedUserCard ? selectedUserCard.id : null,
           }
           setloading(true)
           let response
@@ -134,7 +134,7 @@ const PaymentDetails = ({ checkout }) => {
           if (response.status) {
             await fetchDbGet(`api/user/data`, token).then(({ user }) => {
               if (user) {
-                dispatch(refreshingUser())
+                // dispatch(refreshingUser())
                 setloading(false)
                 dispatch(clearingCart())
                 toast.dismiss()
@@ -145,7 +145,16 @@ const PaymentDetails = ({ checkout }) => {
               }
             })
           } else {
-            throw new Error(response.message)
+            for (const key in response.errors) {
+              if (response.errors.hasOwnProperty(key)) {
+                // console.log(`${key}: ${response.errors[key]}`)
+                console.log(response.errors[key][0])
+                toast.dismiss()
+                toast.error(response.errors[key][0])
+              }
+              // throw new Error(response.message)
+              setloading(false)
+            }
           }
         } catch (error) {
           setloading(false)
@@ -281,10 +290,9 @@ const PaymentDetails = ({ checkout }) => {
           </div>
         </div>
 
-        {console.log(userCards)}
-        {!addNewCard && userCards.length > 0 ? (
+        {!addNewCard && currentUser.cards.length > 0 ? (
           <>
-            <CreditCards userCards={userCards} />
+            <CreditCards userCard={selectedUserCard} />
           </>
         ) : (
           <>
@@ -350,14 +358,21 @@ const PaymentDetails = ({ checkout }) => {
               </div>
             </div>
             <div className={`${PDCss.row} ${PDCss.cardsave}`}>
-              <input type="checkbox" id="cardsave" checked={state.saveCard} />
+              <input
+                type="checkbox"
+                id="cardsave"
+                checked={state.save_card}
+                onClick={(e) =>
+                  setstate({ ...state, save_card: !state.save_card })
+                }
+              />
               <label htmlFor="cardsave">
                 Save this card for future transactions
               </label>
             </div>
           </>
         )}
-        {userCards.length > 0 && addNewCard ? (
+        {currentUser.cards.length > 0 && addNewCard ? (
           <span className={PDCss.addcc} onClick={() => setaddNewCard(false)}>
             OR - Select from cards
           </span>

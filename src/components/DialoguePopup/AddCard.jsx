@@ -42,8 +42,9 @@ const AddCard = ({ popup, closePopup }) => {
       if (response.status) {
         toast.dismiss()
         toast.success(response.message)
-        dispatch(refreshingUser)
-        history.push('/dashboard')
+        dispatch(refreshingUser())
+        // history.push('/dashboard')
+
         //   toast.dismiss();toast.success('Check Console Log')
         closePopup()
       } else {

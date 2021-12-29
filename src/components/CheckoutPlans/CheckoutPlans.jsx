@@ -5,6 +5,7 @@ import CheckoutPlansCss from './CheckoutPlans.module.scss'
 import { useSelector } from 'react-redux'
 
 import { subsctiptionsSelector } from '../../redux/data/data.selector'
+import { currentUserSelector } from '../../redux/user/user.selector'
 
 const CheckoutPlans = ({ location, handlePlan }) => {
   const plans = useSelector((state) => subsctiptionsSelector(state))
@@ -22,6 +23,7 @@ const CheckoutPlans = ({ location, handlePlan }) => {
       desp: 'One time 30-minutes session',
     },
   ]
+  const currentUser = useSelector((state) => currentUserSelector(state))
 
   const [box, setbox] = React.useState({ plansBox: true, adOnsBox: true })
   const [state, setstate] = React.useState({ plan: '', adOns: '' })
@@ -72,38 +74,46 @@ const CheckoutPlans = ({ location, handlePlan }) => {
                 }
               />
             </div>
-            {plans.map((plan, idx) => (
-              <div
-                key={idx}
-                className={`${CheckoutPlansCss.card} ${
-                  state.plan.id === plan.id ? CheckoutPlansCss.activeCard : null
-                }`}
-                style={box.plansBox ? { display: 'flex' } : { display: 'none' }}
-                onClick={() => updatePlan(plan)}
-              >
-                <label className={CheckoutPlansCss.container2}>
-                  <input
-                    type="radio"
-                    name="plans"
-                    checked={state.plan.id === plan.id}
-                    disabled
-                  />
-                  <span className={CheckoutPlansCss.checkmark}></span>
-                </label>
-                <div className={CheckoutPlansCss.text}>
-                  <div className={CheckoutPlansCss.top}>
-                    <h2>{plan.title} Membership</h2>
-                    <h2>${plan.membership_cost}</h2>
+            {plans
+              // .filter(
+              //   (plan, idx) => currentUser.subscription_plan.id != plan.id
+              // )
+              .map((plan, idx) => (
+                <div
+                  key={idx}
+                  className={`${CheckoutPlansCss.card} ${
+                    state.plan.id === plan.id
+                      ? CheckoutPlansCss.activeCard
+                      : null
+                  }`}
+                  style={
+                    box.plansBox ? { display: 'flex' } : { display: 'none' }
+                  }
+                  onClick={() => updatePlan(plan)}
+                >
+                  <label className={CheckoutPlansCss.container2}>
+                    <input
+                      type="radio"
+                      name="plans"
+                      checked={state.plan.id === plan.id}
+                      disabled
+                    />
+                    <span className={CheckoutPlansCss.checkmark}></span>
+                  </label>
+                  <div className={CheckoutPlansCss.text}>
+                    <div className={CheckoutPlansCss.top}>
+                      <h2>{plan.title} Membership</h2>
+                      <h2>${plan.membership_cost}</h2>
+                    </div>
+                    <p>
+                      {plan.no_of_documents === '-1'
+                        ? 'Unlimited'
+                        : plan.no_of_documents}{' '}
+                      number of Documents.
+                    </p>
                   </div>
-                  <p>
-                    {plan.no_of_documents === '-1'
-                      ? 'Unlimited'
-                      : plan.no_of_documents}{' '}
-                    number of Documents.
-                  </p>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
           {/* {state.plan.id === 3 || state.plan === '' ? null : (
             <div className={CheckoutPlansCss.ad_on}>

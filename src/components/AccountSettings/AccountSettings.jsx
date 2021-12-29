@@ -15,30 +15,29 @@ import ChangePassword from './ChangePassword'
 // import Cards from './Cards'
 const AccountSettings = () => {
   const currentUser = useSelector((state) => currentUserSelector(state))
-  const token = useSelector((state) => tokenSelector(state))
+  // const token = useSelector((state) => tokenSelector(state))
   const [state, setstate] = useState({
     activeCard: 'gold',
     user: currentUser,
   })
-  const [userCards, setuserCards] = useState([])
+  // const [userCards, setuserCards] = useState([])
   const [popup, setpopup] = React.useState({
     editProfile: false,
     editCard: false,
   })
-  useEffect(() => {
-    setstate({ ...state, user: currentUser })
-  }, [currentUser])
-  useEffect(() => {
-    fetchDbGet(`api/user/cards`, token).then((response) => {
-      if (response.response == 200) {
-        setuserCards(response.data)
-      }
-    })
-  }, [])
+  // useEffect(() => {
+  //   setstate({ ...state, user: currentUser })
+  // }, [currentUser])
+  // useEffect(() => {
+  //   fetchDbGet(`api/user/cards`, token).then((response) => {
+  //     if (response.response == 200) {
+  //       setuserCards(response.data)
+  //     }
+  //   })
+  // }, [])
   const closePopup = () => {
     setpopup({ editCard: false, editProfile: false })
   }
-  console.log(userCards)
   return (
     <div className={AccountSettingsCss.container}>
       <div className={AccountSettingsCss.top}>
@@ -100,7 +99,7 @@ const AccountSettings = () => {
       <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do.</p>
       <div className={AccountSettingsCss.ad_ons}>
         <div className={AccountSettingsCss.ad_on}>
-          {userCards.map((card) => (
+          {currentUser.cards.map((card) => (
             <div
               className={`${AccountSettingsCss.card} ${
                 card.is_active === '1' ? AccountSettingsCss.activeCard : null
