@@ -46,7 +46,9 @@ const PaymentDetails = ({ checkout }) => {
   const [toggle, settoggle] = React.useState(false)
   const [loading, setloading] = useState(false)
   const [addNewCard, setaddNewCard] = useState(false)
-  const [selectedUserCard, setselectedUserCard] = useState(currentUser.cards[0])
+  const [selectedUserCard, setselectedUserCard] = useState(
+    addNewCard ? null : currentUser.cards[0]
+  )
   useEffect(() => {
     window.addEventListener('mouseup', clickEvent)
     if (success) {
@@ -62,13 +64,6 @@ const PaymentDetails = ({ checkout }) => {
     // eslint-disable-next-line
   }, [success])
 
-  // useEffect(() => {
-  //   fetchDbGet(`api/user/cards`, token).then((response) => {
-  //     if (response.response == 200) {
-  //       setuserCards(response.data)
-  //     }
-  //   })
-  // }, [])
   const clickEvent = (e) => {
     var container = document.getElementById('dd_content')
     if (!container.contains(e.target)) {
@@ -111,7 +106,8 @@ const PaymentDetails = ({ checkout }) => {
               ? parseInt(checkout.plan.membership_cost)
               : null,
             plan_id: checkout.plan ? checkout.plan.id : null,
-            card_id: selectedUserCard ? selectedUserCard.id : null,
+            card_id:
+              selectedUserCard && !addNewCard ? selectedUserCard.id : null,
           }
           setloading(true)
           let response
@@ -145,16 +141,17 @@ const PaymentDetails = ({ checkout }) => {
               }
             })
           } else {
-            for (const key in response.errors) {
-              if (response.errors.hasOwnProperty(key)) {
-                // console.log(`${key}: ${response.errors[key]}`)
-                console.log(response.errors[key][0])
-                toast.dismiss()
-                toast.error(response.errors[key][0])
-              }
-              // throw new Error(response.message)
-              setloading(false)
-            }
+            // for (const key in response.errors) {
+            // if (response.errors.hasOwnProperty(key)) {
+            //   // console.log(`${key}: ${response.errors[key]}`)
+            //   console.log(response.errors[key][0])
+            //   toast.dismiss()
+            //   toast.error(response.errors[key][0])
+            // }
+            // throw new Error(response.message)
+            // }
+            toast.error(response.message)
+            setloading(false)
           }
         } catch (error) {
           setloading(false)

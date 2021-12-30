@@ -44,7 +44,7 @@ const SubsciptionType = ({ subscription_plan }) => {
     link.target = '_blank'
     link.download = 'Legal Document'
     axios({
-      url: `http://tlts-back.maqware.com/api/download-invoice/${id}`,
+      url: `http://tlts-back.maqware.com/api/user/download-invoice/${id}`,
       method: 'get',
       headers: {
         Accept: 'application/pdf',
@@ -92,7 +92,7 @@ const SubsciptionType = ({ subscription_plan }) => {
             </div>
             <div className={SubTypeCss.center}>
               <p>
-                Date of invoice -
+                Date of invoice -{' '}
                 <span>{moment(arr.created_at).format('MMM Do, YYYY')}</span>
               </p>
             </div>

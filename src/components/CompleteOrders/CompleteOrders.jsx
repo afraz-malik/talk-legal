@@ -137,16 +137,18 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                           src="images/Inbox - In.svg"
                           onClick={() => getPdf(form.id)}
                         />
-                        <img
-                          alt=""
-                          src="images/Edit.svg"
-                          onClick={() => editForm(form)}
-                        />
-                        <img
+                        {form.edit_days_left === 0 ? null : (
+                          <img
+                            alt=""
+                            src="images/Edit.svg"
+                            onClick={() => editForm(form)}
+                          />
+                        )}
+                        {/* <img
                           alt=""
                           src="images/Trash.svg"
                           onClick={() => setpopup(true)}
-                        />
+                        /> */}
                       </td>
                     </tr>
                   )
