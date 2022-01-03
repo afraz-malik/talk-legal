@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Logo from '../NavBar/Logo'
 
 import LoginBoxmodelCss from './LoginBoxmodel.module.scss'
 const LoginBoxmodel = ({ children }) => {
@@ -18,8 +19,11 @@ const LoginBoxmodel = ({ children }) => {
           <div className={LoginBoxmodelCss.helper}></div>
           <div className={LoginBoxmodelCss.text}>
             <h3>
-              <Link to="/">TalkLegal</Link>
+              <Link to="/">
+                <img alt="" src="images/Group 1000001981.svg" />
+              </Link>
             </h3>
+            {/* <Logo /> */}
 
             <div>
               <p>

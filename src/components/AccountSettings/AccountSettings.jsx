@@ -35,7 +35,10 @@ const AccountSettings = () => {
   //     }
   //   })
   // }, [])
-  const closePopup = () => {
+  useEffect(() => {
+    setstate({ ...state, user: currentUser })
+  }, [popup, currentUser])
+  function closePopup() {
     setpopup({ editCard: false, editProfile: false })
   }
   return (

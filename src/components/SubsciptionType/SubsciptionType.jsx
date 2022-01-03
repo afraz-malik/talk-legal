@@ -15,6 +15,7 @@ import SubTypeCss from './SubsciptionType.module.scss'
 import { fetchDbGet } from '../../backend/backend'
 import axios from 'axios'
 import SubscriptionDetails from './SubscriptionDetails'
+import PaymentPlans from '../../pages/PaymentPlans/PaymentPlans'
 
 const SubsciptionType = ({ subscription_plan }) => {
   const loading = useSelector((state) => LoadingSelector(state))
@@ -74,7 +75,8 @@ const SubsciptionType = ({ subscription_plan }) => {
           setpopup={setpopup}
         />
       ) : (
-        <span>You don't have any subscriptions yet. Subscribe Now</span>
+        // <span>You don't have any subscriptions yet. Subscribe Now</span>
+        <PaymentPlans nologo={true} />
       )}
 
       <div className={SubTypeCss.invoices}>

@@ -20,9 +20,11 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
   const closePopup = () => {
     setpopup(false)
   }
+
   const completeUserLegalforms = userLegalForms.filter(
     (form) => form.status === '2'
   )
+  console.log(completeUserLegalforms)
   const [newloading, setloading] = useState(false)
 
   const refinedForms = completeUserLegalforms.filter((form) =>
@@ -75,12 +77,13 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
   for (let i = 1; i <= Math.ceil(paginateArray / 5); i++) {
     pageNumbers.push(i)
   }
-  let totalPages = 1
+  let totalPages
+
   if (currentPage > totalPages) setcurrentPage(1)
   if (paginateArray.length === 0) {
     totalPages = 1
   } else {
-    totalPages = Math.ceil(paginateArray.length / 5)
+    totalPages = Math.ceil(refinedForms.length / 5)
   }
   return (
     <div className={COrdersCss.container}>
@@ -89,7 +92,7 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
         <InsideSpinner />
       ) : completeUserLegalforms.length === 0 ? (
         <div className={COrdersCss.noforms}>
-          <span>You don't have any open orders yet ! </span>
+          <span>You don't have any complete orders yet ! </span>
         </div>
       ) : (
         <>

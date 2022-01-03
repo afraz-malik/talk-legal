@@ -20,7 +20,7 @@ import { fetchDbPost } from '../../backend/backend'
 const RegisterForm = ({ location }) => {
   const [state, setstate] = useState({
     name: '',
-    lname: '',
+    last_name: '',
     email: '',
     password: '',
     // phone: "+92 324 8205435",
@@ -55,7 +55,7 @@ const RegisterForm = ({ location }) => {
       })
       if (state.password.length < 6) {
         toast.dismiss()
-        toast.error('Password Length Must be greater than 6 characters')
+        toast.error('Password length must be greater than six characters.')
       } else {
         // dispatch(signUpStart(state))
         try {
@@ -146,10 +146,10 @@ const RegisterForm = ({ location }) => {
         <label>Last name*</label>
         <input
           type="text"
-          name="lname"
+          name="last_name"
           placeholder="Enter your last name"
           onChange={handleChange}
-          value={state.lname}
+          value={state.last_name}
           required
         />
 

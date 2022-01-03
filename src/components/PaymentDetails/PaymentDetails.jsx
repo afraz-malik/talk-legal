@@ -373,11 +373,11 @@ const PaymentDetails = ({ checkout }) => {
           <span className={PDCss.addcc} onClick={() => setaddNewCard(false)}>
             OR - Select from cards
           </span>
-        ) : (
+        ) : currentUser.cards.length > 0 ? (
           <span className={PDCss.addcc} onClick={() => setaddNewCard(true)}>
             + Add a new Card
           </span>
-        )}
+        ) : null}
         <div className={PDCss.row}>
           <input
             type="submit"
