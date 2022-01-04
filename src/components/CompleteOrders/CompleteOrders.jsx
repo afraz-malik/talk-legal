@@ -78,13 +78,16 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
     pageNumbers.push(i)
   }
   let totalPages
-
-  if (currentPage > totalPages) setcurrentPage(1)
-  if (paginateArray.length === 0) {
+  if (refinedForms.length === 0) {
     totalPages = 1
   } else {
     totalPages = Math.ceil(refinedForms.length / 5)
   }
+
+  if (currentPage > totalPages) {
+    setcurrentPage(totalPages)
+  }
+  if (currentPage <= 0) setcurrentPage(1)
   return (
     <div className={COrdersCss.container}>
       {newloading ? <Spinner /> : null}
@@ -106,8 +109,19 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
               />
               <img alt="" src="images/Group 18.svg" />
             </div>
-            <img alt="" src="images/Button.svg" />
-            <img alt="" src="images/icon.svg" />
+            <div>
+              <img alt="" src="images/Button.svg" />
+              {/* 
+              <ul>
+                <li>Sort By:</li>
+                <li>Title</li>
+                <li>Date</li>
+                <li>Time Left</li>
+              </ul> */}
+            </div>
+            <div>
+              <img alt="" src="images/icon.svg" />
+            </div>
           </div>
           <div className={COrdersCss.table}>
             <table>
@@ -158,9 +172,15 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                 })}
               </tbody>
             </table>
+            {console.log(currentPage)}
           </div>
           <div className={COrdersCss.pages}>
-            <div className={COrdersCss.back}>&lt;</div>
+            <div
+              className={COrdersCss.back}
+              onClick={() => setcurrentPage(currentPage - 1)}
+            >
+              &lt;
+            </div>
             {[...Array(totalPages)].map((i, j) => (
               <NumberGen
                 counter={j + 1}
@@ -168,7 +188,12 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                 currentPage={currentPage}
               />
             ))}
-            <div className={COrdersCss.front}>&gt;</div>
+            <div
+              className={COrdersCss.front}
+              onClick={() => setcurrentPage(currentPage + 1)}
+            >
+              &gt;
+            </div>
           </div>
         </>
       )}

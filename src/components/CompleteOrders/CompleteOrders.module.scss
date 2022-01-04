@@ -37,8 +37,24 @@
         color: #9a9ab0;
       }
     }
-    img {
-      cursor: pointer;
+    .toggle {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      img {
+        cursor: pointer;
+        // width: 25px;
+      }
+    }
+    .dditems {
+      display: flex;
+      flex-direction: column;
+      z-index: 99999999;
+      background-color: pink;
+      .dditem {
+        padding: 10px;
+        z-index: 99999999;
+      }
     }
   }
   .table {
@@ -147,7 +163,7 @@
       font-size: 14px;
       line-height: 20px;
       /* or 143% */
-
+      user-select: none;
       text-align: center;
 
       /* Dark Grey / 400 */
