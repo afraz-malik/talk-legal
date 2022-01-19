@@ -6,6 +6,7 @@ export const fetchDbPost = async (url, token, payload) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Accept: 'application/json',
         'Access-Control-Allow-Origin': '*',
         Authorization: 'Bearer ' + token,
         mode: 'no-cors',
