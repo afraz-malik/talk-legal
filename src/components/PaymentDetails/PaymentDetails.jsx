@@ -47,7 +47,7 @@ const PaymentDetails = ({ checkout }) => {
   const [loading, setloading] = useState(false)
   const [addNewCard, setaddNewCard] = useState(false)
   const [selectedUserCard, setselectedUserCard] = useState(
-    addNewCard ? null : currentUser.cards[0]
+    addNewCard ? null : currentUser.cards.filter(card => card.is_active == 1)[0]
   )
   useEffect(() => {
     window.addEventListener('mouseup', clickEvent)

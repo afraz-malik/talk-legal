@@ -13,8 +13,8 @@ export const fetchDbPost = async (url, token, payload) => {
       },
       body: JSON.stringify(payload),
     })
-      .then((res) => res.json())
-      .catch((error) => console.log(error))
+    .then((res) => res.json())
+    .catch((error) => console.log(error))
   } catch (error) {
     console.log(error)
   }

@@ -19,7 +19,7 @@ const CreditCards = ({ userCard }) => {
               &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226;{' '}
               {userCard.card_number.substring(userCard.card_number.length - 4)}
             </span>
-            <span className={Pdcss.ccexp}>09/25</span>
+            <span className={Pdcss.ccexp}>{userCard.expiry_month > 9 ? userCard.expiry_month : '0'+userCard.expiry_month}/{userCard.expiry_year.substring(2)}</span>
           </div>
         </div>
       </div>

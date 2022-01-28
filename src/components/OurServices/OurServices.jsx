@@ -5,7 +5,8 @@ const OurServices = () => {
   return (
     <div className={OurServicesCss.container} id="Services">
       <h2>
-        Our <span>Services</span>
+        Our <span>Documents</span>
+        {/*Our <span>Services</span>*/}
       </h2>
       <div className={OurServicesCss.cards}>
         <div className={OurServicesCss.card1}>

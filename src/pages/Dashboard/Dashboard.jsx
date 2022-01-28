@@ -6,6 +6,7 @@ import OpenOrders from '../../components/OpenOrders/OpenOrders'
 import CompleteOrders from '../../components/CompleteOrders/CompleteOrders'
 import SubsciptionType from '../../components/SubsciptionType/SubsciptionType'
 import AccountSettings from '../../components/AccountSettings/AccountSettings'
+import Refund from '../../components/Refund/Refund'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 
 import { currentUserSelector } from '../../redux/user/user.selector'
@@ -100,6 +101,12 @@ const Dashboard = ({ match }) => {
               <AccountSettings currentUser={currentUser} />
             </Boxmodel>
           </Route>
+          <Route exact path={`${match.path}/refund`} >
+            <Boxmodel title="Refund">
+              <Refund loading={loading} />
+            </Boxmodel>
+          </Route>
+
           <Redirect to={match.path} />
         </Switch>
       </div>

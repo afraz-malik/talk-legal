@@ -10,6 +10,8 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { savingFormInState } from '../../redux/data/data.action'
 import { useHistory } from 'react-router-dom'
+import swal from 'sweetalert';
+
 const CompleteOrders = ({ userLegalForms, loading }) => {
   const [popup, setpopup] = React.useState(false)
   const token = useSelector((state) => state.userReducer.token)
@@ -26,10 +28,43 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
   )
   console.log(completeUserLegalforms)
   const [newloading, setloading] = useState(false)
-
+  
   const refinedForms = completeUserLegalforms.filter((form) =>
     form.title.toLowerCase().includes(search.toLowerCase())
   )
+
+  // refund form function
+  const refundSwal = (form_id) => {
+    swal({
+      title: "Are you sure?",
+      text: "When you apply for refund, you have to wait for the admin response!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willRefund) => {
+      if (willRefund) {
+        axios({
+          url: `http://tlts-back.maqware.com/api/user/apply-for-refund/${form_id}`,
+          method: 'get',
+          headers: {
+            Accept: 'application/pdf',
+            'Content-Type': 'application/pdf',
+            mode: 'no-cors',
+            Authorization: 'Bearer ' + token,
+          }
+        }).then((res) => {
+          console.log(res);
+          swal(res.status, {
+            icon: "success",
+          });
+        })
+        .catch((err) => setloading(false))
+      }
+    });
+  }
+
+  // edit form function
   const editForm = (form) => {
     console.log(form.legal_form_detail)
     dispatch(savingFormInState(form.legal_form_detail))
@@ -57,15 +92,15 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
       },
       responseType: 'blob',
     })
-      .then((res) => {
-        link.href = URL.createObjectURL(
-          new Blob([res.data], { type: 'application/pdf' })
-        )
-        link.click()
-        setloading(false)
-        console.log('here')
-      })
-      .catch((err) => setloading(false))
+    .then((res) => {
+      link.href = URL.createObjectURL(
+        new Blob([res.data], { type: 'application/pdf' })
+      )
+      link.click()
+      setloading(false)
+      console.log('here')
+    })
+    .catch((err) => setloading(false))
   }
 
   const paginate = (array, page_size, page_number) => {
@@ -149,9 +184,10 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                         </span>
                       </td>
                       <td>
-                        <img
+                        <img 
                           alt=""
                           src="images/Inbox - In.svg"
+                          title="Download"
                           onClick={() => getPdf(form.id)}
                         />
                         {form.edit_days_left === 0 ? null : (
@@ -159,6 +195,15 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
                             alt=""
                             src="images/Edit.svg"
                             onClick={() => editForm(form)}
+                            title="Edit Document"
+                          />
+                        )}
+                        {form.refund_days_left === 0 ? null : (
+                          <img
+                          alt=""
+                          src="images/refund-purple.svg"
+                          title="Refund"
+                          onClick={() => refundSwal(form.id)}
                           />
                         )}
                         {/* <img

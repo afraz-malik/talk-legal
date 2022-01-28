@@ -5,6 +5,7 @@ const Boxmodel = ({ title, children }) => {
     <div className={DashboardCss.boxmodel}>
       <h1>{title}</h1>
       <div className={DashboardCss.boxmodel_body}>{children}</div>
+
     </div>
   )
 }

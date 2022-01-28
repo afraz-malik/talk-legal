@@ -26,7 +26,8 @@ const SideBar = ({ match, location }) => {
             }
           >
             <img alt="" src="images/open-order.svg" />
-            <span> Open Order </span>
+            <span> Open Document </span>
+            {/*<span> Open Order </span>*/}
           </li>
         </Link>
         <Link to={`${match.path}/complete-orders`}>
@@ -38,7 +39,8 @@ const SideBar = ({ match, location }) => {
             }
           >
             <img alt="" src="images/complete-order.svg" />
-            <span> Complete Order </span>
+            <span> Complete Document </span>
+            {/*<span> Complete Order </span>*/}
           </li>
         </Link>
         <Link to={`${match.path}/subscription`}>
@@ -63,6 +65,19 @@ const SideBar = ({ match, location }) => {
           >
             <img alt="" src="images/settings.svg" />
             <span> Account Setting </span>
+          </li>
+        </Link>
+        <Link to={`${match.path}/refund`}>
+          <li
+            className={
+              location.pathname === `${match.path}/refund`
+                ? DashboardCss.active
+                : null
+            }
+          >
+            {/* <img alt="" src="images/refunds.svg" /> */}
+            <img alt="" src="images/Swap.png" />
+            <span> Refunds </span>
           </li>
         </Link>
       </ul>

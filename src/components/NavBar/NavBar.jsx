@@ -64,7 +64,7 @@ const NavBar = ({ currentPage }) => {
         <div className={NavBarCss.left}>
           <Link to="/">
             <h3>
-              <img alt="" src="images/Full-Trans 2.svg" />
+              <img alt="" src="images/Full-Trans 2.svg"/>
             </h3>
           </Link>
         </div>
