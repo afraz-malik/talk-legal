@@ -4,7 +4,7 @@ import FooterCss from './Footer.module.scss'
 const Footer = () => {
   return (
     <div className={FooterCss.footer}>
-      <div className={FooterCss.top}>
+      <div className={FooterCss.top} id="about">
         <h3>TalkLegal</h3>
         <div className={FooterCss.links}>
           <h5>Ready to get started?</h5>

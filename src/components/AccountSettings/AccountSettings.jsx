@@ -1,29 +1,77 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch , useSelector } from 'react-redux'
 import { fetchDbGet } from '../../backend/backend'
-
-import {
-	currentUserSelector,
-	tokenSelector,
-} from '../../redux/user/user.selector'
+import { currentUserSelector , tokenSelector } from '../../redux/user/user.selector'
+import { refreshingUser } from '../../redux/user/user.action'
+import { toast } from 'react-toastify'
 import AddCard from '../DialoguePopup/AddCard'
 import DialoguePopup from '../DialoguePopup/DialoguePopup'
 import EditProfile from '../DialoguePopup/EditProfile'
 import Preview from '../Preview/Preview'
 import AccountSettingsCss from './AccountSettings.module.scss'
 import ChangePassword from './ChangePassword'
+import swal from 'sweetalert'
 
 const AccountSettings = () => {
 	const currentUser = useSelector((state) => currentUserSelector(state))
+	const token = useSelector((state) => state.userReducer.token)
+	const dispatch = useDispatch()
 	const [state, setstate] = useState({
 		activeCard: 'gold',
 		user: currentUser,
 	})
 
-	const [popup, setpopup] = React.useState({
+
+	const [popup, setpopup] = useState({
 		editProfile: false,
 		editCard: false,
 	})
+
+	const changeActiveCard = (card) => {
+		if (card.is_active != '1') {
+			swal({
+				title: "Are you sure?",
+				text: "Do you want use this card as an active card?",
+				buttons: true,
+			})
+			.then((changeActive) => {
+				if (changeActive) {
+					fetchDbGet(`api/user/change-active-card/${card.id}`, token).then((res) => {
+						if(res.status){
+							dispatch(refreshingUser())
+							toast.success(res.message)
+						} else {
+							toast.error('Failed to Update user card.')
+						}
+					})
+				}
+			});
+		}
+	}
+
+	const removeCard = (card) => {
+		if (card.is_active != '1') {
+			swal({
+				title: "Are you sure?",
+				text: "You want to remove this card!",
+				icon: "error",
+				buttons: true,
+				dangerMode: true,
+			})
+			.then((changeActive) => {
+				if (changeActive) {
+					fetchDbGet(`api/user/delete-card/${card.id}`, token).then((res) => {
+						if(res.status){
+							dispatch(refreshingUser())
+							toast.success(res.message)
+						} else {
+							toast.error('Failed to Remove Card.')
+						}
+					})
+				}
+			});
+		}
+	}
 
 	useEffect(() => {
 		setstate({ ...state, user: currentUser })
@@ -48,7 +96,7 @@ const AccountSettings = () => {
 						<label>First Name</label>
 						<input
 							type="text"
-							placeholder="Enter First Name"
+							placeholder="First Name"
 							value={state.user.name}
 							disabled
 						/>
@@ -57,7 +105,7 @@ const AccountSettings = () => {
 						<label>Last Name</label>
 						<input
 							type="text"
-							placeholder="Enter First Name"
+							placeholder="Last Name"
 							value={state.user.last_name}
 							disabled
 						/>
@@ -66,16 +114,16 @@ const AccountSettings = () => {
 						<label>Phone Number</label>
 						<input
 							type="text"
-							placeholder="Enter Phone Number"
+							placeholder="Phone Number"
 							value={state.user.phone}
 							disabled
 						/>
 					</div>
 					<div className={AccountSettingsCss.col}>
-						<label>Email </label>
+						<label>Email Address</label>
 						<input
 							type="text"
-							placeholder="Email"
+							placeholder="Email Address"
 							value={state.user.email}
 							disabled
 						/>
@@ -102,12 +150,14 @@ const AccountSettings = () => {
 							}`}
 							onClick={() => setstate({ ...state, plans: 'silver' })}
 						>
-							<label className={AccountSettingsCss.container2}>
+							<label className={AccountSettingsCss.container2} htmlFor={'radio_card_'+card.id}>
 								<input
 									type="radio"
 									name="plans"
 									value="silver"
+									id={'radio_card_'+card.id}
 									checked={card.is_active === '1'}
+									onChange={() => changeActiveCard(card)}
 								/>
 								<span className={AccountSettingsCss.checkmark}></span>
 							</label>
@@ -118,6 +168,14 @@ const AccountSettings = () => {
 								</h2>
 								<img alt="" src="images/path3789.svg" />
 							</div>
+
+							{ card.is_active != '1' ? 
+							<span 
+								className={AccountSettingsCss.cross_span} 
+								onClick={() => {removeCard(card)}}
+							>
+								<img alt="" src="images/x-circle.png"/>
+							</span> : null}
 						</div>
 					))}
 				</div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import OurServicesCss from './OurServices.module.scss'
 const OurServices = () => {
   return (
-    <div className={OurServicesCss.container} id="Services">
+    <div className={OurServicesCss.container} id="documents">
       <h2>
         Our <span>Documents</span>
         {/*Our <span>Services</span>*/}

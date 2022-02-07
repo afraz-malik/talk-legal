@@ -31,24 +31,28 @@ const Routes = () => {
 
       {/* Public Routes */}
       <PublicRoute restricted={false} exact path="/" component={HomePage} />
+      
       <PublicRoute
         restricted={false}
         exact
         path="/business"
         component={BusinessOpPage}
       />
+      
       <PublicRoute
         restricted={false}
         exact
         path="/startups-and-entrepreneurship"
         component={StartupAndPage}
       />
+      
       <PublicRoute
         restricted={false}
         exact
         path="/social-media-and-freelancing"
         component={SocialMediaPage}
       />
+      
       <PublicRoute
         restricted={false}
         exact
@@ -62,6 +66,7 @@ const Routes = () => {
         path="/formgenerator"
         component={FormGenerator}
       />
+      
       <PublicRoute
         restricted={false}
         exact
