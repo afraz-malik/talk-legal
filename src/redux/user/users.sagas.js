@@ -59,7 +59,7 @@ function* gettingCurrentUserStart() {
       })
     )
   } else {
-    console.log('No User found')
+    // console.log('No User found')
   }
 }
 export function* gettingCurrentUser() {

@@ -100,15 +100,22 @@ function* gettingUserLegalForms() {
   const state = yield select()
   const token = state.userReducer.token
   const uid = state.userReducer.currentUser.id
+  
+  const response = yield fetchDbGet(`api/user/legal-forms`, token)
+
   try {
-    const response = yield fetchDbGet(`api/user/legal-forms`, token)
+    console.log(response)
     if (response.user_legal_forms) {
       yield put(gettingUserLegalFormsSucces(response.user_legal_forms))
     } else {
       throw new Error(response.msg)
     }
   } catch (error) {
+    if (response.message == 'Unauthenticated.') {
+      console.log(response.message)
+    }
     yield put(gettingUserLegalFormsFailed(error.message))
+    console.log('error.message')
     console.log(error.message)
   }
 }

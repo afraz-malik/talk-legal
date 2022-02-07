@@ -113,13 +113,13 @@
 	}
 	.doller{
 		margin-top: 15px;
-		width: 35px;
-		height: 35px;
+		width: 150px;
+		height: 45px;
 		font-family: Circular Std;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 28px;
-		line-height: 35px;
+		font-size: 40px;
+		line-height: 40px;
 		text-align: right;
 		color: #FFFFFF;
 	}
@@ -240,6 +240,49 @@
 					}
 				}
 			}
+		}
+	}
+	.pages {
+		display: flex;
+		margin-top: 30px;
+		
+		.back,
+		.front,
+		.numbers {
+			font-family: SF Pro Text;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 20px;
+			/* or 143% */
+			user-select: none;
+			text-align: center;
+
+			/* Dark Grey / 400 */
+			color: #212b36;
+
+			border-radius: 7px;
+			margin-right: 10px;
+			height: 30px;
+			width: 30px;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			background: #ffffff;
+			border: 1px solid #dfe3e8;
+			box-sizing: border-box;
+			border-radius: 4px;
+
+			&:hover {
+				border: 2px solid #4200ff;
+				color: #4200ff;
+			}
+		}
+		.front,
+		.back {
+			color: #c4cdd5;
 		}
 	}
 }

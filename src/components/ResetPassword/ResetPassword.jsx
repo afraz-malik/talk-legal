@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import ResetPasswordCss from './ResetPassword.module.scss'
 import { useHistory, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  LoadingSelector,
-  successSelector,
-} from '../../redux/user/user.selector'
+import { LoadingSelector, successSelector } from '../../redux/user/user.selector'
+import { Link } from 'react-router-dom'
 import { Spinner } from '../../components/Spinner/Spinner'
 import { useForm } from 'react-hook-form'
 import { clearError, passwordResetStart } from '../../redux/user/user.action'
@@ -94,8 +92,6 @@ const ResetPassword = () => {
             id="password_confirmation"
             onChange={handleChange}
             value={state.password_confirmation}
-
-            // {...register('password_confirmation')}
           />
           <img
             alt=""
@@ -107,11 +103,12 @@ const ResetPassword = () => {
         <input
           type="submit"
           value="Reset Password"
-          // onClick={() => {
-          //   alert('Change Successfully')
-          //   history.push('/')
-          // }}
         />
+        <div style={{ textAlign: 'center' }}>
+          <Link to="/login" style={{ borderBottom: '1px solid lightgrey' }}>
+            &#8592; Go Back
+          </Link>
+        </div>
       </form>
       {loading ? <Spinner /> : null}
     </div>
