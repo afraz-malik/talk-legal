@@ -86,10 +86,11 @@ const SubsciptionType = ({ subscription_plan }) => {
 						<div className={SubTypeCss.left}>
 							<img alt="" src="images/Group 1000001813.svg" />
 							<h5>
-								Invoice_2021/December.pdf <br />
+								Invoice({moment(arr.created_at).format('MMM Do, YYYY')}).pdf <br />
+								{/*Invoice_2021/December.pdf <br />
 								<p>
 									Date of invoice -<span> October 31, 2017</span>
-								</p>
+								</p>*/}
 							</h5>
 						</div>
 						<div className={SubTypeCss.center}>

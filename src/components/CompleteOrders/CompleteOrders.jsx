@@ -155,6 +155,7 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
 									<td>Document Type</td>
 									<td>Date</td>
 									<td>Time Left</td>
+									<td>Status</td>
 									<td>Actions</td>
 								</tr>
 							</thead>
@@ -171,6 +172,11 @@ const CompleteOrders = ({ userLegalForms, loading }) => {
 												<span>
 													<i className="fal fa-clock"></i> {form.edit_days_left}{' '}
 													Days left
+												</span>
+											</td>
+											<td>
+												<span>
+												{form.refund_status == 0 ? 'Completed' : form.refund_status == 1 ? 'Applied for Refund' : form.refund_status == 2 ? 'Refund Accepted' : 'Refund Rejected'}
 												</span>
 											</td>
 											<td>

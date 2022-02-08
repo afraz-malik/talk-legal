@@ -65,7 +65,6 @@ const ChangePassword = () => {
 					<input
 						type="password"
 						placeholder="Enter Current Password"
-						// defaultValue="Johnfudoe"
 						id="cp"
 						required
 						name="old_password"
@@ -102,7 +101,7 @@ const ChangePassword = () => {
 					<input
 						type="password"
 						required
-						placeholder="Enter New Password again"
+						placeholder="Confirm Password"
 						id="rp"
 						name="password_confirmation"
 						onChange={handleChange}

@@ -182,7 +182,7 @@ const AccountSettings = () => {
 			</div>
 			{popup.editProfile ? (
 				<Preview>
-					<DialoguePopup title={'Edit Your Profile'} closePopup={closePopup}>
+					<DialoguePopup title={'Edit Your Profile'} closePopup={closePopup} close={true}>
 						<EditProfile
 							popup={popup}
 							closePopup={closePopup}
@@ -193,7 +193,7 @@ const AccountSettings = () => {
 			) : null}
 			{popup.editCard ? (
 				<Preview>
-					<DialoguePopup title={'Add Card'} closePopup={closePopup}>
+					<DialoguePopup title={'Add Card'} closePopup={closePopup} close={true}>
 						<AddCard closePopup={closePopup} />
 					</DialoguePopup>
 				</Preview>
