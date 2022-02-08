@@ -20,7 +20,7 @@ const Refund = ({ loading }) => {
 		})
 
 		fetchDbGet('api/user/user-wallet-balance', token).then((res) => {
-			setWalletBalance(res.response)
+			setWalletBalance(res.data)
 		})
 
 	}, []);

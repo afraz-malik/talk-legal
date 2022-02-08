@@ -1,247 +1,242 @@
 .container {
-  //   margin: 50px;
-  display: flex;
-  flex-direction: column;
-  grid-gap: 30px;
-  .body {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin: auto;
-    .navigation {
-      width: 20%;
-      ul {
-        list-style-type: none;
-        // width: 230px;
-        //   margin: auto;
-        margin-top: 0;
-        padding: 0;
-        padding-right: 30px;
-        display: flex;
-        flex-direction: column;
-        grid-gap: 20px;
-        justify-content: flex-start;
-        align-items: flex-start;
-        a {
-          display: flex;
-          width: 100%;
-        }
-        li {
-          display: flex;
-          align-items: center;
-          // justify-content: center;
-          grid-gap: 10px;
-          cursor: pointer;
-          // background: #7854f7;
-          // border-radius: 5px;
-          width: 100%;
-          padding: 10px 20px;
-          height: 50px;
-          font-family: Circular Std;
-          font-style: normal;
-          font-weight: 500;
-          font-size: 14px;
-          line-height: 20px;
-          /* identical to box height, or 125% */
+	//   margin: 50px;
+	display: flex;
+	flex-direction: column;
+	grid-gap: 30px;
+	.body {
+		display: flex;
+		justify-content: space-between;
+		width: 90%;
+		margin: auto;
+		.navigation {
+			width: 20%;
+			ul {
+				list-style-type: none;
+				margin-top: 0;
+				padding: 0;
+				padding-right: 30px;
+				display: flex;
+				flex-direction: column;
+				grid-gap: 20px;
+				justify-content: flex-start;
+				align-items: flex-start;
+				a {
+					display: flex;
+					width: 100%;
+				}
+				li {
+					display: flex;
+					align-items: center;
+					grid-gap: 10px;
+					cursor: pointer;
+					width: 100%;
+					padding: 10px 20px;
+					height: 50px;
+					font-family: Circular Std;
+					font-style: normal;
+					font-weight: 500;
+					font-size: 14px;
+					line-height: 20px;
+					/* identical to box height, or 125% */
 
-          color: #808191;
-          // color: #ffffff;
-          img {
-            width: 20px;
-            margin-top: -4px;
-          }
-          &:hover {
-            background: #7854f7;
-            border-radius: 5px;
-            color: #ffffff;
-            img {
-              filter: brightness(0) invert(1);
-            }
-          }
-        }
-        .active {
-          background: #7854f7;
-          border-radius: 5px;
-          color: #ffffff;
-          img {
-            filter: brightness(0) invert(1);
-          }
-        }
-      }
-    }
-    .boxmodel {
-      width: 80%;
-      background: rgba(120, 84, 247, 0.05);
-      border-radius: 20px;
-      padding: 35px 35px 80px 35px;
-      h1 {
-        font-family: Circular Std;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 22px;
-        line-height: 26px;
-        /* identical to box height, or 92% */
+					// color: #808191;
+					color: #666;
+					img {
+						width: 20px;
+						margin-top: -4px;
+					}
+					&:hover {
+						background: #7854f7;
+						border-radius: 5px;
+						color: #ffffff;
+						img {
+							filter: brightness(0) invert(1);
+						}
+					}
+				}
+				.active {
+					background: #7854f7;
+					border-radius: 5px;
+					color: #ffffff;
+					img {
+						filter: brightness(0) invert(1);
+					}
+				}
+			}
+		}
+		.boxmodel {
+			width: 80%;
+			background: rgba(120, 84, 247, 0.05);
+			border-radius: 20px;
+			padding: 35px 35px 80px 35px;
+			h1 {
+				font-family: Circular Std;
+				font-style: normal;
+				font-weight: bold;
+				font-size: 22px;
+				line-height: 26px;
+				/* identical to box height, or 92% */
 
-        margin: 0;
-        margin-bottom: 20px;
-        color: #000000;
-      }
-      .boxmodel_body {
-        background: #ffffff;
-        // opacity: 0.8;
-        border-radius: 20px;
-        height: 100%;
-        width: 100%;
-        padding: 50px 30px;
-      }
-    }
-  }
+				margin: 0;
+				margin-bottom: 20px;
+				color: #000000;
+			}
+			.boxmodel_body {
+				background: #ffffff;
+				// opacity: 0.8;
+				border-radius: 20px;
+				height: 100%;
+				width: 100%;
+				padding: 50px 30px;
+			}
+		}
+	}
 }
 @media (min-width: 1281px) {
 }
 
 /* 
-  ##Device = Laptops, Desktops
-  ##Screen = B/w 1025px to 1280px
+	##Device = Laptops, Desktops
+	##Screen = B/w 1025px to 1280px
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
 }
 
 /* 
-  ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px
+	##Device = Tablets, Ipads (portrait)
+	##Screen = B/w 768px to 1024px
 */
 @media (min-width: 930px) and (max-width: 1024px) {
-  .container {
-    .body {
-      width: 95%;
-    }
-  }
+	.container {
+		.body {
+			width: 95%;
+		}
+	}
 }
 @media (min-width: 930px) and (max-width: 1024px) and (orientation: landscape) {
-  .container {
-    .body {
-      width: 95%;
-    }
-  }
+	.container {
+		.body {
+			width: 95%;
+		}
+	}
 }
 @media (min-width: 768px) and (max-width: 930px) {
-  .container {
-    .body {
-      .navigation {
-        ul {
-          position: absolute;
-          z-index: 1;
-          li {
-            width: unset;
-            span {
-              display: none;
-            }
-            &:hover {
-              span {
-                display: block;
-              }
-            }
-          }
-        }
-      }
-      .boxmodel {
-        width: 80%;
-      }
-    }
-  }
+	.container {
+		.body {
+			.navigation {
+				ul {
+					position: absolute;
+					z-index: 1;
+					li {
+						width: unset;
+						span {
+							display: none;
+						}
+						&:hover {
+							span {
+								display: block;
+							}
+						}
+					}
+				}
+			}
+			.boxmodel {
+				width: 80%;
+			}
+		}
+	}
 }
 
 /* 
-  ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
+	##Device = Low Resolution Tablets, Mobiles (Landscape)
+	##Screen = B/w 481px to 767px
 */
 
 @media (min-width: 600px) and (max-width: 767px) {
-  .container {
-    .body {
-      .navigation {
-        ul {
-          position: absolute;
-          z-index: 1;
-          li {
-            width: unset;
+	.container {
+		.body {
+			.navigation {
+				ul {
+					position: absolute;
+					z-index: 1;
+					li {
+						width: unset;
 
-            &:hover {
-              span {
-                display: inline;
-              }
-            }
-            span {
-              display: none;
-            }
-          }
-        }
-      }
-      .boxmodel {
-        width: 86%;
-      }
-    }
-  }
+						&:hover {
+							span {
+								display: inline;
+							}
+						}
+						span {
+							display: none;
+						}
+					}
+				}
+			}
+			.boxmodel {
+				width: 86%;
+			}
+		}
+	}
 }
 @media (min-width: 481px) and (max-width: 599px) {
-  .container {
-    .body {
-      flex-direction: column;
-      .navigation {
-        width: 100%;
-        ul {
-          flex-direction: row;
-          width: 100%;
-          justify-content: space-between;
-          padding: 0;
-          li {
-            width: unset;
+	.container {
+		.body {
+			flex-direction: column;
+			.navigation {
+				width: 100%;
+				ul {
+					flex-direction: row;
+					width: 100%;
+					justify-content: space-between;
+					padding: 0;
+					li {
+						width: unset;
 
-            span {
-              display: none;
-            }
-          }
-        }
-      }
-      .boxmodel {
-        width: 100%;
-      }
-    }
-  }
+						span {
+							display: none;
+						}
+					}
+				}
+			}
+			.boxmodel {
+				width: 100%;
+			}
+		}
+	}
 }
 
 /* 
-  ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px
+	##Device = Most of the Smartphones Mobiles (Portrait)
+	##Screen = B/w 320px to 479px
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .container {
-    .body {
-      flex-direction: column;
-      .navigation {
-        width: 100%;
-        ul {
-          flex-direction: row;
-          width: 100%;
-          justify-content: space-between;
-          padding: 0;
+	.container {
+		.body {
+			flex-direction: column;
+			.navigation {
+				width: 100%;
+				ul {
+					flex-direction: row;
+					width: 100%;
+					justify-content: space-between;
+					padding: 0;
 
-          li {
-            width: unset;
-            padding: 10px 15px;
-            span {
-              display: none;
-            }
-          }
-        }
-      }
-      .boxmodel {
-        width: 100%;
-        padding: 50px 10px;
-      }
-    }
-  }
+					li {
+						width: unset;
+						padding: 10px 15px;
+						span {
+							display: none;
+						}
+					}
+				}
+			}
+			.boxmodel {
+				width: 100%;
+				padding: 50px 10px;
+			}
+		}
+	}
 }
