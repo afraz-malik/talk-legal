@@ -80,7 +80,8 @@ const SubsciptionType = ({ subscription_plan }) => {
 			)}
 
 			<div className={SubTypeCss.invoices}>
-				<p>{`Invoices(${invoices.length})`} </p>
+				<p>Payment Invoices </p>
+				{/*<p>{`Invoices(${invoices.length})`} </p>*/}
 				{invoices.map((arr, idx) => (
 					<div className={SubTypeCss.box} key={idx}>
 						<div className={SubTypeCss.left}>

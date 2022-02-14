@@ -52,7 +52,8 @@ const PaymentPlanCards = ({ handleSubmit }) => {
 								<button
 									onClick={() => handleSubmit(plan)}
 									disabled={
-										(
+										(currentUser.subscription_plan &&
+										((
 											currentUser &&
 											currentUser.subscription_plan_id &&
 											currentUser.subscription_plan_id == plan.id
@@ -60,11 +61,12 @@ const PaymentPlanCards = ({ handleSubmit }) => {
 											currentUser &&
 											currentUser.next_subscription_id &&
 											currentUser.next_subscription_id == plan.id
-										)
+										)))
 									}
 								>
 									{
 										currentUser &&
+										currentUser.subscription_plan &&
 										currentUser.subscription_plan_id &&
 										currentUser.subscription_plan_id == plan.id
 											? 'Current Plan'
