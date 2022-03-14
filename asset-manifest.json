@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/tltm/static/css/main.b3e90cb4.chunk.css",
-    "main.js": "/tltm/static/js/main.405c971a.chunk.js",
-    "runtime-main.js": "/tltm/static/js/runtime-main.022012b7.js",
-    "static/js/2.9841894a.chunk.js": "/tltm/static/js/2.9841894a.chunk.js",
-    "static/css/3.631dacde.chunk.css": "/tltm/static/css/3.631dacde.chunk.css",
-    "static/js/3.834b248c.chunk.js": "/tltm/static/js/3.834b248c.chunk.js",
-    "static/js/4.fa3bb86d.chunk.js": "/tltm/static/js/4.fa3bb86d.chunk.js",
-    "static/js/5.f2824aac.chunk.js": "/tltm/static/js/5.f2824aac.chunk.js",
-    "index.html": "/tltm/index.html",
-    "static/js/2.9841894a.chunk.js.LICENSE.txt": "/tltm/static/js/2.9841894a.chunk.js.LICENSE.txt",
-    "static/js/3.834b248c.chunk.js.LICENSE.txt": "/tltm/static/js/3.834b248c.chunk.js.LICENSE.txt",
-    "static/js/4.fa3bb86d.chunk.js.LICENSE.txt": "/tltm/static/js/4.fa3bb86d.chunk.js.LICENSE.txt",
-    "static/js/5.f2824aac.chunk.js.LICENSE.txt": "/tltm/static/js/5.f2824aac.chunk.js.LICENSE.txt",
-    "static/media/PaymentDetails.module.scss": "/tltm/static/media/Card 1.fbc53b54.svg",
-    "static/media/index.css": "/tltm/static/media/SFProText-Bold.9dae2991.ttf"
+    "main.css": "./static/css/main.4a9e0964.chunk.css",
+    "main.js": "./static/js/main.5612578d.chunk.js",
+    "runtime-main.js": "./static/js/runtime-main.7e641db1.js",
+    "static/js/2.9841894a.chunk.js": "./static/js/2.9841894a.chunk.js",
+    "static/css/3.631dacde.chunk.css": "./static/css/3.631dacde.chunk.css",
+    "static/js/3.834b248c.chunk.js": "./static/js/3.834b248c.chunk.js",
+    "static/js/4.fa3bb86d.chunk.js": "./static/js/4.fa3bb86d.chunk.js",
+    "static/js/5.f2824aac.chunk.js": "./static/js/5.f2824aac.chunk.js",
+    "index.html": "./index.html",
+    "static/js/2.9841894a.chunk.js.LICENSE.txt": "./static/js/2.9841894a.chunk.js.LICENSE.txt",
+    "static/js/3.834b248c.chunk.js.LICENSE.txt": "./static/js/3.834b248c.chunk.js.LICENSE.txt",
+    "static/js/4.fa3bb86d.chunk.js.LICENSE.txt": "./static/js/4.fa3bb86d.chunk.js.LICENSE.txt",
+    "static/js/5.f2824aac.chunk.js.LICENSE.txt": "./static/js/5.f2824aac.chunk.js.LICENSE.txt",
+    "static/media/PaymentDetails.module.scss": "./static/media/Card 1.fbc53b54.svg",
+    "static/media/index.css": "./static/media/SFProText-Bold.9dae2991.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.022012b7.js",
+    "static/js/runtime-main.7e641db1.js",
     "static/css/3.631dacde.chunk.css",
     "static/js/3.834b248c.chunk.js",
-    "static/css/main.b3e90cb4.chunk.css",
-    "static/js/main.405c971a.chunk.js"
+    "static/css/main.4a9e0964.chunk.css",
+    "static/js/main.5612578d.chunk.js"
   ]
 }
